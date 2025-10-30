@@ -272,6 +272,111 @@ class TabNewsView extends StatelessWidget {
                       ],
                     ),
                   ).paddingSymmetric(vertical: 20),
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    decoration: BoxDecoration(
+                      color: appBlack,
+                      border: Border.all(color: appWhite, width: 2),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: appWhite,
+                          offset: Offset(4, 4), // bottom-right
+                          blurRadius: 4,
+                        ),
+                        BoxShadow(
+                          color: appWhite,
+                          offset: Offset(-4, -4), // top-left
+                          blurRadius: 4,
+                        ),
+                        BoxShadow(
+                          color: appWhite,
+                          offset: Offset(4, -4), // top-right
+                          blurRadius: 4,
+                        ),
+                        BoxShadow(
+                          color: appWhite,
+                          offset: Offset(-4, 4), // bottom-left
+                          blurRadius: 4,
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      children: [
+                        AppTextBold(
+                          text: 'CASE RECORD',
+                          fontSize: 18,
+                          color: appLightBlueGray,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Column(
+                              children: [
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.2,
+                                  decoration: BoxDecoration(
+                                    color: appGreen,
+                                    border: Border.all(
+                                      color: appWhite,
+                                      width: 2,
+                                    ),
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      Image.asset(icTrophy),
+                                      AppTextRegular(
+                                        text: '47',
+                                        fontSize: 18,
+                                        color: appWhite,
+                                      ).paddingSymmetric(horizontal: 8),
+                                    ],
+                                  ).paddingAll(10),
+                                ),
+                                AppTextBold(
+                                  text: 'Wins',
+                                  fontSize: 18,
+                                  color: appLightBlueGray,
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
+                            ).paddingOnly(right: 10),
+                            Column(
+                              children: [
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.2,
+                                  decoration: BoxDecoration(
+                                    color: appRed,
+                                    border: Border.all(
+                                      color: appWhite,
+                                      width: 2,
+                                    ),
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      Image.asset(tabTrial),
+                                      AppTextRegular(
+                                        text: '47',
+                                        fontSize: 18,
+                                        color: appWhite,
+                                      ).paddingSymmetric(horizontal: 8),
+                                    ],
+                                  ).paddingAll(10),
+                                ),
+                                AppTextBold(
+                                  text: 'Loses',
+                                  fontSize: 18,
+                                  color: appLightBlueGray,
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ).paddingSymmetric(vertical: 20),
                   AppTextIcon(
                     text: 'View Active Cases',
                     onPressed: () {},

@@ -17,3 +17,4 @@ const String icClock = '${imageFolder}ic_clock.png';
 const String icStarBlack = '${imageFolder}ic_star_black.png';
 const String icStar = '${imageFolder}ic_star.png';
 const String icFrame = '${imageFolder}ic_frame.png';
+const String icTrophy = '${imageFolder}ic_trophy.png';
