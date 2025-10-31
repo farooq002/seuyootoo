@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 class AppThemes {
   static final darkTheme = ThemeData(
-    // fontFamily: TempStorage.shared.appLocale == 'en' ? 'SFPRODISPLAY' : 'dubai',
+    // fontFamily: fontFamily ?? 'PressStart2P',
     drawerTheme: const DrawerThemeData(
       backgroundColor: appBlack,
       surfaceTintColor: appWhite,
@@ -26,10 +26,7 @@ class AppThemes {
     scaffoldBackgroundColor: appBlack,
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        textStyle: TextStyle(
-          // fontFamily:
-          //     TempStorage.shared.appLocale == 'en' ? 'SFPRODISPLAY' : 'dubai',
-        ),
+        // textStyle: TextStyle(fontFamily: 'PressStart2P'),
         backgroundColor: appWhite, // Button background color
         foregroundColor: appBlack,
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -52,7 +49,6 @@ class AppThemes {
     dropdownMenuTheme: const DropdownMenuThemeData(
       textStyle: TextStyle(color: appWhite),
     ),
-    dialogBackgroundColor: appWhite,
     textTheme: const TextTheme(
       displayLarge: TextStyle(color: appWhite),
       displayMedium: TextStyle(color: appWhite),
@@ -114,8 +110,7 @@ class AppThemes {
   );
 
   static final lightTheme = ThemeData(
-    // fontFamily:
-    //     TempStorage.shared.appLocale == 'en' ? 'SFPRODISPLAY' : 'dubai',
+    // fontFamily: 'PressStart2P',
     drawerTheme: const DrawerThemeData(
       backgroundColor: appWhite,
       surfaceTintColor: appBlack,
@@ -132,10 +127,7 @@ class AppThemes {
     scaffoldBackgroundColor: appWhite,
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        textStyle: TextStyle(
-          // fontFamily:
-          //     TempStorage.shared.appLocale == 'en' ? 'SFPRODISPLAY' : 'dubai',
-        ),
+        // textStyle: TextStyle(fontFamily: 'PressStart2P'),
         backgroundColor: appBlack, // Button background color
         foregroundColor: appWhite,
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -256,6 +248,9 @@ const appLightBlueGray = Color(0xFFD9EDF1);
 const appAqua = Color(0xFF6CD9EB);
 const appPeach = Color(0xFFFAD7A0);
 const appYellow = Color(0xFFFFF9C4);
+const appBrown = Color(0xFF5C270D);
+const appDarkYellow = Color(0xFFECDB32);
+const appDimGreen = Color(0xFF1B9639);
 
 final appThemeColor = Get.isDarkMode ? appWhite : appBlack;
 

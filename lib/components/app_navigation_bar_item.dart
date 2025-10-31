@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:souyoutoo/utils/colors_name.dart';
 
 BottomNavigationBarItem appBottomNavigationBarItem(
   String imageName,
@@ -7,31 +8,25 @@ BottomNavigationBarItem appBottomNavigationBarItem(
   int index,
   int currentIndex,
 ) {
+  final isSelected = currentIndex == index;
+
   return BottomNavigationBarItem(
-    icon: Stack(
-      clipBehavior: Clip.none,
-      children: [
-        if (currentIndex == index)
-          Positioned(
-            top: -5,
-            left: 0,
-            right: 0,
-            child: Container(
-              width: 10,
-              height: 2,
-              decoration: ShapeDecoration(
-                color: Theme.of(Get.context!).secondaryHeaderColor,
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(1),
-                    bottomRight: Radius.circular(1),
-                  ),
-                ),
-              ),
-            ),
-          ),
-      ],
-    ),
     label: label,
+    icon: Container(
+      decoration: BoxDecoration(
+        color: isSelected ? appAmber : appYellow,
+        border: Border.all(color: appBlack),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(10),
+          topRight: Radius.circular(10),
+        ),
+      ),
+      child: Image.asset(
+        imageName,
+        width: 24,
+        height: 24,
+        color: isSelected ? appBlack : appGray,
+      ),
+    ),
   );
 }

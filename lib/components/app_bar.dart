@@ -24,17 +24,15 @@ AppBar appBar(
             padding: EdgeInsets.symmetric(horizontal: leftIconPadding / 2),
             child: GestureDetector(
               onTap: onLeftIconPress,
-              child: Image.asset(
-                leftIconSvg,
-                color: Theme.of(context).secondaryHeaderColor,
-              ),
+              child: Image.asset(leftIconSvg, height: 26, color: appWhite),
             ),
           )
         : null,
     title: AppTextBold(
       text: titleText ?? "Settings",
-      fontSize: 22,
+      fontSize: 29,
       color: appWhite,
+      fontFamily: 'VT323',
     ),
     centerTitle: centerTitle,
 

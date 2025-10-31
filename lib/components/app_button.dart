@@ -7,6 +7,7 @@ class AppTextButton extends StatelessWidget {
   final text;
   final double? fontSize;
   final void Function() onPressed;
+  final String? fontFamily;
   final bool? isUnderline;
   final Color? color;
   final Color? decorationColor;
@@ -19,6 +20,7 @@ class AppTextButton extends StatelessWidget {
     this.decorationColor,
     this.isUnderline = false,
     this.fontSize,
+    this.fontFamily,
   });
 
   @override
@@ -28,6 +30,7 @@ class AppTextButton extends StatelessWidget {
       child: AppTextThin(
         text: text,
         fontSize: fontSize,
+        fontFamily: fontFamily,
         isUnderline: isUnderline,
         decorationColor: decorationColor,
         color: color,

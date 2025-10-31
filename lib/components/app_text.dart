@@ -5,19 +5,19 @@ class AppTextThin extends StatelessWidget {
   final String text;
   final double? fontSize;
   final TextAlign? textAlign;
-  // final FontFamily? fontFamily;
   final Color? color;
   final int? lineLimit;
+  final String? fontFamily;
   final bool? isUnderline;
   final Color? decorationColor;
   const AppTextThin({
     super.key,
     required this.text,
     this.isUnderline = false,
+    this.fontFamily,
     this.fontSize,
     this.decorationColor,
     this.textAlign,
-    // this.fontFamily,
     this.lineLimit,
     this.color,
   });
@@ -37,7 +37,7 @@ class AppTextThin extends StatelessWidget {
             : TextDecoration.none,
         decorationColor: decorationColor,
         decorationThickness: 2,
-        // fontFamily: fontFamily?.toString() ?? FontFamily.OpenSans.toString(),
+        fontFamily: fontFamily ?? 'PressStart2P',
         color: color,
       ),
     );
@@ -47,8 +47,8 @@ class AppTextThin extends StatelessWidget {
 class AppTextRegular extends StatelessWidget {
   final String text;
   final double? fontSize;
+  final String? fontFamily;
   final TextAlign? textAlign;
-  // final FontFamily? fontFamily;
   final double? height;
   final Color? color;
   final int? lineLimit;
@@ -59,10 +59,10 @@ class AppTextRegular extends StatelessWidget {
     this.fontSize,
     this.height,
     this.textAlign,
-    // this.fontFamily,
     this.overflow = false,
     this.lineLimit = 4,
     this.color,
+    this.fontFamily,
   });
 
   @override
@@ -77,7 +77,7 @@ class AppTextRegular extends StatelessWidget {
         fontSize: fontSize ?? 16,
         height: height,
         fontWeight: FontWeight.w400,
-        // fontFamily: fontFamily?.toString() ?? FontFamily.OpenSans.toString(),
+        fontFamily: fontFamily ?? 'PressStart2P',
         color: color,
       ),
     );
@@ -88,15 +88,15 @@ class AppTextMedium extends StatelessWidget {
   final String text;
   final double? fontSize;
   final TextAlign? textAlign;
-  // final FontFamily? fontFamily;
+  final String? fontFamily;
   final Color? color;
   final int? lineLimit;
   const AppTextMedium({
     super.key,
     required this.text,
     this.fontSize,
+    this.fontFamily,
     this.textAlign,
-    // this.fontFamily,
     this.lineLimit,
     this.color,
   });
@@ -110,7 +110,7 @@ class AppTextMedium extends StatelessWidget {
       style: TextStyle(
         fontSize: fontSize ?? 16,
         fontWeight: FontWeight.w500,
-        // fontFamily: fontFamily?.toString() ?? FontFamily.OpenSans.toString(),
+        fontFamily: fontFamily ?? 'PressStart2P',
         color: color,
       ),
     );
@@ -121,16 +121,16 @@ class AppTextSemiBold extends StatelessWidget {
   final String text;
   final double? fontSize;
   final TextAlign? textAlign;
-  // final FontFamily? fontFamily;
   final Color? color;
   final int? lineLimit;
+  final String? fontFamily;
   final bool overflow;
   const AppTextSemiBold({
     super.key,
     required this.text,
     this.fontSize,
     this.textAlign,
-    // this.fontFamily,
+    this.fontFamily,
     this.lineLimit = 4,
     this.overflow = false,
     this.color,
@@ -146,7 +146,7 @@ class AppTextSemiBold extends StatelessWidget {
       style: TextStyle(
         fontSize: fontSize ?? 18,
         fontWeight: FontWeight.w600,
-        // fontFamily: fontFamily?.toString() ?? FontFamily.OpenSans.toString(),
+        fontFamily: fontFamily ?? 'PressStart2P',
         color: color,
       ),
     );
@@ -157,9 +157,9 @@ class AppTextBold extends StatelessWidget {
   final String text;
   final double? fontSize;
   final TextAlign? textAlign;
-  // final FontFamily? fontFamily;
   final double? textScaleFactor;
   final Color? color;
+  final String? fontFamily;
   final int? lineLimit;
   final TextDecoration? textDecoration;
   final bool overflow;
@@ -167,10 +167,10 @@ class AppTextBold extends StatelessWidget {
     super.key,
     required this.text,
     this.textScaleFactor,
+    this.fontFamily,
     this.fontSize,
     this.overflow = false,
     this.textAlign,
-    // this.fontFamily,
     this.lineLimit = 4,
     this.color,
     this.textDecoration = TextDecoration.none,
@@ -188,7 +188,7 @@ class AppTextBold extends StatelessWidget {
         decoration: textDecoration,
         fontSize: fontSize ?? 30,
         fontWeight: FontWeight.w600,
-        // fontFamily: fontFamily?.toString() ?? FontFamily.OpenSans.toString(),
+        fontFamily: fontFamily ?? 'PressStart2P',
         color: color,
       ),
     );
@@ -198,16 +198,16 @@ class AppTextBold extends StatelessWidget {
 class AppTextItalic extends StatelessWidget {
   final String text;
   final double? fontSize;
-  // final FontFamily? fontFamily;
   final TextAlign? textAlign;
+  final String? fontFamily;
   final Color? color;
   final int? lineLimit;
   const AppTextItalic({
     super.key,
     required this.text,
     this.fontSize,
+    this.fontFamily,
     this.textAlign,
-    // this.fontFamily,
     this.color,
     this.lineLimit,
   });
@@ -221,7 +221,7 @@ class AppTextItalic extends StatelessWidget {
       style: TextStyle(
         fontSize: fontSize ?? 18,
         fontStyle: FontStyle.italic,
-        // fontFamily: fontFamily?.toString() ?? FontFamily.OpenSans.toString(),
+        fontFamily: fontFamily ?? 'PressStart2P',
         color: color,
       ),
     );

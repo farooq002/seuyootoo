@@ -18,3 +18,7 @@ const String icStarBlack = '${imageFolder}ic_star_black.png';
 const String icStar = '${imageFolder}ic_star.png';
 const String icFrame = '${imageFolder}ic_frame.png';
 const String icTrophy = '${imageFolder}ic_trophy.png';
+const String icCheck = '${imageFolder}ic_check.png';
+const String icMedal = '${imageFolder}ic_medal.png';
+const String icShield = '${imageFolder}ic_shield.png';
+const String icGame = '${imageFolder}ic_game.png';

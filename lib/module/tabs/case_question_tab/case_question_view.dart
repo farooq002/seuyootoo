@@ -3,7 +3,9 @@ import 'package:get/get.dart';
 import 'package:souyoutoo/components/app_bar.dart';
 import 'package:souyoutoo/components/app_text.dart';
 import 'package:souyoutoo/components/app_text_icon.dart';
+import 'package:souyoutoo/components/backgroun_container.dart';
 import 'package:souyoutoo/module/tabs/case_question_tab/case_question_view_controller.dart';
+import 'package:souyoutoo/routes/app_navigation.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
 
@@ -17,13 +19,15 @@ class CaseQuestionView extends StatelessWidget {
     return Scaffold(
       appBar: appBar(
         context,
-        leftIconSvg: null,
+        leftIconSvg: icBack,
+        onLeftIconPress: () => back(),
         titleText: 'Case #023',
         customButton: AppTextIcon(
           text: '1:42',
-          icon: Image.asset(icClock, height: 18),
+          icon: Image.asset(icClock, height: 26),
           onPressed: () {},
-          fontSize: 18,
+          fontSize: 30,
+          fontFamily: 'VT323',
           backgroundColor: appBlack,
           foregroundColor: appWhite,
           iconAtEnd: true,
@@ -49,21 +53,16 @@ class CaseQuestionView extends StatelessWidget {
             top: 10,
             left: 0,
             right: 0,
-            child: Container(
+            child: AppAchievementContainer(
               margin: const EdgeInsets.symmetric(horizontal: 16),
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(color: Colors.black, width: 2),
-                boxShadow: const [
-                  BoxShadow(color: Colors.black, offset: Offset(4, 4)),
-                ],
-              ),
+              color: appWhite,
+              shadowColor: appBlack,
               child: Column(
                 children: [
                   AppTextBold(
                     text: 'The People vs. Unpaid Overtime',
-                    fontSize: 16,
+                    fontSize: 18,
+                    fontFamily: 'VT323',
                     color: Colors.black,
                   ).paddingOnly(bottom: 10),
                   Row(
@@ -73,7 +72,8 @@ class CaseQuestionView extends StatelessWidget {
                         () => AppTextSemiBold(
                           text:
                               "QUESTION ${controller.currentQuestionIndex.value + 1}/${controller.questions.length}",
-                          fontSize: 12,
+                          fontSize: 14,
+                          fontFamily: 'VT323',
                         ),
                       ),
                       SizedBox(
@@ -86,8 +86,8 @@ class CaseQuestionView extends StatelessWidget {
                           itemBuilder: (context, index) {
                             return Obx(
                               () => Container(
-                                width: 14,
-                                height: 14,
+                                width: 12,
+                                height: 12,
                                 margin: const EdgeInsets.symmetric(
                                   horizontal: 2,
                                 ),
@@ -119,24 +119,25 @@ class CaseQuestionView extends StatelessWidget {
               bottom: 10,
               left: 0,
               right: 0,
-              child: Container(
+              child: AppAchievementContainer(
                 margin: const EdgeInsets.symmetric(horizontal: 16),
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Colors.black, width: 2),
-                  boxShadow: const [
-                    BoxShadow(color: Colors.black, offset: Offset(4, 4)),
-                  ],
-                ),
+                color: Colors.white,
+                shadowColor: appBlack,
                 child: SingleChildScrollView(
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      AppTextBold(
-                        text: question.question,
+                      AppTextRegular(
+                        text: 'LEGAL QUESTION',
                         fontSize: 16,
-                        color: Colors.black,
+                        color: appBlue,
+                        fontFamily: 'VT323',
+                      ),
+                      AppTextRegular(
+                        text: question.question,
+                        fontSize: 18,
+                        color: appBlack,
+                        fontFamily: 'VT323',
                       ),
                       Container(
                         decoration: BoxDecoration(
@@ -151,8 +152,9 @@ class CaseQuestionView extends StatelessWidget {
                               TextSpan(
                                 text: "EVIDENCE: ",
                                 style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
+                                  fontWeight: FontWeight.w400,
+                                  color: appBlack,
+                                  fontFamily: 'VT323',
                                   fontSize: 14,
                                 ),
                               ),
@@ -160,7 +162,9 @@ class CaseQuestionView extends StatelessWidget {
                                 text:
                                     "Employee worked 45 hours in one week, including 5 hours of mandatory training after regular shift.",
                                 style: const TextStyle(
-                                  color: Colors.black,
+                                  fontWeight: FontWeight.w400,
+                                  color: appBlack,
+                                  fontFamily: 'VT323',
                                   fontSize: 14,
                                 ),
                               ),
@@ -174,41 +178,42 @@ class CaseQuestionView extends StatelessWidget {
                         return GestureDetector(
                           onTap: () => controller.selectAnswer(index),
                           child: Obx(
-                            () => Container(
+                            () => AppAchievementContainer(
                               width: double.infinity,
-                              padding: const EdgeInsets.all(12),
+
                               margin: const EdgeInsets.symmetric(vertical: 6),
-                              decoration: BoxDecoration(
-                                color: controller.optionColors[index],
-                                border: Border.all(color: appBlack, width: 2),
-                              ),
+                              // decoration: BoxDecoration(
+                              color: controller.optionColors[index],
+                              // border: Border.all(color: appBlack, width: 2),
+                              // ),
+                              borderColor: appBlack,
+                              isBorderAvailable: true,
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    "$optionLabel: ",
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 14,
-                                      color: Colors.black,
-                                    ),
+                                  AppTextRegular(
+                                    text: "$optionLabel: ",
+                                    fontSize: 16,
+                                    color: Colors.black,
+                                    fontFamily: 'VT323',
                                   ),
                                   Expanded(
                                     child: AppTextRegular(
                                       text: question.options[index],
-                                      fontSize: 14,
-                                      color: Colors.black,
+                                      fontSize: 16,
+                                      color: appBlack,
+                                      fontFamily: 'VT323',
                                     ),
                                   ),
                                 ],
-                              ),
+                              ).paddingAll(10),
                             ),
                           ),
                         );
                       }),
                     ],
                   ),
-                ),
+                ).paddingAll(10),
               ),
             );
           }),

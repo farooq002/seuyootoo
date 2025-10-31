@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:souyoutoo/components/app_bar.dart';
 import 'package:souyoutoo/components/app_button.dart';
+import 'package:souyoutoo/components/app_image.dart';
 import 'package:souyoutoo/components/app_text.dart';
 import 'package:souyoutoo/components/app_text_icon.dart';
+import 'package:souyoutoo/components/backgroun_container.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
 
@@ -24,58 +26,33 @@ class TabNewsView extends StatelessWidget {
           Positioned.fill(
             top: 0,
             bottom: 100,
-            child: Image.asset(icBackground, fit: BoxFit.fill),
+            child: appImageAsset(icBackground, fit: BoxFit.fill),
           ),
           Align(
             alignment: Alignment.bottomCenter,
             child: FractionallySizedBox(
               widthFactor: 1.0,
               heightFactor: 0.65,
-              child: Image.asset(icForeground, fit: BoxFit.fill),
+              child: appImageAsset(icForeground, fit: BoxFit.fill),
             ),
           ),
           Positioned(
             top: 10,
             left: 0,
             right: 0,
-            child: Container(
+            child: AppAchievementContainer(
+              width: MediaQuery.of(context).size.width * 0.9,
               margin: const EdgeInsets.symmetric(horizontal: 16),
-
-              decoration: BoxDecoration(
-                color: appAmber,
-                border: Border.all(color: Colors.black, width: 2),
-                boxShadow: const [
-                  BoxShadow(
-                    color: appBlack,
-                    offset: Offset(4, 4), // bottom-right
-                    blurRadius: 4,
-                  ),
-                  BoxShadow(
-                    color: appBlack,
-                    offset: Offset(-4, -4), // top-left
-                    blurRadius: 4,
-                  ),
-                  BoxShadow(
-                    color: appBlack,
-                    offset: Offset(4, -4), // top-right
-                    blurRadius: 4,
-                  ),
-                  BoxShadow(
-                    color: appBlack,
-                    offset: Offset(-4, 0), // bottom-left
-                    blurRadius: 4,
-                  ),
-                ],
-              ),
+              color: appAmber,
               child: Column(
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset(icStreak, height: 40).paddingOnly(right: 8),
+                      appImageAsset(icStreak, height: 40).paddingOnly(right: 8),
                       AppTextBold(
                         text: 'DAY 4 STREAK!',
-                        fontSize: 20,
+                        fontSize: 14,
                         textAlign: TextAlign.center,
                         color: appBlack,
                       ),
@@ -83,12 +60,12 @@ class TabNewsView extends StatelessWidget {
                   ),
                   AppTextBold(
                     text: 'Keep it up for a Case Analysis Reward',
-                    fontSize: 18,
+                    fontSize: 12,
                     textAlign: TextAlign.center,
                     color: Colors.black,
                   ),
                 ],
-              ),
+              ).paddingAll(10),
             ),
           ),
           Positioned(
@@ -99,45 +76,19 @@ class TabNewsView extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  Container(
+                  AppAchievementContainer(
                     width: MediaQuery.of(context).size.width * 0.9,
-                    decoration: BoxDecoration(
-                      color: appBlack,
-                      border: Border.all(color: appWhite, width: 2),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(4, 4), // bottom-right
-                          blurRadius: 4,
-                        ),
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(-4, -4), // top-left
-                          blurRadius: 4,
-                        ),
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(4, -4), // top-right
-                          blurRadius: 4,
-                        ),
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(-4, 4), // bottom-left
-                          blurRadius: 4,
-                        ),
-                      ],
-                    ),
                     child: Column(
                       children: [
                         AppTextBold(
                           text: 'CURRENT LEVEL',
-                          fontSize: 18,
+                          fontSize: 14,
                           textAlign: TextAlign.center,
                           color: appAmber,
                         ).paddingSymmetric(vertical: 10),
                         AppTextBold(
                           text: 'Junior Paralegal',
-                          fontSize: 18,
+                          fontSize: 12,
                           textAlign: TextAlign.center,
                           color: appWhite,
                         ),
@@ -152,12 +103,12 @@ class TabNewsView extends StatelessWidget {
                           children: [
                             AppTextBold(
                               text: '5 level PROGRESS',
-                              fontSize: 16,
+                              fontSize: 12,
                               color: appWhite,
                             ),
                             AppTextRegular(
                               text: '2750/5000',
-                              fontSize: 14,
+                              fontSize: 12,
                               color: appBlue,
                             ),
                           ],
@@ -193,7 +144,7 @@ class TabNewsView extends StatelessWidget {
                             children: [
                               AppTextBold(
                                 text: 'WEEKLY LEARNING GOAL',
-                                fontSize: 14,
+                                fontSize: 12,
                                 color: appLightBlueGray,
                               ),
                               Row(
@@ -202,12 +153,12 @@ class TabNewsView extends StatelessWidget {
                                 children: [
                                   AppTextRegular(
                                     text: 'Cases Completed:',
-                                    fontSize: 14,
+                                    fontSize: 12,
                                     color: appWhite,
                                   ),
                                   AppTextRegular(
                                     text: '5/7',
-                                    fontSize: 14,
+                                    fontSize: 12,
                                     color: appGreen,
                                   ),
                                 ],
@@ -218,95 +169,44 @@ class TabNewsView extends StatelessWidget {
                       ],
                     ).paddingSymmetric(horizontal: 16),
                   ).paddingOnly(top: 10),
-                  Container(
+                  AppAchievementContainer(
+                    color: appBlue,
                     width: MediaQuery.of(context).size.width * 0.9,
-                    decoration: BoxDecoration(
-                      color: appBlue,
-                      border: Border.all(color: appWhite, width: 2),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(4, 4), // bottom-right
-                          blurRadius: 4,
-                        ),
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(-4, -4), // top-left
-                          blurRadius: 4,
-                        ),
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(4, -4), // top-right
-                          blurRadius: 4,
-                        ),
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(-4, 4), // bottom-left
-                          blurRadius: 4,
-                        ),
-                      ],
-                    ),
                     child: Column(
                       children: [
                         AppTextBold(
                           text: 'EARNED TOKENS',
-                          fontSize: 18,
+                          fontSize: 14,
                           color: appLightBlueGray,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Image.asset(icFrame),
+                            appImageAsset(icFrame),
                             AppTextRegular(
                               text: '47',
-                              fontSize: 18,
+                              fontSize: 24,
                               color: appWhite,
                             ).paddingSymmetric(horizontal: 8),
                           ],
                         ),
                         AppTextBold(
                           text: 'Use on sueyoutoo.com',
-                          fontSize: 18,
+                          fontSize: 12,
                           color: appLightBlueGray,
                         ),
                       ],
-                    ),
+                    ).paddingSymmetric(vertical: 10),
                   ).paddingSymmetric(vertical: 20),
-                  Container(
+                  AppAchievementContainer(
                     width: MediaQuery.of(context).size.width * 0.9,
-                    decoration: BoxDecoration(
-                      color: appBlack,
-                      border: Border.all(color: appWhite, width: 2),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(4, 4), // bottom-right
-                          blurRadius: 4,
-                        ),
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(-4, -4), // top-left
-                          blurRadius: 4,
-                        ),
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(4, -4), // top-right
-                          blurRadius: 4,
-                        ),
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(-4, 4), // bottom-left
-                          blurRadius: 4,
-                        ),
-                      ],
-                    ),
                     child: Column(
                       children: [
                         AppTextBold(
                           text: 'CASE RECORD',
-                          fontSize: 18,
+                          fontSize: 14,
                           color: appLightBlueGray,
-                        ),
+                        ).paddingSymmetric(vertical: 10),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -314,7 +214,7 @@ class TabNewsView extends StatelessWidget {
                               children: [
                                 Container(
                                   width:
-                                      MediaQuery.of(context).size.width * 0.2,
+                                      MediaQuery.of(context).size.width * 0.3,
                                   decoration: BoxDecoration(
                                     color: appGreen,
                                     border: Border.all(
@@ -324,28 +224,28 @@ class TabNewsView extends StatelessWidget {
                                   ),
                                   child: Column(
                                     children: [
-                                      Image.asset(icTrophy),
+                                      appImageAsset(icTrophy),
                                       AppTextRegular(
-                                        text: '47',
-                                        fontSize: 18,
+                                        text: '23',
+                                        fontSize: 20,
                                         color: appWhite,
-                                      ).paddingSymmetric(horizontal: 8),
+                                      ).paddingOnly(top: 10),
                                     ],
                                   ).paddingAll(10),
                                 ),
                                 AppTextBold(
                                   text: 'Wins',
-                                  fontSize: 18,
+                                  fontSize: 12,
                                   color: appLightBlueGray,
                                   textAlign: TextAlign.center,
-                                ),
+                                ).paddingSymmetric(vertical: 10),
                               ],
                             ).paddingOnly(right: 10),
                             Column(
                               children: [
                                 Container(
                                   width:
-                                      MediaQuery.of(context).size.width * 0.2,
+                                      MediaQuery.of(context).size.width * 0.3,
                                   decoration: BoxDecoration(
                                     color: appRed,
                                     border: Border.all(
@@ -355,21 +255,21 @@ class TabNewsView extends StatelessWidget {
                                   ),
                                   child: Column(
                                     children: [
-                                      Image.asset(tabTrial),
+                                      appImageAsset(tabTrial),
                                       AppTextRegular(
-                                        text: '47',
-                                        fontSize: 18,
+                                        text: '7',
+                                        fontSize: 20,
                                         color: appWhite,
-                                      ).paddingSymmetric(horizontal: 8),
+                                      ).paddingOnly(top: 10),
                                     ],
                                   ).paddingAll(10),
                                 ),
                                 AppTextBold(
                                   text: 'Loses',
-                                  fontSize: 18,
+                                  fontSize: 12,
                                   color: appLightBlueGray,
                                   textAlign: TextAlign.center,
-                                ),
+                                ).paddingSymmetric(vertical: 10),
                               ],
                             ),
                           ],
@@ -377,48 +277,102 @@ class TabNewsView extends StatelessWidget {
                       ],
                     ),
                   ).paddingSymmetric(vertical: 20),
-                  AppTextIcon(
-                    text: 'View Active Cases',
-                    onPressed: () {},
-                    widthSize: MediaQuery.of(context).size.width * 0.9,
-                    icon: Image.asset(tabCases, color: appWhite),
-                    foregroundColor: appLightBlueGray,
-                    backgroundColor: appGreen,
-                    fontSize: 20,
-                  ),
-                  Container(
+                  AppAchievementContainer(
                     width: MediaQuery.of(context).size.width * 0.9,
-                    decoration: BoxDecoration(
-                      color: appAmber,
-                      border: Border.all(color: appWhite, width: 2),
-                      boxShadow: const [
-                        BoxShadow(
+                    child: Column(
+                      children: [
+                        AppTextRegular(
+                          text: 'ACHIEVEMENTS',
+                          fontSize: 14,
                           color: appWhite,
-                          offset: Offset(4, 4), // bottom-right
-                          blurRadius: 4,
                         ),
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(-4, -4), // top-left
-                          blurRadius: 4,
+                        AppAchievementContainer(
+                          isBorderAvailable: false,
+                          color: appAmber,
+                          child: Row(
+                            children: [
+                              appImageAsset(
+                                icMedal,
+                                height: 15,
+                              ).paddingOnly(right: 8),
+                              AppTextRegular(
+                                text: 'Won 10 Cases',
+                                fontSize: 12,
+                              ),
+                              const Spacer(),
+                              appImageAsset(icCheck, color: appYellow),
+                            ],
+                          ).paddingAll(10),
                         ),
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(4, -4), // top-right
-                          blurRadius: 4,
-                        ),
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(-4, 4), // bottom-left
-                          blurRadius: 4,
+                        AppAchievementContainer(
+                          isBorderAvailable: false,
+                          color: appDimGreen,
+                          child: Row(
+                            children: [
+                              appImageAsset(
+                                icShield,
+                                height: 15,
+                              ).paddingOnly(right: 8),
+                              AppTextRegular(
+                                text: 'No Laws Broken',
+                                fontSize: 12,
+                              ),
+                              const Spacer(),
+                              appImageAsset(icCheck, color: appLightGreen),
+                            ],
+                          ).paddingAll(10),
+                        ).paddingSymmetric(vertical: 10),
+                        AppAchievementContainer(
+                          isBorderAvailable: false,
+                          color: appGray,
+                          child: Row(
+                            children: [
+                              appImageAsset(
+                                icStarBlack,
+                                height: 15,
+                                color: appLightGray,
+                              ).paddingOnly(right: 8),
+                              AppTextRegular(
+                                text: 'Perfect Week',
+                                fontSize: 12,
+                                color: appLightGray,
+                              ),
+                              const Spacer(),
+                              AppTextRegular(
+                                text: '3/7',
+                                fontSize: 12,
+                                color: appLightGray,
+                              ),
+                            ],
+                          ).paddingAll(10),
                         ),
                       ],
-                    ),
-                    child: AppTextButton(
-                      text: 'Retry Case',
-                      fontSize: 20,
+                    ).paddingAll(10),
+                  ).paddingSymmetric(vertical: 20),
+                  AppAchievementContainer(
+                    color: appGreen,
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    child: AppTextIcon(
+                      text: 'View Active Cases',
                       onPressed: () {},
-                      color: appYellow,
+                      icon: appImageAsset(
+                        tabCases,
+                        color: appWhite,
+                        height: 14,
+                      ),
+                      fontSize: 14,
+                      backgroundColor: appGreen,
+                    ),
+                  ),
+                  AppAchievementContainer(
+                    color: appAmber,
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    child: AppTextIcon(
+                      text: 'Start New Trial',
+                      onPressed: () {},
+                      icon: appImageAsset(icGame, color: appWhite, height: 14),
+                      fontSize: 14,
+                      backgroundColor: appAmber,
                     ),
                   ).paddingOnly(top: 20),
                 ],

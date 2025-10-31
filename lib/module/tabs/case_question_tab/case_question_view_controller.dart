@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:souyoutoo/module/tabs/tab_stats/tab_stats_view.dart';
+import 'package:souyoutoo/routes/app_navigation.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 
 class CaseQuestionViewController extends GetxController {
@@ -88,6 +90,8 @@ class CaseQuestionViewController extends GetxController {
     if (currentQuestionIndex.value < questions.length - 1) {
       currentQuestionIndex.value++;
       initOptionColors();
+    } else {
+      push(TabStatsView());
     }
   }
 

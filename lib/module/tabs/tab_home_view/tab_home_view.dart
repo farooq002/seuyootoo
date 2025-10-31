@@ -5,6 +5,8 @@ import 'package:get/get_utils/src/extensions/export.dart';
 import 'package:souyoutoo/components/app_button.dart';
 import 'package:souyoutoo/components/app_text.dart';
 import 'package:souyoutoo/components/app_text_icon.dart';
+import 'package:souyoutoo/module/tabs/trial_tab/tab_trial_view.dart';
+import 'package:souyoutoo/routes/app_navigation.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
 
@@ -19,7 +21,7 @@ class TabHomeView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: AppTextBold(text: 'SUEYOUTOO', fontSize: 22, color: appWhite),
+        title: AppTextBold(text: 'SUEYOUTOO', fontSize: 12, color: appWhite),
         centerTitle: false,
         backgroundColor: appBlack,
         actions: [
@@ -27,7 +29,7 @@ class TabHomeView extends StatelessWidget {
             icon: Image.asset(icStreak),
             onPressed: () {},
             text: '7 DAY STREAK',
-            fontSize: 18,
+            fontSize: 14,
             foregroundColor: appWhite,
             backgroundColor: appBlack,
           ),
@@ -72,12 +74,12 @@ class TabHomeView extends StatelessWidget {
                     children: [
                       AppTextBold(
                         text: '5 level PROGRESS',
-                        fontSize: 16,
+                        fontSize: 12,
                         color: Colors.black,
                       ),
                       AppTextRegular(
                         text: '2750/5000',
-                        fontSize: 14,
+                        fontSize: 10,
                         color: Colors.blue[700]!,
                       ),
                     ],
@@ -130,26 +132,41 @@ class TabHomeView extends StatelessWidget {
                   ).paddingAll(10),
                 ).paddingOnly(bottom: controller.size.height * 0.01),
 
-                AppTextRegular(
-                  text: '"LEX is Happy"',
-                  fontSize: 14,
-                  color: appWhite,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: appGreen,
+                        border: Border.all(color: appWhite, width: 2),
+                      ),
+                      height: 25,
+                      width: 25,
+                    ).paddingOnly(right: 8),
+                    AppTextRegular(
+                      text: 'LEX IS HAPPY',
+                      fontSize: 14,
+                      color: appWhite,
+                    ),
+                  ],
                 ).paddingOnly(bottom: 4),
 
-                AppElevatedButton(
+                AppTextIcon(
                   onPressed: () {},
                   text: 'LESSON',
-                  textSize: 12,
-                  padding: 10,
-                  color: appDarkGreen,
-                  textColor: appWhite,
-                ).paddingOnly(bottom: controller.size.height * 0.01),
+                  isColumn: true,
+                  icon: Image.asset(icCheck),
+                  fontSize: 14,
+                  // padding: 10,
+                  backgroundColor: appGreen,
+                  foregroundColor: appWhite,
+                ).paddingOnly(bottom: 8),
 
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     AppElevatedButton(
-                      onPressed: () {},
+                      onPressed: () => push(TabTrialView()),
                       color: appAqua,
                       text: 'START NEW CASE',
                       padding: 0,

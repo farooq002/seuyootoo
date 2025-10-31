@@ -4,8 +4,11 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:get/instance_manager.dart';
 import 'package:souyoutoo/components/app_bar.dart';
+import 'package:souyoutoo/components/app_button.dart';
 import 'package:souyoutoo/components/app_text.dart';
+import 'package:souyoutoo/module/tabs/case_question_tab/case_question_view.dart';
 import 'package:souyoutoo/module/tabs/trial_tab/tab_trial_view_controller.dart';
+import 'package:souyoutoo/routes/app_navigation.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
 
@@ -18,12 +21,15 @@ class TabTrialView extends StatelessWidget {
     return Scaffold(
       appBar: appBar(
         context,
-        leftIconSvg: null,
-        titleText: 'Trial',
-        customButton: AppTextBold(
+        leftIconSvg: icBack,
+        onLeftIconPress: () => back(),
+        titleText: 'BACK',
+        customButton: AppTextButton(
           text: 'New Case',
-          fontSize: 16,
+          fontSize: 29,
           color: appWhite,
+          fontFamily: 'VT323',
+          onPressed: () => push(CaseQuestionView()),
         ),
       ),
       body: Stack(
@@ -50,20 +56,40 @@ class TabTrialView extends StatelessWidget {
               margin: const EdgeInsets.symmetric(horizontal: 16),
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: appAmber,
+                color: appDarkYellow,
                 border: Border.all(color: Colors.black, width: 2),
                 boxShadow: const [
-                  BoxShadow(color: Colors.black, offset: Offset(4, 4)),
+                  BoxShadow(
+                    color: appBlack,
+                    offset: Offset(4, 4), // bottom-right
+                    blurRadius: 4,
+                  ),
+                  BoxShadow(
+                    color: appBlack,
+                    offset: Offset(-4, -4), // top-left
+                    blurRadius: 4,
+                  ),
+                  BoxShadow(
+                    color: appBlack,
+                    offset: Offset(4, -4), // top-right
+                    blurRadius: 4,
+                  ),
+                  BoxShadow(
+                    color: appBlack,
+                    offset: Offset(-4, 4), // bottom-left
+                    blurRadius: 4,
+                  ),
                 ],
               ),
               child: Column(
                 children: [
-                  AppTextBold(
+                  AppTextThin(
                     text:
                         '"Here\'s your new case, Counselor! Ready to defend?"',
-                    fontSize: 16,
+                    fontSize: 20,
+                    fontFamily: 'VT323',
                     textAlign: TextAlign.center,
-                    color: Colors.black,
+                    color: appBlack,
                   ),
                 ],
               ),
@@ -71,13 +97,12 @@ class TabTrialView extends StatelessWidget {
           ),
 
           Positioned(
-            top: MediaQuery.of(context).size.height * 0.4,
-            bottom: 10,
+            bottom: 25,
             left: 0,
             right: 0,
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 16),
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 color: appWhite,
                 border: Border.all(color: Colors.black, width: 2),
@@ -90,16 +115,19 @@ class TabTrialView extends StatelessWidget {
                   children: [
                     AppTextRegular(
                       text: 'CASE #023',
-                      fontSize: 14,
+                      fontSize: 24,
                       textAlign: TextAlign.center,
+                      fontFamily: 'VT323',
                       color: appBlue,
                     ),
-                    AppTextBold(
+                    AppTextRegular(
                       text: 'The People vs. Unpaid Overtime',
-                      fontSize: 22,
+                      fontFamily: 'VT323',
+                      fontSize: 30,
+
                       textAlign: TextAlign.center,
                       color: appBlack,
-                    ).paddingSymmetric(vertical: 8),
+                    ),
                     DottedLine(
                       dashLength: 2,
                       dashGapLength: 2,
@@ -107,55 +135,71 @@ class TabTrialView extends StatelessWidget {
                       dashColor: appBlack,
                       direction: Axis.horizontal,
                     ),
-                    AppTextSemiBold(
+                    AppTextThin(
                       text:
                           'A group of employees claim they were forced to work off-the-clock. Your job is to argue their case and secure their rightful compensation.',
-                      fontSize: 14,
-                    ).paddingSymmetric(vertical: 8),
+                      fontSize: 18,
+                      fontFamily: 'VT323',
+                    ).paddingSymmetric(vertical: 20),
                     Row(
                       children: [
-                        AppTextRegular(text: 'DIFFICULTY:'),
+                        AppTextRegular(
+                          text: 'DIFFICULTY:',
+                          fontSize: 18,
+                          fontFamily: 'VT323',
+                        ),
                         const Spacer(),
-                        AppTextRegular(text: 'MEDIUM', color: appAmber),
+                        AppTextRegular(
+                          text: 'MEDIUM',
+                          color: appAmber,
+                          fontFamily: 'VT323',
+                          fontSize: 24,
+                        ).paddingOnly(right: 4),
+                        Image.asset(icStar, width: 12, height: 12),
                         Image.asset(
                           icStar,
-                          width: 16,
-                          height: 16,
+                          width: 12,
+                          height: 12,
                         ).paddingSymmetric(horizontal: 4),
-                        Image.asset(icStar, width: 16, height: 16),
-                        Image.asset(
-                          icStarBlack,
-                          width: 16,
-                          height: 16,
-                        ).paddingSymmetric(horizontal: 4),
+                        Image.asset(icStarBlack, width: 12, height: 12),
                       ],
-                    ),
+                    ).paddingSymmetric(vertical: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        AppTextRegular(text: 'QUESTIONS:'),
                         AppTextRegular(
-                          text: '5 Questions (~3 MINS)',
-                          fontSize: 14,
+                          text: 'QUESTIONS:',
+                          fontSize: 18,
+                          fontFamily: 'VT323',
+                        ),
+                        AppTextRegular(
+                          text: '5 Questions(~3 MINS)',
+                          fontFamily: 'VT323',
+                          fontSize: 18,
                         ),
                       ],
-                    ).paddingSymmetric(vertical: 8),
+                    ),
                     Row(
                       children: [
-                        AppTextRegular(text: 'REWARDS:'),
+                        AppTextRegular(
+                          text: 'REWARDS:',
+                          fontSize: 18,
+                          fontFamily: 'VT323',
+                        ),
                         const Spacer(),
                         AppTextRegular(
                           text: '+150 XP',
-                          fontSize: 14,
+                          fontFamily: 'VT323',
+                          fontSize: 18,
                           color: appGreen,
                         ),
                         Image.asset(
                           icFrame,
-                          width: 16,
-                          height: 16,
+                          width: 12,
+                          height: 12,
                         ).paddingOnly(left: 4),
                       ],
-                    ).paddingSymmetric(vertical: 8),
+                    ).paddingSymmetric(vertical: 10),
                   ],
                 ),
               ),

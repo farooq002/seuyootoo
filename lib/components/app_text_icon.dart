@@ -5,9 +5,11 @@ import 'app_text.dart';
 class AppTextIcon extends StatelessWidget {
   final Widget? icon;
   final String text;
+  final String? fontFamily;
   final void Function() onPressed;
   final Color? foregroundColor;
   final Color? backgroundColor;
+  final bool isColumn;
   final double? fontSize;
   final double? widthSize;
   final double? textScaleFactor;
@@ -17,6 +19,7 @@ class AppTextIcon extends StatelessWidget {
     super.key,
     required this.onPressed,
     this.text = 'Edit Profile',
+    this.isColumn = false,
     this.icon,
     this.foregroundColor,
     this.backgroundColor,
@@ -24,11 +27,24 @@ class AppTextIcon extends StatelessWidget {
     this.textScaleFactor,
     this.widthSize,
     this.iconAtEnd = false,
+    this.fontFamily,
   });
 
   @override
   Widget build(BuildContext context) {
-    final content = iconAtEnd
+    final content = isColumn
+        ? Column(
+            children: [
+              if (icon != null) ...[const SizedBox(width: 6), icon!],
+              AppTextBold(
+                text: text,
+                textScaleFactor: textScaleFactor,
+                fontSize: fontSize,
+                fontFamily: fontFamily,
+              ).paddingOnly(right: 10),
+            ],
+          )
+        : iconAtEnd
         ? Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -36,6 +52,7 @@ class AppTextIcon extends StatelessWidget {
                 text: text,
                 textScaleFactor: textScaleFactor,
                 fontSize: fontSize,
+                fontFamily: fontFamily,
               ).paddingOnly(right: 10),
               if (icon != null) ...[const SizedBox(width: 6), icon!],
             ],
@@ -44,13 +61,14 @@ class AppTextIcon extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               if (icon != null) ...[
-                icon!.paddingOnly(right: 10),
                 const SizedBox(width: 6),
+                icon!.paddingOnly(right: 10),
               ],
               AppTextBold(
                 text: text,
                 textScaleFactor: textScaleFactor,
                 fontSize: fontSize,
+                fontFamily: fontFamily,
               ),
             ],
           );
@@ -62,9 +80,7 @@ class AppTextIcon extends StatelessWidget {
             backgroundColor ?? Theme.of(context).secondaryHeaderColor,
         minimumSize: Size(widthSize ?? 30, 0),
         animationDuration: const Duration(milliseconds: 300),
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.zero, // 👈 removes background radius
-        ),
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
       ),
       onPressed: onPressed,
       child: content,
