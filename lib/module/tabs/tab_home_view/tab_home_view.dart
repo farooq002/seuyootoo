@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/export.dart';
 
 import 'package:souyoutoo/components/app_button.dart';
+import 'package:souyoutoo/components/app_progress_bar.dart';
 import 'package:souyoutoo/components/app_text.dart';
 import 'package:souyoutoo/components/app_text_icon.dart';
 import 'package:souyoutoo/module/tabs/trial_tab/tab_trial_view.dart';
@@ -85,28 +86,7 @@ class TabHomeView extends StatelessWidget {
                     ],
                   ).paddingOnly(bottom: 6),
 
-                  Container(
-                    height: 14,
-                    decoration: BoxDecoration(
-                      color: Colors.black,
-                      border: Border.all(color: Colors.black, width: 1.5),
-                    ),
-                    child: LayoutBuilder(
-                      builder: (context, constraints) {
-                        final progressWidth =
-                            constraints.maxWidth * (2750 / 5000);
-                        return Stack(
-                          children: [
-                            Container(color: Colors.white),
-                            Container(
-                              width: progressWidth,
-                              color: Colors.blue[400],
-                            ),
-                          ],
-                        );
-                      },
-                    ),
-                  ),
+                  AchievementProgressBar(currentValue: 3500, totalValue: 5000),
                 ],
               ),
             ),

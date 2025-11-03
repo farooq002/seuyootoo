@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:souyoutoo/module/tabs/tab_stats/tab_stats_view.dart';
+import 'package:souyoutoo/module/tabs/tab_home_view/verdict_view/verdict_view.dart';
 import 'package:souyoutoo/routes/app_navigation.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 
@@ -91,7 +91,7 @@ class CaseQuestionViewController extends GetxController {
       currentQuestionIndex.value++;
       initOptionColors();
     } else {
-      push(TabStatsView());
+      push(const VerdictView());
     }
   }
 

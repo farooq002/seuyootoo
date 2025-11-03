@@ -12,7 +12,6 @@ AppBar appBar(
   double leadingWidth = 36.0,
 
   double leftIconPadding = 14.0,
-  List<Widget>? customActions,
   VoidCallback? onLeftIconPress,
   Widget? customButton,
 }) {

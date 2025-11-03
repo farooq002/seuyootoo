@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:souyoutoo/components/app_bar.dart';
 import 'package:souyoutoo/components/app_text.dart';
 import 'package:souyoutoo/components/app_text_icon.dart';
-import 'package:souyoutoo/components/backgroun_container.dart';
+import 'package:souyoutoo/components/background_container.dart';
 import 'package:souyoutoo/module/tabs/case_question_tab/case_question_view_controller.dart';
 import 'package:souyoutoo/routes/app_navigation.dart';
 import 'package:souyoutoo/utils/colors_name.dart';

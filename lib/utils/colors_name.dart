@@ -232,6 +232,7 @@ const appBlue = Color(0xFF0866FF);
 const appDimGray = Color(0xFF555555);
 const appAmber = Colors.amber;
 const appLightGray = Color(0xFFF5F5F5);
+const appShadowBrown = Color(0xFFD9CEBB);
 const appDarkGray = Color(0xFF2D2D2D);
 const appPurple = Color(0xFF8C69BE);
 //

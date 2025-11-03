@@ -1,13 +1,11 @@
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_utils/get_utils.dart';
-import 'package:get/instance_manager.dart';
+import 'package:get/get.dart';
 import 'package:souyoutoo/components/app_bar.dart';
 import 'package:souyoutoo/components/app_button.dart';
 import 'package:souyoutoo/components/app_text.dart';
 import 'package:souyoutoo/module/tabs/case_question_tab/case_question_view.dart';
-import 'package:souyoutoo/module/tabs/trial_tab/tab_trial_view_controller.dart';
+// import 'package:souyoutoo/module/tabs/trial_tab/tab_trial_view_controller.dart';
 import 'package:souyoutoo/routes/app_navigation.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
@@ -17,7 +15,7 @@ class TabTrialView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(TabTrialViewController());
+    // final controller = Get.put(TabTrialViewController());
     return Scaffold(
       appBar: appBar(
         context,
