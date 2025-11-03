@@ -4,14 +4,12 @@ import 'package:get/get.dart';
 import 'package:souyoutoo/components/app_bar.dart';
 import 'package:souyoutoo/components/app_button.dart';
 import 'package:souyoutoo/components/app_text.dart';
-import 'package:souyoutoo/module/tabs/case_question_tab/case_question_view.dart';
-// import 'package:souyoutoo/module/tabs/trial_tab/tab_trial_view_controller.dart';
-import 'package:souyoutoo/routes/app_navigation.dart';
+import 'package:souyoutoo/routes/routes_name.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
 
-class TabTrialView extends StatelessWidget {
-  const TabTrialView({super.key});
+class TrialView extends StatelessWidget {
+  const TrialView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,14 +18,14 @@ class TabTrialView extends StatelessWidget {
       appBar: appBar(
         context,
         leftIconSvg: icBack,
-        onLeftIconPress: () => back(),
+        onLeftIconPress: () => Get.back(),
         titleText: 'BACK',
         customButton: AppTextButton(
           text: 'New Case',
           fontSize: 29,
           color: appWhite,
           fontFamily: 'VT323',
-          onPressed: () => push(CaseQuestionView()),
+          onPressed: () =>  Get.toNamed(questionRoute)
         ),
       ),
       body: Stack(

@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_utils/src/extensions/export.dart';
 
 import 'package:souyoutoo/components/app_button.dart';
 import 'package:souyoutoo/components/app_progress_bar.dart';
 import 'package:souyoutoo/components/app_text.dart';
 import 'package:souyoutoo/components/app_text_icon.dart';
-import 'package:souyoutoo/module/tabs/trial_tab/tab_trial_view.dart';
-import 'package:souyoutoo/routes/app_navigation.dart';
+import 'package:souyoutoo/routes/routes_name.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
 
-import 'tab_home_view_controller.dart';
+import 'home_view_controller.dart';
 
-class TabHomeView extends StatelessWidget {
-  const TabHomeView({super.key});
+class HomeView extends StatelessWidget {
+  const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -146,7 +144,7 @@ class TabHomeView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     AppElevatedButton(
-                      onPressed: () => push(TabTrialView()),
+                      onPressed: () => Get.toNamed(trailRoute),
                       color: appAqua,
                       text: 'START NEW CASE',
                       padding: 0,

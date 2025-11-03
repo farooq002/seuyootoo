@@ -4,23 +4,22 @@ import 'package:souyoutoo/components/app_bar.dart';
 import 'package:souyoutoo/components/app_text.dart';
 import 'package:souyoutoo/components/app_text_icon.dart';
 import 'package:souyoutoo/components/background_container.dart';
-import 'package:souyoutoo/module/tabs/case_question_tab/case_question_view_controller.dart';
-import 'package:souyoutoo/routes/app_navigation.dart';
+import 'package:souyoutoo/module/tabs/question_view/question_view_controller.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
 
-class CaseQuestionView extends StatelessWidget {
-  const CaseQuestionView({super.key});
+class QuestionView extends StatelessWidget {
+  const QuestionView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(CaseQuestionViewController());
+    final controller = Get.put(QuestionViewController());
 
     return Scaffold(
       appBar: appBar(
         context,
         leftIconSvg: icBack,
-        onLeftIconPress: () => back(),
+        onLeftIconPress: () => Get.back(),
         titleText: 'Case #023',
         customButton: AppTextIcon(
           text: '1:42',

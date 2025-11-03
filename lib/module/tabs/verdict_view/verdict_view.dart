@@ -3,8 +3,6 @@ import 'package:get/get.dart';
 import 'package:souyoutoo/components/app_bar.dart';
 import 'package:souyoutoo/components/app_button.dart';
 import 'package:souyoutoo/components/app_text.dart';
-// import 'package:souyoutoo/module/tabs/tab_stats/tab_stats_view_controller.dart';
-import 'package:souyoutoo/routes/app_navigation.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
 
@@ -18,10 +16,7 @@ class VerdictView extends StatelessWidget {
       appBar: appBar(
         context,
         leftIconSvg: icBack,
-        onLeftIconPress: () {
-          back();
-          back();
-        },
+        onLeftIconPress: ()=> Get.back(),
         titleText: 'BACK',
         customButton: AppTextBold(
           text: 'Final Decision',

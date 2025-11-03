@@ -1,6 +1,6 @@
 import 'package:get/state_manager.dart';
 
-class HomeViewController extends GetxController {
+class MainTabViewController extends GetxController {
   var currentIndex = 0.obs;
 
   void changeTabIndex(int index) {

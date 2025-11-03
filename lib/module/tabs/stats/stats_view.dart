@@ -6,11 +6,8 @@ import 'package:souyoutoo/components/app_image.dart';
 import 'package:souyoutoo/components/app_progress_bar.dart';
 import 'package:souyoutoo/components/app_text.dart';
 import 'package:souyoutoo/components/background_container.dart';
-import 'package:souyoutoo/module/tabs/tab_stats/cse_map_view/case_map_view.dart';
-import 'package:souyoutoo/module/tabs/tab_stats/cse_map_view/shop_view/profile_view/profile_view.dart';
-import 'package:souyoutoo/module/tabs/tab_stats/cse_map_view/shop_view/shop_view.dart';
-// import 'package:souyoutoo/module/tabs/tab_stats/tab_stats_view_controller.dart';
-import 'package:souyoutoo/routes/app_navigation.dart';
+import 'package:souyoutoo/routes/routes_name.dart';
+
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
 
@@ -107,7 +104,7 @@ class TabStatsView extends StatelessWidget {
               child: Column(
                 children: [
                   GestureDetector(
-                    onTap: () => push(ShopView()),
+                    onTap: () => Get.toNamed(questionRoute),
                     child: AppAchievementContainer(
                       color: appWhite,
                       borderColor: appBlack,
@@ -152,7 +149,7 @@ class TabStatsView extends StatelessWidget {
                     ).paddingAll(10),
                   ),
                   GestureDetector(
-                    onTap: () => push(const CaseMapView()),
+                    onTap: () => Get.toNamed(mapRoute),
                     child: AppAchievementContainer(
                       color: appWhite,
                       borderColor: appBlack,
@@ -197,7 +194,7 @@ class TabStatsView extends StatelessWidget {
                     ).paddingAll(10),
                   ),
                   GestureDetector(
-                    onTap: () => push(const ProfileView()),
+                    onTap: () => Get.toNamed(profileRoute),
                     child: AppAchievementContainer(
                       color: appWhite,
                       borderColor: appBlack,

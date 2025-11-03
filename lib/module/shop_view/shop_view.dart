@@ -6,7 +6,6 @@ import 'package:souyoutoo/components/app_image.dart';
 import 'package:souyoutoo/components/app_text.dart';
 import 'package:souyoutoo/components/app_text_icon.dart';
 import 'package:souyoutoo/components/background_container.dart';
-import 'package:souyoutoo/routes/app_navigation.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
 
@@ -19,7 +18,7 @@ class ShopView extends StatelessWidget {
       appBar: appBar(
         context,
         leftIconSvg: icBack,
-        onLeftIconPress: () => back(),
+        onLeftIconPress: () => Get.back(),
         customButton: AppTextIcon(
           onPressed: () {},
           icon: appImageAsset(icTrophy, height: 14),

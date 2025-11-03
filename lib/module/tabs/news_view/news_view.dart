@@ -8,8 +8,8 @@ import 'package:souyoutoo/components/background_container.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
 
-class TabNewsView extends StatelessWidget {
-  const TabNewsView({super.key});
+class NewsView extends StatelessWidget {
+  const NewsView({super.key});
 
   @override
   Widget build(BuildContext context) {

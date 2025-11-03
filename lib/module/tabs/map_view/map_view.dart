@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:souyoutoo/components/app_bar.dart';
 import 'package:souyoutoo/components/app_image.dart';
 import 'package:souyoutoo/components/app_text_icon.dart';
-import 'package:souyoutoo/routes/app_navigation.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
 
-class CaseMapView extends StatelessWidget {
-  const CaseMapView({super.key});
+class MapView extends StatelessWidget {
+  const MapView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class CaseMapView extends StatelessWidget {
         context,
         titleText: 'Case Map',
         leftIconSvg: icBack,
-        onLeftIconPress: () => back(),
+        onLeftIconPress: () => Get.back(),
         customButton: AppTextIcon(
           onPressed: () {},
           text: '47',
