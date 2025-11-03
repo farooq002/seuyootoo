@@ -5,6 +5,7 @@ import 'package:souyoutoo/components/app_image.dart';
 import 'package:souyoutoo/components/app_text.dart';
 import 'package:souyoutoo/components/app_text_icon.dart';
 import 'package:souyoutoo/components/background_container.dart';
+import 'package:souyoutoo/module/tabs/tab_stats/cse_map_view/shop_view/profile_view/profile_view_controller.dart';
 import 'package:souyoutoo/routes/app_navigation.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
@@ -14,6 +15,7 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ProfileViewController());
     return Scaffold(
       appBar: appBar(
         context,
@@ -50,7 +52,7 @@ class ProfileView extends StatelessWidget {
               child: Column(
                 children: [
                   AppAchievementContainer(
-                    color: appWhite,
+                    color: appShadowBrown,
                     borderColor: appBlack,
                     shadowColor: appBlack,
                     child: Column(
@@ -96,6 +98,49 @@ class ProfileView extends StatelessWidget {
                       ],
                     ),
                   ).marginAll(10),
+                  GridView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          childAspectRatio: 2.4,
+                        ),
+                    itemCount: controller.categories.length,
+                    itemBuilder: (context, index) {
+                      return Card(
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.zero,
+                        ),
+                        color: appShadowBrown,
+                        child: Column(
+                          children: [
+                            AppTextRegular(
+                              text: controller.categories[index].name,
+                              fontSize: 12,
+                            ).paddingOnly(bottom: 10),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                controller.categories[index].isIconAvailable ==
+                                        true
+                                    ? appImageAsset(
+                                        controller.categories[index].icon ?? '',
+                                      )
+                                    : SizedBox.shrink(),
+                                AppTextBold(
+                                  text:
+                                      controller.categories[index].price ?? '0',
+
+                                  fontSize: 18,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ).paddingAll(10),
+                      );
+                    },
+                  ),
                 ],
               ),
             ),
