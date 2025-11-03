@@ -4,7 +4,7 @@ import 'package:souyoutoo/components/app_bar.dart';
 import 'package:souyoutoo/components/app_text.dart';
 import 'package:souyoutoo/components/app_text_icon.dart';
 import 'package:souyoutoo/components/background_container.dart';
-import 'package:souyoutoo/module/tabs/question_view/question_view_controller.dart';
+import 'package:souyoutoo/module/views/question_view/question_view_controller.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
 

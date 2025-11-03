@@ -5,8 +5,7 @@ import 'package:souyoutoo/components/app_image.dart';
 import 'package:souyoutoo/components/app_text.dart';
 import 'package:souyoutoo/components/app_text_icon.dart';
 import 'package:souyoutoo/components/background_container.dart';
-import 'package:souyoutoo/module/tabs/tab_stats/cse_map_view/shop_view/profile_view/profile_view_controller.dart';
-import 'package:souyoutoo/routes/app_navigation.dart';
+import 'package:souyoutoo/module/views/profile_view/profile_view_controller.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
 
@@ -21,7 +20,7 @@ class ProfileView extends StatelessWidget {
         context,
         titleText: 'BACK',
         leftIconSvg: icBack,
-        onLeftIconPress: () => back(),
+        onLeftIconPress: () => Get.back(),
         customButton: AppTextIcon(
           onPressed: () {},
           icon: appImageAsset(icTrophy, height: 14),

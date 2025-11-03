@@ -1,62 +1,78 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:souyoutoo/module/home_view/main_tab_view.dart';
-import 'package:souyoutoo/module/tabs/map_view/map_view.dart';
-import 'package:souyoutoo/module/tabs/profile_view/profile_view.dart';
-import 'package:souyoutoo/module/tabs/question_view/question_view.dart';
-import 'package:souyoutoo/module/shop_view/shop_view.dart';
-import 'package:souyoutoo/module/tabs/trial_view/trial_view.dart';
-import 'package:souyoutoo/module/tabs/verdict_view/verdict_view.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:souyoutoo/module/main_tab_view/main_tab_view.dart';
+import 'package:souyoutoo/module/views/login_view/login_view.dart';
+import 'package:souyoutoo/module/views/map_view/map_view.dart';
+import 'package:souyoutoo/module/views/profile_view/profile_view.dart';
+import 'package:souyoutoo/module/views/question_view/question_view.dart';
+import 'package:souyoutoo/module/views/shop_view/shop_view.dart';
+import 'package:souyoutoo/module/views/trial_view/trial_view.dart';
+import 'package:souyoutoo/module/views/verdict_view/verdict_view.dart';
 import 'package:souyoutoo/routes/routes_name.dart';
 
 final appRoutes = [
+  GetPage(name: loginRoute, page: () => const LoginView()),
   GetPage(
     name: homeRoute,
-    page: () {
-      return const MainTabView();
-    },
+    page: () => const MainTabView(),
+    middlewares: [AuthMiddleWare()],
   ),
-   GetPage(
-    name: questionRoute,
-    page: () {
-      return const QuestionView();
-    },
-  ),
-   GetPage(
+  // GetPage(
+  //   name: questionRoute,
+  //   page: () => const QuestionView(),
+  //   middlewares: [AuthMiddleWare()],
+  // ),
+  GetPage(
     name: shopRoute,
-    page: () {
-      return const ShopView();
-    },
+    page: () => const ShopView(),
+    middlewares: [AuthMiddleWare()],
   ),
   GetPage(
     name: verdictRoute,
-    page: () {
-      return const VerdictView();
-    },
+    page: () => const VerdictView(),
+    middlewares: [AuthMiddleWare()],
   ),
-   GetPage(
+  GetPage(
     name: mapRoute,
-    page: () {
-      return const MapView();
-    },
+    page: () => const MapView(),
+    middlewares: [AuthMiddleWare()],
   ),
-    GetPage(
+  GetPage(
     name: trailRoute,
-    page: () {
-      return const TrialView();
-    },
+    page: () => const TrialView(),
+    middlewares: [AuthMiddleWare()],
+    children: [
+      GetPage(
+        name: '$trailRoute$questionRoute',
+        page: () => const QuestionView(),
+      ),
+    ],
   ),
-    GetPage(
+  GetPage(
     name: profileRoute,
-    page: () {
-      return const ProfileView();
-    },
+    page: () => const ProfileView(),
+    middlewares: [AuthMiddleWare()],
   ),
 ];
 
 class AuthMiddleWare extends GetMiddleware {
   @override
+  int? get priority => 1;
+
+  @override
   RouteSettings? redirect(String? route) {
+    final box = GetStorage();
+    bool isLoggedIn = box.read('isLoggedIn') ?? false;
+
+    if (!isLoggedIn && route != loginRoute) {
+      return const RouteSettings(name: loginRoute);
+    }
+
+    if (isLoggedIn && route == loginRoute) {
+      return const RouteSettings(name: homeRoute);
+    }
+
     return null;
   }
 }

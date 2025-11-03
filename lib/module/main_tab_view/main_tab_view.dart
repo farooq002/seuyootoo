@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:souyoutoo/components/app_text.dart';
-import 'package:souyoutoo/module/home_view/main_tab_view_controller.dart';
-import 'package:souyoutoo/module/tabs/question_view/question_view.dart';
-import 'package:souyoutoo/module/tabs/home_view/home_view.dart';
-import 'package:souyoutoo/module/tabs/news_view/news_view.dart';
-import 'package:souyoutoo/module/tabs/stats_view/stats_view.dart';
-import 'package:souyoutoo/module/tabs/trial_view/trial_view.dart';
+import 'package:souyoutoo/module/main_tab_view/main_tab_view_controller.dart';
+import 'package:souyoutoo/module/views/question_view/question_view.dart';
+import 'package:souyoutoo/module/views/home_view/home_view.dart';
+import 'package:souyoutoo/module/views/news_view/news_view.dart';
+import 'package:souyoutoo/module/views/stats_view/stats_view.dart';
+import 'package:souyoutoo/module/views/trial_view/trial_view.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
 
