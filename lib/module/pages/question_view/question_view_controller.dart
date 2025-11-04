@@ -90,7 +90,7 @@ class QuestionViewController extends GetxController {
       currentQuestionIndex.value++;
       initOptionColors();
     } else {
-      Get.toNamed(verdictRoute);
+      Get.offAndToNamed(verdictRoute);
     }
   }
 

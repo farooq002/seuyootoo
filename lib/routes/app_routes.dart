@@ -14,6 +14,7 @@ import 'package:souyoutoo/module/pages/verdict_view/verdict_view.dart';
 import 'package:souyoutoo/routes/routes_name.dart';
 
 final appRoutes = [
+  GetPage(name: splashRoute, page: () => const SplashView()),
   GetPage(name: loginRoute, page: () => const LoginView()),
   GetPage(name: signUpRoute, page: () => const SignUpView()),
   GetPage(
@@ -21,47 +22,13 @@ final appRoutes = [
     page: () => const MainTabView(),
     middlewares: [AuthMiddleWare()],
   ),
-  // GetPage(
-  //   name: questionRoute,
-  //   page: () => const QuestionView(),
-  //   middlewares: [AuthMiddleWare()],
-  // ),
-  GetPage(
-    name: shopRoute,
-    page: () => const ShopView(),
-    middlewares: [AuthMiddleWare()],
-  ),
-  GetPage(
-    name: verdictRoute,
-    page: () => const VerdictView(),
-    middlewares: [AuthMiddleWare()],
-  ),
-  GetPage(
-    name: mapRoute,
-    page: () => const MapView(),
-    middlewares: [AuthMiddleWare()],
-  ),
-  GetPage(
-    name: trailRoute,
-    page: () => const TrialView(),
-    middlewares: [AuthMiddleWare()],
-    children: [
-      GetPage(
-        name: '$trailRoute$questionRoute',
-        page: () => const QuestionView(),
-      ),
-    ],
-  ),
-  GetPage(
-    name: profileRoute,
-    page: () => const ProfileView(),
-    middlewares: [AuthMiddleWare()],
-  ),
-  GetPage(
-    name: splashRoute,
-    page: () => const SplashView(),
-    middlewares: [AuthMiddleWare()],
-  ),
+  GetPage(name: shopRoute, page: () => const ShopView()),
+  GetPage(name: verdictRoute, page: () => const VerdictView()),
+  GetPage(name: mapRoute, page: () => const MapView()),
+  GetPage(name: trailRoute, page: () => const TrialView()),
+  GetPage(name: profileRoute, page: () => const ProfileView()),
+
+  GetPage(name: '$trailRoute$questionRoute', page: () => const QuestionView()),
 ];
 
 class AuthMiddleWare extends GetMiddleware {
