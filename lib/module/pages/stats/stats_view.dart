@@ -11,8 +11,8 @@ import 'package:souyoutoo/routes/routes_name.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
 
-class TabStatsView extends StatelessWidget {
-  const TabStatsView({super.key});
+class StatsView extends StatelessWidget {
+  const StatsView({super.key});
 
   @override
   Widget build(BuildContext context) {

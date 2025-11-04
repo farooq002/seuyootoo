@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:souyoutoo/module/main_tab_view/main_tab_view.dart';
-import 'package:souyoutoo/module/views/login_view/login_view.dart';
-import 'package:souyoutoo/module/views/map_view/map_view.dart';
-import 'package:souyoutoo/module/views/profile_view/profile_view.dart';
-import 'package:souyoutoo/module/views/question_view/question_view.dart';
-import 'package:souyoutoo/module/views/shop_view/shop_view.dart';
-import 'package:souyoutoo/module/views/sign_up_view/sign_up_view.dart';
-import 'package:souyoutoo/module/views/splash_screen/splash_view.dart';
-import 'package:souyoutoo/module/views/trial_view/trial_view.dart';
-import 'package:souyoutoo/module/views/verdict_view/verdict_view.dart';
+import 'package:souyoutoo/module/base/base_view.dart';
+import 'package:souyoutoo/module/pages/login_view/login_view.dart';
+import 'package:souyoutoo/module/pages/map_view/map_view.dart';
+import 'package:souyoutoo/module/pages/profile_view/profile_view.dart';
+import 'package:souyoutoo/module/pages/question_view/question_view.dart';
+import 'package:souyoutoo/module/pages/shop_view/shop_view.dart';
+import 'package:souyoutoo/module/pages/sign_up_view/sign_up_view.dart';
+import 'package:souyoutoo/module/pages/splash_screen/splash_view.dart';
+import 'package:souyoutoo/module/pages/trial_view/trial_view.dart';
+import 'package:souyoutoo/module/pages/verdict_view/verdict_view.dart';
 import 'package:souyoutoo/routes/routes_name.dart';
 
 final appRoutes = [
