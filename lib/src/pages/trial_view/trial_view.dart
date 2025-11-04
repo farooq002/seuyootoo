@@ -25,7 +25,7 @@ class TrialView extends StatelessWidget {
           fontSize: 29,
           color: appWhite,
           fontFamily: 'VT323',
-          onPressed: () => Get.toNamed('$trailRoute$questionRoute'),
+          onPressed: () => Get.toNamed(questionRoute),
         ),
       ),
       body: TrailViewComponent(),
