@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart'; // 👈 If you're using GetX for navigation
-import 'package:souyoutoo/components/app_image.dart';
+import 'package:souyoutoo/src/components/app_image.dart';
 import 'package:souyoutoo/routes/routes_name.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';

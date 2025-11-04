@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:souyoutoo/components/app_bar.dart';
-import 'package:souyoutoo/components/app_image.dart';
-import 'package:souyoutoo/components/app_text_icon.dart';
+import 'package:souyoutoo/src/components/app_bar.dart';
+import 'package:souyoutoo/src/components/app_image.dart';
+import 'package:souyoutoo/src/components/app_text_icon.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
 
 class MapView extends StatelessWidget {

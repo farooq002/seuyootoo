@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:souyoutoo/components/app_button.dart';
-import 'package:souyoutoo/components/app_image.dart';
-import 'package:souyoutoo/components/app_text.dart';
-import 'package:souyoutoo/components/app_text_field.dart';
-import 'package:souyoutoo/components/app_text_icon.dart';
+import 'package:souyoutoo/src/components/app_button.dart';
+import 'package:souyoutoo/src/components/app_image.dart';
+import 'package:souyoutoo/src/components/app_text.dart';
+import 'package:souyoutoo/src/components/app_text_field.dart';
+import 'package:souyoutoo/src/components/app_text_icon.dart';
 import 'package:souyoutoo/routes/routes_name.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
