@@ -36,7 +36,7 @@ class AppTextThin extends StatelessWidget {
             ? TextDecoration.underline
             : TextDecoration.none,
         decorationColor: decorationColor,
-        decorationThickness: 2,
+        decorationThickness: 1,
         fontFamily: fontFamily ?? 'PressStart2P',
         color: color,
       ),

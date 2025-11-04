@@ -16,7 +16,7 @@ class VerdictView extends StatelessWidget {
       appBar: appBar(
         context,
         leftIconSvg: icBack,
-        onLeftIconPress: ()=> Get.back(),
+        onLeftIconPress: () => Get.back(),
         titleText: 'BACK',
         customButton: AppTextBold(
           text: 'Final Decision',
@@ -50,28 +50,28 @@ class VerdictView extends StatelessWidget {
               decoration: BoxDecoration(
                 color: appDarkYellow,
                 border: Border.all(color: Colors.black, width: 2),
-                boxShadow: const [
-                  BoxShadow(
-                    color: appBlack,
-                    offset: Offset(4, 4), // bottom-right
-                    blurRadius: 4,
-                  ),
-                  BoxShadow(
-                    color: appBlack,
-                    offset: Offset(-4, -4), // top-left
-                    blurRadius: 4,
-                  ),
-                  BoxShadow(
-                    color: appBlack,
-                    offset: Offset(4, -4), // top-right
-                    blurRadius: 4,
-                  ),
-                  BoxShadow(
-                    color: appBlack,
-                    offset: Offset(-4, 0), // bottom-left
-                    blurRadius: 4,
-                  ),
-                ],
+                // boxShadow: const [
+                //   BoxShadow(
+                //     color: appBlack,
+                //     offset: Offset(4, 4), // bottom-right
+                //     blurRadius: 4,
+                //   ),
+                //   BoxShadow(
+                //     color: appBlack,
+                //     offset: Offset(-4, -4), // top-left
+                //     blurRadius: 4,
+                //   ),
+                //   BoxShadow(
+                //     color: appBlack,
+                //     offset: Offset(4, -4), // top-right
+                //     blurRadius: 4,
+                //   ),
+                //   BoxShadow(
+                //     color: appBlack,
+                //     offset: Offset(-4, 0), // bottom-left
+                //     blurRadius: 4,
+                //   ),
+                // ],
               ),
               child: Column(
                 children: [
@@ -99,28 +99,28 @@ class VerdictView extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: appAmber,
                       border: Border.all(color: appWhite, width: 2),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(4, 4), // bottom-right
-                          blurRadius: 4,
-                        ),
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(-4, -4), // top-left
-                          blurRadius: 4,
-                        ),
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(4, -4), // top-right
-                          blurRadius: 4,
-                        ),
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(-4, 4), // bottom-left
-                          blurRadius: 4,
-                        ),
-                      ],
+                      // boxShadow: const [
+                      //   BoxShadow(
+                      //     color: appWhite,
+                      //     offset: Offset(4, 4), // bottom-right
+                      //     blurRadius: 4,
+                      //   ),
+                      //   BoxShadow(
+                      //     color: appWhite,
+                      //     offset: Offset(-4, -4), // top-left
+                      //     blurRadius: 4,
+                      //   ),
+                      //   BoxShadow(
+                      //     color: appWhite,
+                      //     offset: Offset(4, -4), // top-right
+                      //     blurRadius: 4,
+                      //   ),
+                      //   BoxShadow(
+                      //     color: appWhite,
+                      //     offset: Offset(-4, 4), // bottom-left
+                      //     blurRadius: 4,
+                      //   ),
+                      // ],
                     ),
                     child: AppTextBold(
                       text: 'We nailed that verdict!',
@@ -135,28 +135,28 @@ class VerdictView extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: appBlack,
                       border: Border.all(color: appBlack, width: 2),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(4, 4), // bottom-right
-                          blurRadius: 4,
-                        ),
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(-4, -4), // top-left
-                          blurRadius: 4,
-                        ),
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(4, -4), // top-right
-                          blurRadius: 4,
-                        ),
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(-4, 4), // bottom-left
-                          blurRadius: 4,
-                        ),
-                      ],
+                      // boxShadow: const [
+                      //   BoxShadow(
+                      //     color: appWhite,
+                      //     offset: Offset(4, 4), // bottom-right
+                      //     blurRadius: 4,
+                      //   ),
+                      //   BoxShadow(
+                      //     color: appWhite,
+                      //     offset: Offset(-4, -4), // top-left
+                      //     blurRadius: 4,
+                      //   ),
+                      //   BoxShadow(
+                      //     color: appWhite,
+                      //     offset: Offset(4, -4), // top-right
+                      //     blurRadius: 4,
+                      //   ),
+                      //   BoxShadow(
+                      //     color: appWhite,
+                      //     offset: Offset(-4, 4), // bottom-left
+                      //     blurRadius: 4,
+                      //   ),
+                      // ],
                     ),
                     child: Column(
                       children: [
@@ -234,28 +234,28 @@ class VerdictView extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: appPurple,
                       border: Border.all(color: appWhite, width: 2),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(4, 4), // bottom-right
-                          blurRadius: 4,
-                        ),
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(-4, -4), // top-left
-                          blurRadius: 4,
-                        ),
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(4, -4), // top-right
-                          blurRadius: 4,
-                        ),
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(-4, 4), // bottom-left
-                          blurRadius: 4,
-                        ),
-                      ],
+                      // boxShadow: const [
+                      //   BoxShadow(
+                      //     color: appWhite,
+                      //     offset: Offset(4, 4), // bottom-right
+                      //     blurRadius: 4,
+                      //   ),
+                      //   BoxShadow(
+                      //     color: appWhite,
+                      //     offset: Offset(-4, -4), // top-left
+                      //     blurRadius: 4,
+                      //   ),
+                      //   BoxShadow(
+                      //     color: appWhite,
+                      //     offset: Offset(4, -4), // top-right
+                      //     blurRadius: 4,
+                      //   ),
+                      //   BoxShadow(
+                      //     color: appWhite,
+                      //     offset: Offset(-4, 4), // bottom-left
+                      //     blurRadius: 4,
+                      //   ),
+                      // ],
                     ),
                     child: AppTextBold(
                       text: 'New Briefcase Skin\nUnlocked!',
@@ -270,28 +270,28 @@ class VerdictView extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: appBlack,
                       border: Border.all(color: appWhite, width: 2),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(4, 4), // bottom-right
-                          blurRadius: 4,
-                        ),
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(-4, -4), // top-left
-                          blurRadius: 4,
-                        ),
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(4, -4), // top-right
-                          blurRadius: 4,
-                        ),
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(-4, 4), // bottom-left
-                          blurRadius: 4,
-                        ),
-                      ],
+                      // boxShadow: const [
+                      //   BoxShadow(
+                      //     color: appWhite,
+                      //     offset: Offset(4, 4), // bottom-right
+                      //     blurRadius: 4,
+                      //   ),
+                      //   BoxShadow(
+                      //     color: appWhite,
+                      //     offset: Offset(-4, -4), // top-left
+                      //     blurRadius: 4,
+                      //   ),
+                      //   BoxShadow(
+                      //     color: appWhite,
+                      //     offset: Offset(4, -4), // top-right
+                      //     blurRadius: 4,
+                      //   ),
+                      //   BoxShadow(
+                      //     color: appWhite,
+                      //     offset: Offset(-4, 4), // bottom-left
+                      //     blurRadius: 4,
+                      //   ),
+                      // ],
                     ),
                     child: Column(
                       children: [
@@ -336,28 +336,28 @@ class VerdictView extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: appBlue,
                       border: Border.all(color: appWhite, width: 2),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(4, 4), // bottom-right
-                          blurRadius: 4,
-                        ),
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(-4, -4), // top-left
-                          blurRadius: 4,
-                        ),
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(4, -4), // top-right
-                          blurRadius: 4,
-                        ),
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(-4, 4), // bottom-left
-                          blurRadius: 4,
-                        ),
-                      ],
+                      // boxShadow: const [
+                      //   BoxShadow(
+                      //     color: appWhite,
+                      //     offset: Offset(4, 4), // bottom-right
+                      //     blurRadius: 4,
+                      //   ),
+                      //   BoxShadow(
+                      //     color: appWhite,
+                      //     offset: Offset(-4, -4), // top-left
+                      //     blurRadius: 4,
+                      //   ),
+                      //   BoxShadow(
+                      //     color: appWhite,
+                      //     offset: Offset(4, -4), // top-right
+                      //     blurRadius: 4,
+                      //   ),
+                      //   BoxShadow(
+                      //     color: appWhite,
+                      //     offset: Offset(-4, 4), // bottom-left
+                      //     blurRadius: 4,
+                      //   ),
+                      // ],
                     ),
                     child: AppElevatedButton(
                       text: 'Review Lessons',
@@ -372,28 +372,28 @@ class VerdictView extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: appAmber,
                       border: Border.all(color: appWhite, width: 2),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(4, 4), // bottom-right
-                          blurRadius: 4,
-                        ),
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(-4, -4), // top-left
-                          blurRadius: 4,
-                        ),
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(4, -4), // top-right
-                          blurRadius: 4,
-                        ),
-                        BoxShadow(
-                          color: appWhite,
-                          offset: Offset(-4, 4), // bottom-left
-                          blurRadius: 4,
-                        ),
-                      ],
+                      // boxShadow: const [
+                      //   BoxShadow(
+                      //     color: appWhite,
+                      //     offset: Offset(4, 4), // bottom-right
+                      //     blurRadius: 4,
+                      //   ),
+                      //   BoxShadow(
+                      //     color: appWhite,
+                      //     offset: Offset(-4, -4), // top-left
+                      //     blurRadius: 4,
+                      //   ),
+                      //   BoxShadow(
+                      //     color: appWhite,
+                      //     offset: Offset(4, -4), // top-right
+                      //     blurRadius: 4,
+                      //   ),
+                      //   BoxShadow(
+                      //     color: appWhite,
+                      //     offset: Offset(-4, 4), // bottom-left
+                      //     blurRadius: 4,
+                      //   ),
+                      // ],
                     ),
                     child: AppElevatedButton(
                       text: 'Retry Case',

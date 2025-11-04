@@ -38,7 +38,6 @@ class SignUpView extends StatelessWidget {
               ),
               AppTextField(
                 textController: TextEditingController(),
-                textFieldPadding: 10,
                 outlineBorder: OutlineInputBorder(
                   borderSide: BorderSide(width: 2, color: appDarkBrown),
                   borderRadius: BorderRadius.zero,
@@ -53,7 +52,6 @@ class SignUpView extends StatelessWidget {
               ),
               AppTextField(
                 textController: TextEditingController(),
-                textFieldPadding: 10,
                 outlineBorder: OutlineInputBorder(
                   borderSide: BorderSide(width: 2, color: appDarkBrown),
                   borderRadius: BorderRadius.zero,
@@ -68,7 +66,6 @@ class SignUpView extends StatelessWidget {
               ),
               AppTextField(
                 textController: TextEditingController(),
-                textFieldPadding: 10,
                 outlineBorder: OutlineInputBorder(
                   borderSide: BorderSide(width: 2, color: appDarkBrown),
                   borderRadius: BorderRadius.zero,
@@ -85,7 +82,7 @@ class SignUpView extends StatelessWidget {
                 color: appAmber,
                 textColor: appDarkBrown,
                 textSize: 16,
-              ),
+              ).paddingSymmetric(vertical: 10),
               AppTextButton(
                 text: 'Already have an Account?',
                 onPressed: () => Get.toNamed(loginRoute),
@@ -96,14 +93,26 @@ class SignUpView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Expanded(child: Divider(height: 8, thickness: 1.0)),
+                  const Expanded(
+                    child: Divider(
+                      height: 8,
+                      thickness: 1.0,
+                      color: appLightBrown,
+                    ),
+                  ),
                   const AppTextThin(
                     text: 'OR',
                     fontFamily: 'VT323',
                     color: appDarkBrown,
                     fontSize: 18,
                   ).paddingOnly(left: 4, right: 4),
-                  const Expanded(child: Divider(height: 8, thickness: 1.0)),
+                  const Expanded(
+                    child: Divider(
+                      height: 8,
+                      thickness: 1.0,
+                      color: appLightBrown,
+                    ),
+                  ),
                 ],
               ).paddingOnly(bottom: 12),
               AppTextIcon(
@@ -118,7 +127,7 @@ class SignUpView extends StatelessWidget {
               ),
               AppTextIcon(
                 onPressed: () {},
-                text: 'Continue with Google',
+                text: 'Continue with Apple',
                 fontFamily: 'VT323',
                 fontSize: 18,
                 backgroundColor: appBlack,

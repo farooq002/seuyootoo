@@ -25,18 +25,16 @@ class TrialView extends StatelessWidget {
           fontSize: 29,
           color: appWhite,
           fontFamily: 'VT323',
-          onPressed: () =>   Get.toNamed('$trailRoute$questionRoute')
+          onPressed: () => Get.toNamed('$trailRoute$questionRoute'),
         ),
       ),
-      body: TrailViewComponent()
+      body: TrailViewComponent(),
     );
   }
 }
 
 class TrailViewComponent extends StatelessWidget {
-  const TrailViewComponent({
-    super.key,
-  });
+  const TrailViewComponent({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +53,7 @@ class TrailViewComponent extends StatelessWidget {
             child: Image.asset(icForeground, fit: BoxFit.fill),
           ),
         ),
-    
+
         Positioned(
           top: 10,
           left: 0,
@@ -65,35 +63,34 @@ class TrailViewComponent extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: appDarkYellow,
-              border: Border.all(color: Colors.black, width: 2),
-              boxShadow: const [
-                BoxShadow(
-                  color: appBlack,
-                  offset: Offset(4, 4), // bottom-right
-                  blurRadius: 4,
-                ),
-                BoxShadow(
-                  color: appBlack,
-                  offset: Offset(-4, -4), // top-left
-                  blurRadius: 4,
-                ),
-                BoxShadow(
-                  color: appBlack,
-                  offset: Offset(4, -4), // top-right
-                  blurRadius: 4,
-                ),
-                BoxShadow(
-                  color: appBlack,
-                  offset: Offset(-4, 4), // bottom-left
-                  blurRadius: 4,
-                ),
-              ],
+              border: Border.all(color: Colors.black, width: 4),
+              // boxShadow: const [
+              //   BoxShadow(
+              //     color: appBlack,
+              //     offset: Offset(4, 4), // bottom-right
+              //     blurRadius: 4,
+              //   ),
+              //   BoxShadow(
+              //     color: appBlack,
+              //     offset: Offset(-4, -4), // top-left
+              //     blurRadius: 4,
+              //   ),
+              //   BoxShadow(
+              //     color: appBlack,
+              //     offset: Offset(4, -4), // top-right
+              //     blurRadius: 4,
+              //   ),
+              //   BoxShadow(
+              //     color: appBlack,
+              //     offset: Offset(-4, 4), // bottom-left
+              //     blurRadius: 4,
+              //   ),
+              // ],
             ),
             child: Column(
               children: [
                 AppTextThin(
-                  text:
-                      '"Here\'s your new case, Counselor! Ready to defend?"',
+                  text: '"Here\'s your new case, Counselor! Ready to defend?"',
                   fontSize: 20,
                   fontFamily: 'VT323',
                   textAlign: TextAlign.center,
@@ -103,7 +100,7 @@ class TrailViewComponent extends StatelessWidget {
             ),
           ),
         ),
-    
+
         Positioned(
           bottom: 25,
           left: 0,
@@ -114,9 +111,9 @@ class TrailViewComponent extends StatelessWidget {
             decoration: BoxDecoration(
               color: appWhite,
               border: Border.all(color: Colors.black, width: 2),
-              boxShadow: const [
-                BoxShadow(color: Colors.black, offset: Offset(4, 4)),
-              ],
+              // boxShadow: const [
+              //   BoxShadow(color: Colors.black, offset: Offset(4, 4)),
+              // ],
             ),
             child: SingleChildScrollView(
               child: Column(
@@ -132,7 +129,7 @@ class TrailViewComponent extends StatelessWidget {
                     text: 'The People vs. Unpaid Overtime',
                     fontFamily: 'VT323',
                     fontSize: 30,
-    
+
                     textAlign: TextAlign.center,
                     color: appBlack,
                   ),

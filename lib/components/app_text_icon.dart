@@ -39,9 +39,9 @@ class AppTextIcon extends StatelessWidget {
         ? Column(
             children: [
               if (icon != null) ...[const SizedBox(width: 6), icon!],
-              AppTextBold(
+              AppTextRegular(
                 text: text,
-                textScaleFactor: textScaleFactor,
+                // textScaleFactor: textScaleFactor,
                 fontSize: fontSize,
                 fontFamily: fontFamily,
               ).paddingOnly(right: 10),
@@ -51,9 +51,9 @@ class AppTextIcon extends StatelessWidget {
         ? Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              AppTextBold(
+              AppTextRegular(
                 text: text,
-                textScaleFactor: textScaleFactor,
+                // textScaleFactor: textScaleFactor,
                 fontSize: fontSize,
                 fontFamily: fontFamily,
               ).paddingOnly(right: 10),
@@ -67,9 +67,9 @@ class AppTextIcon extends StatelessWidget {
                 const SizedBox(width: 6),
                 icon!.paddingOnly(right: 10),
               ],
-              AppTextBold(
+              AppTextRegular(
                 text: text,
-                textScaleFactor: textScaleFactor,
+                // textScaleFactor: textScaleFactor,
                 fontSize: fontSize,
                 fontFamily: fontFamily,
               ),

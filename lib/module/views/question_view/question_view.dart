@@ -55,6 +55,7 @@ class QuestionView extends StatelessWidget {
             child: AppAchievementContainer(
               margin: const EdgeInsets.symmetric(horizontal: 16),
               color: appWhite,
+              borderColor: appBlack,
               shadowColor: appBlack,
               child: Column(
                 children: [
@@ -106,7 +107,7 @@ class QuestionView extends StatelessWidget {
                     ],
                   ),
                 ],
-              ),
+              ).paddingAll(10),
             ),
           ),
 

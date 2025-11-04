@@ -60,10 +60,10 @@ class HomeView extends StatelessWidget {
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
                 color: Colors.white,
-                border: Border.all(color: Colors.black, width: 2),
-                boxShadow: const [
-                  BoxShadow(color: Colors.black, offset: Offset(4, 4)),
-                ],
+                border: Border.all(color: Colors.black, width: 4),
+                // boxShadow: const [
+                //   BoxShadow(color: Colors.black, offset: Offset(4, 4)),
+                // ],
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

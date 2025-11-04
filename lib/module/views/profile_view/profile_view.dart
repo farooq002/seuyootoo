@@ -146,7 +146,9 @@ class ProfileView extends StatelessWidget {
                     },
                   ).paddingAll(10),
                   AppAchievementContainer(
+                    borderColor: appBlack,
                     color: appLightYellow,
+                    borderWidth: 4.0,
                     shadowColor: appBlack,
                     child: Column(
                       mainAxisSize: MainAxisSize.min,

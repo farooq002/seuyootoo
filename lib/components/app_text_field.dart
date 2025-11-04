@@ -82,6 +82,8 @@ class AppTextField extends StatelessWidget {
           onTapOutside: (event) => FocusScope.of(context).unfocus(),
           onFieldSubmitted: onFieldSubmitted,
           decoration: InputDecoration(
+            filled: true,
+            fillColor: backgroundColor,
             errorText: field.errorText,
             errorMaxLines: 3,
             border: outlineBorder,

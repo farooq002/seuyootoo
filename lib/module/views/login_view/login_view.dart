@@ -44,6 +44,8 @@ class LoginView extends StatelessWidget {
                 ),
                 fontFamily: 'VT323',
                 hintText: 'Enter your Email',
+
+                backgroundColor: appWhite,
               ),
               AppTextRegular(
                 text: 'Password',
@@ -81,14 +83,26 @@ class LoginView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Expanded(child: Divider(height: 8, thickness: 1.0)),
+                  const Expanded(
+                    child: Divider(
+                      height: 8,
+                      thickness: 1.0,
+                      color: appLightBrown,
+                    ),
+                  ),
                   const AppTextThin(
                     text: 'OR',
                     fontFamily: 'VT323',
                     color: appDarkBrown,
                     fontSize: 18,
                   ).paddingOnly(left: 4, right: 4),
-                  const Expanded(child: Divider(height: 8, thickness: 1.0)),
+                  const Expanded(
+                    child: Divider(
+                      height: 8,
+                      thickness: 1.0,
+                      color: appLightBrown,
+                    ),
+                  ),
                 ],
               ).paddingOnly(bottom: 12),
               AppTextIcon(
@@ -102,7 +116,7 @@ class LoginView extends StatelessWidget {
               ),
               AppTextIcon(
                 onPressed: () {},
-                text: 'Continue with Google',
+                text: 'Continue with Apple',
                 fontFamily: 'VT323',
                 fontSize: 18,
                 backgroundColor: appBlack,
