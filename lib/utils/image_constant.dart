@@ -1,5 +1,6 @@
 const imageFolder = 'assets/images/';
 const tabbarIconsFolder = '${imageFolder}tabbar_icons/';
+const socialFOlder = '${imageFolder}social_icon/';
 
 // -MARK: Tabbar Icons
 const String tabHome = '${tabbarIconsFolder}tab_home.png';
@@ -28,3 +29,10 @@ const String icHat = '${imageFolder}ic_hat.png';
 const String icCaseMapImage = '${imageFolder}ic_case_map.png';
 const String icTime = '${imageFolder}ic_time.png';
 const String icProfile = '${imageFolder}ic_profile.png';
+const String icSplashScreen = '${imageFolder}ic_splash.png';
+const String icLogin = '${imageFolder}ic_login.png';
+const String icBooks = '${imageFolder}ic_books.png';
+
+// MARK: - Social Icons
+const String icApple = '${socialFOlder}ic_apple.png';
+const String icGoogle = '${socialFOlder}ic_google.png';

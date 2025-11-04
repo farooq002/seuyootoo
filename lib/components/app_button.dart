@@ -73,7 +73,7 @@ class AppElevatedButton extends StatelessWidget {
         textStyle: Theme.of(context).textTheme.labelLarge?.copyWith(),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.zero,
-          side: BorderSide(width: 2, color: appBlack),
+          side: BorderSide(width: 2, color: appDarkBrown),
         ),
         elevation: 5, // optional: keep shadow
       ),

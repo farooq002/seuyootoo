@@ -1,8 +1,10 @@
 const String homeRoute = "/";
 const String loginRoute = "/login";
+const String signUpRoute = "/signup";
 const String questionRoute = "/question";
 const String shopRoute = "/shop";
 const String verdictRoute = "/verdict";
 const String mapRoute = "/map";
 const String trailRoute = "/trail";
 const String profileRoute = "/profile";
+const String splashRoute = "/splash";

@@ -5,9 +5,8 @@ import 'package:souyoutoo/routes/app_routes.dart';
 import 'package:souyoutoo/routes/routes_name.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 
-
-void main() async{
-await GetStorage.init();
+void main() async {
+  await GetStorage.init();
   runApp(const MyApp());
 }
 
@@ -21,7 +20,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: AppThemes.lightTheme,
       title: 'SEUYOUTOO',
-      initialRoute: loginRoute,
+      initialRoute: splashRoute,
       getPages: appRoutes,
     );
   }

@@ -246,12 +246,16 @@ const appGreen = Color.fromARGB(255, 61, 231, 154);
 const appDarkGreen = Color(0xFF165e3d);
 const appgray = Color(0xFF6D6D6D);
 const appLightBlueGray = Color(0xFFD9EDF1);
+const appLightYellow = Color(0xFFF6F2DF);
 const appAqua = Color(0xFF6CD9EB);
 const appPeach = Color(0xFFFAD7A0);
 const appYellow = Color(0xFFFFF9C4);
 const appBrown = Color(0xFF5C270D);
 const appDarkYellow = Color(0xFFECDB32);
 const appDimGreen = Color(0xFF1B9639);
+const appLightPink = Color(0xFFF5E1DF);
+const appDarkBrown = Color(0xFF391A0D);
+const fieldErorr = Color.fromARGB(255, 177, 30, 20);
 
 final appThemeColor = Get.isDarkMode ? appWhite : appBlack;
 

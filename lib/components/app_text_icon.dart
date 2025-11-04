@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/get_utils.dart';
+import 'package:souyoutoo/utils/colors_name.dart';
 import 'app_text.dart';
 
 class AppTextIcon extends StatelessWidget {
@@ -9,6 +10,7 @@ class AppTextIcon extends StatelessWidget {
   final void Function() onPressed;
   final Color? foregroundColor;
   final Color? backgroundColor;
+  final Color? borderColor;
   final bool isColumn;
   final double? fontSize;
   final double? widthSize;
@@ -22,6 +24,7 @@ class AppTextIcon extends StatelessWidget {
     this.isColumn = false,
     this.icon,
     this.foregroundColor,
+    this.borderColor,
     this.backgroundColor,
     this.fontSize = 12,
     this.textScaleFactor,
@@ -80,7 +83,10 @@ class AppTextIcon extends StatelessWidget {
             backgroundColor ?? Theme.of(context).secondaryHeaderColor,
         minimumSize: Size(widthSize ?? 30, 0),
         animationDuration: const Duration(milliseconds: 300),
-        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+        shape: RoundedRectangleBorder(
+          side: BorderSide(width: 1, color: borderColor ?? appDarkBrown),
+          borderRadius: BorderRadius.zero,
+        ),
       ),
       onPressed: onPressed,
       child: content,

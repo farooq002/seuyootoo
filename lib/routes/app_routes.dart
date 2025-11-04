@@ -7,12 +7,15 @@ import 'package:souyoutoo/module/views/map_view/map_view.dart';
 import 'package:souyoutoo/module/views/profile_view/profile_view.dart';
 import 'package:souyoutoo/module/views/question_view/question_view.dart';
 import 'package:souyoutoo/module/views/shop_view/shop_view.dart';
+import 'package:souyoutoo/module/views/sign_up_view/sign_up_view.dart';
+import 'package:souyoutoo/module/views/splash_screen/splash_view.dart';
 import 'package:souyoutoo/module/views/trial_view/trial_view.dart';
 import 'package:souyoutoo/module/views/verdict_view/verdict_view.dart';
 import 'package:souyoutoo/routes/routes_name.dart';
 
 final appRoutes = [
   GetPage(name: loginRoute, page: () => const LoginView()),
+  GetPage(name: signUpRoute, page: () => const SignUpView()),
   GetPage(
     name: homeRoute,
     page: () => const MainTabView(),
@@ -52,6 +55,11 @@ final appRoutes = [
   GetPage(
     name: profileRoute,
     page: () => const ProfileView(),
+    middlewares: [AuthMiddleWare()],
+  ),
+  GetPage(
+    name: splashRoute,
+    page: () => const SplashView(),
     middlewares: [AuthMiddleWare()],
   ),
 ];

@@ -1,0 +1,31 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart'; // 👈 If you're using GetX for navigation
+import 'package:souyoutoo/components/app_image.dart';
+import 'package:souyoutoo/routes/routes_name.dart';
+import 'package:souyoutoo/utils/colors_name.dart';
+import 'package:souyoutoo/utils/image_constant.dart';
+
+class SplashView extends StatefulWidget {
+  const SplashView({super.key});
+
+  @override
+  State<SplashView> createState() => _SplashViewState();
+}
+
+class _SplashViewState extends State<SplashView> {
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(const Duration(seconds: 3), () {
+      Get.toNamed(loginRoute);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: appLightPink,
+      body: Center(child: appImageAsset(icSplashScreen)),
+    );
+  }
+}

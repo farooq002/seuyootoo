@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:souyoutoo/components/app_bar.dart';
+import 'package:souyoutoo/components/app_button.dart';
 import 'package:souyoutoo/components/app_image.dart';
 import 'package:souyoutoo/components/app_text.dart';
 import 'package:souyoutoo/components/app_text_icon.dart';
@@ -49,6 +50,7 @@ class ProfileView extends StatelessWidget {
             right: 0,
             child: SingleChildScrollView(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   AppAchievementContainer(
                     color: appShadowBrown,
@@ -103,13 +105,16 @@ class ProfileView extends StatelessWidget {
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
-                          childAspectRatio: 2.4,
+                          childAspectRatio: 2.3,
+                          mainAxisSpacing: 8,
+                          crossAxisSpacing: 8,
                         ),
                     itemCount: controller.categories.length,
                     itemBuilder: (context, index) {
                       return Card(
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.zero,
+                          side: BorderSide(width: 2, color: appBlack),
                         ),
                         color: appShadowBrown,
                         child: Column(
@@ -139,7 +144,74 @@ class ProfileView extends StatelessWidget {
                         ).paddingAll(10),
                       );
                     },
-                  ),
+                  ).paddingAll(10),
+                  AppAchievementContainer(
+                    color: appLightYellow,
+                    shadowColor: appBlack,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Center(
+                          child: AppTextRegular(
+                            text: 'ACHIEVEMENTS',
+                            fontSize: 14,
+                          ).paddingAll(10).paddingOnly(top: 10),
+                        ),
+                        ListView.builder(
+                          shrinkWrap: true, // 👈 allows it to size itself
+                          physics:
+                              const NeverScrollableScrollPhysics(), // 👈 avoids nested scroll
+                          itemCount: controller.boxItems.length,
+                          itemBuilder: (context, index) {
+                            final boxItem = controller.boxItems[index];
+                            return Row(
+                              children: [
+                                AppAchievementContainer(
+                                  borderWidth: 4.0,
+                                  color: boxItem.backgroundColor,
+                                  isShadowAvailblle: false,
+                                  borderColor: appBlack,
+                                  child: appImageAsset(
+                                    boxItem.icon ?? '',
+                                    color: boxItem.color,
+                                    height: 20,
+                                  ).paddingAll(10),
+                                ).paddingAll(10),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    AppTextRegular(
+                                      text: boxItem.name,
+                                      fontSize: 12,
+                                      color: boxItem.textColor,
+                                    ),
+                                    AppTextRegular(
+                                      text: boxItem.description ?? '',
+                                      fontSize: 10,
+                                      color: appgray,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            );
+                          },
+                        ),
+                        AppElevatedButton(
+                          text: 'VIEW ALL',
+                          color: appBlue,
+                          onPressed: () {},
+                          textSize: 12,
+                        ).paddingAll(10).paddingOnly(bottom: 10),
+                      ],
+                    ),
+                  ).paddingAll(10),
+                  AppElevatedButton(
+                    text: 'EDIT PROFILE',
+                    color: appPurple,
+                    onPressed: () {},
+                    textSize: 14,
+                  ).paddingAll(10),
                 ],
               ),
             ),

@@ -10,8 +10,8 @@ import 'package:souyoutoo/routes/routes_name.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({super.key});
+class SignUpView extends StatelessWidget {
+  const SignUpView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,39 +25,55 @@ class LoginView extends StatelessWidget {
               Center(child: appImageAsset(icLogin)),
               Center(
                 child: AppTextRegular(
-                  text: 'LOGIN',
+                  text: 'SIGN UP',
                   fontSize: 24,
                   color: appDarkBrown,
                 ),
-              ).paddingSymmetric(vertical: 10),
+              ),
+              AppTextRegular(
+                text: 'Name',
+                fontFamily: 'VT323',
+                fontSize: 18,
+                color: appDarkBrown,
+              ),
+              AppTextField(
+                textController: TextEditingController(),
+                textFieldPadding: 10,
+                outlineBorder: OutlineInputBorder(
+                  borderSide: BorderSide(width: 2, color: appDarkBrown),
+                  borderRadius: BorderRadius.zero,
+                ),
+                hintText: 'Enter your First Name',
+              ),
               AppTextRegular(
                 text: 'Email',
                 fontFamily: 'VT323',
-                color: appDarkBrown,
                 fontSize: 18,
-              ).paddingSymmetric(vertical: 10),
+                color: appDarkBrown,
+              ),
               AppTextField(
                 textController: TextEditingController(),
+                textFieldPadding: 10,
                 outlineBorder: OutlineInputBorder(
-                  borderSide: BorderSide(width: 5, color: appDarkBrown),
+                  borderSide: BorderSide(width: 2, color: appDarkBrown),
                   borderRadius: BorderRadius.zero,
                 ),
-                fontFamily: 'VT323',
-                hintText: 'Enter your Email',
+                hintText: 'Enter your email',
               ),
               AppTextRegular(
                 text: 'Password',
                 fontFamily: 'VT323',
                 color: appDarkBrown,
                 fontSize: 18,
-              ).paddingSymmetric(vertical: 10),
+              ),
               AppTextField(
                 textController: TextEditingController(),
+                textFieldPadding: 10,
                 outlineBorder: OutlineInputBorder(
                   borderSide: BorderSide(width: 2, color: appDarkBrown),
                   borderRadius: BorderRadius.zero,
                 ),
-                hintText: 'Enter your Password',
+                hintText: 'Enter your password',
               ),
               AppElevatedButton(
                 onPressed: () {
@@ -65,18 +81,17 @@ class LoginView extends StatelessWidget {
                   box.write('isLoggedIn', true);
                   Get.offAllNamed(homeRoute);
                 },
-                text: 'Login',
+                text: 'SIGN UP',
                 color: appAmber,
                 textColor: appDarkBrown,
                 textSize: 16,
-              ).paddingSymmetric(vertical: 10).paddingOnly(top: 10),
+              ),
               AppTextButton(
-                text: 'Forget Password',
+                text: 'Already have an Account?',
+                onPressed: () => Get.toNamed(loginRoute),
                 isUnderline: true,
-                fontSize: 18,
-                fontFamily: 'VT323',
                 color: appDarkBrown,
-                onPressed: () {},
+                fontSize: 10,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -94,6 +109,7 @@ class LoginView extends StatelessWidget {
               AppTextIcon(
                 onPressed: () {},
                 text: 'Continue with Google',
+                borderColor: appDarkBrown,
                 fontFamily: 'VT323',
                 fontSize: 18,
                 backgroundColor: appWhite,
@@ -109,14 +125,8 @@ class LoginView extends StatelessWidget {
                 foregroundColor: appWhite,
                 icon: appImageAsset(icApple),
               ),
-              AppTextButton(
-                text: 'Don\'t have an Account?',
-                onPressed: () => Get.toNamed(signUpRoute),
-                isUnderline: true,
-                fontSize: 10,
-              ),
             ],
-          ).paddingAll(10),
+          ).paddingAll(10).paddingOnly(top: 5),
         ),
       ),
     );
