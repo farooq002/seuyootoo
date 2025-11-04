@@ -2,7 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:souyoutoo/constants/nav_ids.dart';
+import 'package:souyoutoo/module/pages/question_view/question_view.dart';
 import 'package:souyoutoo/module/pages/stats/stats_view.dart';
+import 'package:souyoutoo/navs/question_nav.dart';
 import 'package:souyoutoo/routes/routes_name.dart';
 
 
@@ -15,10 +17,10 @@ class StatsNav extends StatelessWidget {
       key: Get.nestedKey(NavIds.stats),
       onGenerateRoute: (settings) {
         switch (settings.name) {
-          case trailRoute:
+          case questionRoute:
              return GetPageRoute(
             settings: settings,
-            page: () => const StatsView(),
+            page: () => const QuestionView(),
           );
           default:
            return GetPageRoute(

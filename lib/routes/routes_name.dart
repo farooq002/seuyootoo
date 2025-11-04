@@ -2,6 +2,7 @@ const String homeRoute = "/";
 const String loginRoute = "/login";
 const String signUpRoute = "/signup";
 const String questionRoute = "/question";
+const String statsRoute = "/stats";
 const String shopRoute = "/shop";
 const String verdictRoute = "/verdict";
 const String mapRoute = "/map";

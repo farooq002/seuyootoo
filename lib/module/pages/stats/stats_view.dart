@@ -6,6 +6,7 @@ import 'package:souyoutoo/components/app_image.dart';
 import 'package:souyoutoo/components/app_progress_bar.dart';
 import 'package:souyoutoo/components/app_text.dart';
 import 'package:souyoutoo/components/background_container.dart';
+import 'package:souyoutoo/constants/nav_ids.dart';
 import 'package:souyoutoo/routes/routes_name.dart';
 
 import 'package:souyoutoo/utils/colors_name.dart';
@@ -104,7 +105,7 @@ class StatsView extends StatelessWidget {
               child: Column(
                 children: [
                   GestureDetector(
-                    onTap: () => Get.toNamed(questionRoute),
+                    onTap: () => Get.toNamed(questionRoute, id: NavIds.stats),
                     child: AppAchievementContainer(
                       color: appWhite,
                       borderColor: appBlack,

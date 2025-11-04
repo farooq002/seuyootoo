@@ -9,6 +9,7 @@ import 'package:souyoutoo/module/pages/question_view/question_view.dart';
 import 'package:souyoutoo/module/pages/shop_view/shop_view.dart';
 import 'package:souyoutoo/module/pages/sign_up_view/sign_up_view.dart';
 import 'package:souyoutoo/module/pages/splash_screen/splash_view.dart';
+import 'package:souyoutoo/module/pages/stats/stats_view.dart';
 import 'package:souyoutoo/module/pages/trial_view/trial_view.dart';
 import 'package:souyoutoo/module/pages/verdict_view/verdict_view.dart';
 import 'package:souyoutoo/routes/routes_name.dart';
@@ -28,7 +29,8 @@ final appRoutes = [
   GetPage(name: trailRoute, page: () => const TrialView()),
   GetPage(name: profileRoute, page: () => const ProfileView()),
 
-  GetPage(name: '$trailRoute$questionRoute', page: () => const QuestionView()),
+  GetPage(name: questionRoute, page: () => const QuestionView()),
+  GetPage(name: statsRoute, page: () => const StatsView()),
 ];
 
 class AuthMiddleWare extends GetMiddleware {
