@@ -7,6 +7,7 @@ import 'package:souyoutoo/src/components/app_text.dart';
 import 'package:souyoutoo/src/components/app_text_field.dart';
 import 'package:souyoutoo/src/components/app_text_icon.dart';
 import 'package:souyoutoo/routes/routes_name.dart';
+import 'package:souyoutoo/src/controller/auth_controller.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
 
@@ -15,6 +16,8 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(AuthController());
+    
     return SafeArea(
       child: Scaffold(
         backgroundColor: appLightPink,
@@ -65,7 +68,8 @@ class LoginView extends StatelessWidget {
                 onPressed: () {
                   final box = GetStorage();
                   box.write('isLoggedIn', true);
-                  Get.offAllNamed(homeRoute);
+                  controller.login();
+                  // Get.offAllNamed(homeRoute);
                 },
                 text: 'Login',
                 color: appAmber,

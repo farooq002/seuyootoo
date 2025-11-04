@@ -63,6 +63,7 @@ class NetworkService {
     List<File>? files,
   }) async {
     try {
+      
       _currentEnvironment.dioClient = await _getDefaultDioClient();
       final req = PreparedNetworkRequest<Model>(
         request,
