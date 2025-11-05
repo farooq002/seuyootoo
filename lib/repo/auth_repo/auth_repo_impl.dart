@@ -43,7 +43,7 @@ base class AuthRepoImpl extends AuthRepo {
   }
 
   @override
-  Future<NetworkResponse<LoginResponse>?> login(LoginRequest req) async {
+  Future<LoginResponse?> login(LoginRequest req) async {
     final request = NetworkRequest(
       path: NetworkService.authLogin,
       type: NetworkRequestType.POST,
@@ -54,16 +54,17 @@ base class AuthRepoImpl extends AuthRepo {
       request,
       LoginResponse.fromMap,
     );
+    var result;
     response?.maybeWhen(
       ok: (data) {
+        result = data;
         print('Hurry Success');
       },
       orElse: () {
         print('Error');
       },
     );
-
-    return response;
+    return result;
   }
 
   @override

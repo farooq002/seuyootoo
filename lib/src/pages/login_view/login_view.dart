@@ -17,124 +17,127 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(AuthController());
-
+    final formKey = GlobalKey();
     return SafeArea(
       child: Scaffold(
         backgroundColor: appLightPink,
         body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Center(child: appImageAsset(icLogin)),
-              Center(
-                child: AppTextRegular(
-                  text: 'LOGIN',
-                  fontSize: 24,
-                  color: appDarkBrown,
-                ),
-              ).paddingSymmetric(vertical: 10),
-              AppTextRegular(
-                text: 'Email',
-                fontFamily: 'VT323',
-                color: appDarkBrown,
-                fontSize: 18,
-              ).paddingSymmetric(vertical: 10),
-              AppTextField(
-                textController: controller.emailController,
-                outlineBorder: OutlineInputBorder(
-                  borderSide: BorderSide(width: 5, color: appDarkBrown),
-                  borderRadius: BorderRadius.zero,
-                ),
-                fontFamily: 'VT323',
-                hintText: 'Enter your Email',
-
-                backgroundColor: appWhite,
-              ),
-              AppTextRegular(
-                text: 'Password',
-                fontFamily: 'VT323',
-                color: appDarkBrown,
-                fontSize: 18,
-              ).paddingSymmetric(vertical: 10),
-              AppTextField(
-                textController: controller.passwordController,
-                outlineBorder: OutlineInputBorder(
-                  borderSide: BorderSide(width: 2, color: appDarkBrown),
-                  borderRadius: BorderRadius.zero,
-                ),
-                hintText: 'Enter your Password',
-              ),
-              AppElevatedButton(
-                onPressed: () {
-                  final box = GetStorage();
-                  box.write('isLoggedIn', true);
-                  controller.login();
-                  // Get.offAllNamed(homeRoute);
-                },
-                text: 'Login',
-                color: appAmber,
-                textColor: appDarkBrown,
-                textSize: 16,
-              ).paddingSymmetric(vertical: 10).paddingOnly(top: 10),
-              AppTextButton(
-                text: 'Forget Password',
-                isUnderline: true,
-                fontSize: 18,
-                fontFamily: 'VT323',
-                color: appDarkBrown,
-                onPressed: () {},
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Expanded(
-                    child: Divider(
-                      height: 8,
-                      thickness: 1.0,
-                      color: appLightBrown,
-                    ),
-                  ),
-                  const AppTextThin(
-                    text: 'OR',
-                    fontFamily: 'VT323',
+          child: Form(
+            key: formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Center(child: appImageAsset(icLogin)),
+                Center(
+                  child: AppTextRegular(
+                    text: 'LOGIN',
+                    fontSize: 24,
                     color: appDarkBrown,
-                    fontSize: 18,
-                  ).paddingOnly(left: 4, right: 4),
-                  const Expanded(
-                    child: Divider(
-                      height: 8,
-                      thickness: 1.0,
-                      color: appLightBrown,
-                    ),
                   ),
-                ],
-              ).paddingOnly(bottom: 12),
-              AppTextIcon(
-                onPressed: () {},
-                text: 'Continue with Google',
-                fontFamily: 'VT323',
-                fontSize: 18,
-                backgroundColor: appWhite,
-                foregroundColor: appDarkBrown,
-                icon: appImageAsset(icGoogle),
-              ),
-              AppTextIcon(
-                onPressed: () {},
-                text: 'Continue with Apple',
-                fontFamily: 'VT323',
-                fontSize: 18,
-                backgroundColor: appBlack,
-                foregroundColor: appWhite,
-                icon: appImageAsset(icApple),
-              ),
-              AppTextButton(
-                text: 'Don\'t have an Account?',
-                onPressed: () => Get.toNamed(signUpRoute),
-                isUnderline: true,
-                fontSize: 10,
-              ),
-            ],
-          ).paddingAll(10),
+                ).paddingSymmetric(vertical: 10),
+                AppTextRegular(
+                  text: 'Email',
+                  fontFamily: 'VT323',
+                  color: appDarkBrown,
+                  fontSize: 18,
+                ).paddingSymmetric(vertical: 10),
+                AppTextField(
+                  textController: controller.emailController,
+                  outlineBorder: OutlineInputBorder(
+                    borderSide: BorderSide(width: 5, color: appDarkBrown),
+                    borderRadius: BorderRadius.zero,
+                  ),
+                  fontFamily: 'VT323',
+                  hintText: 'Enter your Email',
+            
+                  backgroundColor: appWhite,
+                ),
+                AppTextRegular(
+                  text: 'Password',
+                  fontFamily: 'VT323',
+                  color: appDarkBrown,
+                  fontSize: 18,
+                ).paddingSymmetric(vertical: 10),
+                AppTextField(
+                  textController: controller.passwordController,
+                  outlineBorder: OutlineInputBorder(
+                    borderSide: BorderSide(width: 2, color: appDarkBrown),
+                    borderRadius: BorderRadius.zero,
+                  ),
+                  hintText: 'Enter your Password',
+                ),
+                AppElevatedButton(
+                  onPressed: () {
+                    final box = GetStorage();
+                    box.write('isLoggedIn', true);
+                    controller.login();
+                    // Get.offAllNamed(homeRoute);
+                  },
+                  text: 'Login',
+                  color: appAmber,
+                  textColor: appDarkBrown,
+                  textSize: 16,
+                ).paddingSymmetric(vertical: 10).paddingOnly(top: 10),
+                AppTextButton(
+                  text: 'Forget Password',
+                  isUnderline: true,
+                  fontSize: 18,
+                  fontFamily: 'VT323',
+                  color: appDarkBrown,
+                  onPressed: () {},
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Expanded(
+                      child: Divider(
+                        height: 8,
+                        thickness: 1.0,
+                        color: appLightBrown,
+                      ),
+                    ),
+                    const AppTextThin(
+                      text: 'OR',
+                      fontFamily: 'VT323',
+                      color: appDarkBrown,
+                      fontSize: 18,
+                    ).paddingOnly(left: 4, right: 4),
+                    const Expanded(
+                      child: Divider(
+                        height: 8,
+                        thickness: 1.0,
+                        color: appLightBrown,
+                      ),
+                    ),
+                  ],
+                ).paddingOnly(bottom: 12),
+                AppTextIcon(
+                  onPressed: () {},
+                  text: 'Continue with Google',
+                  fontFamily: 'VT323',
+                  fontSize: 18,
+                  backgroundColor: appWhite,
+                  foregroundColor: appDarkBrown,
+                  icon: appImageAsset(icGoogle),
+                ),
+                AppTextIcon(
+                  onPressed: () {},
+                  text: 'Continue with Apple',
+                  fontFamily: 'VT323',
+                  fontSize: 18,
+                  backgroundColor: appBlack,
+                  foregroundColor: appWhite,
+                  icon: appImageAsset(icApple),
+                ),
+                AppTextButton(
+                  text: 'Don\'t have an Account?',
+                  onPressed: () => Get.toNamed(signUpRoute),
+                  isUnderline: true,
+                  fontSize: 10,
+                ),
+              ],
+            ).paddingAll(10),
+          ),
         ),
       ),
     );
