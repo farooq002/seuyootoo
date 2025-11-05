@@ -43,17 +43,24 @@ base class AuthRepoImpl extends AuthRepo {
   }
 
   @override
-  Future<NetworkResponse<LoginModel>?> login(Map<String, dynamic> data) async {
+  Future<NetworkResponse<LoginResponse>?> login(LoginRequest req) async {
     final request = NetworkRequest(
       path: NetworkService.authLogin,
       type: NetworkRequestType.POST,
-      data: NetworkRequestBody.json(data),
+      data: NetworkRequestBody.json(req.toMap()),
     );
 
-    final response = await NetworkService.shared.execute<LoginModel>(
+    final response = await NetworkService.shared.execute<LoginResponse>(
       request,
-      (json) => LoginModel.fromMap(json),
+      LoginResponse.fromMap
     );
+    response?.maybeWhen(
+      ok: (data) {
+        print('Hurry Success');
+      },
+      orElse: (){
+        print('Error');
+      });
 
     return response;
   }

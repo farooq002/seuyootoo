@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:souyoutoo/model/auth_models/login_model.dart';
 import 'package:souyoutoo/repo/auth_repo/auth_repo.dart';
 import 'package:souyoutoo/repo/auth_repo/auth_repo_impl.dart';
 import 'package:souyoutoo/routes/routes_name.dart';
@@ -13,14 +14,11 @@ class AuthController extends BaseViewController {
 
   login() async {
     startLoading();
-
-    final response = await repository.login({
-      "email": emailController.text,
-      "password": passwordController.text,
-    });
+    var request = LoginRequest(email: emailController.text, password: passwordController.text);
+    final response = await repository.login(request);
     if (response != null) {
       stopLoading();
-      // Get.offAllNamed(homeRoute);
+      Get.offAllNamed(homeRoute);
     }
 
     stopLoading();
