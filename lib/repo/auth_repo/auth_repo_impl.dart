@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:souyoutoo/model/auth_models/login_model.dart';
 import 'package:souyoutoo/model/auth_models/sign_up_model.dart';
 import 'package:souyoutoo/remote/network_request.dart';
@@ -54,7 +53,7 @@ base class AuthRepoImpl extends AuthRepo {
       request,
       LoginResponse.fromMap,
     );
-    var result;
+    dynamic result;
     response?.maybeWhen(
       ok: (data) {
         result = data;

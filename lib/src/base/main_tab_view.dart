@@ -46,7 +46,6 @@ class MainTabView extends StatelessWidget {
       child: Scaffold(
         backgroundColor: appBrown,
 
-        // ✅ Body updates when ValueNotifier changes
         body: ValueListenableBuilder<int>(
           valueListenable: currentIndex,
           builder: (_, index, __) {
@@ -56,8 +55,6 @@ class MainTabView extends StatelessWidget {
             );
           },
         ),
-
-        // ✅ Bottom Navigation
         bottomNavigationBar: ValueListenableBuilder<int>(
           valueListenable: currentIndex,
           builder: (_, index, __) {
