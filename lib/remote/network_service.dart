@@ -11,7 +11,7 @@ import 'prepared_network_request.dart';
 class NetworkService {
   static final shared = NetworkService();
   NetworkService() {
-    if (GlobalConfig.getCurrentEnvironment() != null) {
+    if (GlobalConfig.getCurrentEnvironment() == null) {
       if (kDebugMode) {
         print('Environment must be set globally before using NetworkService');
       }
@@ -19,14 +19,20 @@ class NetworkService {
   }
 
   //MARK: - CONCATENATED URLS DEFINED HERE AS STATIC
-  static const authUrl = '/api/v1/auth/';
-  static const authLogin = '${authUrl}login/helper';
-  static const authSignUp = '${authUrl}register/helper';
-  static const verifyOtp = '${authUrl}verifyotp';
-  static const resendOtp = '${authUrl}resendotp';
-  static const forgotPass = '${authUrl}forgot-password';
-  static const resetPassword = '${authUrl}reset-password';
-  static const logout = '${authUrl}logout';
+  static const authUrl = '/mobile_api/';
+  static const authLogin = '${authUrl}login/';
+  static const authSignUp = '${authUrl}register/';
+  static const getProfile = '${authUrl}profile';
+  static const getProgress = '${authUrl}progress';
+  static const getCases = '${authUrl}cases';
+  static const getCaseByID = '${authUrl}case';
+  static const getMyCases = '${authUrl}my-cases';
+  static const takeCase = '${authUrl}take-case';
+  static const completeCase = '${authUrl}complete-case';
+  static const achievements = '${authUrl}achievements';
+  static const giveAchievement = '${authUrl}give-achievement';
+  static const myAchievements = '${authUrl}my-achievements';
+  // static const logout = '${authUrl}logout';
 
   ///
   EnvironmentConfig get _currentEnvironment =>
@@ -35,6 +41,7 @@ class NetworkService {
   Future<Dio> _getDefaultDioClient() async {
     final headers = _currentEnvironment.httpHeaders;
     headers['Content-Type'] = 'application/json';
+    headers['X-API-KEY'] = 'hzZN7mfyxWvS7ffv6zFdInYnhyMD';
     if (_currentEnvironment.authorizationToken != null &&
         _currentEnvironment.authorizationToken != '') {
       headers['Authorization'] =
@@ -63,7 +70,6 @@ class NetworkService {
     List<File>? files,
   }) async {
     try {
-      
       _currentEnvironment.dioClient = await _getDefaultDioClient();
       final req = PreparedNetworkRequest<Model>(
         request,
@@ -74,7 +80,8 @@ class NetworkService {
         onReceiveProgress,
         files,
       );
-      final result = await compute(_executeRequest<Model>, req);
+      final result = await _executeRequest<Model>(req);
+
       return result;
     } catch (e) {
       debugPrint("Error during request execution: $e");

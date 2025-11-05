@@ -129,16 +129,73 @@ class HomeView extends StatelessWidget {
                   ],
                 ).paddingOnly(bottom: 4),
 
-                AppTextIcon(
-                  onPressed: () {},
-                  text: 'LESSON',
-                  isColumn: true,
-                  icon: Image.asset(icCheck),
-                  fontSize: 14,
-                  // padding: 10,
-                  backgroundColor: appGreen,
-                  foregroundColor: appWhite,
-                ).paddingOnly(bottom: 8),
+                // Container(
+                //   decoration: BoxDecoration(
+                //     boxShadow: [
+                //       BoxShadow(color: appLightBlack, offset: Offset(0, -2)),
+                //     ],
+                //   ),
+                //   child: AppTextIcon(
+                //     onPressed: () {},
+                //     text: 'LESSON',
+                //     isColumn: true,
+                //     icon: Image.asset(icCheck),
+                //     fontSize: 14,
+                //     // padding: 10,
+                //     backgroundColor: appGreen,
+                //     foregroundColor: appWhite,
+                //   ).paddingOnly(bottom: 8),
+                // ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: appGreen, // The button color goes here
+                    boxShadow: [
+                      BoxShadow(
+                        color: appLightBlack,
+                        blurRadius: 0,
+                        spreadRadius: 0,
+                        offset: Offset(6, 6),
+                      ),
+                    ],
+                  ),
+                  child: AppTextIcon(
+                    onPressed: () {},
+                    text: 'LESSON',
+                    isColumn: true,
+                    icon: Image.asset(icCheck),
+                    fontSize: 14,
+                    backgroundColor: Colors.transparent,
+                    foregroundColor: appWhite,
+                  ),
+                ).paddingOnly(bottom: 10),
+
+                // NEW, CORRECT CODE:
+                Container(
+                  // 1. Outer Container: Provides the SHADOW COLOR
+                  color: appLightBlack, // Your solid block shadow color
+                  // 2. Padding: Defines the SHADOW THICKNESS on all 4 sides
+                  // This padding creates the border space *inside* the black container.
+                  padding: EdgeInsets.all(6.0),
+
+                  // 3. Child: Your Button Content (AppTextIcon)
+                  child: AppTextIcon(
+                    onPressed: () {},
+                    text: 'LESSON',
+                    isColumn: true,
+                    // CRITICAL: Ensure filterQuality is set here if possible,
+                    // or inside AppTextIcon if it manages the image.
+                    icon: Image.asset(
+                      icCheck,
+                      filterQuality: FilterQuality.none,
+                    ),
+                    fontSize: 14,
+                    // AppTextIcon's color is the actual button color (appGreen)
+                    backgroundColor: appGreen,
+                    foregroundColor: appWhite,
+                  ),
+                ).paddingOnly(
+                  bottom: 10,
+                ), // The external GetX padding for spacing
 
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,

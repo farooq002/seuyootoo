@@ -24,8 +24,16 @@ class _SplashViewState extends State<SplashView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: appLightPink,
-      body: Center(child: appImageAsset(icSplashScreen)),
+      backgroundColor: appBlack,
+      body: SafeArea(
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            appImageAsset(icSplashScreen, fit: BoxFit.cover),
+            Center(child: appImageAsset(icJudge)),
+          ],
+        ),
+      ),
     );
   }
 }

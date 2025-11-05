@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:souyoutoo/remote/global_config.dart';
 import 'package:souyoutoo/routes/app_routes.dart';
 import 'package:souyoutoo/routes/routes_name.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 
 void main() async {
   await GetStorage.init();
+  GlobalConfig.setEnvironment(Environment.live);
   runApp(const MyApp());
 }
 

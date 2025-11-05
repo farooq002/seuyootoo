@@ -29,7 +29,8 @@ const String icHat = '${imageFolder}ic_hat.png';
 const String icCaseMapImage = '${imageFolder}ic_case_map.png';
 const String icTime = '${imageFolder}ic_time.png';
 const String icProfile = '${imageFolder}ic_profile.png';
-const String icSplashScreen = '${imageFolder}ic_splash.png';
+const String icSplashScreen = '${imageFolder}ic_splash_img.png';
+const String icJudge = '${imageFolder}ic_judge.png';
 const String icLogin = '${imageFolder}ic_login.png';
 const String icBooks = '${imageFolder}ic_books.png';
 

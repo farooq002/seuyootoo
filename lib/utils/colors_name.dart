@@ -228,6 +228,7 @@ class AppThemes {
 const appBlack = Colors.black;
 const appWhite = Colors.white;
 const appGray = Color(0xFF555555);
+const appLightBlack = Color(0xFF2D3748);
 const appBlue = Color(0xFF0866FF);
 const appDimGray = Color(0xFF555555);
 const appAmber = Colors.amber;
@@ -242,7 +243,7 @@ const appLightPeach = Color(0xFFFFF6E4);
 const appRed = Color(0xFFD94242);
 const applightRed = Color(0xFFEF9A9A);
 const appLightGreen = Color(0xFF72E37D);
-const appGreen = Color.fromARGB(255, 61, 231, 154);
+const appGreen = Color(0xFF48BB78);
 const appDarkGreen = Color(0xFF165e3d);
 const appgray = Color(0xFF6D6D6D);
 const appLightBlueGray = Color(0xFFD9EDF1);

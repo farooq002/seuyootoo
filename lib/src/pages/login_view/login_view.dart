@@ -17,7 +17,7 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(AuthController());
-    
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: appLightPink,
@@ -40,7 +40,7 @@ class LoginView extends StatelessWidget {
                 fontSize: 18,
               ).paddingSymmetric(vertical: 10),
               AppTextField(
-                textController: TextEditingController(),
+                textController: controller.emailController,
                 outlineBorder: OutlineInputBorder(
                   borderSide: BorderSide(width: 5, color: appDarkBrown),
                   borderRadius: BorderRadius.zero,
@@ -57,7 +57,7 @@ class LoginView extends StatelessWidget {
                 fontSize: 18,
               ).paddingSymmetric(vertical: 10),
               AppTextField(
-                textController: TextEditingController(),
+                textController: controller.passwordController,
                 outlineBorder: OutlineInputBorder(
                   borderSide: BorderSide(width: 2, color: appDarkBrown),
                   borderRadius: BorderRadius.zero,
