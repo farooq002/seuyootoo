@@ -6,7 +6,7 @@ abstract base class AuthRepo {
   Future<NetworkResponse<LoginResponse>?> login(LoginRequest req);
 
   // Future<NetworkResponse<SignUpModel>?> signUp(Map<String, dynamic> data);
-  Future<NetworkResponse<SignUpModel>?> signUp(Map<String, dynamic> data);
+  Future<NetworkResponse<SignUpResponse>?> signUp(SignUpRequest req);
 
   rememberMe({bool? rememberMe});
 

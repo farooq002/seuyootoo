@@ -52,33 +52,41 @@ base class AuthRepoImpl extends AuthRepo {
 
     final response = await NetworkService.shared.execute<LoginResponse>(
       request,
-      LoginResponse.fromMap
+      LoginResponse.fromMap,
     );
     response?.maybeWhen(
       ok: (data) {
         print('Hurry Success');
       },
-      orElse: (){
+      orElse: () {
         print('Error');
-      });
+      },
+    );
 
     return response;
   }
 
   @override
-  Future<NetworkResponse<SignUpModel>?> signUp([
-    Map<String, dynamic>? data,
-  ]) async {
+  Future<NetworkResponse<SignUpResponse>?> signUp(SignUpRequest req) async {
     final request = NetworkRequest(
       path: NetworkService.authSignUp,
       type: NetworkRequestType.POST,
-      data: NetworkRequestBody.json(data ?? {}),
+      data: NetworkRequestBody.json(req.toMap()),
     );
 
-    final response = await NetworkService.shared.execute<SignUpModel>(
+    final response = await NetworkService.shared.execute<SignUpResponse>(
       request,
-      (json) => SignUpModel.fromMap(json),
+      SignUpResponse.fromMap,
     );
+    response?.maybeWhen(
+      ok: (data) {
+        print('Hurry Success');
+      },
+      orElse: () {
+        print('Error');
+      },
+    );
+
     // if (response != null) {
     //   response.maybeWhen(
     //     ok: (result) {
