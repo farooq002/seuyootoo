@@ -19,9 +19,8 @@ class StatsView extends StatelessWidget {
     return Scaffold(
       appBar: appBar(
         context,
-        leftIconSvg: null,
-        // onLeftIconPress: () => back(),
-        // titleText: 'BACK',
+       leftIconSvg: icBack,
+        onLeftIconPress: () => Get.back(),
         titleText: 'Achievements',
       ),
       body: Stack(

@@ -4,6 +4,7 @@ import 'package:souyoutoo/remote/network_request.dart';
 import 'package:souyoutoo/remote/network_response.dart';
 import 'package:souyoutoo/remote/network_service.dart';
 import 'package:souyoutoo/repo/auth_repo/auth_repo.dart';
+import 'package:souyoutoo/utils/utils.dart';
 
 base class AuthRepoImpl extends AuthRepo {
   @override
@@ -81,10 +82,9 @@ base class AuthRepoImpl extends AuthRepo {
     response?.maybeWhen(
       ok: (data) {
         result = data;
-        print('Hurry Success');
       },
       orElse: () {
-        print('Error');
+        showToast('Server issue');
       },
     );
 

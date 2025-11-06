@@ -2,7 +2,8 @@ import 'dart:io';
 import 'package:dio/dio.dart' as dio;
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:souyoutoo/utils/constant.dart';
+import 'package:souyoutoo/utils/local_storage/storage_service.dart';
+import 'package:souyoutoo/utils/utils.dart';
 import 'environment_config.dart';
 import 'global_config.dart';
 import 'network_request.dart';
@@ -43,12 +44,8 @@ class NetworkService {
     final headers = _currentEnvironment.httpHeaders;
     headers['Content-Type'] = 'application/json';
     headers['X-API-KEY'] = 'hzZN7mfyxWvS7ffv6zFdInYnhyMD';
-    headers['Authorization'] = token;
-    if (_currentEnvironment.authorizationToken != null &&
-        _currentEnvironment.authorizationToken != '') {
-      headers['Authorization'] =
-          'Bearer ${_currentEnvironment.authorizationToken}';
-    }
+    headers['Authorization'] = 'Token ${StorageService.instance.getToken()}';
+   
     final dio = _currentEnvironment.dioClient!
       ..options.baseUrl = _currentEnvironment.baseUrl
       ..options.headers = _currentEnvironment.httpHeaders
@@ -83,7 +80,28 @@ class NetworkService {
         files,
       );
       final result = await _executeRequest<Model>(req);
-
+      result.maybeWhen(
+        noInternet: (message) {
+          showToast(message);
+        },
+        internalServerError: (message) {
+          showToast(message);
+        },
+        noAuth: (message) {
+          showToast(message);
+        },
+        noAccess: (message) {
+          showToast(message);
+        },
+        invalidParameters: (message) {
+          showToast(message);
+        },
+        badRequest: (message) {
+          showToast(message);
+        },
+        orElse:() {
+        print('Done');
+      });
       return result;
     } catch (e) {
       debugPrint("Error during request execution: $e");
@@ -189,7 +207,7 @@ class NetworkService {
   String? extractErrorMessage(DioException error) {
     if (error.response != null &&
         error.response!.data is Map<String, dynamic>) {
-      return error.response!.data['message'] ?? error.message;
+      return error.response!.data['error'] ?? error.message;
     }
     return null;
   }

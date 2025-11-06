@@ -96,7 +96,7 @@ class UserData {
   final String? rank;
   final dynamic tokens;
   final dynamic streak;
-  final dynamic cases_completed;
+  final dynamic casesCompleted;
   UserData({
     this.email,
     this.username,
@@ -105,7 +105,7 @@ class UserData {
     this.rank,
     this.tokens,
     this.streak,
-    this.cases_completed,
+    this.casesCompleted,
   });
 
   Map<String, dynamic> toMap() {
@@ -117,7 +117,7 @@ class UserData {
       'rank': rank,
       'tokens': tokens,
       'streak': streak,
-      'cases_completed': cases_completed,
+      'cases_completed': casesCompleted,
     };
   }
 
@@ -130,7 +130,7 @@ class UserData {
       rank: map['rank'] != null ? map['rank'] as String : null,
       tokens: map['tokens'] as dynamic,
       streak: map['streak'] as dynamic,
-      cases_completed: map['cases_completed'] as dynamic,
+      casesCompleted: map['cases_completed'] as dynamic,
     );
   }
 
@@ -141,7 +141,7 @@ class UserData {
 
   @override
   String toString() {
-    return 'UserData(email: $email, username: $username, level: $level, exp: $exp, rank: $rank, tokens: $tokens, streak: $streak, cases_completed: $cases_completed)';
+    return 'UserData(email: $email, username: $username, level: $level, exp: $exp, rank: $rank, tokens: $tokens, streak: $streak, cases_completed: $casesCompleted)';
   }
 
   @override
@@ -155,7 +155,7 @@ class UserData {
         other.rank == rank &&
         other.tokens == tokens &&
         other.streak == streak &&
-        other.cases_completed == cases_completed;
+        other.casesCompleted == casesCompleted;
   }
 
   @override
@@ -167,6 +167,6 @@ class UserData {
         rank.hashCode ^
         tokens.hashCode ^
         streak.hashCode ^
-        cases_completed.hashCode;
+        casesCompleted.hashCode;
   }
 }

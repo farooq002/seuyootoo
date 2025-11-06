@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
+import 'package:souyoutoo/src/base/base_view.dart';
 import 'package:souyoutoo/src/components/app_button.dart';
 import 'package:souyoutoo/src/components/app_image.dart';
 import 'package:souyoutoo/src/components/app_text.dart';
 import 'package:souyoutoo/src/components/app_text_field.dart';
 import 'package:souyoutoo/src/components/app_text_icon.dart';
 import 'package:souyoutoo/routes/routes_name.dart';
-import 'package:souyoutoo/src/controller/auth_controller.dart';
+import 'package:souyoutoo/src/controller/auth/auth_controller.dart';
 import 'package:souyoutoo/src/extensions/validation+extension.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({super.key});
-
+class LoginView extends BaseView<AuthController> {
+   LoginView({super.key});
+   @override
+  final controller = Get.put(AuthController());
   @override
-  Widget build(BuildContext context) {
-    final controller = Get.put(AuthController());
+  Widget mBuild(BuildContext context) {
+  
     final formKey = GlobalKey<FormState>();
     return SafeArea(
       child: Scaffold(
@@ -86,10 +87,7 @@ class LoginView extends StatelessWidget {
                 AppElevatedButton(
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
-                      final box = GetStorage();
-                      box.write('isLoggedIn', true);
                       controller.login();
-                      // Get.offAllNamed(homeRoute);
                     }
                   },
                   text: 'Login',

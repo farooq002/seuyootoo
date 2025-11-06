@@ -9,3 +9,4 @@ const String mapRoute = "/map";
 const String trailRoute = "/trail";
 const String profileRoute = "/profile";
 const String splashRoute = "/splash";
+const String newsRoute = "/news";

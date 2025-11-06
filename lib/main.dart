@@ -4,7 +4,6 @@ import 'package:get_storage/get_storage.dart';
 import 'package:souyoutoo/remote/global_config.dart';
 import 'package:souyoutoo/routes/app_routes.dart';
 import 'package:souyoutoo/routes/routes_name.dart';
-import 'package:souyoutoo/utils/colors_name.dart';
 
 void main() async {
   await GetStorage.init();
@@ -20,7 +19,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       enableLog: true,
       debugShowCheckedModeBanner: false,
-      theme: AppThemes.lightTheme,
+      // theme: AppThemes.lightTheme,
       title: 'SEUYOUTOO',
       initialRoute: splashRoute,
       getPages: appRoutes,

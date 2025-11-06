@@ -1,43 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:souyoutoo/routes/routes_name.dart';
 import 'package:souyoutoo/src/components/app_text.dart';
 import 'package:souyoutoo/src/pages/home_view/home_view.dart';
-import 'package:souyoutoo/src/pages/news_view/news_view.dart';
-import 'package:souyoutoo/src/pages/question_view/question_view.dart';
-import 'package:souyoutoo/src/pages/stats/stats_view.dart';
-import 'package:souyoutoo/src/pages/trial_view/trial_view.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
 
 class MainTabView extends StatelessWidget {
-   MainTabView({super.key});
+  MainTabView({super.key});
 
   // ✅ STATE OUTSIDE BUILD → works even when widget is stateless
   static final ValueNotifier<int> currentIndex = ValueNotifier(0);
 
   final pages = const [
     HomeView(),
-    TrialView(),
-    QuestionView(),
-    StatsView(),
-    NewsView(),
+    Placeholder(),
+    Placeholder(),
+    Placeholder(),
+    Placeholder()
   ];
 
-  final labels = [
-    'HOME',
-    'TRIAL',
-    'CASES',
-    'STATS',
-    'NEWS',
-  ];
+  final labels = ['HOME', 'TRIAL', 'CASES', 'STATS', 'NEWS'];
 
-  final icons = [
-    tabHome,
-    tabTrial,
-    tabCases,
-    tabStats,
-    tabNews,
-  ];
+  final icons = [tabHome, tabTrial, tabCases, tabStats, tabNews];
 
   @override
   Widget build(BuildContext context) {
@@ -49,10 +34,7 @@ class MainTabView extends StatelessWidget {
         body: ValueListenableBuilder<int>(
           valueListenable: currentIndex,
           builder: (_, index, __) {
-            return IndexedStack(
-              index: index,
-              children: pages,
-            );
+            return IndexedStack(index: index, children: pages);
           },
         ),
         bottomNavigationBar: ValueListenableBuilder<int>(
@@ -64,7 +46,23 @@ class MainTabView extends StatelessWidget {
 
                 return Expanded(
                   child: GestureDetector(
-                    onTap: () => currentIndex.value = i,
+                    onTap: () {
+                      switch (i) {
+                        case 0:
+                          currentIndex.value = 0;
+                        case 1:
+                          Get.toNamed(trailRoute);
+                        case 2:
+                          Get.toNamed(questionRoute);
+                        case 3:
+                          Get.toNamed(statsRoute);
+                        case 4:
+                          Get.toNamed(newsRoute);
+                          break;
+                        default:
+                          currentIndex.value = 0;
+                      }
+                    },
                     child: Container(
                       height: 76,
                       decoration: BoxDecoration(

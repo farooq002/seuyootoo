@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:souyoutoo/src/base/base_view.dart';
 import 'package:souyoutoo/src/components/app_bar.dart';
 import 'package:souyoutoo/src/components/app_text.dart';
 import 'package:souyoutoo/src/components/app_text_icon.dart';
 import 'package:souyoutoo/src/components/background_container.dart';
-import 'package:souyoutoo/src/pages/question_view/question_view_controller.dart';
+import 'package:souyoutoo/src/controller/trail/trail_controller.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
 
-class QuestionView extends StatelessWidget {
-  const QuestionView({super.key});
+class QuestionView extends BaseView<TrailController> {
+   QuestionView({super.key});
+
+@override
+  final controller = Get.find<TrailController>();
 
   @override
-  Widget build(BuildContext context) {
-    final controller = Get.put(QuestionViewController());
+  Widget mBuild(BuildContext context) {
+    
 
     return Scaffold(
       appBar: appBar(
@@ -71,7 +75,7 @@ class QuestionView extends StatelessWidget {
                       Obx(
                         () => AppTextSemiBold(
                           text:
-                              "QUESTION ${controller.currentQuestionIndex.value + 1}/${controller.questions.length}",
+                         '',     // "QUESTION ${controller.currentQuestionIndex.value + 1}/${controller.questions.length}",
                           fontSize: 14,
                           fontFamily: 'VT323',
                         ),
@@ -80,7 +84,7 @@ class QuestionView extends StatelessWidget {
                         height: 14,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          itemCount: controller.questions.length,
+                          itemCount: 4,//controller.questions.length,
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemBuilder: (context, index) {
@@ -92,7 +96,7 @@ class QuestionView extends StatelessWidget {
                                   horizontal: 2,
                                 ),
                                 decoration: BoxDecoration(
-                                  color: controller.getProgressColor(index),
+                                  // color: controller.getProgressColor(index),
 
                                   border: Border.all(
                                     color: Colors.black,
@@ -112,8 +116,8 @@ class QuestionView extends StatelessWidget {
           ),
 
           Obx(() {
-            final question =
-                controller.questions[controller.currentQuestionIndex.value];
+            // final question =
+            //     controller.questions[controller.currentQuestionIndex.value];
             return Positioned(
               top: MediaQuery.of(context).size.height * 0.4,
               bottom: 10,
@@ -134,7 +138,7 @@ class QuestionView extends StatelessWidget {
                         fontFamily: 'VT323',
                       ),
                       AppTextRegular(
-                        text: question.question,
+                        text: '',//question.question,
                         fontSize: 18,
                         color: appBlack,
                         fontFamily: 'VT323',
@@ -172,45 +176,45 @@ class QuestionView extends StatelessWidget {
                           ),
                         ).paddingAll(10),
                       ).paddingSymmetric(vertical: 10),
-                      ...List.generate(question.options.length, (index) {
-                        final optionLabel = String.fromCharCode(65 + index);
+                      // ...List.generate(question.options.length, (index) {
+                      //   final optionLabel = String.fromCharCode(65 + index);
 
-                        return GestureDetector(
-                          onTap: () => controller.selectAnswer(index),
-                          child: Obx(
-                            () => AppAchievementContainer(
-                              width: double.infinity,
+                      //   return GestureDetector(
+                      //     onTap: () => controller.selectAnswer(index),
+                      //     child: Obx(
+                      //       () => AppAchievementContainer(
+                      //         width: double.infinity,
 
-                              margin: const EdgeInsets.symmetric(vertical: 6),
-                              // decoration: BoxDecoration(
-                              color: controller.optionColors[index],
-                              // border: Border.all(color: appBlack, width: 2),
-                              // ),
-                              borderColor: appBlack,
-                              isBorderAvailable: true,
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  AppTextRegular(
-                                    text: "$optionLabel: ",
-                                    fontSize: 16,
-                                    color: Colors.black,
-                                    fontFamily: 'VT323',
-                                  ),
-                                  Expanded(
-                                    child: AppTextRegular(
-                                      text: question.options[index],
-                                      fontSize: 16,
-                                      color: appBlack,
-                                      fontFamily: 'VT323',
-                                    ),
-                                  ),
-                                ],
-                              ).paddingAll(10),
-                            ),
-                          ),
-                        );
-                      }),
+                      //         margin: const EdgeInsets.symmetric(vertical: 6),
+                      //         // decoration: BoxDecoration(
+                      //         color: controller.optionColors[index],
+                      //         // border: Border.all(color: appBlack, width: 2),
+                      //         // ),
+                      //         borderColor: appBlack,
+                      //         isBorderAvailable: true,
+                      //         child: Row(
+                      //           crossAxisAlignment: CrossAxisAlignment.start,
+                      //           children: [
+                      //             AppTextRegular(
+                      //               text: "$optionLabel: ",
+                      //               fontSize: 16,
+                      //               color: Colors.black,
+                      //               fontFamily: 'VT323',
+                      //             ),
+                      //             Expanded(
+                      //               child: AppTextRegular(
+                      //                 text: question.options[index],
+                      //                 fontSize: 16,
+                      //                 color: appBlack,
+                      //                 fontFamily: 'VT323',
+                      //               ),
+                      //             ),
+                      //           ],
+                      //         ).paddingAll(10),
+                      //       ),
+                      //     ),
+                      //   );
+                      // }),
                     ],
                   ),
                 ).paddingAll(10),

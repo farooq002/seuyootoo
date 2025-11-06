@@ -17,7 +17,8 @@ class NewsView extends StatelessWidget {
     return Scaffold(
       appBar: appBar(
         context,
-        leftIconSvg: null,
+       leftIconSvg: icBack,
+        onLeftIconPress: () => Get.back(),
         titleText: 'Progress & Evolution',
       ),
       body: Stack(

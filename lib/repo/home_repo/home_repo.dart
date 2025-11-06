@@ -20,7 +20,7 @@ abstract base class HomeRepo {
   Future<NetworkResponse<CompleteCaseResponse>?> completeCase(
     CompletenessRequest req,
   );
-  Future<AchievementsResponse>? achievements();
+  Future<AchievementsResponse?> achievements();
   Future<NetworkResponse<GiveAchievementResponse>?> giveAchievement(
     GiveAchievementRequest req,
   );

@@ -34,12 +34,13 @@ class CaseByIdResponse {
       'levelRequired': levelRequired,
       'rewardTokens': rewardTokens,
       'rewardExp': rewardExp,
-      'createdAt': createdAt,
+      'created_at': createdAt,
       'questions': questions?.map((x) => x.toMap()).toList(),
     };
   }
 
   factory CaseByIdResponse.fromMap(Map<String, dynamic> map) {
+    print(map);
     return CaseByIdResponse(
       id: map['id'] as dynamic,
       title: map['title'] as String,
@@ -48,7 +49,7 @@ class CaseByIdResponse {
       levelRequired: map['levelRequired'] as dynamic,
       rewardTokens: map['rewardTokens'] as dynamic,
       rewardExp: map['rewardExp'] as dynamic,
-      createdAt: map['createdAt'] as String,
+      createdAt: map['created_at'] as dynamic,
       questions: List<Question>.from(
         (map['questions'] as List).map<Question>(
           (x) => Question.fromMap(x as Map<String, dynamic>),
@@ -101,7 +102,7 @@ class Question {
   final String? questionText;
   final String? evidence;
   final dynamic order;
-  final List<String>? choices;
+  final List<dynamic>? choices;
   final dynamic correctAnswerIndex;
   final dynamic timeLimitSeconds;
   Question({
@@ -132,7 +133,7 @@ class Question {
       questionText: map['question_text'] as String,
       evidence: map['evidence'] as String,
       order: map['order'] as dynamic,
-      choices: List<String>.from((map['choices'] as List<String>)),
+      choices: List<dynamic>.from((map['choices'] as List<dynamic>)),
       correctAnswerIndex: map['correct_answer_index'] as dynamic,
       timeLimitSeconds: map['time_limit_seconds'] as dynamic,
     );

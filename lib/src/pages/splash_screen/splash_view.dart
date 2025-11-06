@@ -4,6 +4,7 @@ import 'package:souyoutoo/src/components/app_image.dart';
 import 'package:souyoutoo/routes/routes_name.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
+import 'package:souyoutoo/utils/local_storage/storage_service.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -17,7 +18,13 @@ class _SplashViewState extends State<SplashView> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 3), () {
-      Get.toNamed(loginRoute);
+      bool isLoggedIn = StorageService.instance.getToken()?.isNotEmpty ?? false; 
+       if (!isLoggedIn) {
+      Get.offAllNamed(loginRoute);
+    }else {
+      Get.offAllNamed(homeRoute);
+    }
+      
     });
   }
 

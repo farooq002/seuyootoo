@@ -130,7 +130,7 @@ base class HomeRepoImpl extends HomeRepo {
   }
 
   @override
-  Future<AchievementsResponse>? achievements() async {
+  Future<AchievementsResponse?> achievements() async {
     dynamic result;
     final request = NetworkRequest(
       path: NetworkService.achievements,

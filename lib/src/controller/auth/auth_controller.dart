@@ -6,7 +6,7 @@ import 'package:souyoutoo/repo/auth_repo/auth_repo.dart';
 import 'package:souyoutoo/repo/auth_repo/auth_repo_impl.dart';
 import 'package:souyoutoo/routes/routes_name.dart';
 import 'package:souyoutoo/src/base/base_view_controller.dart';
-import 'package:souyoutoo/utils/constant.dart';
+import 'package:souyoutoo/utils/local_storage/storage_service.dart';
 
 class AuthController extends BaseViewController {
   final AuthRepo repository = AuthRepoImpl();
@@ -21,14 +21,13 @@ class AuthController extends BaseViewController {
       email: emailController.text,
       password: passwordController.text,
     );
-    final response = await repository.login(request);
-    if (response != null) {
-      stopLoading();
-      Get.offAllNamed(homeRoute);
-      token = 'Token ${response.token!}';
-    }
-
+    final res = await repository.login(request);
     stopLoading();
+    if (res != null) {
+      StorageService.instance.saveToken(res.token!);
+      StorageService.instance.saveUser(res.profile!);
+      Get.offAllNamed(homeRoute);
+    }
   }
 
   signUp() async {

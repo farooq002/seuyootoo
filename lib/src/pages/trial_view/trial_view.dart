@@ -1,53 +1,43 @@
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:souyoutoo/src/base/base_view.dart';
 import 'package:souyoutoo/src/components/app_bar.dart';
 import 'package:souyoutoo/src/components/app_button.dart';
 import 'package:souyoutoo/src/components/app_text.dart';
-import 'package:souyoutoo/routes/routes_name.dart';
-import 'package:souyoutoo/src/controller/home_controller.dart';
+import 'package:souyoutoo/src/controller/trail/trail_controller.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
 
-class TrialView extends StatelessWidget {
-  const TrialView({super.key});
+class TrialView extends BaseView<TrailController> {
+  TrialView({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final controller = Get.put(HomeController());
+  final controller = Get.put(TrailController());
+  @override
+  Widget mBuild(BuildContext context) {
     return Scaffold(
       appBar: appBar(
         context,
         leftIconSvg: icBack,
         onLeftIconPress: () => Get.back(),
         titleText: 'BACK',
-        customButton: Obx(() {
-          final caseId = controller.caseData.value.cases?.first.id;
-
-          return AppTextButton(
-            text: 'New Case',
-            fontSize: 29,
-            color: appWhite,
-            fontFamily: 'VT323',
-            onPressed: caseId == null
-                ? () {}
-                : () {
-                    Get.toNamed(questionRoute, arguments: {'caseId': caseId});
-                  },
-          );
-        }),
+        customButton: AppTextButton(
+          text: 'NEW CASE',
+          fontSize: 24,
+          color: appWhite,
+          fontFamily: 'VT323',
+          onPressed: () {
+            final caseId = controller.caseData.value.cases?.first.id;
+            controller.getCaseById(caseId);
+          },
+        ),
       ),
-      body: TrailViewComponent(),
+      body: trailComponent(),
     );
   }
-}
 
-class TrailViewComponent extends StatelessWidget {
-  const TrailViewComponent({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final controller = Get.put(HomeController());
+  Widget trailComponent() {
     return Stack(
       children: [
         Positioned.fill(
@@ -186,8 +176,8 @@ class TrailViewComponent extends StatelessWidget {
                                 0;
                             return Image.asset(
                               index < difficulty ? icStar : icStarBlack,
-                              width: 12,
-                              height: 12,
+                              width: 18,
+                              height: 18,
                             ).paddingOnly(right: 4);
                           }),
                         ),
@@ -203,7 +193,7 @@ class TrailViewComponent extends StatelessWidget {
                         ),
                         AppTextRegular(
                           text:
-                              '${controller.caseData.value.cases?.first.questionsCount}',
+                              '${controller.caseData.value.cases?.first.questionsCount} Questions (~3 MINS)',
                           fontFamily: 'VT323',
                           fontSize: 18,
                         ),
@@ -219,18 +209,18 @@ class TrailViewComponent extends StatelessWidget {
                         const Spacer(),
                         AppTextRegular(
                           text:
-                              '${controller.caseData.value.cases?.first.rewardExp} XP',
+                              '+${controller.caseData.value.cases?.first.rewardExp} XP',
                           fontFamily: 'VT323',
                           fontSize: 18,
                           color: appGreen,
                         ),
                         Image.asset(
                           icFrame,
-                          width: 12,
-                          height: 12,
+                          width: 18,
+                          height: 18,
                         ).paddingOnly(left: 4),
                       ],
-                    ).paddingSymmetric(vertical: 10),
+                    ).paddingSymmetric(vertical: 10).paddingOnly(right: 30),
                   ],
                 ),
               ),
