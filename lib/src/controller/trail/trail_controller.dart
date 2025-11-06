@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:souyoutoo/model/home_models/Get_all_case_resp.dart';
 import 'package:souyoutoo/model/home_models/case_by_id_model.dart';
-import 'package:souyoutoo/model/home_models/take_cases_response.dart';
 import 'package:souyoutoo/repo/trail_repo/trail_repo.dart';
 import 'package:souyoutoo/repo/trail_repo/trail_repo_impl.dart';
 import 'package:souyoutoo/routes/routes_name.dart';
@@ -12,6 +11,7 @@ class TrailController extends BaseViewController{
 
 final caseData = GetAllCaseResp().obs;
 final caseDetail = CaseByIdResponse().obs;
+final currentQuestIndex = 1.obs;
 
 
   @override
