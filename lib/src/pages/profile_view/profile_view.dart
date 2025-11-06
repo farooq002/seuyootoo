@@ -22,10 +22,12 @@ class ProfileView extends StatelessWidget {
         titleText: 'BACK',
         leftIconSvg: icBack,
         onLeftIconPress: () => Get.back(),
-        customButton: AppTextIcon(
-          onPressed: () {},
-          icon: appImageAsset(icTrophy, height: 14),
-          text: 'TOKENS 47',
+        customButton: Obx(
+          () => AppTextIcon(
+            onPressed: () {},
+            icon: appImageAsset(icTrophy, height: 14),
+            text: 'TOKENS ${controller.profileData.value.tokens ?? 1}',
+          ),
         ),
       ),
       body: Stack(
@@ -58,7 +60,18 @@ class ProfileView extends StatelessWidget {
                     shadowColor: appBlack,
                     child: Column(
                       children: [
-                        Card(child: appImageAsset(icProfile)),
+                        Obx(
+                          () => Card(
+                            child:
+                                controller.profileData.value.profileImage !=
+                                    null
+                                ? Image.network(
+                                    controller.profileData.value.profileImage!,
+                                    height: 100,
+                                  )
+                                : appImageAsset(icProfile, height: 30),
+                          ),
+                        ),
                         AppTextRegular(text: 'COUNSELORMAX', fontSize: 18),
                         AppTextRegular(text: 'LEVEL 5 - JUNIOR', fontSize: 12),
                         AppTextRegular(text: 'PARALEGAL', fontSize: 12),
@@ -161,35 +174,49 @@ class ProfileView extends StatelessWidget {
                           ).paddingAll(10).paddingOnly(top: 10),
                         ),
                         ListView.builder(
-                          shrinkWrap: true, // 👈 allows it to size itself
-                          physics:
-                              const NeverScrollableScrollPhysics(), // 👈 avoids nested scroll
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          // itemCount: controller
+                          //     .achievementData
+                          //     .value
+                          //     .achievement
+                          //     ?.length, // ??
                           itemCount: controller.boxItems.length,
                           itemBuilder: (context, index) {
-                            final boxItem = controller.boxItems[index];
+                            // final boxItem = controller.boxItems[index];
+                            final achievements = controller
+                                .achievementData
+                                .value
+                                .achievement?[index];
                             return Row(
                               children: [
                                 AppAchievementContainer(
                                   borderWidth: 4.0,
-                                  color: boxItem.backgroundColor,
+                                  color: appAmber,
                                   isShadowAvailblle: false,
                                   borderColor: appBlack,
-                                  child: appImageAsset(
-                                    boxItem.icon ?? '',
-                                    color: boxItem.color,
-                                    height: 20,
-                                  ).paddingAll(10),
+                                  child: achievements?.icon != null
+                                      ? Image.network(achievements?.icon ?? '')
+                                      : appImageAsset(
+                                          tabTrial,
+                                          color: appBlack,
+                                          height: 20,
+                                        ).paddingAll(10),
                                 ).paddingAll(10),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     AppTextRegular(
-                                      text: boxItem.name,
+                                      text:
+                                          achievements?.name ?? "boxItem.name",
                                       fontSize: 12,
-                                      color: boxItem.textColor,
+                                      color: appBlack,
                                     ),
                                     AppTextRegular(
-                                      text: boxItem.description ?? '',
+                                      text:
+                                          achievements?.description ??
+                                          // boxItem.description ??
+                                          '',
                                       fontSize: 10,
                                       color: appgray,
                                     ),
@@ -199,6 +226,7 @@ class ProfileView extends StatelessWidget {
                             );
                           },
                         ),
+
                         AppElevatedButton(
                           text: 'VIEW ALL',
                           color: appBlue,

@@ -38,7 +38,8 @@ base class HomeRepoImpl extends HomeRepo {
   }
 
   @override
-  Future<NetworkResponse<GetAllCaseResp>?> getCases() async {
+  Future<GetAllCaseResp>? getCases() async {
+    dynamic result;
     final request = NetworkRequest(
       path: NetworkService.getCases,
       type: NetworkRequestType.GET,
@@ -49,6 +50,7 @@ base class HomeRepoImpl extends HomeRepo {
     );
     response?.maybeWhen(
       ok: (data) {
+        result = data;
         print('Hurry Success');
       },
       orElse: () {
@@ -56,7 +58,7 @@ base class HomeRepoImpl extends HomeRepo {
       },
     );
 
-    return response;
+    return result;
   }
 
   Future<NetworkResponse<LoggedUserCasesResponses>?> getMyCases() async {
@@ -82,7 +84,8 @@ base class HomeRepoImpl extends HomeRepo {
   }
 
   @override
-  Future<NetworkResponse<GetProfileResponse>?> getProfile() async {
+  Future<GetProfileResponse>? getProfile() async {
+    dynamic result;
     final request = NetworkRequest(
       path: NetworkService.getProfile,
       type: NetworkRequestType.GET,
@@ -91,8 +94,10 @@ base class HomeRepoImpl extends HomeRepo {
       request,
       GetProfileResponse.fromMap,
     );
+
     response?.maybeWhen(
       ok: (data) {
+        result = data;
         print('Hurry Success');
       },
       orElse: () {
@@ -100,7 +105,7 @@ base class HomeRepoImpl extends HomeRepo {
       },
     );
 
-    return response;
+    return result;
   }
 
   Future<NetworkResponse<ProgressResponse>?> getProgress() async {
@@ -125,7 +130,8 @@ base class HomeRepoImpl extends HomeRepo {
   }
 
   @override
-  Future<NetworkResponse<AchievementsResponse>?> achievements() async {
+  Future<AchievementsResponse>? achievements() async {
+    dynamic result;
     final request = NetworkRequest(
       path: NetworkService.achievements,
       type: NetworkRequestType.GET,
@@ -136,6 +142,7 @@ base class HomeRepoImpl extends HomeRepo {
     );
     response?.maybeWhen(
       ok: (data) {
+        result = data;
         print('Hurry Success');
       },
       orElse: () {
@@ -143,7 +150,7 @@ base class HomeRepoImpl extends HomeRepo {
       },
     );
 
-    return response;
+    return result;
   }
 
   @override
@@ -220,9 +227,8 @@ base class HomeRepoImpl extends HomeRepo {
   }
 
   @override
-  Future<NetworkResponse<TakeCasesResponse>?> takeCase(
-    TakeCaseRequest req,
-  ) async {
+  Future<TakeCasesResponse?>? takeCase(TakeCaseRequest req) async {
+    dynamic result;
     final request = NetworkRequest(
       path: NetworkService.takeCase,
       type: NetworkRequestType.POST,
@@ -234,6 +240,7 @@ base class HomeRepoImpl extends HomeRepo {
     );
     response?.maybeWhen(
       ok: (data) {
+        result = data;
         print('Hurry Success');
       },
       orElse: () {
@@ -241,6 +248,6 @@ base class HomeRepoImpl extends HomeRepo {
       },
     );
 
-    return response;
+    return result;
   }
 }

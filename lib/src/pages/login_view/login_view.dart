@@ -8,6 +8,7 @@ import 'package:souyoutoo/src/components/app_text_field.dart';
 import 'package:souyoutoo/src/components/app_text_icon.dart';
 import 'package:souyoutoo/routes/routes_name.dart';
 import 'package:souyoutoo/src/controller/auth_controller.dart';
+import 'package:souyoutoo/src/extensions/validation+extension.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
 
@@ -17,7 +18,7 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(AuthController());
-    final formKey = GlobalKey();
+    final formKey = GlobalKey<FormState>();
     return SafeArea(
       child: Scaffold(
         backgroundColor: appLightPink,
@@ -43,13 +44,14 @@ class LoginView extends StatelessWidget {
                 ).paddingSymmetric(vertical: 10),
                 AppTextField(
                   textController: controller.emailController,
+                  validator: SouyouTooValidations.shared.email(),
                   outlineBorder: OutlineInputBorder(
-                    borderSide: BorderSide(width: 5, color: appDarkBrown),
+                    borderSide: BorderSide(width: 2, color: appDarkBrown),
                     borderRadius: BorderRadius.zero,
                   ),
                   fontFamily: 'VT323',
                   hintText: 'Enter your Email',
-            
+
                   backgroundColor: appWhite,
                 ),
                 AppTextRegular(
@@ -58,20 +60,37 @@ class LoginView extends StatelessWidget {
                   color: appDarkBrown,
                   fontSize: 18,
                 ).paddingSymmetric(vertical: 10),
-                AppTextField(
-                  textController: controller.passwordController,
-                  outlineBorder: OutlineInputBorder(
-                    borderSide: BorderSide(width: 2, color: appDarkBrown),
-                    borderRadius: BorderRadius.zero,
+                Obx(
+                  () => AppTextField(
+                    textController: controller.passwordController,
+                    // validator: SouyouTooValidations.shared.password(),
+                    outlineBorder: OutlineInputBorder(
+                      borderSide: BorderSide(width: 2, color: appDarkBrown),
+                      borderRadius: BorderRadius.zero,
+                    ),
+                    isSecured: true,
+                    obscureText: controller.obscureText.value,
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        controller.obscureText.value
+                            ? Icons.visibility_off
+                            : Icons.visibility,
+                      ),
+                      onPressed: () {
+                        controller.obscureText.toggle();
+                      },
+                    ),
+                    hintText: 'Enter your Password',
                   ),
-                  hintText: 'Enter your Password',
                 ),
                 AppElevatedButton(
                   onPressed: () {
-                    final box = GetStorage();
-                    box.write('isLoggedIn', true);
-                    controller.login();
-                    // Get.offAllNamed(homeRoute);
+                    if (formKey.currentState!.validate()) {
+                      final box = GetStorage();
+                      box.write('isLoggedIn', true);
+                      controller.login();
+                      // Get.offAllNamed(homeRoute);
+                    }
                   },
                   text: 'Login',
                   color: appAmber,

@@ -1,23 +1,31 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-class AchievementsResponse {
-  final Achievements achievement;
-  AchievementsResponse({required this.achievement});
+import 'package:flutter/foundation.dart';
 
-  AchievementsResponse copyWith({Achievements? achievement}) {
+class AchievementsResponse {
+  final List<Achievements>? achievement;
+  AchievementsResponse({this.achievement});
+
+  AchievementsResponse copyWith({List<Achievements>? achievement}) {
     return AchievementsResponse(achievement: achievement ?? this.achievement);
   }
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'achievement': achievement.toMap()};
+    return <String, dynamic>{
+      'achievement': achievement?.map((x) => x.toMap()).toList(),
+    };
   }
 
   factory AchievementsResponse.fromMap(Map<String, dynamic> map) {
     return AchievementsResponse(
-      achievement: Achievements.fromMap(
-        map['achievement'] as Map<String, dynamic>,
-      ),
+      achievement: map['achievement'] != null
+          ? List<Achievements>.from(
+              (map['achievement'] as List).map<Achievements?>(
+                (x) => Achievements.fromMap(x as Map<String, dynamic>),
+              ),
+            )
+          : null,
     );
   }
 
@@ -33,7 +41,7 @@ class AchievementsResponse {
   bool operator ==(covariant AchievementsResponse other) {
     if (identical(this, other)) return true;
 
-    return other.achievement == achievement;
+    return listEquals(other.achievement, achievement);
   }
 
   @override

@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:dio/dio.dart' as dio;
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:souyoutoo/utils/constant.dart';
 import 'environment_config.dart';
 import 'global_config.dart';
 import 'network_request.dart';
@@ -42,6 +43,7 @@ class NetworkService {
     final headers = _currentEnvironment.httpHeaders;
     headers['Content-Type'] = 'application/json';
     headers['X-API-KEY'] = 'hzZN7mfyxWvS7ffv6zFdInYnhyMD';
+    headers['Authorization'] = token;
     if (_currentEnvironment.authorizationToken != null &&
         _currentEnvironment.authorizationToken != '') {
       headers['Authorization'] =

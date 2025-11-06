@@ -11,16 +11,16 @@ import 'package:souyoutoo/model/home_models/user_profile.dart';
 import 'package:souyoutoo/remote/network_response.dart';
 
 abstract base class HomeRepo {
-  Future<NetworkResponse<GetProfileResponse>?> getProfile();
+  Future<GetProfileResponse>? getProfile();
   Future<NetworkResponse<ProgressResponse>?> getProgress();
-  Future<NetworkResponse<GetAllCaseResp>?> getCases();
+  Future<GetAllCaseResp>? getCases();
   Future<NetworkResponse<CaseByIdResponse>?> getCaseByID();
   Future<NetworkResponse<LoggedUserCasesResponses>?> getMyCases();
-  Future<NetworkResponse<TakeCasesResponse>?> takeCase(TakeCaseRequest req);
+  Future<TakeCasesResponse?>? takeCase(TakeCaseRequest req);
   Future<NetworkResponse<CompleteCaseResponse>?> completeCase(
     CompletenessRequest req,
   );
-  Future<NetworkResponse<AchievementsResponse>?> achievements();
+  Future<AchievementsResponse>? achievements();
   Future<NetworkResponse<GiveAchievementResponse>?> giveAchievement(
     GiveAchievementRequest req,
   );

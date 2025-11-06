@@ -38,6 +38,7 @@
 // }
 
 import 'package:dio/dio.dart';
+import 'package:souyoutoo/utils/constant.dart';
 import 'environment_config.dart';
 
 enum Environment { live, stage, dev, qa }
@@ -71,7 +72,7 @@ class GlobalConfig {
       baseUrl: baseUrl,
       dioClient: Dio(), // ✅ ensures dioClient is initialized
       httpHeaders: {},
-      authorizationToken: '',
+      authorizationToken: token,
     );
   }
 

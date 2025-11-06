@@ -57,7 +57,7 @@ base class AuthRepoImpl extends AuthRepo {
     response?.maybeWhen(
       ok: (data) {
         result = data;
-        print('Hurry Success');
+        print(data.toString());
       },
       orElse: () {
         print('Error');
@@ -73,13 +73,14 @@ base class AuthRepoImpl extends AuthRepo {
       type: NetworkRequestType.POST,
       data: NetworkRequestBody.json(req.toMap()),
     );
-
+    dynamic result;
     final response = await NetworkService.shared.execute<SignUpResponse>(
       request,
       SignUpResponse.fromMap,
     );
     response?.maybeWhen(
       ok: (data) {
+        result = data;
         print('Hurry Success');
       },
       orElse: () {
@@ -100,6 +101,6 @@ base class AuthRepoImpl extends AuthRepo {
     //     orElse: () => debugPrint('Some Error Occurred'),
     //   );
     // }
-    return response;
+    return result;
   }
 }
