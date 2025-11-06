@@ -1,25 +1,28 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:souyoutoo/model/home_models/Get_all_case_resp.dart';
 import 'package:souyoutoo/model/home_models/case_by_id_model.dart';
+import 'package:souyoutoo/model/home_models/complete_case_response.dart';
 import 'package:souyoutoo/repo/trail_repo/trail_repo.dart';
 import 'package:souyoutoo/repo/trail_repo/trail_repo_impl.dart';
 import 'package:souyoutoo/routes/routes_name.dart';
 import 'package:souyoutoo/src/base/base_view_controller.dart';
 
-class TrailController extends BaseViewController{
+class TrailController extends BaseViewController {
   final TrailRepo trailRepo = TrailRepoImp();
 
-final caseData = GetAllCaseResp().obs;
-final caseDetail = CaseByIdResponse().obs;
-final currentQuestIndex = 1.obs;
-
+  final caseData = GetAllCaseResp().obs;
+  final caseDetail = CaseByIdResponse().obs;
+  final caseCompleteRes = CompleteCaseResponse().obs;
+  final currentQuestIndex = 0.obs;
 
   @override
   void onInit() {
     super.onInit();
     getAllCases();
   }
-   getAllCases() async {
+
+  getAllCases() async {
     startLoading();
     final response = await trailRepo.getCases();
     stopLoading();
@@ -28,14 +31,64 @@ final currentQuestIndex = 1.obs;
     }
   }
 
-   getCaseById(caseId) async {
+  getCaseById(caseId) async {
     startLoading();
     final response = await trailRepo.getCaseByID(caseId);
     stopLoading();
     if (response != null) {
+      currentQuestIndex.value = 0;
+      caseDetail.value = CaseByIdResponse();
       caseDetail.value = response;
       Get.toNamed(questionRoute, arguments: {'caseId': caseId});
     }
-    
+  }
+    completeCase(caseId) async {
+    startLoading();
+    var req = CompletenessRequest(caseId: caseId);
+    final response = await trailRepo.completeCase(req);
+    stopLoading();
+    if (response != null) {
+      caseCompleteRes.value = response;
+      Get.offAndToNamed(verdictRoute);
+    }
+  }
+
+  Color optionColor(int questionIndex, int optionIndex) {
+    final question = caseDetail.value.questions?[questionIndex];
+    if (question == null) return Colors.grey;
+    if (question.type.value == QuestionType.notdefined) {
+      return Colors.white;
+    }
+    if (optionIndex == question.correctAnswerIndex) {
+      return Colors.green;
+    }
+    if (question.type.value == QuestionType.wrong &&
+        optionIndex != question.correctAnswerIndex) {
+      return Colors.red;
+    }
+    return Colors.white;
+  }
+
+  goToNextQuest(selectedIndex) {
+    if (caseDetail
+            .value
+            .questions?[currentQuestIndex.value]
+            .correctAnswerIndex ==
+        selectedIndex) {
+      caseDetail.value.questions?[currentQuestIndex.value].type.value =
+          QuestionType.correct;
+    } else {
+      caseDetail.value.questions?[currentQuestIndex.value].type.value =
+          QuestionType.wrong;
+    }
+
+    Future.delayed(Durations.medium2 + Durations.long2, () async{
+      if ((caseDetail.value.questions?.length ?? 0) - 1 >
+          currentQuestIndex.value) {
+        currentQuestIndex.value += 1;
+      } else {
+        await completeCase(caseDetail.value.id);
+      }
+    });
   }
 }

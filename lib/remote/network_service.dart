@@ -30,7 +30,7 @@ class NetworkService {
   static const getCaseByID = '${authUrl}case';
   static const getMyCases = '${authUrl}my-cases';
   static const takeCase = '${authUrl}take-case';
-  static const completeCase = '${authUrl}complete-case';
+  static const completeCase = '${authUrl}complete-case/';
   static const achievements = '${authUrl}achievements';
   static const giveAchievement = '${authUrl}give-achievement';
   static const myAchievements = '${authUrl}my-achievements';

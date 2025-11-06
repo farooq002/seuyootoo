@@ -1,7 +1,6 @@
 import 'package:souyoutoo/model/home_models/Get_all_case_resp.dart';
 import 'package:souyoutoo/model/home_models/achievements_response.dart';
 import 'package:souyoutoo/model/home_models/case_by_id_model.dart';
-import 'package:souyoutoo/model/home_models/complete_case_response.dart';
 import 'package:souyoutoo/model/home_models/get_user_achievements.dart';
 import 'package:souyoutoo/model/home_models/give_achievement_response.dart';
 import 'package:souyoutoo/model/home_models/logged_user_response.dart';
@@ -153,30 +152,7 @@ base class HomeRepoImpl extends HomeRepo {
     return result;
   }
 
-  @override
-  Future<NetworkResponse<CompleteCaseResponse>?> completeCase(
-    CompletenessRequest req,
-  ) async {
-    final request = NetworkRequest(
-      path: NetworkService.completeCase,
-      type: NetworkRequestType.POST,
-      data: NetworkRequestBody.json(req.toMap()),
-    );
-    final response = await NetworkService.shared.execute<CompleteCaseResponse>(
-      request,
-      CompleteCaseResponse.fromMap,
-    );
-    response?.maybeWhen(
-      ok: (data) {
-        print('Hurry Success');
-      },
-      orElse: () {
-        print('Error');
-      },
-    );
 
-    return response;
-  }
 
   @override
   Future<NetworkResponse<GiveAchievementResponse>?> giveAchievement(

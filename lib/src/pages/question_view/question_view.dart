@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:souyoutoo/model/home_models/case_by_id_model.dart';
 import 'package:souyoutoo/src/base/base_view.dart';
 import 'package:souyoutoo/src/components/app_bar.dart';
 import 'package:souyoutoo/src/components/app_text.dart';
@@ -10,15 +11,13 @@ import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
 
 class QuestionView extends BaseView<TrailController> {
-   QuestionView({super.key});
+  QuestionView({super.key});
 
-@override
+  @override
   final controller = Get.find<TrailController>();
 
   @override
   Widget mBuild(BuildContext context) {
-    
-
     return Scaffold(
       appBar: appBar(
         context,
@@ -63,41 +62,61 @@ class QuestionView extends BaseView<TrailController> {
               shadowColor: appBlack,
               child: Column(
                 children: [
-                  AppTextBold(
-                    text: 'The People vs. Unpaid Overtime',
-                    fontSize: 18,
-                    fontFamily: 'VT323',
-                    color: Colors.black,
-                  ).paddingOnly(bottom: 10),
+                  Obx(
+                    () => AppTextBold(
+                      text: controller.caseDetail.value.title ?? '',
+                      fontSize: 18,
+                      fontFamily: 'VT323',
+                      color: Colors.black,
+                    ).paddingOnly(bottom: 10),
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Obx(
                         () => AppTextSemiBold(
                           text:
-                              "QUESTION ${controller.currentQuestIndex.value}/${controller.caseDetail.value.questions?.length ?? 0}",
+                              "QUESTION ${controller.currentQuestIndex.value + 1}/${controller.caseDetail.value.questions?.length ?? 0}",
                           fontSize: 14,
                           fontFamily: 'VT323',
                         ),
                       ),
                       SizedBox(
-                        height: 14,
+                        height: 16,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          itemCount: controller.caseDetail.value.questions?.length ?? 0,
+                          itemCount:
+                              controller.caseDetail.value.questions?.length ??
+                              0,
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemBuilder: (context, index) {
                             return Obx(
                               () => Container(
-                                width: 12,
-                                height: 12,
+                                width: 16,
+                                height: 16,
                                 margin: const EdgeInsets.symmetric(
                                   horizontal: 2,
                                 ),
                                 decoration: BoxDecoration(
-                                  color: controller.getProgressColor(index),
-
+                                  color:
+                                      controller
+                                              .caseDetail
+                                              .value
+                                              .questions?[index]
+                                              .type
+                                              .value ==
+                                          QuestionType.correct
+                                      ? Colors.green
+                                      : controller
+                                                .caseDetail
+                                                .value
+                                                .questions?[index]
+                                                .type
+                                                .value ==
+                                            QuestionType.wrong
+                                      ? Colors.red
+                                      : Colors.grey,
                                   border: Border.all(
                                     color: Colors.black,
                                     width: 2,
@@ -116,10 +135,12 @@ class QuestionView extends BaseView<TrailController> {
           ),
 
           Obx(() {
-            final question =
-                controller.questions[controller.currentQuestionIndex.value];
+            final question = controller
+                .caseDetail
+                .value
+                .questions?[controller.currentQuestIndex.value];
             return Positioned(
-              top: MediaQuery.of(context).size.height * 0.4,
+              top: MediaQuery.of(context).size.height * 0.5,
               bottom: 10,
               left: 0,
               right: 0,
@@ -138,7 +159,7 @@ class QuestionView extends BaseView<TrailController> {
                         fontFamily: 'VT323',
                       ),
                       AppTextRegular(
-                        text: question.question,
+                        text: question?.questionText ?? '',
                         fontSize: 18,
                         color: appBlack,
                         fontFamily: 'VT323',
@@ -176,41 +197,43 @@ class QuestionView extends BaseView<TrailController> {
                           ),
                         ).paddingAll(10),
                       ).paddingSymmetric(vertical: 10),
-                      ...List.generate(question.options.length, (index) {
+                      ...List.generate(question?.choices?.length ?? 0, (index) {
                         final optionLabel = String.fromCharCode(65 + index);
 
-                        return GestureDetector(
-                          onTap: () => controller.selectAnswer(index),
-                          child: Obx(
-                            () => AppAchievementContainer(
-                              width: double.infinity,
-
-                              margin: const EdgeInsets.symmetric(vertical: 6),
-                              // decoration: BoxDecoration(
-                              color: controller.optionColors[index],
-                              // border: Border.all(color: appBlack, width: 2),
-                              // ),
-                              borderColor: appBlack,
-                              isBorderAvailable: true,
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  AppTextRegular(
-                                    text: "$optionLabel: ",
-                                    fontSize: 16,
-                                    color: Colors.black,
-                                    fontFamily: 'VT323',
-                                  ),
-                                  Expanded(
-                                    child: AppTextRegular(
-                                      text: question.options[index],
+                        return Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                            onTap: () => controller.goToNextQuest(index),
+                            child: Obx(
+                              () => AppAchievementContainer(
+                                width: double.infinity,
+                                margin: const EdgeInsets.symmetric(vertical: 6),
+                                color: controller.optionColor(
+                                  controller.currentQuestIndex.value,
+                                  index,
+                                ),
+                                borderColor: appBlack,
+                                isBorderAvailable: true,
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    AppTextRegular(
+                                      text: "$optionLabel: ",
                                       fontSize: 16,
-                                      color: appBlack,
+                                      color: Colors.black,
                                       fontFamily: 'VT323',
                                     ),
-                                  ),
-                                ],
-                              ).paddingAll(10),
+                                    Expanded(
+                                      child: AppTextRegular(
+                                        text: question?.choices?[index],
+                                        fontSize: 16,
+                                        color: appBlack,
+                                        fontFamily: 'VT323',
+                                      ),
+                                    ),
+                                  ],
+                                ).paddingAll(10),
+                              ),
                             ),
                           ),
                         );

@@ -25,7 +25,7 @@ final appRoutes = [
     middlewares: [AuthMiddleWare()],
   ),
   GetPage(name: shopRoute, page: () => const ShopView()),
-  GetPage(name: verdictRoute, page: () => const VerdictView()),
+  GetPage(name: verdictRoute, page: () =>  VerdictView()),
   GetPage(name: mapRoute, page: () => const MapView()),
   GetPage(name: trailRoute, page: () =>  TrialView()),
   GetPage(name: profileRoute, page: () => const ProfileView()),

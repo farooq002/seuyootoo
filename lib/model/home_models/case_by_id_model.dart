@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
+import 'package:get/get_rx/get_rx.dart';
 
 class CaseByIdResponse {
   final dynamic id;
@@ -33,7 +34,7 @@ class CaseByIdResponse {
       'difficulty': difficulty,
       'levelRequired': levelRequired,
       'rewardTokens': rewardTokens,
-      'rewardExp': rewardExp,
+      'reward_exp': rewardExp,
       'created_at': createdAt,
       'questions': questions?.map((x) => x.toMap()).toList(),
     };
@@ -48,7 +49,7 @@ class CaseByIdResponse {
       difficulty: map['difficulty'] as dynamic,
       levelRequired: map['levelRequired'] as dynamic,
       rewardTokens: map['rewardTokens'] as dynamic,
-      rewardExp: map['rewardExp'] as dynamic,
+      rewardExp: map['reward_exp'] as dynamic,
       createdAt: map['created_at'] as dynamic,
       questions: List<Question>.from(
         (map['questions'] as List).map<Question>(
@@ -96,7 +97,7 @@ class CaseByIdResponse {
         questions.hashCode;
   }
 }
-
+enum QuestionType{ correct, wrong, notdefined }
 class Question {
   final dynamic id;
   final String? questionText;
@@ -105,6 +106,7 @@ class Question {
   final List<dynamic>? choices;
   final dynamic correctAnswerIndex;
   final dynamic timeLimitSeconds;
+  final type = QuestionType.notdefined.obs;
   Question({
     this.id,
     this.questionText,
