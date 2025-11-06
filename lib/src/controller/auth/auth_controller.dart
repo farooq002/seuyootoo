@@ -38,12 +38,14 @@ class AuthController extends BaseViewController {
       passwordConfirm: passwordController.text,
       username: nameController.text,
     );
-    final response = await repository.signUp(request);
-    if (response != null) {
-      stopLoading();
+    final res = await repository.signUp(request);
+     stopLoading();
+    if (res != null) {
+      StorageService.instance.saveToken(res.token!);
+      StorageService.instance.saveUser(res.profile!);
       Get.offAllNamed(homeRoute);
     }
 
-    stopLoading();
+  
   }
 }

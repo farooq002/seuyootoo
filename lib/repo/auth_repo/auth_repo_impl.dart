@@ -68,7 +68,7 @@ base class AuthRepoImpl extends AuthRepo {
   }
 
   @override
-  Future<NetworkResponse<SignUpResponse>?> signUp(SignUpRequest req) async {
+  Future<SignUpResponse?> signUp(SignUpRequest req) async {
     final request = NetworkRequest(
       path: NetworkService.authSignUp,
       type: NetworkRequestType.POST,
