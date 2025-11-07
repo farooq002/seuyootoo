@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:souyoutoo/src/base/base_view_controller.dart';
-
+import 'package:souyoutoo/utils/colors_name.dart';
 
 abstract class BaseView<T extends BaseViewController> extends StatelessWidget {
   const BaseView({super.key});
@@ -14,28 +15,26 @@ abstract class BaseView<T extends BaseViewController> extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-
         /// Actual screen UI
-        Scaffold(
-          body: mBuild(context),
-        ),
+        Scaffold(body: mBuild(context)),
 
         /// Loading overlay
         Obx(() {
           return controller.absorb.value
               ? Stack(
-                  children: const [
+                  children: [
                     Opacity(
-                      opacity: 0.8,
+                      opacity: 0.5,
                       child: ModalBarrier(
-                          dismissible: false, color: Colors.black),
+                        dismissible: false,
+                        color: Colors.black,
+                      ),
                     ),
-                    Center(child: CircularProgressIndicator()),
+                    Center(child: SpinKitPulsingGrid(color: appLightBrown)),
                   ],
                 )
               : const SizedBox.shrink();
         }),
-
       ],
     );
   }

@@ -257,6 +257,7 @@ const appDimGreen = Color(0xFF1B9639);
 const appLightPink = Color(0xFFF5E1DF);
 const appDarkBrown = Color(0xFF391A0D);
 const appLightBrown = Color(0xFFA06B4E);
+const appOftenWhite = Color(0xFFE5E7EB);
 const fieldErorr = Color.fromARGB(255, 177, 30, 20);
 
 final appThemeColor = Get.isDarkMode ? appWhite : appBlack;

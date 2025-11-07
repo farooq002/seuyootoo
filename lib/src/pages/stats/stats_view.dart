@@ -19,7 +19,7 @@ class StatsView extends StatelessWidget {
     return Scaffold(
       appBar: appBar(
         context,
-       leftIconSvg: icBack,
+        leftIconSvg: icBack,
         onLeftIconPress: () => Get.back(),
         titleText: 'Achievements',
       ),
@@ -44,15 +44,16 @@ class StatsView extends StatelessWidget {
             right: 0,
             child: AppAchievementContainer(
               color: appWhite,
-              borderColor: appBlack,
+              borderColor: appWhite,
               shadowColor: appBlack,
+              isShadowAvailblle: true,
               child: Row(
                 children: [
                   /// Icon Container
                   AppAchievementContainer(
                     color: appLightGray,
                     borderColor: appGray,
-                    shadowColor: appBlack,
+                    isShadowAvailblle: false,
                     child: appImageAsset(
                       icSuitCase,
                       color: appGray,
@@ -105,16 +106,18 @@ class StatsView extends StatelessWidget {
                     onTap: () => Get.toNamed(questionRoute),
                     child: AppAchievementContainer(
                       color: appWhite,
-                      borderColor: appBlack,
+                      borderColor: appWhite,
                       shadowColor: appBlack,
+                      isShadowAvailblle: true,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           /// Icon Container
                           AppAchievementContainer(
                             color: appAmber,
-                            borderColor: appGray,
-                            shadowColor: appBlack,
+                            isBorderAvailable: false,
+                            shadowColor: appGray,
+                            isShadowAvailblle: true,
                             child: appImageAsset(
                               tabTrial,
                               color: appBlack,
@@ -150,8 +153,9 @@ class StatsView extends StatelessWidget {
                     onTap: () => Get.toNamed(mapRoute),
                     child: AppAchievementContainer(
                       color: appWhite,
-                      borderColor: appBlack,
+                      borderColor: appWhite,
                       shadowColor: appBlack,
+                      isShadowAvailblle: true,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -159,7 +163,9 @@ class StatsView extends StatelessWidget {
                           AppAchievementContainer(
                             color: appAmber,
                             borderColor: appGray,
-                            shadowColor: appBlack,
+                            isBorderAvailable: false,
+                            isShadowAvailblle: true,
+                            shadowColor: appGray,
                             child: appImageAsset(
                               icBook,
                               // color: appGray,
@@ -195,7 +201,7 @@ class StatsView extends StatelessWidget {
                     onTap: () => Get.toNamed(profileRoute),
                     child: AppAchievementContainer(
                       color: appWhite,
-                      borderColor: appBlack,
+                      borderColor: appWhite,
                       shadowColor: appBlack,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -203,8 +209,8 @@ class StatsView extends StatelessWidget {
                           /// Icon Container
                           AppAchievementContainer(
                             color: appAmber,
-                            borderColor: appGray,
-                            shadowColor: appBlack,
+                            isBorderAvailable: false,
+                            shadowColor: appGray,
                             child: appImageAsset(
                               icHat,
                               // color: appGray,

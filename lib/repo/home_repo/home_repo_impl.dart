@@ -83,7 +83,7 @@ base class HomeRepoImpl extends HomeRepo {
   }
 
   @override
-  Future<GetProfileResponse>? getProfile() async {
+  Future<GetProfileResponse?>? getProfile() async {
     dynamic result;
     final request = NetworkRequest(
       path: NetworkService.getProfile,
@@ -151,8 +151,6 @@ base class HomeRepoImpl extends HomeRepo {
 
     return result;
   }
-
-
 
   @override
   Future<NetworkResponse<GiveAchievementResponse>?> giveAchievement(

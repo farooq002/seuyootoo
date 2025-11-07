@@ -6,6 +6,7 @@ import 'package:souyoutoo/src/components/app_progress_bar.dart';
 import 'package:souyoutoo/src/components/app_text.dart';
 import 'package:souyoutoo/src/components/app_text_icon.dart';
 import 'package:souyoutoo/routes/routes_name.dart';
+import 'package:souyoutoo/src/components/background_container.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
 
@@ -20,14 +21,14 @@ class HomeView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: AppTextBold(text: 'SUEYOUTOO', fontSize: 12, color: appWhite),
+        title: AppTextBold(text: 'SOUYOUTOO', fontSize: 12, color: appWhite),
         centerTitle: false,
         backgroundColor: appBlack,
         actions: [
           AppTextIcon(
             icon: Image.asset(icStreak),
             onPressed: () {},
-            text: '7 DAY STREAK',
+            text: '${controller.streak.value} DAY STREAK',
             fontSize: 14,
             foregroundColor: appWhite,
             backgroundColor: appBlack,
@@ -55,60 +56,67 @@ class HomeView extends StatelessWidget {
             top: 10,
             left: 0,
             right: 0,
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 16),
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(color: Colors.black, width: 4),
-                // boxShadow: const [
-                //   BoxShadow(color: Colors.black, offset: Offset(4, 4)),
-                // ],
-              ),
+            child: AppAchievementContainer(
+              borderColor: appWhite,
+              shadowColor: appBlack,
+              color: appWhite,
+
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      AppTextBold(
-                        text: '5 level PROGRESS',
-                        fontSize: 12,
-                        color: Colors.black,
-                      ),
-                      AppTextRegular(
-                        text: '2750/5000',
-                        fontSize: 10,
-                        color: Colors.blue[700]!,
-                      ),
-                    ],
-                  ).paddingOnly(bottom: 6),
+                  Obx(
+                    () => Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        AppTextRegular(
+                          text:
+                              '${controller.profileData.value.level ?? 1} level PROGRESS',
+                          fontSize: 12,
+                          color: Colors.black,
+                        ),
+                        AppTextRegular(
+                          text:
+                              '${controller.profileData.value.exp ?? 0}/${controller.profileData.value.expToNextLevel ?? 1}',
+                          fontSize: 10,
+                          color: Colors.blue[700]!,
+                        ),
+                      ],
+                    ).paddingOnly(bottom: 6),
+                  ),
 
-                  AchievementProgressBar(currentValue: 3500, totalValue: 5000),
+                  Obx(
+                    () => AchievementProgressBar(
+                      currentValue: controller.profileData.value.exp ?? 0.0,
+                      totalValue:
+                          controller.profileData.value.expToNextLevel ?? 1.0,
+                    ),
+                  ),
                 ],
-              ),
-            ),
+              ).paddingAll(10),
+            ).paddingOnly(top: 10, left: 42, right: 42),
           ),
 
           Positioned(
             bottom: controller.size.height * 0.01,
-            left: controller.size.width * 0.05,
-            right: controller.size.width * 0.05,
+            left: controller.size.width * 0.10,
+            right: controller.size.width * 0.10,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Container(
-                  decoration: BoxDecoration(
-                    color: appAmber,
-                    border: Border.all(color: appWhite, width: 2),
-                  ),
-                  child: AppTextRegular(
-                    text: '"Ready for today\'s case?"',
-                    fontSize: 14,
-                    textAlign: TextAlign.center,
-                    color: appWhite,
-                  ).paddingAll(10),
-                ).paddingOnly(bottom: controller.size.height * 0.01),
+                      decoration: BoxDecoration(
+                        color: appAmber,
+                        border: Border.all(color: appWhite, width: 2),
+                      ),
+                      child: AppTextRegular(
+                        text: '"Ready for today\'s case?"',
+                        fontSize: 14,
+                        textAlign: TextAlign.center,
+                        color: appBlack,
+                      ).paddingAll(6),
+                    )
+                    .paddingSymmetric(horizontal: 24)
+                    .paddingOnly(bottom: controller.size.height * 0.01),
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -129,23 +137,6 @@ class HomeView extends StatelessWidget {
                   ],
                 ).paddingOnly(bottom: 4),
 
-                // Container(
-                //   decoration: BoxDecoration(
-                //     boxShadow: [
-                //       BoxShadow(color: appLightBlack, offset: Offset(0, -2)),
-                //     ],
-                //   ),
-                //   child: AppTextIcon(
-                //     onPressed: () {},
-                //     text: 'LESSON',
-                //     isColumn: true,
-                //     icon: Image.asset(icCheck),
-                //     fontSize: 14,
-                //     // padding: 10,
-                //     backgroundColor: appGreen,
-                //     foregroundColor: appWhite,
-                //   ).paddingOnly(bottom: 8),
-                // ),
                 Container(
                   decoration: BoxDecoration(
                     color: appGreen, // The button color goes here
@@ -179,7 +170,7 @@ class HomeView extends StatelessWidget {
                       padding: 0,
                       textSize: 16,
                       textColor: appWhite,
-                    ).paddingOnly(bottom: 6),
+                    ).paddingOnly(bottom: 10),
                     AppElevatedButton(
                       onPressed: () {},
                       color: appPurple,

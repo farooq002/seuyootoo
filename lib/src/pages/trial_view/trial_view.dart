@@ -5,6 +5,7 @@ import 'package:souyoutoo/src/base/base_view.dart';
 import 'package:souyoutoo/src/components/app_bar.dart';
 import 'package:souyoutoo/src/components/app_button.dart';
 import 'package:souyoutoo/src/components/app_text.dart';
+import 'package:souyoutoo/src/components/background_container.dart';
 import 'package:souyoutoo/src/controller/trail/trail_controller.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
@@ -55,38 +56,14 @@ class TrialView extends BaseView<TrailController> {
         ),
 
         Positioned(
-          top: 10,
-          left: 0,
-          right: 0,
-          child: Container(
+          top: 20,
+          left: 32,
+          right: 32,
+          child: AppAchievementContainer(
             margin: const EdgeInsets.symmetric(horizontal: 16),
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: appDarkYellow,
-              border: Border.all(color: Colors.black, width: 4),
-              // boxShadow: const [
-              //   BoxShadow(
-              //     color: appBlack,
-              //     offset: Offset(4, 4), // bottom-right
-              //     blurRadius: 4,
-              //   ),
-              //   BoxShadow(
-              //     color: appBlack,
-              //     offset: Offset(-4, -4), // top-left
-              //     blurRadius: 4,
-              //   ),
-              //   BoxShadow(
-              //     color: appBlack,
-              //     offset: Offset(4, -4), // top-right
-              //     blurRadius: 4,
-              //   ),
-              //   BoxShadow(
-              //     color: appBlack,
-              //     offset: Offset(-4, 4), // bottom-left
-              //     blurRadius: 4,
-              //   ),
-              // ],
-            ),
+            color: appDarkYellow,
+            borderColor: appDarkYellow,
+            isShadowAvailblle: true,
             child: Column(
               children: [
                 AppTextThin(
@@ -102,19 +79,14 @@ class TrialView extends BaseView<TrailController> {
         ),
 
         Positioned(
-          bottom: 25,
-          left: 0,
-          right: 0,
-          child: Container(
+          top: Get.height / 2.1,
+          bottom: 30,
+          left: 32,
+          right: 32,
+          child: AppAchievementContainer(
             margin: const EdgeInsets.symmetric(horizontal: 16),
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: appWhite,
-              border: Border.all(color: Colors.black, width: 2),
-              // boxShadow: const [
-              //   BoxShadow(color: Colors.black, offset: Offset(4, 4)),
-              // ],
-            ),
+            color: appWhite,
+            borderColor: appWhite,
             child: SingleChildScrollView(
               child: Obx(
                 () => Column(

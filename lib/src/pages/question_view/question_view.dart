@@ -11,11 +11,13 @@ import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
 
 class QuestionView extends BaseView<TrailController> {
+  @override
+  final controller = Get.isRegistered<TrailController>()
+      ? Get.find<TrailController>()
+      : Get.put(TrailController());
   QuestionView({super.key});
 
   @override
-  final controller = Get.find<TrailController>();
-
   @override
   Widget mBuild(BuildContext context) {
     return Scaffold(
@@ -58,7 +60,8 @@ class QuestionView extends BaseView<TrailController> {
             child: AppAchievementContainer(
               margin: const EdgeInsets.symmetric(horizontal: 16),
               color: appWhite,
-              borderColor: appBlack,
+              borderColor: appWhite,
+              isShadowAvailblle: true,
               shadowColor: appBlack,
               child: Column(
                 children: [
@@ -146,8 +149,10 @@ class QuestionView extends BaseView<TrailController> {
               right: 0,
               child: AppAchievementContainer(
                 margin: const EdgeInsets.symmetric(horizontal: 16),
-                color: Colors.white,
+                color: appWhite,
                 shadowColor: appBlack,
+                borderColor: appWhite,
+                isShadowAvailblle: true,
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -164,39 +169,41 @@ class QuestionView extends BaseView<TrailController> {
                         color: appBlack,
                         fontFamily: 'VT323',
                       ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: appYellow,
-                          border: const Border(
-                            left: BorderSide(color: appAmber, width: 6),
-                          ),
-                        ),
-                        child: RichText(
-                          text: TextSpan(
-                            children: [
-                              TextSpan(
-                                text: "EVIDENCE: ",
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  color: appBlack,
-                                  fontFamily: 'VT323',
-                                  fontSize: 14,
+                      question?.evidence == null || question?.evidence == ''
+                          ? SizedBox.shrink()
+                          : Container(
+                              decoration: BoxDecoration(
+                                color: appYellow,
+                                border: const Border(
+                                  left: BorderSide(color: appAmber, width: 6),
                                 ),
                               ),
-                              TextSpan(
-                                text:
-                                    "Employee worked 45 hours in one week, including 5 hours of mandatory training after regular shift.",
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  color: appBlack,
-                                  fontFamily: 'VT323',
-                                  fontSize: 14,
+                              child: RichText(
+                                text: TextSpan(
+                                  children: [
+                                    TextSpan(
+                                      text: "EVIDENCE: ",
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        color: appBlack,
+                                        fontFamily: 'VT323',
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                    TextSpan(
+                                      text: question?.evidence,
+                                      // "Employee worked 45 hours in one week, including 5 hours of mandatory training after regular shift.",
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        color: appBlack,
+                                        fontFamily: 'VT323',
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ),
-                            ],
-                          ),
-                        ).paddingAll(10),
-                      ).paddingSymmetric(vertical: 10),
+                              ).paddingAll(10),
+                            ).paddingSymmetric(vertical: 10),
                       ...List.generate(question?.choices?.length ?? 0, (index) {
                         final optionLabel = String.fromCharCode(65 + index);
 
@@ -214,6 +221,7 @@ class QuestionView extends BaseView<TrailController> {
                                 ),
                                 borderColor: appBlack,
                                 isBorderAvailable: true,
+                                isShadowAvailblle: false,
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [

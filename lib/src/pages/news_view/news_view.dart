@@ -17,7 +17,7 @@ class NewsView extends StatelessWidget {
     return Scaffold(
       appBar: appBar(
         context,
-       leftIconSvg: icBack,
+        leftIconSvg: icBack,
         onLeftIconPress: () => Get.back(),
         titleText: 'Progress & Evolution',
       ),
@@ -41,9 +41,11 @@ class NewsView extends StatelessWidget {
             left: 0,
             right: 0,
             child: AppAchievementContainer(
+              borderColor: appAmber,
               width: MediaQuery.of(context).size.width * 0.9,
               margin: const EdgeInsets.symmetric(horizontal: 16),
               color: appAmber,
+              isShadowAvailblle: true,
               child: Column(
                 children: [
                   Row(
@@ -77,7 +79,10 @@ class NewsView extends StatelessWidget {
               child: Column(
                 children: [
                   AppAchievementContainer(
+                    shadowColor: appWhite,
+                    borderColor: appBlack,
                     width: MediaQuery.of(context).size.width * 0.9,
+                    isShadowAvailblle: true,
                     child: Column(
                       children: [
                         AppTextBold(
@@ -164,12 +169,15 @@ class NewsView extends StatelessWidget {
                                 ],
                               ).paddingSymmetric(horizontal: 8),
                             ],
-                          ),
+                          ).paddingAll(10),
                         ).paddingOnly(bottom: 10),
                       ],
                     ).paddingSymmetric(horizontal: 16),
-                  ).paddingOnly(top: 10),
+                  ).paddingSymmetric(vertical: 10),
                   AppAchievementContainer(
+                    shadowColor: appWhite,
+                    borderColor: appBlue,
+                    isShadowAvailblle: true,
                     color: appBlue,
                     width: MediaQuery.of(context).size.width * 0.9,
                     child: Column(
@@ -197,8 +205,11 @@ class NewsView extends StatelessWidget {
                         ),
                       ],
                     ).paddingSymmetric(vertical: 10),
-                  ).paddingSymmetric(vertical: 20),
+                  ).paddingSymmetric(vertical: 10),
                   AppAchievementContainer(
+                    shadowColor: appWhite,
+                    borderColor: appBlack,
+                    isShadowAvailblle: true,
                     width: MediaQuery.of(context).size.width * 0.9,
                     child: Column(
                       children: [
@@ -276,8 +287,11 @@ class NewsView extends StatelessWidget {
                         ),
                       ],
                     ),
-                  ).paddingSymmetric(vertical: 20),
+                  ).paddingSymmetric(vertical: 10),
                   AppAchievementContainer(
+                    shadowColor: appWhite,
+                    borderColor: appBlack,
+                    isShadowAvailblle: true,
                     width: MediaQuery.of(context).size.width * 0.9,
                     child: Column(
                       children: [
@@ -287,6 +301,7 @@ class NewsView extends StatelessWidget {
                           color: appWhite,
                         ),
                         AppAchievementContainer(
+                          isShadowAvailblle: true,
                           isBorderAvailable: false,
                           color: appAmber,
                           child: Row(
@@ -305,6 +320,7 @@ class NewsView extends StatelessWidget {
                           ).paddingAll(10),
                         ),
                         AppAchievementContainer(
+                          isShadowAvailblle: true,
                           isBorderAvailable: false,
                           color: appDimGreen,
                           child: Row(
@@ -323,6 +339,7 @@ class NewsView extends StatelessWidget {
                           ).paddingAll(10),
                         ).paddingSymmetric(vertical: 10),
                         AppAchievementContainer(
+                          isShadowAvailblle: true,
                           isBorderAvailable: false,
                           color: appGray,
                           child: Row(
@@ -350,6 +367,8 @@ class NewsView extends StatelessWidget {
                     ).paddingAll(10),
                   ).paddingSymmetric(vertical: 20),
                   AppAchievementContainer(
+                    borderColor: appWhite,
+                    isShadowAvailblle: false,
                     color: appGreen,
                     width: MediaQuery.of(context).size.width * 0.9,
                     child: AppTextIcon(
@@ -360,11 +379,13 @@ class NewsView extends StatelessWidget {
                         color: appWhite,
                         height: 14,
                       ),
+                      borderColor: appGreen,
                       fontSize: 14,
                       backgroundColor: appGreen,
                     ),
                   ),
                   AppAchievementContainer(
+                    isShadowAvailblle: false,
                     color: appAmber,
                     width: MediaQuery.of(context).size.width * 0.9,
                     child: AppTextIcon(
@@ -373,6 +394,7 @@ class NewsView extends StatelessWidget {
                       icon: appImageAsset(icGame, color: appWhite, height: 14),
                       fontSize: 14,
                       backgroundColor: appAmber,
+                      borderColor: appAmber,
                     ),
                   ).paddingOnly(top: 20),
                 ],

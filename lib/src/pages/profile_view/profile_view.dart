@@ -56,7 +56,7 @@ class ProfileView extends StatelessWidget {
                 children: [
                   AppAchievementContainer(
                     color: appShadowBrown,
-                    borderColor: appBlack,
+                    borderColor: appShadowBrown,
                     shadowColor: appBlack,
                     child: Column(
                       children: [
@@ -159,7 +159,7 @@ class ProfileView extends StatelessWidget {
                     },
                   ).paddingAll(10),
                   AppAchievementContainer(
-                    borderColor: appBlack,
+                    borderColor: appLightYellow,
                     color: appLightYellow,
                     borderWidth: 4.0,
                     shadowColor: appBlack,

@@ -61,27 +61,39 @@ class AppElevatedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: color,
-        foregroundColor: textColor,
-        minimumSize: minimumSize,
-        padding: EdgeInsets.symmetric(
-          horizontal: padding != null ? padding! : 16,
-          vertical: padding ?? 12,
-        ),
-        textStyle: Theme.of(context).textTheme.labelLarge?.copyWith(),
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.zero,
-          side: BorderSide(width: 2, color: appDarkBrown),
-        ),
-        elevation: 5, // optional: keep shadow
+    return Container(
+      decoration: BoxDecoration(
+        color: color,
+        boxShadow: const [
+          BoxShadow(
+            color: appLightBlack,
+            blurRadius: 0,
+            spreadRadius: 0,
+            offset: Offset(6, 6),
+          ),
+        ],
       ),
-      onPressed: onPressed,
-      child: AppTextBold(
-        text: text,
-        fontSize: textSize ?? 18,
-        color: textColor ?? Colors.white,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.transparent,
+          foregroundColor: textColor,
+          minimumSize: minimumSize,
+          shadowColor: Colors.transparent,
+
+          padding: EdgeInsets.symmetric(
+            horizontal: padding != null ? padding! : 16,
+            vertical: padding ?? 12,
+          ),
+          textStyle: Theme.of(context).textTheme.labelLarge?.copyWith(),
+          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+          elevation: 0,
+        ),
+        onPressed: onPressed,
+        child: AppTextBold(
+          text: text,
+          fontSize: textSize ?? 18,
+          color: textColor ?? Colors.white,
+        ),
       ),
     );
   }

@@ -18,13 +18,12 @@ class _SplashViewState extends State<SplashView> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 3), () {
-      bool isLoggedIn = StorageService.instance.getToken()?.isNotEmpty ?? false; 
-       if (!isLoggedIn) {
-      Get.offAllNamed(loginRoute);
-    }else {
-      Get.offAllNamed(homeRoute);
-    }
-      
+      bool isLoggedIn = StorageService.instance.getToken()?.isNotEmpty ?? false;
+      if (!isLoggedIn) {
+        Get.offAllNamed(loginRoute);
+      } else {
+        Get.offAllNamed(homeRoute);
+      }
     });
   }
 
@@ -32,14 +31,12 @@ class _SplashViewState extends State<SplashView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: appBlack,
-      body: SafeArea(
-        child: Stack(
-          fit: StackFit.expand,
-          children: [
-            appImageAsset(icSplashScreen, fit: BoxFit.cover),
-            Center(child: appImageAsset(icJudge)),
-          ],
-        ),
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          appImageAsset(icSplashScreen, fit: BoxFit.cover),
+          Center(child: appImageAsset(icJudge)),
+        ],
       ),
     );
   }

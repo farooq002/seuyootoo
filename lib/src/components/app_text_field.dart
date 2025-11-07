@@ -33,7 +33,7 @@ class AppTextField extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.placeholder,
-    this.backgroundColor = Colors.white,
+    this.backgroundColor = appWhite,
     required this.textController,
     this.inputFormatters,
     this.isSecured = false,
@@ -48,7 +48,7 @@ class AppTextField extends StatelessWidget {
     this.isTextFieldEnabled = true,
     this.placeholderColor = appBlack,
     this.outlineBorder = const OutlineInputBorder(
-      borderSide: BorderSide(width: 2, color: appBlack),
+      borderSide: BorderSide(width: 2, color: appDarkYellow),
       borderRadius: BorderRadius.zero,
     ),
     this.obscureText = false,

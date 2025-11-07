@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 
 class AchievementProgressBar extends StatelessWidget {
-  final double currentValue;
-  final double totalValue;
+  final dynamic currentValue;
+  final dynamic totalValue;
 
   const AchievementProgressBar({
     super.key,
@@ -13,18 +13,20 @@ class AchievementProgressBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final progress = (currentValue / totalValue).clamp(0.0, 1.0);
-
     return Container(
       height: 14,
       decoration: BoxDecoration(
-        border: Border.all(color: appBlack, width: 1.5), // full white border
-        color: appWhite, // base color (unfilled part)
+        border: Border.all(color: appBlack, width: 1.5),
+        color: appWhite,
       ),
       child: LayoutBuilder(
         builder: (context, constraints) {
           final progressWidth =
-              constraints.maxWidth * (currentValue / totalValue);
+              constraints.maxWidth *
+              ((totalValue == 0 ? 0 : currentValue / totalValue).clamp(
+                0.0,
+                1.0,
+              ));
           return Stack(
             children: [
               Container(color: Colors.white),

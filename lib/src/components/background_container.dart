@@ -32,37 +32,32 @@ class AppAchievementContainer extends StatelessWidget {
       margin: margin,
       decoration: BoxDecoration(
         color: color ?? appBlack,
-        // border: isBorderAvailable
-        // ?
-        border: Border.all(
-          color: borderColor ?? appWhite,
-          width: borderWidth ?? 4.0,
-        ),
-        // : null,
-        // boxShadow: isShadowAvailblle
-        //     ? [
-        //         BoxShadow(
-        //           color: shadowColor ?? appWhite,
-        //           offset: Offset(4, 4), // bottom-right
-        //           blurRadius: 4,
-        //         ),
-        //         BoxShadow(
-        //           color: shadowColor ?? appWhite,
-        //           offset: Offset(-4, -4), // top-left
-        //           blurRadius: 4,
-        //         ),
-        //         BoxShadow(
-        //           color: shadowColor ?? appWhite,
-        //           offset: Offset(4, -4), // top-right
-        //           blurRadius: 4,
-        //         ),
-        //         BoxShadow(
-        //           color: shadowColor ?? appWhite,
-        //           offset: Offset(-4, 4), // bottom-left
-        //           blurRadius: 4,
-        //         ),
-        //       ]
-        //     : null,
+        border: isBorderAvailable
+            ? Border.all(
+                color: borderColor ?? appWhite,
+                width: borderWidth ?? 4.0,
+              )
+            : null,
+        boxShadow: isShadowAvailblle
+            ? [
+                BoxShadow(
+                  color: shadowColor ?? Colors.black,
+                  offset: Offset(6, 0),
+                ),
+                BoxShadow(
+                  color: shadowColor ?? Colors.black,
+                  offset: Offset(0, 6),
+                ),
+                BoxShadow(
+                  color: shadowColor ?? Colors.black,
+                  offset: Offset(-6, 0),
+                ),
+                BoxShadow(
+                  color: shadowColor ?? Colors.black,
+                  offset: Offset(0, -6),
+                ),
+              ]
+            : null,
       ),
       child: child,
     );
