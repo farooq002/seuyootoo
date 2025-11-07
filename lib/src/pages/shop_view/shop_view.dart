@@ -55,7 +55,7 @@ class ShopView extends StatelessWidget {
                   AppAchievementContainer(
                     color: appgray,
                     borderColor: appGray,
-                    isShadowAvailblle: false,
+                    isShadowAvailable: false,
                     child: appImageAsset(icTime).paddingSymmetric(vertical: 10),
                   ),
                   Expanded(
@@ -81,7 +81,7 @@ class ShopView extends StatelessWidget {
                   AppAchievementContainer(
                     color: appBlue,
                     borderColor: appGray,
-                    isShadowAvailblle: false,
+                    isShadowAvailable: false,
                     child: Column(
                       children: [
                         AppTextRegular(

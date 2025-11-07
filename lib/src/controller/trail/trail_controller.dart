@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:souyoutoo/model/home_models/Get_all_case_resp.dart';
@@ -15,6 +17,8 @@ class TrailController extends BaseViewController {
   final caseDetail = CaseByIdResponse().obs;
   final caseCompleteRes = CompleteCaseResponse().obs;
   final currentQuestIndex = 0.obs;
+  final currentTime = 0.obs;
+  Timer? timer;
 
   @override
   void onInit() {
@@ -37,12 +41,16 @@ class TrailController extends BaseViewController {
     stopLoading();
     if (response != null) {
       currentQuestIndex.value = 0;
-      caseDetail.value = CaseByIdResponse();
       caseDetail.value = response;
+      for (var question in caseDetail.value.questions ?? []) {
+        question.type.value = QuestionType.notdefined;
+      }
+      updateTimerForCurrentQuestion();
       Get.toNamed(questionRoute, arguments: {'caseId': caseId});
     }
   }
-    completeCase(caseId) async {
+
+  completeCase(caseId) async {
     startLoading();
     var req = CompletenessRequest(caseId: caseId);
     final response = await trailRepo.completeCase(req);
@@ -82,13 +90,47 @@ class TrailController extends BaseViewController {
           QuestionType.wrong;
     }
 
-    Future.delayed(Durations.medium2 + Durations.long2, () async{
+    Future.delayed(Durations.medium2 + Durations.long2, () async {
       if ((caseDetail.value.questions?.length ?? 0) - 1 >
           currentQuestIndex.value) {
         currentQuestIndex.value += 1;
+        updateTimerForCurrentQuestion();
       } else {
         await completeCase(caseDetail.value.id);
       }
     });
+  }
+
+  String formatTime(int totalSeconds) {
+    if (totalSeconds <= 0) return '0:00';
+    int minutes = totalSeconds ~/ 60;
+    int seconds = totalSeconds % 60;
+    return '$minutes:${seconds.toString().padLeft(2, '0')}';
+  }
+
+  void updateTimerForCurrentQuestion() {
+    final question = caseDetail.value.questions?[currentQuestIndex.value];
+    if (question != null) {
+      currentTime.value = question.timeLimitSeconds ?? 0;
+      startTimer();
+    }
+  }
+
+  void startTimer() {
+    timer?.cancel();
+    timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (currentTime.value > 0) {
+        currentTime.value--;
+      } else {
+        timer.cancel();
+        goToNextQuest(-1);
+      }
+    });
+  }
+
+  @override
+  void onClose() {
+    timer?.cancel();
+    super.onClose();
   }
 }

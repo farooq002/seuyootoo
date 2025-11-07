@@ -6,7 +6,7 @@ class AppAchievementContainer extends StatelessWidget {
   final width;
   final Color? color;
   final bool isBorderAvailable;
-  final bool isShadowAvailblle;
+  final bool isShadowAvailable;
   final dynamic borderWidth;
   final EdgeInsetsGeometry? margin;
   final Color? shadowColor;
@@ -19,7 +19,7 @@ class AppAchievementContainer extends StatelessWidget {
     this.width,
     this.margin,
     this.borderWidth,
-    this.isShadowAvailblle = true,
+    this.isShadowAvailable = true,
     this.color,
     this.shadowColor,
     this.borderColor,
@@ -38,7 +38,7 @@ class AppAchievementContainer extends StatelessWidget {
                 width: borderWidth ?? 4.0,
               )
             : null,
-        boxShadow: isShadowAvailblle
+        boxShadow: isShadowAvailable
             ? [
                 BoxShadow(
                   color: shadowColor ?? Colors.black,

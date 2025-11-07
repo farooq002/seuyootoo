@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:souyoutoo/src/base/base_view.dart';
 import 'package:souyoutoo/src/components/app_bar.dart';
 import 'package:souyoutoo/src/components/app_button.dart';
+import 'package:souyoutoo/src/components/app_image.dart';
 import 'package:souyoutoo/src/components/app_text.dart';
 import 'package:souyoutoo/src/components/background_container.dart';
 import 'package:souyoutoo/src/controller/trail/trail_controller.dart';
@@ -46,6 +47,13 @@ class TrialView extends BaseView<TrailController> {
           bottom: 100,
           child: Image.asset(icBackground, fit: BoxFit.fill),
         ),
+
+        Positioned(
+          top: MediaQuery.of(Get.context!).size.height / 7.5,
+          left: 0,
+          right: 0,
+          child: appImageAsset(icJudge, height: 250),
+        ),
         Align(
           alignment: Alignment.bottomCenter,
           child: FractionallySizedBox(
@@ -63,7 +71,7 @@ class TrialView extends BaseView<TrailController> {
             margin: const EdgeInsets.symmetric(horizontal: 16),
             color: appDarkYellow,
             borderColor: appDarkYellow,
-            isShadowAvailblle: true,
+            isShadowAvailable: true,
             child: Column(
               children: [
                 AppTextThin(

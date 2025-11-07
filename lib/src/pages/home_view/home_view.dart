@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:souyoutoo/src/components/app_button.dart';
+import 'package:souyoutoo/src/components/app_image.dart';
 import 'package:souyoutoo/src/components/app_progress_bar.dart';
 import 'package:souyoutoo/src/components/app_text.dart';
 import 'package:souyoutoo/src/components/app_text_icon.dart';
@@ -41,6 +42,13 @@ class HomeView extends StatelessWidget {
             top: 0,
             bottom: 100,
             child: Image.asset(icBackground, fit: BoxFit.fill),
+          ),
+
+          Positioned(
+            top: MediaQuery.of(context).size.height / 8,
+            left: 0,
+            right: 0,
+            child: appImageAsset(icJudge, height: 250),
           ),
 
           Align(
@@ -172,7 +180,7 @@ class HomeView extends StatelessWidget {
                       textColor: appWhite,
                     ).paddingOnly(bottom: 10),
                     AppElevatedButton(
-                      onPressed: () {},
+                      onPressed: () => Get.toNamed(myCaseRoute),
                       color: appPurple,
                       text: 'VIEW MY CASES',
                       padding: 0,

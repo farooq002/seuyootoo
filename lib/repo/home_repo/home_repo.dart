@@ -14,7 +14,7 @@ abstract base class HomeRepo {
   Future<NetworkResponse<ProgressResponse>?> getProgress();
   Future<GetAllCaseResp>? getCases();
   Future<NetworkResponse<CaseByIdResponse>?> getCaseByID();
-  Future<NetworkResponse<LoggedUserCasesResponses>?> getMyCases();
+  Future<LoggedUserCasesResponses?>? getMyCases();
   Future<TakeCasesResponse?>? takeCase(TakeCaseRequest req);
   Future<AchievementsResponse?> achievements();
   Future<NetworkResponse<GiveAchievementResponse>?> giveAchievement(

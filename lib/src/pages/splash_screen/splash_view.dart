@@ -35,7 +35,7 @@ class _SplashViewState extends State<SplashView> {
         fit: StackFit.expand,
         children: [
           appImageAsset(icSplashScreen, fit: BoxFit.cover),
-          Center(child: appImageAsset(icJudge)),
+          Center(child: appImageAsset(icJudgeSplash)),
         ],
       ),
     );

@@ -46,14 +46,14 @@ class StatsView extends StatelessWidget {
               color: appWhite,
               borderColor: appWhite,
               shadowColor: appBlack,
-              isShadowAvailblle: true,
+              isShadowAvailable: true,
               child: Row(
                 children: [
                   /// Icon Container
                   AppAchievementContainer(
                     color: appLightGray,
                     borderColor: appGray,
-                    isShadowAvailblle: false,
+                    isShadowAvailable: false,
                     child: appImageAsset(
                       icSuitCase,
                       color: appGray,
@@ -108,7 +108,7 @@ class StatsView extends StatelessWidget {
                       color: appWhite,
                       borderColor: appWhite,
                       shadowColor: appBlack,
-                      isShadowAvailblle: true,
+                      isShadowAvailable: true,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -117,7 +117,7 @@ class StatsView extends StatelessWidget {
                             color: appAmber,
                             isBorderAvailable: false,
                             shadowColor: appGray,
-                            isShadowAvailblle: true,
+                            isShadowAvailable: true,
                             child: appImageAsset(
                               tabTrial,
                               color: appBlack,
@@ -155,7 +155,7 @@ class StatsView extends StatelessWidget {
                       color: appWhite,
                       borderColor: appWhite,
                       shadowColor: appBlack,
-                      isShadowAvailblle: true,
+                      isShadowAvailable: true,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -164,7 +164,7 @@ class StatsView extends StatelessWidget {
                             color: appAmber,
                             borderColor: appGray,
                             isBorderAvailable: false,
-                            isShadowAvailblle: true,
+                            isShadowAvailable: true,
                             shadowColor: appGray,
                             child: appImageAsset(
                               icBook,

@@ -6,7 +6,7 @@ import 'package:souyoutoo/model/home_models/user_profile.dart';
 import 'package:souyoutoo/repo/home_repo/home_repo.dart';
 import 'package:souyoutoo/repo/home_repo/home_repo_impl.dart';
 import 'package:souyoutoo/src/base/base_view_controller.dart';
-import 'package:souyoutoo/utils/colors_name.dart';
+
 import 'package:souyoutoo/utils/image_constant.dart';
 
 class ProfileViewController extends BaseViewController {
@@ -16,36 +16,9 @@ class ProfileViewController extends BaseViewController {
     Categories(name: 'WIN RATE'.tr, price: "76%"),
     Categories(
       name: 'Streak'.tr,
-      price: "7",
+      price: ' ${profileData.value.streak ?? 0}',
       isIconAvailable: true,
       icon: icStreak,
-    ),
-  ];
-
-  List<Categories> get boxItems => [
-    Categories(
-      name: 'First Victory'.tr,
-      description: "Won your first case.",
-      backgroundColor: appAmber,
-      color: appBlack,
-      textColor: appBlack,
-      icon: tabTrial,
-    ),
-    Categories(
-      name: 'Legal Eagle'.tr,
-      description: "Completed 10 cases.",
-      backgroundColor: appAmber,
-      color: appBlack,
-      textColor: appBlack,
-      icon: icBooks,
-    ),
-    Categories(
-      name: '?????'.tr,
-      description: "Win 5 cases in a row.",
-      backgroundColor: appLightGray,
-      color: appDimGray,
-      textColor: appgray,
-      icon: icTrophy,
     ),
   ];
 
@@ -57,7 +30,7 @@ class ProfileViewController extends BaseViewController {
   void onInit() {
     super.onInit();
     getProfile();
-    getAchievements();
+    // getAchievements();
   }
 
   getProfile() async {

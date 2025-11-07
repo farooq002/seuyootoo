@@ -13,6 +13,7 @@ class GetProfileResponse {
   final dynamic streak;
   final dynamic currentCasesGoal;
   final dynamic completedCases;
+  final Status? lexStatus;
   GetProfileResponse({
     this.userEmail,
     this.profileImage,
@@ -25,21 +26,23 @@ class GetProfileResponse {
     this.streak,
     this.currentCasesGoal,
     this.completedCases,
+    this.lexStatus,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'user_email': userEmail,
-      'profile_image': profileImage,
+      'userEmail': userEmail,
+      'profileImage': profileImage,
       'platform': platform,
       'tokens': tokens,
       'level': level,
       'exp': exp,
-      'exp_to_next_level': expToNextLevel,
+      'expToNextLevel': expToNextLevel,
       'rank': rank,
       'streak': streak,
-      'current_cases_goal': currentCasesGoal,
-      'completed_cases': completedCases,
+      'currentCasesGoal': currentCasesGoal,
+      'completedCases': completedCases,
+      'lex_status': lexStatus?.toMap(),
     };
   }
 
@@ -58,6 +61,9 @@ class GetProfileResponse {
       streak: map['streak'] as dynamic,
       currentCasesGoal: map['current_cases_goal'] as dynamic,
       completedCases: map['completed_cases'] as dynamic,
+      lexStatus: map['lex_status'] != null
+          ? Status.fromMap(map['lex_status'] as Map<String, dynamic>)
+          : null,
     );
   }
 
@@ -68,7 +74,7 @@ class GetProfileResponse {
 
   @override
   String toString() {
-    return 'GetProfileResponse(user_email: $userEmail, profile_image: $profileImage, platform: $platform, tokens: $tokens, level: $level, exp: $exp, exp_to_next_level: $expToNextLevel, rank: $rank, streak: $streak, current_cases_goal: $currentCasesGoal, completed_cases: $completedCases)';
+    return 'GetProfileResponse(userEmail: $userEmail, profileImage: $profileImage, platform: $platform, tokens: $tokens, level: $level, exp: $exp, expToNextLevel: $expToNextLevel, rank: $rank, streak: $streak, currentCasesGoal: $currentCasesGoal, completedCases: $completedCases, lex_status: $lexStatus)';
   }
 
   @override
@@ -85,7 +91,8 @@ class GetProfileResponse {
         other.rank == rank &&
         other.streak == streak &&
         other.currentCasesGoal == currentCasesGoal &&
-        other.completedCases == completedCases;
+        other.completedCases == completedCases &&
+        other.lexStatus == lexStatus;
   }
 
   @override
@@ -100,6 +107,44 @@ class GetProfileResponse {
         rank.hashCode ^
         streak.hashCode ^
         currentCasesGoal.hashCode ^
-        completedCases.hashCode;
+        completedCases.hashCode ^
+        lexStatus.hashCode;
   }
+}
+
+class Status {
+  final String? status;
+  Status({this.status});
+
+  Status copyWith({String? status}) {
+    return Status(status: status ?? this.status);
+  }
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{'status': status};
+  }
+
+  factory Status.fromMap(Map<String, dynamic> map) {
+    return Status(
+      status: map['status'] != null ? map['status'] as String : null,
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory Status.fromJson(String source) =>
+      Status.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  @override
+  String toString() => 'Status(status: $status)';
+
+  @override
+  bool operator ==(covariant Status other) {
+    if (identical(this, other)) return true;
+
+    return other.status == status;
+  }
+
+  @override
+  int get hashCode => status.hashCode;
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:souyoutoo/src/pages/my_case_view/my_case_view.dart';
 import 'package:souyoutoo/src/pages/news_view/news_view.dart';
 import 'package:souyoutoo/src/tab_view/main_tab_view.dart';
 import 'package:souyoutoo/src/pages/login_view/login_view.dart';
@@ -25,12 +26,13 @@ final appRoutes = [
     middlewares: [AuthMiddleWare()],
   ),
   GetPage(name: shopRoute, page: () => const ShopView()),
-  GetPage(name: verdictRoute, page: () =>  VerdictView()),
+  GetPage(name: myCaseRoute, page: () => MyCaseView()),
+  GetPage(name: verdictRoute, page: () => VerdictView()),
   GetPage(name: mapRoute, page: () => const MapView()),
-  GetPage(name: trailRoute, page: () =>  TrialView()),
-  GetPage(name: profileRoute, page: () => const ProfileView()),
+  GetPage(name: trailRoute, page: () => TrialView()),
+  GetPage(name: profileRoute, page: () => ProfileView()),
 
-  GetPage(name: questionRoute, page: () =>  QuestionView()),
+  GetPage(name: questionRoute, page: () => QuestionView()),
   GetPage(name: statsRoute, page: () => const StatsView()),
   GetPage(name: newsRoute, page: () => const NewsView()),
 ];

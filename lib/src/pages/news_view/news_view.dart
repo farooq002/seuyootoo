@@ -45,7 +45,7 @@ class NewsView extends StatelessWidget {
               width: MediaQuery.of(context).size.width * 0.9,
               margin: const EdgeInsets.symmetric(horizontal: 16),
               color: appAmber,
-              isShadowAvailblle: true,
+              isShadowAvailable: true,
               child: Column(
                 children: [
                   Row(
@@ -82,7 +82,7 @@ class NewsView extends StatelessWidget {
                     shadowColor: appWhite,
                     borderColor: appBlack,
                     width: MediaQuery.of(context).size.width * 0.9,
-                    isShadowAvailblle: true,
+                    isShadowAvailable: true,
                     child: Column(
                       children: [
                         AppTextBold(
@@ -177,7 +177,7 @@ class NewsView extends StatelessWidget {
                   AppAchievementContainer(
                     shadowColor: appWhite,
                     borderColor: appBlue,
-                    isShadowAvailblle: true,
+                    isShadowAvailable: true,
                     color: appBlue,
                     width: MediaQuery.of(context).size.width * 0.9,
                     child: Column(
@@ -209,7 +209,7 @@ class NewsView extends StatelessWidget {
                   AppAchievementContainer(
                     shadowColor: appWhite,
                     borderColor: appBlack,
-                    isShadowAvailblle: true,
+                    isShadowAvailable: true,
                     width: MediaQuery.of(context).size.width * 0.9,
                     child: Column(
                       children: [
@@ -291,7 +291,7 @@ class NewsView extends StatelessWidget {
                   AppAchievementContainer(
                     shadowColor: appWhite,
                     borderColor: appBlack,
-                    isShadowAvailblle: true,
+                    isShadowAvailable: true,
                     width: MediaQuery.of(context).size.width * 0.9,
                     child: Column(
                       children: [
@@ -301,7 +301,7 @@ class NewsView extends StatelessWidget {
                           color: appWhite,
                         ),
                         AppAchievementContainer(
-                          isShadowAvailblle: true,
+                          isShadowAvailable: true,
                           isBorderAvailable: false,
                           color: appAmber,
                           child: Row(
@@ -320,7 +320,7 @@ class NewsView extends StatelessWidget {
                           ).paddingAll(10),
                         ),
                         AppAchievementContainer(
-                          isShadowAvailblle: true,
+                          isShadowAvailable: true,
                           isBorderAvailable: false,
                           color: appDimGreen,
                           child: Row(
@@ -339,7 +339,7 @@ class NewsView extends StatelessWidget {
                           ).paddingAll(10),
                         ).paddingSymmetric(vertical: 10),
                         AppAchievementContainer(
-                          isShadowAvailblle: true,
+                          isShadowAvailable: true,
                           isBorderAvailable: false,
                           color: appGray,
                           child: Row(
@@ -368,7 +368,7 @@ class NewsView extends StatelessWidget {
                   ).paddingSymmetric(vertical: 20),
                   AppAchievementContainer(
                     borderColor: appWhite,
-                    isShadowAvailblle: false,
+                    isShadowAvailable: false,
                     color: appGreen,
                     width: MediaQuery.of(context).size.width * 0.9,
                     child: AppTextIcon(
@@ -385,7 +385,7 @@ class NewsView extends StatelessWidget {
                     ),
                   ),
                   AppAchievementContainer(
-                    isShadowAvailblle: false,
+                    isShadowAvailable: false,
                     color: appAmber,
                     width: MediaQuery.of(context).size.width * 0.9,
                     child: AppTextIcon(

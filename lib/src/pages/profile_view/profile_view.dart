@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:souyoutoo/src/base/base_view.dart';
 import 'package:souyoutoo/src/components/app_bar.dart';
 import 'package:souyoutoo/src/components/app_button.dart';
 import 'package:souyoutoo/src/components/app_image.dart';
+import 'package:souyoutoo/src/components/app_progress_bar.dart';
 import 'package:souyoutoo/src/components/app_text.dart';
 import 'package:souyoutoo/src/components/app_text_icon.dart';
 import 'package:souyoutoo/src/components/background_container.dart';
@@ -10,12 +12,12 @@ import 'package:souyoutoo/src/pages/profile_view/profile_view_controller.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
 
-class ProfileView extends StatelessWidget {
-  const ProfileView({super.key});
-
+class ProfileView extends BaseView<ProfileViewController> {
+  ProfileView({super.key});
   @override
-  Widget build(BuildContext context) {
-    final controller = Get.put(ProfileViewController());
+  final controller = Get.put(ProfileViewController());
+  @override
+  Widget mBuild(BuildContext context) {
     return Scaffold(
       appBar: appBar(
         context,
@@ -72,92 +74,109 @@ class ProfileView extends StatelessWidget {
                                 : appImageAsset(icProfile, height: 30),
                           ),
                         ),
-                        AppTextRegular(text: 'COUNSELORMAX', fontSize: 18),
-                        AppTextRegular(text: 'LEVEL 5 - JUNIOR', fontSize: 12),
-                        AppTextRegular(text: 'PARALEGAL', fontSize: 12),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            AppTextRegular(
-                              text: 'XP: 2750 / 5000',
-                              fontSize: 12,
-                            ),
-                            Container(
-                              height: 14,
-                              decoration: BoxDecoration(
-                                color: Colors.black,
-                                border: Border.all(
-                                  color: Colors.black,
-                                  width: 1.5,
-                                ),
+                        Obx(
+                          () => AppTextRegular(
+                            text: controller.profileData.value.userEmail ?? '',
+                            fontSize: 18,
+                          ),
+                        ),
+                        Obx(
+                          () => AppTextRegular(
+                            text:
+                                'LEVEL ${controller.profileData.value.level ?? 0} - ${controller.profileData.value.rank ?? ''}',
+                            fontSize: 12,
+                          ),
+                        ),
+                        Obx(
+                          () => AppTextRegular(
+                            text:
+                                controller
+                                    .profileData
+                                    .value
+                                    .lexStatus
+                                    ?.status
+                                    ?.capitalize ??
+                                '',
+                            fontSize: 12,
+                          ),
+                        ),
+                        Obx(
+                          () => Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              AppTextRegular(
+                                text:
+                                    'XP: ${controller.profileData.value.exp ?? 0} / ${controller.profileData.value.expToNextLevel ?? 1}',
+                                fontSize: 12,
                               ),
-                              child: LayoutBuilder(
-                                builder: (context, constraints) {
-                                  final progressWidth =
-                                      constraints.maxWidth * (2750 / 5000);
-                                  return Stack(
-                                    children: [
-                                      Container(color: Colors.white),
-                                      Container(
-                                        width: progressWidth,
-                                        color: appGreen,
-                                      ),
-                                    ],
-                                  );
-                                },
+                              AchievementProgressBar(
+                                currentValue:
+                                    controller.profileData.value.exp ?? 0,
+                                totalValue:
+                                    controller
+                                        .profileData
+                                        .value
+                                        .expToNextLevel ??
+                                    1,
                               ),
-                            ),
-                          ],
-                        ).paddingAll(10),
+                            ],
+                          ).paddingAll(10),
+                        ),
                       ],
                     ),
                   ).marginAll(10),
-                  GridView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          childAspectRatio: 2.3,
-                          mainAxisSpacing: 8,
-                          crossAxisSpacing: 8,
-                        ),
-                    itemCount: controller.categories.length,
-                    itemBuilder: (context, index) {
-                      return Card(
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.zero,
-                          side: BorderSide(width: 2, color: appBlack),
-                        ),
-                        color: appShadowBrown,
-                        child: Column(
-                          children: [
-                            AppTextRegular(
-                              text: controller.categories[index].name,
-                              fontSize: 12,
-                            ).paddingOnly(bottom: 10),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                controller.categories[index].isIconAvailable ==
-                                        true
-                                    ? appImageAsset(
-                                        controller.categories[index].icon ?? '',
-                                      )
-                                    : SizedBox.shrink(),
-                                AppTextBold(
-                                  text:
-                                      controller.categories[index].price ?? '0',
+                  Obx(
+                    () => GridView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: 2.3,
+                            mainAxisSpacing: 8,
+                            crossAxisSpacing: 8,
+                          ),
+                      itemCount: controller.categories.length,
+                      itemBuilder: (context, index) {
+                        return Card(
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.zero,
+                            side: BorderSide(width: 2, color: appBlack),
+                          ),
+                          color: appShadowBrown,
+                          child: Column(
+                            children: [
+                              AppTextRegular(
+                                text: controller.categories[index].name,
+                                fontSize: 12,
+                              ).paddingOnly(bottom: 10),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  controller
+                                              .categories[index]
+                                              .isIconAvailable ==
+                                          true
+                                      ? appImageAsset(
+                                          controller.categories[index].icon ??
+                                              '',
+                                        )
+                                      : SizedBox.shrink(),
+                                  AppTextBold(
+                                    text:
+                                        controller.categories[index].price ??
+                                        '0',
 
-                                  fontSize: 18,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ).paddingAll(10),
-                      );
-                    },
-                  ).paddingAll(10),
+                                    fontSize: 18,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ).paddingAll(10),
+                        );
+                      },
+                    ).paddingAll(10),
+                  ),
                   AppAchievementContainer(
                     borderColor: appLightYellow,
                     color: appLightYellow,
@@ -181,7 +200,7 @@ class ProfileView extends StatelessWidget {
                           //     .value
                           //     .achievement
                           //     ?.length, // ??
-                          itemCount: controller.boxItems.length,
+                          itemCount: 3,
                           itemBuilder: (context, index) {
                             // final boxItem = controller.boxItems[index];
                             final achievements = controller
@@ -193,7 +212,7 @@ class ProfileView extends StatelessWidget {
                                 AppAchievementContainer(
                                   borderWidth: 4.0,
                                   color: appAmber,
-                                  isShadowAvailblle: false,
+                                  isShadowAvailable: false,
                                   borderColor: appBlack,
                                   child: achievements?.icon != null
                                       ? Image.network(achievements?.icon ?? '')

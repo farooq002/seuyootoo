@@ -26,15 +26,17 @@ class QuestionView extends BaseView<TrailController> {
         leftIconSvg: icBack,
         onLeftIconPress: () => Get.back(),
         titleText: 'Case #023',
-        customButton: AppTextIcon(
-          text: '1:42',
-          icon: Image.asset(icClock, height: 26),
-          onPressed: () {},
-          fontSize: 30,
-          fontFamily: 'VT323',
-          backgroundColor: appBlack,
-          foregroundColor: appWhite,
-          iconAtEnd: true,
+        customButton: Obx(
+          () => AppTextIcon(
+            text: controller.formatTime(controller.currentTime.value),
+            icon: Image.asset(icClock, height: 26),
+            onPressed: () {},
+            fontSize: 30,
+            fontFamily: 'VT323',
+            backgroundColor: appBlack,
+            foregroundColor: appWhite,
+            iconAtEnd: true,
+          ),
         ),
       ),
       body: Stack(
@@ -61,7 +63,7 @@ class QuestionView extends BaseView<TrailController> {
               margin: const EdgeInsets.symmetric(horizontal: 16),
               color: appWhite,
               borderColor: appWhite,
-              isShadowAvailblle: true,
+              isShadowAvailable: true,
               shadowColor: appBlack,
               child: Column(
                 children: [
@@ -134,7 +136,7 @@ class QuestionView extends BaseView<TrailController> {
                   ),
                 ],
               ).paddingAll(10),
-            ),
+            ).paddingAll(30),
           ),
 
           Obx(() {
@@ -144,7 +146,7 @@ class QuestionView extends BaseView<TrailController> {
                 .questions?[controller.currentQuestIndex.value];
             return Positioned(
               top: MediaQuery.of(context).size.height * 0.5,
-              bottom: 10,
+              bottom: 25,
               left: 0,
               right: 0,
               child: AppAchievementContainer(
@@ -152,7 +154,7 @@ class QuestionView extends BaseView<TrailController> {
                 color: appWhite,
                 shadowColor: appBlack,
                 borderColor: appWhite,
-                isShadowAvailblle: true,
+                isShadowAvailable: true,
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -221,7 +223,7 @@ class QuestionView extends BaseView<TrailController> {
                                 ),
                                 borderColor: appBlack,
                                 isBorderAvailable: true,
-                                isShadowAvailblle: false,
+                                isShadowAvailable: false,
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -249,7 +251,7 @@ class QuestionView extends BaseView<TrailController> {
                     ],
                   ),
                 ).paddingAll(10),
-              ),
+              ).paddingSymmetric(horizontal: 32),
             );
           }),
         ],
