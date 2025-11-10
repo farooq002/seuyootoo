@@ -168,28 +168,59 @@ class NewCaseView extends BaseView<HomeController> {
                       children: [
                         Row(
                           children: [
-                            AppTextRegular(
-                              text: 'Valid email address for account creation',
-                              fontSize: 8,
+                            Icon(
+                              Icons.mail,
+                              color: appBlue,
+                            ).paddingOnly(right: 10),
+                            Expanded(
+                              child: AppTextRegular(
+                                text:
+                                    'Valid email address for account creation',
+                                fontSize: 8,
+                              ),
                             ),
                           ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  AppAchievementContainer(
-                    color: appDimBrown,
-                    borderColor: appDimBrown,
-                    child: Column(
-                      children: [
+                        ).paddingAll(10),
                         Row(
                           children: [
-                            AppTextRegular(
-                              text: 'Valid email address for account creation',
-                              fontSize: 8,
+                            // Icon(Icons.insert_drive_file, color: appGreen),
+                            appImageAsset(
+                              icFolder,
+                              color: appGreen,
+                            ).paddingOnly(right: 10),
+                            Expanded(
+                              child: AppTextRegular(
+                                text:
+                                    'Valid email address for account creation',
+                                fontSize: 8,
+                              ),
                             ),
                           ],
-                        ),
+                        ).paddingAll(10),
+                        Row(
+                          children: [
+                            Icon(Icons.mail).paddingOnly(right: 10),
+                            Expanded(
+                              child: AppTextRegular(
+                                text:
+                                    'Valid email address for account creation',
+                                fontSize: 8,
+                              ),
+                            ),
+                          ],
+                        ).paddingAll(10),
+                        Row(
+                          children: [
+                            Icon(Icons.mail).paddingOnly(right: 10),
+                            Expanded(
+                              child: AppTextRegular(
+                                text:
+                                    'Valid email address for account creation',
+                                fontSize: 8,
+                              ),
+                            ),
+                          ],
+                        ).paddingAll(10),
                       ],
                     ),
                   ),
