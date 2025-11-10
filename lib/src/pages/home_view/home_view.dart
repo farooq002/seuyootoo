@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:souyoutoo/src/base/base_view.dart';
+import 'package:souyoutoo/src/components/app_bar.dart';
 
 import 'package:souyoutoo/src/components/app_button.dart';
 import 'package:souyoutoo/src/components/app_image.dart';
@@ -13,28 +15,29 @@ import 'package:souyoutoo/utils/image_constant.dart';
 
 import 'home_view_controller.dart';
 
-class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+class HomeView extends BaseView<TabHomeViewController> {
+  HomeView({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final controller = Get.put(TabHomeViewController());
+  final controller = Get.isRegistered<TabHomeViewController>()
+      ? Get.find<TabHomeViewController>()
+      : Get.put(TabHomeViewController());
 
+  @override
+  Widget mBuild(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: AppTextBold(text: 'SOUYOUTOO', fontSize: 12, color: appWhite),
+      appBar: appBar(
+        context,
+        titleText: 'SOUYOUTOO',
         centerTitle: false,
-        backgroundColor: appBlack,
-        actions: [
-          AppTextIcon(
-            icon: Image.asset(icStreak),
-            onPressed: () {},
-            text: '${controller.streak.value} DAY STREAK',
-            fontSize: 14,
-            foregroundColor: appWhite,
-            backgroundColor: appBlack,
-          ),
-        ],
+        customButton: AppTextIcon(
+          icon: Image.asset(icStreak),
+          onPressed: () {},
+          text: '${controller.streak.value} DAY STREAK',
+          fontSize: 14,
+          foregroundColor: appWhite,
+          backgroundColor: appBlack,
+        ),
       ),
       body: Stack(
         children: [
@@ -105,9 +108,9 @@ class HomeView extends StatelessWidget {
           ),
 
           Positioned(
-            bottom: controller.size.height * 0.01,
-            left: controller.size.width * 0.10,
-            right: controller.size.width * 0.10,
+            bottom: MediaQuery.of(Get.context!).size.height * 0.01,
+            left: MediaQuery.of(Get.context!).size.width * 0.10,
+            right: MediaQuery.of(Get.context!).size.width * 0.10,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -124,7 +127,9 @@ class HomeView extends StatelessWidget {
                       ).paddingAll(6),
                     )
                     .paddingSymmetric(horizontal: 24)
-                    .paddingOnly(bottom: controller.size.height * 0.01),
+                    .paddingOnly(
+                      bottom: MediaQuery.of(Get.context!).size.height * 0.01,
+                    ),
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -145,29 +150,30 @@ class HomeView extends StatelessWidget {
                   ],
                 ).paddingOnly(bottom: 4),
 
-                Container(
-                  decoration: BoxDecoration(
-                    color: appGreen, // The button color goes here
-                    boxShadow: [
-                      BoxShadow(
-                        color: appLightBlack,
-                        blurRadius: 0,
-                        spreadRadius: 0,
-                        offset: Offset(6, 6),
-                      ),
-                    ],
-                  ),
-                  child: AppTextIcon(
-                    onPressed: () {},
-                    text: 'LESSON',
-                    isColumn: true,
-                    icon: Image.asset(icCheck),
-                    fontSize: 14,
-                    backgroundColor: Colors.transparent,
-                    foregroundColor: appWhite,
-                  ),
+                // Container(
+                //   decoration: BoxDecoration(
+                //     color: appGreen, // The button color goes here
+                //     boxShadow: [
+                //       BoxShadow(
+                //         color: appLightBlack,
+                //         blurRadius: 0,
+                //         spreadRadius: 0,
+                //         offset: Offset(6, 6),
+                //       ),
+                //     ],
+                //   ),
+                //   child:
+                AppTextIcon(
+                  onPressed: () {},
+                  text: 'LESSON',
+                  isColumn: true,
+                  icon: Image.asset(icCheck),
+                  fontSize: 14,
+                  backgroundColor: appGreen,
+                  foregroundColor: appWhite,
                 ).paddingOnly(bottom: 10),
 
+                // ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [

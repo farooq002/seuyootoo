@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:souyoutoo/src/pages/case_detail/case_detail_view.dart';
 import 'package:souyoutoo/src/pages/my_case_view/my_case_view.dart';
+import 'package:souyoutoo/src/pages/new_case_start/new_case_view.dart';
 import 'package:souyoutoo/src/pages/news_view/news_view.dart';
 import 'package:souyoutoo/src/tab_view/main_tab_view.dart';
 import 'package:souyoutoo/src/pages/login_view/login_view.dart';
@@ -26,7 +28,9 @@ final appRoutes = [
     middlewares: [AuthMiddleWare()],
   ),
   GetPage(name: shopRoute, page: () => const ShopView()),
+  GetPage(name: newCaseRoute, page: () => NewCaseView()),
   GetPage(name: myCaseRoute, page: () => MyCaseView()),
+  GetPage(name: caseDetailRoute, page: () => CaseDetailView()),
   GetPage(name: verdictRoute, page: () => VerdictView()),
   GetPage(name: mapRoute, page: () => const MapView()),
   GetPage(name: trailRoute, page: () => TrialView()),

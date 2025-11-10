@@ -11,3 +11,5 @@ const String profileRoute = "/profile";
 const String splashRoute = "/splash";
 const String newsRoute = "/news";
 const String myCaseRoute = "/myCases";
+const String caseDetailRoute = "/caseDetail";
+const String newCaseRoute = "/newCase";

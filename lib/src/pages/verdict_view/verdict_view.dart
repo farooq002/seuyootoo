@@ -4,6 +4,7 @@ import 'package:souyoutoo/model/home_models/case_by_id_model.dart';
 import 'package:souyoutoo/src/base/base_view.dart';
 import 'package:souyoutoo/src/components/app_bar.dart';
 import 'package:souyoutoo/src/components/app_button.dart';
+import 'package:souyoutoo/src/components/app_image.dart';
 import 'package:souyoutoo/src/components/app_text.dart';
 import 'package:souyoutoo/src/controller/trail/trail_controller.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
@@ -43,6 +44,14 @@ class VerdictView extends BaseView<TrailController> {
             bottom: 100,
             child: Image.asset(icBackground, fit: BoxFit.fill),
           ),
+
+          Positioned(
+            top: MediaQuery.of(context).size.height / 8,
+            left: 0,
+            right: 0,
+            child: appImageAsset(icJudge, height: 250),
+          ),
+
           Align(
             alignment: Alignment.bottomCenter,
             child: FractionallySizedBox(

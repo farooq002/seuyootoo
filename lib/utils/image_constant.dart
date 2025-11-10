@@ -13,6 +13,8 @@ const String tabNews = '${tabbarIconsFolder}tab_news.png';
 const String icBack = '${imageFolder}ic_back.png';
 const String icStreak = '${imageFolder}ic_fire.png';
 const String icBackground = '${imageFolder}ic_backgound.png';
+const String icCaseBackground = '${imageFolder}ic_case_background.png';
+const String icCaseCat = '${imageFolder}ic_my_cat.png';
 const String icForeground = '${imageFolder}ic_foreground.png';
 const String icClock = '${imageFolder}ic_clock.png';
 const String icStarBlack = '${imageFolder}ic_star_black.png';
@@ -34,6 +36,11 @@ const String icJudgeSplash = '${imageFolder}ic_judge_splash.png';
 const String icLogin = '${imageFolder}ic_login.png';
 const String icBooks = '${imageFolder}ic_books.png';
 const String icJudge = '${imageFolder}ic_judge.png';
+const String icNotification = '${imageFolder}ic_notification.png';
+const String icBattery = '${imageFolder}ic_battery.png';
+const String icFolder = '${imageFolder}ic_folder.png';
+const String icCard = '${imageFolder}ic_card.png';
+const String icCar = '${imageFolder}ic_car.png';
 
 // MARK: - Social Icons
 const String icApple = '${socialFOlder}ic_apple.png';

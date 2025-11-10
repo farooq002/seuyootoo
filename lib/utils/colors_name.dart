@@ -228,7 +228,8 @@ import 'package:get/get.dart';
 const appBlack = Colors.black;
 const appWhite = Colors.white;
 const appGray = Color(0xFF555555);
-const appLightBlack = Color(0xFF2D3748);
+const appLightBlack = Color(0xFFAD9496);
+const appDimBlack = Color(0xFF2D3748);
 const appBlue = Color(0xFF0866FF);
 const appDimGray = Color(0xFF555555);
 const appAmber = Colors.amber;
@@ -258,6 +259,7 @@ const appLightPink = Color(0xFFF5E1DF);
 const appDarkBrown = Color(0xFF391A0D);
 const appLightBrown = Color(0xFFA06B4E);
 const appOftenWhite = Color(0xFFE5E7EB);
+const appDimBrown = Color(0xFFD8CCBB);
 const fieldErorr = Color.fromARGB(255, 177, 30, 20);
 
 final appThemeColor = Get.isDarkMode ? appWhite : appBlack;

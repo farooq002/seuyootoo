@@ -7,7 +7,6 @@ import 'package:souyoutoo/src/base/base_view_controller.dart';
 import 'package:souyoutoo/utils/local_storage/storage_service.dart';
 
 class TabHomeViewController extends BaseViewController {
-  final size = MediaQuery.of(Get.context!).size;
   final HomeRepo repository = HomeRepoImpl();
   final streak = 0.obs;
   final profileData = GetProfileResponse().obs;

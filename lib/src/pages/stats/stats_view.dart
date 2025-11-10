@@ -6,9 +6,11 @@ import 'package:souyoutoo/src/components/app_progress_bar.dart';
 import 'package:souyoutoo/src/components/app_text.dart';
 import 'package:souyoutoo/src/components/background_container.dart';
 import 'package:souyoutoo/routes/routes_name.dart';
+import 'package:souyoutoo/src/components/sound_player.dart';
 
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
+import 'package:souyoutoo/utils/sounds_constant.dart';
 
 class StatsView extends StatelessWidget {
   const StatsView({super.key});
@@ -20,7 +22,9 @@ class StatsView extends StatelessWidget {
       appBar: appBar(
         context,
         leftIconSvg: icBack,
-        onLeftIconPress: () => Get.back(),
+        onLeftIconPress: () {
+          Get.back();
+        },
         titleText: 'Achievements',
       ),
       body: Stack(
@@ -30,6 +34,14 @@ class StatsView extends StatelessWidget {
             bottom: 100,
             child: Image.asset(icBackground, fit: BoxFit.fill),
           ),
+
+          Positioned(
+            top: MediaQuery.of(context).size.height / 8,
+            left: 0,
+            right: 0,
+            child: appImageAsset(icJudge, height: 250),
+          ),
+
           Align(
             alignment: Alignment.bottomCenter,
             child: FractionallySizedBox(
@@ -49,7 +61,6 @@ class StatsView extends StatelessWidget {
               isShadowAvailable: true,
               child: Row(
                 children: [
-                  /// Icon Container
                   AppAchievementContainer(
                     color: appLightGray,
                     borderColor: appGray,
@@ -150,7 +161,10 @@ class StatsView extends StatelessWidget {
                     ).paddingAll(10),
                   ),
                   GestureDetector(
-                    onTap: () => Get.toNamed(mapRoute),
+                    onTap: () {
+                      Get.toNamed(mapRoute);
+                      SoundManager.instance.play(icLevelUp);
+                    },
                     child: AppAchievementContainer(
                       color: appWhite,
                       borderColor: appWhite,
@@ -198,7 +212,10 @@ class StatsView extends StatelessWidget {
                     ).paddingAll(10),
                   ),
                   GestureDetector(
-                    onTap: () => Get.toNamed(profileRoute),
+                    onTap: () {
+                      Get.toNamed(profileRoute);
+                      SoundManager.instance.play(icBackgroundSound);
+                    },
                     child: AppAchievementContainer(
                       color: appWhite,
                       borderColor: appWhite,

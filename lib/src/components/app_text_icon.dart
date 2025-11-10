@@ -11,8 +11,12 @@ class AppTextIcon extends StatelessWidget {
   final Color? foregroundColor;
   final Color? backgroundColor;
   final Color? borderColor;
+  final Color? shadowColor;
+  final double? offSetX;
+  final double? offSetY;
   final bool isColumn;
   final double? fontSize;
+  final double? borderWidth;
   final double? widthSize;
   final double? textScaleFactor;
   final bool iconAtEnd;
@@ -24,9 +28,13 @@ class AppTextIcon extends StatelessWidget {
     this.isColumn = false,
     this.icon,
     this.foregroundColor,
+    this.offSetX,
+    this.offSetY,
     this.borderColor,
     this.backgroundColor,
+    this.shadowColor,
     this.fontSize = 12,
+    this.borderWidth = 2,
     this.textScaleFactor,
     this.widthSize,
     this.iconAtEnd = false,
@@ -76,20 +84,32 @@ class AppTextIcon extends StatelessWidget {
             ],
           );
 
-    return TextButton(
-      style: TextButton.styleFrom(
-        foregroundColor: foregroundColor ?? Theme.of(context).primaryColor,
-        backgroundColor:
-            backgroundColor ?? Theme.of(context).secondaryHeaderColor,
-        minimumSize: Size(widthSize ?? 30, 0),
-        animationDuration: const Duration(milliseconds: 300),
-        shape: RoundedRectangleBorder(
-          side: BorderSide(width: 1, color: borderColor ?? appDarkBrown),
-          borderRadius: BorderRadius.zero,
+    return Container(
+      decoration: BoxDecoration(
+        color: backgroundColor ?? Theme.of(context).secondaryHeaderColor,
+        boxShadow: [
+          BoxShadow(
+            color: shadowColor ?? appDimBlack,
+            offset: Offset(offSetX ?? 6, offSetY ?? 6),
+          ),
+        ],
+        border: Border.all(
+          width: borderWidth!,
+          color: borderColor ?? appDarkBrown,
         ),
       ),
-      onPressed: onPressed,
-      child: content,
+      child: TextButton(
+        style: TextButton.styleFrom(
+          foregroundColor: foregroundColor ?? Theme.of(context).primaryColor,
+          minimumSize: Size(widthSize ?? 30, 0),
+          animationDuration: const Duration(milliseconds: 300),
+          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+          padding:
+              EdgeInsets.zero, // important so container styling shows correctly
+        ),
+        onPressed: onPressed,
+        child: content,
+      ),
     );
   }
 }
