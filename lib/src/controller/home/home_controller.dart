@@ -10,6 +10,7 @@ import 'package:souyoutoo/utils/image_constant.dart';
 class HomeController extends BaseViewController {
   final HomeRepo homeRepo = HomeRepoImpl();
   final myCaseData = LoggedUserCasesResponses().obs;
+  final check = false.obs;
   final List<Categories> caseData = [
     Categories(
       name: 'PERSONAL INJURY',

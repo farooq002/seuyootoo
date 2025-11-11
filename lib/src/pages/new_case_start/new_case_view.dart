@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:souyoutoo/routes/routes_name.dart';
 import 'package:souyoutoo/src/base/base_view.dart';
 import 'package:souyoutoo/src/components/app_bar.dart';
 import 'package:souyoutoo/src/components/app_image.dart';
@@ -101,12 +102,14 @@ class NewCaseView extends BaseView<HomeController> {
             right: 0,
             child: SingleChildScrollView(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  AppTextRegular(
-                    text: 'SELECT CASE TYPE',
-                    fontSize: 12,
-                    color: appWhite,
+                  Center(
+                    child: AppTextRegular(
+                      text: 'SELECT CASE TYPE',
+                      fontSize: 12,
+                      color: appWhite,
+                    ),
                   ),
 
                   ListView.builder(
@@ -156,10 +159,12 @@ class NewCaseView extends BaseView<HomeController> {
                     },
                   ),
 
-                  AppTextRegular(
-                    text: 'WHAT YOU\'LL NEED',
-                    fontSize: 12,
-                    color: appWhite,
+                  Center(
+                    child: AppTextRegular(
+                      text: 'WHAT YOU\'LL NEED',
+                      fontSize: 12,
+                      color: appWhite,
+                    ),
                   ),
                   AppAchievementContainer(
                     color: appDimBrown,
@@ -171,6 +176,7 @@ class NewCaseView extends BaseView<HomeController> {
                             Icon(
                               Icons.mail,
                               color: appBlue,
+                              size: 16,
                             ).paddingOnly(right: 10),
                             Expanded(
                               child: AppTextRegular(
@@ -190,8 +196,7 @@ class NewCaseView extends BaseView<HomeController> {
                             ).paddingOnly(right: 10),
                             Expanded(
                               child: AppTextRegular(
-                                text:
-                                    'Valid email address for account creation',
+                                text: 'Case details and relevant documents',
                                 fontSize: 8,
                               ),
                             ),
@@ -199,11 +204,14 @@ class NewCaseView extends BaseView<HomeController> {
                         ).paddingAll(10),
                         Row(
                           children: [
-                            Icon(Icons.mail).paddingOnly(right: 10),
+                            Icon(
+                              Icons.person,
+                              size: 16,
+                              color: appPurple,
+                            ).paddingOnly(right: 10),
                             Expanded(
                               child: AppTextRegular(
-                                text:
-                                    'Valid email address for account creation',
+                                text: 'Defendant information (name, address)',
                                 fontSize: 8,
                               ),
                             ),
@@ -211,11 +219,14 @@ class NewCaseView extends BaseView<HomeController> {
                         ).paddingAll(10),
                         Row(
                           children: [
-                            Icon(Icons.mail).paddingOnly(right: 10),
+                            Icon(
+                              Icons.attach_money,
+                              size: 16,
+                              color: Colors.orange,
+                            ).paddingOnly(right: 10),
                             Expanded(
                               child: AppTextRegular(
-                                text:
-                                    'Valid email address for account creation',
+                                text: 'Estimated damages or claim amount',
                                 fontSize: 8,
                               ),
                             ),
@@ -223,7 +234,36 @@ class NewCaseView extends BaseView<HomeController> {
                         ).paddingAll(10),
                       ],
                     ),
-                  ),
+                  ).paddingAll(10),
+                  AppTextIcon(
+                    text: 'CONTINUE TO WEBSITE',
+                    onPressed: () {
+                      Get.toNamed(caseUpdateRoute);
+                    },
+                    backgroundColor: appGreen,
+                    foregroundColor: appBlack,
+                    shadowColor: appLightBlack,
+                    icon: appImageAsset(icWebsite),
+                    offSetX: -6,
+                    offSetY: -6,
+                  ).paddingAll(10),
+
+                  AppAchievementContainer(
+                    color: appOftenWhite,
+                    borderColor: appOftenWhite,
+                    child: Row(
+                      children: [
+                        Icon(Icons.info, color: appBlue).paddingOnly(right: 10),
+                        Expanded(
+                          child: AppTextRegular(
+                            text:
+                                'You\'ll be redirected to SueYouToo.com to complete your case filing. Your progress will sync back to this app once submitted.',
+                            fontSize: 8,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ).paddingAll(10),
                 ],
               ).paddingAll(32),
             ),

@@ -13,3 +13,4 @@ const String newsRoute = "/news";
 const String myCaseRoute = "/myCases";
 const String caseDetailRoute = "/caseDetail";
 const String newCaseRoute = "/newCase";
+const String caseUpdateRoute = "/caseUpdates";

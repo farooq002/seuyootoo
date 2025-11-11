@@ -46,6 +46,8 @@ class AppElevatedButton extends StatelessWidget {
   final Color? textColor;
   final double? textSize;
   final double? padding;
+  final double? offSetX;
+  final double? offSetY;
   final Size? minimumSize;
 
   const AppElevatedButton({
@@ -57,6 +59,8 @@ class AppElevatedButton extends StatelessWidget {
     this.textSize,
     this.padding,
     this.minimumSize,
+    this.offSetX,
+    this.offSetY,
   });
 
   @override
@@ -64,12 +68,10 @@ class AppElevatedButton extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: color,
-        boxShadow: const [
+        boxShadow: [
           BoxShadow(
             color: appLightBlack,
-            blurRadius: 0,
-            spreadRadius: 0,
-            offset: Offset(6, 6),
+            offset: Offset(offSetX ?? 6, offSetY ?? 6),
           ),
         ],
       ),

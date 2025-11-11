@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:souyoutoo/src/pages/case_detail/case_detail_view.dart';
+import 'package:souyoutoo/src/pages/case_updates/case_updates.dart';
 import 'package:souyoutoo/src/pages/my_case_view/my_case_view.dart';
 import 'package:souyoutoo/src/pages/new_case_start/new_case_view.dart';
 import 'package:souyoutoo/src/pages/news_view/news_view.dart';
@@ -29,6 +30,7 @@ final appRoutes = [
   ),
   GetPage(name: shopRoute, page: () => const ShopView()),
   GetPage(name: newCaseRoute, page: () => NewCaseView()),
+  GetPage(name: caseUpdateRoute, page: () => CaseUpdatesView()),
   GetPage(name: myCaseRoute, page: () => MyCaseView()),
   GetPage(name: caseDetailRoute, page: () => CaseDetailView()),
   GetPage(name: verdictRoute, page: () => VerdictView()),

@@ -41,6 +41,10 @@ const String icBattery = '${imageFolder}ic_battery.png';
 const String icFolder = '${imageFolder}ic_folder.png';
 const String icCard = '${imageFolder}ic_card.png';
 const String icCar = '${imageFolder}ic_car.png';
+const String icWebsite = '${imageFolder}ic_website.png';
+const String icHammerColored = '${imageFolder}ic_hammer_color.png';
+const String icScroll = '${imageFolder}ic_scroll.png';
+const String icRobot = '${imageFolder}ic_robot.png';
 
 // MARK: - Social Icons
 const String icApple = '${socialFOlder}ic_apple.png';
