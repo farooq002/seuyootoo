@@ -31,7 +31,7 @@ class MyCaseView extends BaseView<HomeController> {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          Image.asset(icCaseBackground, fit: BoxFit.cover),
+          appImageAsset(icCaseBackground, fit: BoxFit.cover),
 
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -138,7 +138,7 @@ class MyCaseView extends BaseView<HomeController> {
 //                                       children: List.generate(3, (index) {
 //                                         final difficulty =
 //                                             caseData?.difficulty ?? 0;
-//                                         return Image.asset(
+//                                         return appImageAsset(
 //                                           index < difficulty
 //                                               ? icStar
 //                                               : icStarBlack,
@@ -180,7 +180,7 @@ class MyCaseView extends BaseView<HomeController> {
 //                                           fontSize: 18,
 //                                           color: appGreen,
 //                                         ),
-//                                         Image.asset(
+//                                         appImageAsset(
 //                                           icFrame,
 //                                           width: 18,
 //                                           height: 18,

@@ -43,7 +43,9 @@ class AppElevatedButton extends StatelessWidget {
   final String text;
   final void Function()? onPressed;
   final Color? color;
+  final Color? shadowColor;
   final Color? textColor;
+  final Color? borderColor;
   final double? textSize;
   final double? padding;
   final double? offSetX;
@@ -60,6 +62,8 @@ class AppElevatedButton extends StatelessWidget {
     this.padding,
     this.minimumSize,
     this.offSetX,
+    this.borderColor,
+    this.shadowColor,
     this.offSetY,
   });
 
@@ -68,26 +72,27 @@ class AppElevatedButton extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: color,
+        border: Border.all(color: borderColor ?? appLightBlack, width: 2),
         boxShadow: [
           BoxShadow(
-            color: appLightBlack,
+            color: shadowColor ?? appLightBlack,
             offset: Offset(offSetX ?? 6, offSetY ?? 6),
           ),
         ],
       ),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.transparent,
+          backgroundColor: color,
           foregroundColor: textColor,
           minimumSize: minimumSize,
-          shadowColor: Colors.transparent,
 
+          shadowColor: appLightBlack,
           padding: EdgeInsets.symmetric(
             horizontal: padding != null ? padding! : 16,
             vertical: padding ?? 12,
           ),
-          textStyle: Theme.of(context).textTheme.labelLarge?.copyWith(),
-          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
           elevation: 0,
         ),
         onPressed: onPressed,

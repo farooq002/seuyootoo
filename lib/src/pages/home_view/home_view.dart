@@ -30,13 +30,16 @@ class HomeView extends BaseView<TabHomeViewController> {
         context,
         titleText: 'SOUYOUTOO',
         centerTitle: false,
+        leftIconSvg: null,
         customButton: AppTextIcon(
-          icon: Image.asset(icStreak),
+          icon: appImageAsset(icStreak),
           onPressed: () {},
           text: '${controller.streak.value} DAY STREAK',
           fontSize: 14,
           foregroundColor: appWhite,
+          borderColor: appBlack,
           backgroundColor: appBlack,
+          shadowColor: appBlack,
         ),
       ),
       body: Stack(
@@ -44,7 +47,7 @@ class HomeView extends BaseView<TabHomeViewController> {
           Positioned.fill(
             top: 0,
             bottom: 100,
-            child: Image.asset(icBackground, fit: BoxFit.fill),
+            child: appImageAsset(icBackground, fit: BoxFit.fill),
           ),
 
           Positioned(
@@ -59,7 +62,7 @@ class HomeView extends BaseView<TabHomeViewController> {
             child: FractionallySizedBox(
               widthFactor: 1.0,
               heightFactor: 0.65,
-              child: Image.asset(icForeground, fit: BoxFit.fill),
+              child: appImageAsset(icForeground, fit: BoxFit.fill),
             ),
           ),
 
@@ -167,7 +170,7 @@ class HomeView extends BaseView<TabHomeViewController> {
                   onPressed: () {},
                   text: 'LESSON',
                   isColumn: true,
-                  icon: Image.asset(icCheck),
+                  icon: appImageAsset(icCheck),
                   fontSize: 14,
                   backgroundColor: appGreen,
                   foregroundColor: appWhite,
@@ -183,12 +186,16 @@ class HomeView extends BaseView<TabHomeViewController> {
                       text: 'START NEW CASE',
                       padding: 0,
                       textSize: 16,
+                      borderColor: appDimBlack,
+                      shadowColor: appBlack,
                       textColor: appWhite,
                     ).paddingOnly(bottom: 10),
                     AppElevatedButton(
                       onPressed: () => Get.toNamed(myCaseRoute),
                       color: appPurple,
                       text: 'VIEW MY CASES',
+                      borderColor: appDimBlack,
+                      shadowColor: appBlack,
                       padding: 0,
                       textSize: 16,
                       textColor: appWhite,

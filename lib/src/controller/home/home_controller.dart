@@ -1,15 +1,23 @@
+import 'package:file_picker/file_picker.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:souyoutoo/model/category_model.dart';
 import 'package:souyoutoo/model/home_models/logged_user_response.dart';
+import 'package:souyoutoo/model/home_models/user_profile.dart';
 import 'package:souyoutoo/repo/home_repo/home_repo.dart';
 import 'package:souyoutoo/repo/home_repo/home_repo_impl.dart';
 import 'package:souyoutoo/src/base/base_view_controller.dart';
+import 'package:souyoutoo/src/components/app_file_picker.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
+import 'package:souyoutoo/utils/utils.dart';
 
 class HomeController extends BaseViewController {
   final HomeRepo homeRepo = HomeRepoImpl();
   final myCaseData = LoggedUserCasesResponses().obs;
+  final selectedIndex = false.obs;
+  final pickedFiles = <PlatformFile>[].obs;
+  final profileData = GetProfileResponse().obs;
   final check = false.obs;
   final List<Categories> caseData = [
     Categories(
@@ -55,6 +63,7 @@ class HomeController extends BaseViewController {
   void onInit() {
     super.onInit();
     getMyCases();
+    getProfile();
   }
 
   getMyCases() async {
@@ -64,5 +73,51 @@ class HomeController extends BaseViewController {
     if (response != null) {
       myCaseData.value = response;
     }
+  }
+
+  Future<void> uploadPdf() async {
+    // const int maxFileSize = 10 * 1024 * 1024; // 10 MB in bytes
+
+    var pickedFilesRes = await AppFilePicker.shared.pickFile(
+      FileType.image,
+      [
+        FileExtension.pdf,
+        FileExtension.pdf,
+        FileExtension.jpeg,
+      ], // only PDF allowed
+      allowMultiple: false,
+    );
+
+    // if (pickedFilesRes != null && pickedFilesRes.isNotEmpty) {
+    final file = pickedFilesRes?.first;
+    // if (file?.size > maxFileSize) {
+    //   debugPrint('File too large: ${file?.size} bytes');
+    //   showToast("Please select a PDF smaller than 10 MB");
+    //   return;
+    // }
+    debugPrint('File selected: ${file?.name}');
+    pickedFiles.value = pickedFilesRes!;
+    // final pdfResponse = await homeRepository.uploadImage(
+    //   platformFiles: pickedFilesRes,
+    // );
+    // if (pdfResponse != null) {
+    //   pickedFile.value = pdfResponse;
+    // }
+    debugPrint('Files uploaded successfully: ${pickedFilesRes.toString()}');
+    // }
+  }
+
+  getProfile() async {
+    startLoading();
+
+    final response = await homeRepo.getProfile();
+    if (response != null) {
+      stopLoading();
+      debugPrint(response.toString());
+      // Get.offAllNamed();
+      profileData.value = response;
+    }
+
+    stopLoading();
   }
 }

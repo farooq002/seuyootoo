@@ -14,3 +14,5 @@ const String myCaseRoute = "/myCases";
 const String caseDetailRoute = "/caseDetail";
 const String newCaseRoute = "/newCase";
 const String caseUpdateRoute = "/caseUpdates";
+const String createTicketRoute = "/createTicketRoute";
+const String editProfileRoute = "/editProfileRoute";

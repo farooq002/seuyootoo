@@ -47,7 +47,7 @@ class CaseUpdatesView extends BaseView<HomeController> {
             child: FractionallySizedBox(
               widthFactor: 1.0,
               heightFactor: 0.65,
-              child: Image.asset(icForeground, fit: BoxFit.fill),
+              child: appImageAsset(icForeground, fit: BoxFit.fill),
             ),
           ),
 

@@ -19,6 +19,7 @@ class AppTextField extends StatelessWidget {
   final String? Function(String?)? validator;
   final bool? isTextFieldEnabled;
   final Color? placeholderColor;
+  final Color? borderColor;
   final List<TextInputFormatter>? inputFormatters;
   final InputBorder? outlineBorder;
   final String? hintText;
@@ -47,12 +48,10 @@ class AppTextField extends StatelessWidget {
     this.validator,
     this.isTextFieldEnabled = true,
     this.placeholderColor = appBlack,
-    this.outlineBorder = const OutlineInputBorder(
-      borderSide: BorderSide(width: 2, color: appDarkYellow),
-      borderRadius: BorderRadius.zero,
-    ),
+    this.outlineBorder,
     this.obscureText = false,
     this.textFieldPadding = 0,
+    this.borderColor,
     this.minLine,
     this.maxLine,
     this.focusNode,
@@ -86,8 +85,24 @@ class AppTextField extends StatelessWidget {
             fillColor: backgroundColor,
             errorText: field.errorText,
             errorMaxLines: 3,
-            border: outlineBorder,
-            focusedBorder: outlineBorder,
+            border:
+                outlineBorder ??
+                OutlineInputBorder(
+                  borderSide: BorderSide(
+                    width: 2,
+                    color: borderColor ?? appDarkYellow,
+                  ),
+                  borderRadius: BorderRadius.zero,
+                ),
+            focusedBorder:
+                outlineBorder ??
+                OutlineInputBorder(
+                  borderSide: BorderSide(
+                    width: 2,
+                    color: borderColor ?? appDarkYellow,
+                  ),
+                  borderRadius: BorderRadius.zero,
+                ),
             labelText: placeholder,
             hintText: hintText,
 

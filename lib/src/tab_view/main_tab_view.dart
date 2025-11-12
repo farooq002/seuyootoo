@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:souyoutoo/routes/routes_name.dart';
+import 'package:souyoutoo/src/components/app_image.dart';
 import 'package:souyoutoo/src/components/app_text.dart';
 import 'package:souyoutoo/src/pages/home_view/home_view.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
@@ -73,7 +74,7 @@ class MainTabView extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Image.asset(
+                          appImageAsset(
                             icons[i],
                             width: 24,
                             height: 24,

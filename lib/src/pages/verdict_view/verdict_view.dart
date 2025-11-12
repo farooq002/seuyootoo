@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:souyoutoo/model/home_models/case_by_id_model.dart';
+import 'package:souyoutoo/routes/routes_name.dart';
 import 'package:souyoutoo/src/base/base_view.dart';
 import 'package:souyoutoo/src/components/app_bar.dart';
 import 'package:souyoutoo/src/components/app_button.dart';
 import 'package:souyoutoo/src/components/app_image.dart';
 import 'package:souyoutoo/src/components/app_text.dart';
+import 'package:souyoutoo/src/components/background_container.dart';
 import 'package:souyoutoo/src/controller/trail/trail_controller.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
@@ -42,7 +44,7 @@ class VerdictView extends BaseView<TrailController> {
           Positioned.fill(
             top: 0,
             bottom: 100,
-            child: Image.asset(icBackground, fit: BoxFit.fill),
+            child: appImageAsset(icBackground, fit: BoxFit.fill),
           ),
 
           Positioned(
@@ -57,54 +59,30 @@ class VerdictView extends BaseView<TrailController> {
             child: FractionallySizedBox(
               widthFactor: 1.0,
               heightFactor: 0.65,
-              child: Image.asset(icForeground, fit: BoxFit.fill),
+              child: appImageAsset(icForeground, fit: BoxFit.fill),
             ),
           ),
           Positioned(
-            top: 10,
+            top: 20,
             left: 0,
             right: 0,
-            child: Container(
+            child: AppAchievementContainer(
+              color: appDarkYellow,
               margin: const EdgeInsets.symmetric(horizontal: 16),
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: appDarkYellow,
-                border: Border.all(color: Colors.black, width: 2),
-                // boxShadow: const [
-                //   BoxShadow(
-                //     color: appBlack,
-                //     offset: Offset(4, 4), // bottom-right
-                //     blurRadius: 4,
-                //   ),
-                //   BoxShadow(
-                //     color: appBlack,
-                //     offset: Offset(-4, -4), // top-left
-                //     blurRadius: 4,
-                //   ),
-                //   BoxShadow(
-                //     color: appBlack,
-                //     offset: Offset(4, -4), // top-right
-                //     blurRadius: 4,
-                //   ),
-                //   BoxShadow(
-                //     color: appBlack,
-                //     offset: Offset(-4, 0), // bottom-left
-                //     blurRadius: 4,
-                //   ),
-                // ],
-              ),
+              width: MediaQuery.of(context).size.width * 0.9,
+              borderColor: appDarkYellow,
               child: Column(
                 children: [
                   AppTextRegular(
                     text: 'YOU WON THE CASE!',
-                    fontSize: 46,
+                    fontSize: 40,
                     fontFamily: 'VT323',
                     textAlign: TextAlign.center,
                     color: Colors.black,
                   ),
                 ],
               ),
-            ),
+            ).paddingSymmetric(horizontal: 32),
           ),
           Positioned(
             top: MediaQuery.of(context).size.height * 0.43,
@@ -113,13 +91,12 @@ class VerdictView extends BaseView<TrailController> {
             right: 0,
             child: SingleChildScrollView(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    decoration: BoxDecoration(
-                      color: appAmber,
-                      border: Border.all(color: appWhite, width: 2),
-                    ),
+                  AppAchievementContainer(
+                    color: appAmber,
+                    borderColor: appAmber,
+                    shadowColor: appWhite,
                     child: AppTextBold(
                       text: 'We nailed that verdict!',
                       fontSize: 12,
@@ -128,12 +105,10 @@ class VerdictView extends BaseView<TrailController> {
                       color: appBlack,
                     ).paddingAll(10),
                   ).paddingOnly(top: 10),
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    decoration: BoxDecoration(
-                      color: appBlack,
-                      border: Border.all(color: appBlack, width: 2),
-                    ),
+                  AppAchievementContainer(
+                    color: appBlack,
+                    borderColor: appBlack,
+                    shadowColor: appWhite,
                     child: Column(
                       children: [
                         Row(
@@ -152,7 +127,7 @@ class VerdictView extends BaseView<TrailController> {
                               fontSize: 14,
                             ),
                           ],
-                        ).paddingSymmetric(horizontal: 10),
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -167,7 +142,7 @@ class VerdictView extends BaseView<TrailController> {
                               color: appGreen,
                             ).paddingAll(5),
                           ],
-                        ).paddingSymmetric(horizontal: 10),
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -186,7 +161,7 @@ class VerdictView extends BaseView<TrailController> {
                               color: appBlue,
                             ).paddingAll(5),
                           ],
-                        ).paddingSymmetric(horizontal: 10),
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -197,44 +172,21 @@ class VerdictView extends BaseView<TrailController> {
                               color: appWhite,
                             ).paddingAll(10),
                             AppTextRegular(
-                              text: '+2\nTOKENS',
+                              text:
+                                  '+${controller.caseDetail.value.rewardTokens ?? 0}\nTOKENS',
                               fontSize: 14,
                               textAlign: TextAlign.end,
                               color: appAmber,
                             ).paddingAll(5),
                           ],
-                        ).paddingSymmetric(horizontal: 10),
+                        ),
                       ],
                     ),
                   ).paddingSymmetric(vertical: 20),
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    decoration: BoxDecoration(
-                      color: appPurple,
-                      border: Border.all(color: appWhite, width: 2),
-                      // boxShadow: const [
-                      //   BoxShadow(
-                      //     color: appWhite,
-                      //     offset: Offset(4, 4), // bottom-right
-                      //     blurRadius: 4,
-                      //   ),
-                      //   BoxShadow(
-                      //     color: appWhite,
-                      //     offset: Offset(-4, -4), // top-left
-                      //     blurRadius: 4,
-                      //   ),
-                      //   BoxShadow(
-                      //     color: appWhite,
-                      //     offset: Offset(4, -4), // top-right
-                      //     blurRadius: 4,
-                      //   ),
-                      //   BoxShadow(
-                      //     color: appWhite,
-                      //     offset: Offset(-4, 4), // bottom-left
-                      //     blurRadius: 4,
-                      //   ),
-                      // ],
-                    ),
+                  AppAchievementContainer(
+                    color: appPurple,
+                    borderColor: appPurple,
+                    shadowColor: appWhite,
                     child: AppTextBold(
                       text: 'New Briefcase Skin\nUnlocked!',
                       fontSize: 12,
@@ -243,12 +195,12 @@ class VerdictView extends BaseView<TrailController> {
                       color: appWhite,
                     ).paddingAll(10),
                   ),
-                  Container(
+                  AppAchievementContainer(
                     width: MediaQuery.of(context).size.width * 0.9,
-                    decoration: BoxDecoration(
-                      color: appBlack,
-                      border: Border.all(color: appWhite, width: 2),
-                    ),
+
+                    color: appBlack,
+                    borderColor: appBlack,
+                    shadowColor: appWhite,
                     child: Column(
                       children: [
                         AppTextBold(
@@ -287,36 +239,26 @@ class VerdictView extends BaseView<TrailController> {
                       ],
                     ).paddingAll(10),
                   ).paddingSymmetric(vertical: 20),
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    decoration: BoxDecoration(
-                      color: appBlue,
-                      border: Border.all(color: appWhite, width: 2),
-                    ),
-                    child: AppElevatedButton(
-                      text: 'Review Lessons',
-                      onPressed: () {},
-                      textColor: appLightBlueGray,
-                      color: appBlue,
-                      textSize: 16,
-                    ),
+                  AppElevatedButton(
+                    text: 'Review Lessons',
+                    onPressed: () => Get.toNamed(createTicketRoute),
+                    textColor: appLightBlueGray,
+                    color: appBlue,
+                    borderColor: appDimGray,
+                    shadowColor: appBlack,
+                    textSize: 16,
                   ),
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    decoration: BoxDecoration(
-                      color: appAmber,
-                      border: Border.all(color: appWhite, width: 2),
-                    ),
-                    child: AppElevatedButton(
-                      text: 'Retry Case',
-                      textSize: 16,
-                      onPressed: () {},
-                      color: appAmber,
-                      textColor: appYellow,
-                    ),
+                  AppElevatedButton(
+                    text: 'Retry Case',
+                    textSize: 16,
+                    onPressed: () {},
+                    color: appAmber,
+                    borderColor: appWhite,
+                    shadowColor: appBlack,
+                    textColor: appYellow,
                   ).paddingOnly(top: 20),
                 ],
-              ),
+              ).paddingAll(42),
             ),
           ),
         ],

@@ -45,6 +45,7 @@ const String icWebsite = '${imageFolder}ic_website.png';
 const String icHammerColored = '${imageFolder}ic_hammer_color.png';
 const String icScroll = '${imageFolder}ic_scroll.png';
 const String icRobot = '${imageFolder}ic_robot.png';
+const String uploadFile = '${imageFolder}upload_file.png';
 
 // MARK: - Social Icons
 const String icApple = '${socialFOlder}ic_apple.png';

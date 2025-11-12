@@ -27,7 +27,7 @@ class CaseDetailView extends BaseView<HomeController> {
         centerTitle: false,
         onLeftIconPress: () => Get.back(),
         customButton: AppTextIcon(
-          icon: Image.asset(icFrame),
+          icon: appImageAsset(icFrame),
           onPressed: () {},
           text: 'Tokens 47',
           fontSize: 14,
@@ -41,7 +41,7 @@ class CaseDetailView extends BaseView<HomeController> {
           Positioned.fill(
             top: 0,
             bottom: 100,
-            child: Image.asset(icBackground, fit: BoxFit.fill),
+            child: appImageAsset(icBackground, fit: BoxFit.fill),
           ),
 
           Positioned(
@@ -56,7 +56,7 @@ class CaseDetailView extends BaseView<HomeController> {
             child: FractionallySizedBox(
               widthFactor: 1.0,
               heightFactor: 0.65,
-              child: Image.asset(icForeground, fit: BoxFit.fill),
+              child: appImageAsset(icForeground, fit: BoxFit.fill),
             ),
           ),
 

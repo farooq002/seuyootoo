@@ -25,16 +25,21 @@ class QuestionView extends BaseView<TrailController> {
       appBar: appBar(
         context,
         leftIconSvg: icBack,
-        onLeftIconPress: () => Get.back(),
+        onLeftIconPress: () {
+          Get.back();
+          controller.timer?.cancel();
+        },
         titleText: 'Case #023',
         customButton: Obx(
           () => AppTextIcon(
             text: controller.formatTime(controller.currentTime.value),
-            icon: Image.asset(icClock, height: 26),
+            icon: appImageAsset(icClock, height: 26),
             onPressed: () {},
             fontSize: 30,
             fontFamily: 'VT323',
             backgroundColor: appBlack,
+            shadowColor: appBlack,
+            borderColor: appBlack,
             foregroundColor: appWhite,
             iconAtEnd: true,
           ),
@@ -45,7 +50,7 @@ class QuestionView extends BaseView<TrailController> {
           Positioned.fill(
             top: 0,
             bottom: 100,
-            child: Image.asset(icBackground, fit: BoxFit.fill),
+            child: appImageAsset(icBackground, fit: BoxFit.fill),
           ),
 
           Positioned(
@@ -60,7 +65,7 @@ class QuestionView extends BaseView<TrailController> {
             child: FractionallySizedBox(
               widthFactor: 1.0,
               heightFactor: 0.65,
-              child: Image.asset(icForeground, fit: BoxFit.fill),
+              child: appImageAsset(icForeground, fit: BoxFit.fill),
             ),
           ),
 
@@ -145,7 +150,7 @@ class QuestionView extends BaseView<TrailController> {
                   ),
                 ],
               ).paddingAll(10),
-            ).paddingAll(30),
+            ).paddingAll(10),
           ),
 
           Obx(() {
@@ -158,109 +163,140 @@ class QuestionView extends BaseView<TrailController> {
               bottom: 25,
               left: 0,
               right: 0,
-              child: AppAchievementContainer(
-                margin: const EdgeInsets.symmetric(horizontal: 16),
-                color: appWhite,
-                shadowColor: appBlack,
-                borderColor: appWhite,
-                isShadowAvailable: true,
-                child: SingleChildScrollView(
+              child: SingleChildScrollView(
+                child: AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 300),
+                  transitionBuilder:
+                      (Widget child, Animation<double> animation) {
+                        final inAnimation = Tween<Offset>(
+                          begin: const Offset(1.0, 0.0),
+                          end: Offset.zero,
+                        ).animate(animation);
+
+                        final outAnimation = Tween<Offset>(
+                          begin: const Offset(-1.0, 0.0),
+                          end: Offset.zero,
+                        ).animate(animation);
+
+                        if (child.key ==
+                            ValueKey(controller.currentQuestIndex.value)) {
+                          return SlideTransition(
+                            position: inAnimation,
+                            child: child,
+                          );
+                        } else {
+                          return SlideTransition(
+                            position: outAnimation,
+                            child: child,
+                          );
+                        }
+                      },
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                    key: ValueKey<int>(controller.currentQuestIndex.value),
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      AppTextRegular(
-                        text: 'LEGAL QUESTION',
-                        fontSize: 16,
-                        color: appBlue,
-                        fontFamily: 'VT323',
-                      ),
-                      AppTextRegular(
-                        text: question?.questionText ?? '',
-                        fontSize: 18,
+                      AppAchievementContainer(
                         color: appBlack,
-                        fontFamily: 'VT323',
-                      ),
-                      question?.evidence == null || question?.evidence == ''
-                          ? SizedBox.shrink()
-                          : Container(
-                              decoration: BoxDecoration(
-                                color: appYellow,
-                                border: const Border(
-                                  left: BorderSide(color: appAmber, width: 6),
-                                ),
-                              ),
-                              child: RichText(
-                                text: TextSpan(
-                                  children: [
-                                    TextSpan(
-                                      text: "EVIDENCE: ",
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        color: appBlack,
-                                        fontFamily: 'VT323',
-                                        fontSize: 14,
+                        borderColor: appBlack,
+                        shadowColor: appWhite,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            AppTextRegular(
+                              text: 'LEGAL QUESTION',
+                              fontSize: 16,
+                              color: appBlue,
+                              fontFamily: 'VT323',
+                            ),
+                            AppTextRegular(
+                              text: question?.questionText ?? '',
+                              fontSize: 18,
+                              color: appWhite,
+                              fontFamily: 'VT323',
+                            ),
+                            question?.evidence == null ||
+                                    question?.evidence == ''
+                                ? SizedBox.shrink()
+                                : Container(
+                                    decoration: BoxDecoration(
+                                      color: appYellow,
+                                      border: const Border(
+                                        left: BorderSide(
+                                          color: appAmber,
+                                          width: 6,
+                                        ),
                                       ),
                                     ),
-                                    TextSpan(
-                                      text: question?.evidence,
-                                      // "Employee worked 45 hours in one week, including 5 hours of mandatory training after regular shift.",
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        color: appBlack,
-                                        fontFamily: 'VT323',
-                                        fontSize: 14,
+                                    child: RichText(
+                                      text: TextSpan(
+                                        children: [
+                                          TextSpan(
+                                            text: "EVIDENCE: ",
+                                            style: const TextStyle(
+                                              fontWeight: FontWeight.w400,
+                                              color: appBlack,
+                                              fontFamily: 'VT323',
+                                              fontSize: 14,
+                                            ),
+                                          ),
+                                          TextSpan(
+                                            text: question?.evidence,
+                                            style: const TextStyle(
+                                              fontWeight: FontWeight.w400,
+                                              color: appBlack,
+                                              fontFamily: 'VT323',
+                                              fontSize: 14,
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              ).paddingAll(10),
-                            ).paddingSymmetric(vertical: 10),
+                                    ).paddingAll(10),
+                                  ).paddingSymmetric(vertical: 10),
+                          ],
+                        ),
+                      ).paddingOnly(bottom: 20),
                       ...List.generate(question?.choices?.length ?? 0, (index) {
                         final optionLabel = String.fromCharCode(65 + index);
 
                         return Material(
                           color: Colors.transparent,
-                          child: InkWell(
-                            onTap: () => controller.goToNextQuest(index),
-                            child: Obx(
-                              () => AppAchievementContainer(
-                                width: double.infinity,
-                                margin: const EdgeInsets.symmetric(vertical: 6),
-                                color: controller.optionColor(
-                                  controller.currentQuestIndex.value,
-                                  index,
-                                ),
-                                borderColor: appBlack,
-                                isBorderAvailable: true,
-                                isShadowAvailable: false,
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    AppTextRegular(
-                                      text: "$optionLabel: ",
+                          child: Obx(
+                            () => AppAchievementContainer(
+                              onTap: () => controller.goToNextQuest(index),
+                              color: controller.optionColor(
+                                controller.currentQuestIndex.value,
+                                index,
+                              ),
+                              borderColor: appBlack,
+                              isBorderAvailable: true,
+                              shadowColor: appWhite,
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  AppTextRegular(
+                                    text: "$optionLabel: ",
+                                    fontSize: 16,
+                                    color: Colors.black,
+                                    fontFamily: 'VT323',
+                                  ),
+                                  Expanded(
+                                    child: AppTextRegular(
+                                      text: question?.choices?[index],
                                       fontSize: 16,
-                                      color: Colors.black,
+                                      color: appBlack,
                                       fontFamily: 'VT323',
                                     ),
-                                    Expanded(
-                                      child: AppTextRegular(
-                                        text: question?.choices?[index],
-                                        fontSize: 16,
-                                        color: appBlack,
-                                        fontFamily: 'VT323',
-                                      ),
-                                    ),
-                                  ],
-                                ).paddingAll(10),
-                              ),
-                            ),
+                                  ),
+                                ],
+                              ).paddingAll(10),
+                            ).paddingOnly(bottom: 20),
                           ),
                         );
                       }),
                     ],
                   ),
-                ).paddingAll(10),
-              ).paddingSymmetric(horizontal: 32),
+                ).paddingAll(10).paddingSymmetric(horizontal: 22),
+              ),
             );
           }),
         ],

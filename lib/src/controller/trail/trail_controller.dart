@@ -9,6 +9,7 @@ import 'package:souyoutoo/repo/trail_repo/trail_repo.dart';
 import 'package:souyoutoo/repo/trail_repo/trail_repo_impl.dart';
 import 'package:souyoutoo/routes/routes_name.dart';
 import 'package:souyoutoo/src/base/base_view_controller.dart';
+import 'package:souyoutoo/utils/colors_name.dart';
 
 class TrailController extends BaseViewController {
   final TrailRepo trailRepo = TrailRepoImp();
@@ -65,7 +66,7 @@ class TrailController extends BaseViewController {
     final question = caseDetail.value.questions?[questionIndex];
     if (question == null) return Colors.grey;
     if (question.type.value == QuestionType.notdefined) {
-      return Colors.white;
+      return appPurple;
     }
     if (optionIndex == question.correctAnswerIndex) {
       return Colors.green;
@@ -74,7 +75,7 @@ class TrailController extends BaseViewController {
         optionIndex != question.correctAnswerIndex) {
       return Colors.red;
     }
-    return Colors.white;
+    return appPurple;
   }
 
   goToNextQuest(selectedIndex) {

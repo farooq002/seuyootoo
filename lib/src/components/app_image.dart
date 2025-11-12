@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 Widget appImageAsset(
-  String imagePath, {
-  double? height,
+  String path, {
   double? width,
+  double? height,
   Color? color,
   BoxFit fit = BoxFit.contain,
 }) {
   return Image.asset(
-    imagePath,
-    height: height,
+    path,
     width: width,
+    height: height,
     color: color,
     fit: fit,
   );

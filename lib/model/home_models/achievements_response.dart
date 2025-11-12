@@ -4,24 +4,20 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 
 class AchievementsResponse {
-  final List<Achievements>? achievement;
-  AchievementsResponse({this.achievement});
-
-  AchievementsResponse copyWith({List<Achievements>? achievement}) {
-    return AchievementsResponse(achievement: achievement ?? this.achievement);
-  }
+  final List<Achievements>? achievements;
+  AchievementsResponse({this.achievements});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'achievement': achievement?.map((x) => x.toMap()).toList(),
+      'achievements': achievements?.map((x) => x.toMap()).toList(),
     };
   }
 
   factory AchievementsResponse.fromMap(Map<String, dynamic> map) {
     return AchievementsResponse(
-      achievement: map['achievement'] != null
+      achievements: map['achievements'] != null
           ? List<Achievements>.from(
-              (map['achievement'] as List).map<Achievements?>(
+              (map['achievements'] as List).map<Achievements?>(
                 (x) => Achievements.fromMap(x as Map<String, dynamic>),
               ),
             )
@@ -35,17 +31,17 @@ class AchievementsResponse {
       AchievementsResponse.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() => 'AchievementsResponse(achievement: $achievement)';
+  String toString() => 'AchievementsResponse(achievement: $achievements)';
 
   @override
   bool operator ==(covariant AchievementsResponse other) {
     if (identical(this, other)) return true;
 
-    return listEquals(other.achievement, achievement);
+    return listEquals(other.achievements, achievements);
   }
 
   @override
-  int get hashCode => achievement.hashCode;
+  int get hashCode => achievements.hashCode;
 }
 
 class Achievements {

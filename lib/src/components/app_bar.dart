@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:souyoutoo/src/components/app_image.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
 import 'app_text.dart';
@@ -23,7 +24,7 @@ AppBar appBar(
             padding: EdgeInsets.symmetric(horizontal: leftIconPadding / 2),
             child: GestureDetector(
               onTap: onLeftIconPress,
-              child: Image.asset(leftIconSvg, height: 26, color: appWhite),
+              child: appImageAsset(leftIconSvg, height: 26, color: appWhite),
             ),
           )
         : null,

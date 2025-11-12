@@ -94,7 +94,7 @@ class AppTextIcon extends StatelessWidget {
           ),
         ],
         border: Border.all(
-          width: borderWidth!,
+          width: borderWidth ?? 2,
           color: borderColor ?? appDarkBrown,
         ),
       ),
@@ -104,8 +104,7 @@ class AppTextIcon extends StatelessWidget {
           minimumSize: Size(widthSize ?? 30, 0),
           animationDuration: const Duration(milliseconds: 300),
           shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-          padding:
-              EdgeInsets.zero, // important so container styling shows correctly
+          padding: EdgeInsets.all(8),
         ),
         onPressed: onPressed,
         child: content,

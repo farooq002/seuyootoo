@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:souyoutoo/routes/routes_name.dart';
 import 'package:souyoutoo/src/base/base_view.dart';
 import 'package:souyoutoo/src/components/app_bar.dart';
 import 'package:souyoutoo/src/components/app_button.dart';
@@ -29,6 +30,10 @@ class ProfileView extends BaseView<ProfileViewController> {
             onPressed: () {},
             icon: appImageAsset(icTrophy, height: 14),
             text: 'TOKENS ${controller.profileData.value.tokens ?? 1}',
+            backgroundColor: appBlack,
+            borderColor: appBlack,
+            foregroundColor: appWhite,
+            shadowColor: appBlack,
           ),
         ),
       ),
@@ -37,7 +42,7 @@ class ProfileView extends BaseView<ProfileViewController> {
           Positioned.fill(
             top: 0,
             bottom: 100,
-            child: Image.asset(icBackground, fit: BoxFit.fill),
+            child: appImageAsset(icBackground, fit: BoxFit.fill),
           ),
 
           Positioned(
@@ -52,12 +57,12 @@ class ProfileView extends BaseView<ProfileViewController> {
             child: FractionallySizedBox(
               widthFactor: 1.0,
               heightFactor: 0.65,
-              child: Image.asset(icForeground, fit: BoxFit.fill),
+              child: appImageAsset(icForeground, fit: BoxFit.fill),
             ),
           ),
           Positioned(
             top: MediaQuery.of(context).size.height * 0.43,
-            bottom: 10,
+            bottom: 30,
             left: 0,
             right: 0,
             child: SingleChildScrollView(
@@ -200,59 +205,72 @@ class ProfileView extends BaseView<ProfileViewController> {
                             fontSize: 14,
                           ).paddingAll(10).paddingOnly(top: 10),
                         ),
-                        ListView.builder(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          // itemCount: controller
-                          //     .achievementData
-                          //     .value
-                          //     .achievement
-                          //     ?.length, // ??
-                          itemCount: 3,
-                          itemBuilder: (context, index) {
-                            // final boxItem = controller.boxItems[index];
-                            final achievements = controller
-                                .achievementData
-                                .value
-                                .achievement?[index];
-                            return Row(
-                              children: [
-                                AppAchievementContainer(
-                                  borderWidth: 4.0,
-                                  color: appAmber,
-                                  isShadowAvailable: false,
-                                  borderColor: appBlack,
-                                  child: achievements?.icon != null
-                                      ? Image.network(achievements?.icon ?? '')
-                                      : appImageAsset(
-                                          tabTrial,
-                                          color: appBlack,
-                                          height: 20,
-                                        ).paddingAll(10),
-                                ).paddingAll(10),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                        Obx(() {
+                          final achievementsList =
+                              controller.achievementData.value.achievements ??
+                              [];
+                          if (achievementsList.isEmpty) {
+                            return Center(child: Text('No achievements found'));
+                          } else {
+                            return ListView.builder(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: controller
+                                  .achievementData
+                                  .value
+                                  .achievements
+                                  ?.length, // ??
+                              // itemCount: 3,
+                              itemBuilder: (context, index) {
+                                final achievements = controller
+                                    .achievementData
+                                    .value
+                                    .achievements?[index];
+                                return Row(
                                   children: [
-                                    AppTextRegular(
-                                      text:
-                                          achievements?.name ?? "boxItem.name",
-                                      fontSize: 12,
-                                      color: appBlack,
-                                    ),
-                                    AppTextRegular(
-                                      text:
-                                          achievements?.description ??
-                                          // boxItem.description ??
-                                          '',
-                                      fontSize: 10,
-                                      color: appgray,
+                                    AppAchievementContainer(
+                                      borderWidth: 4.0,
+                                      color: appAmber,
+                                      isShadowAvailable: false,
+                                      borderColor: appBlack,
+                                      child: achievements?.icon != null
+                                          ? Image.network(
+                                              achievements?.icon ?? '',
+                                              height: 20,
+                                            ).paddingAll(10)
+                                          : appImageAsset(
+                                              tabTrial,
+                                              color: appBlack,
+                                              height: 20,
+                                            ).paddingAll(10),
+                                    ).paddingAll(10),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        AppTextRegular(
+                                          text:
+                                              achievements?.name ??
+                                              "boxItem.name",
+                                          fontSize: 12,
+                                          color: appBlack,
+                                        ),
+                                        AppTextRegular(
+                                          text:
+                                              achievements?.description ??
+                                              // boxItem.description ??
+                                              '',
+                                          fontSize: 10,
+                                          color: appgray,
+                                        ),
+                                      ],
                                     ),
                                   ],
-                                ),
-                              ],
+                                );
+                              },
                             );
-                          },
-                        ),
+                          }
+                        }),
 
                         AppElevatedButton(
                           text: 'VIEW ALL',
@@ -266,7 +284,7 @@ class ProfileView extends BaseView<ProfileViewController> {
                   AppElevatedButton(
                     text: 'EDIT PROFILE',
                     color: appPurple,
-                    onPressed: () {},
+                    onPressed: () => Get.toNamed(editProfileRoute),
                     textSize: 14,
                   ).paddingAll(10),
                 ],

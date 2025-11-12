@@ -30,7 +30,7 @@ class ProfileViewController extends BaseViewController {
   void onInit() {
     super.onInit();
     getProfile();
-    // getAchievements();
+    getAchievements();
   }
 
   getProfile() async {
