@@ -58,7 +58,6 @@ class StatsView extends StatelessWidget {
               color: appWhite,
               borderColor: appWhite,
               shadowColor: appBlack,
-              isShadowAvailable: true,
               child: Row(
                 children: [
                   AppAchievementContainer(
@@ -68,7 +67,7 @@ class StatsView extends StatelessWidget {
                     child: appImageAsset(
                       icSuitCase,
                       color: appGray,
-                    ).paddingAll(10),
+                    ).paddingAll(8),
                   ),
                   Expanded(
                     child: Column(
@@ -102,8 +101,8 @@ class StatsView extends StatelessWidget {
                     ).paddingOnly(left: 10),
                   ),
                 ],
-              ).paddingAll(10),
-            ).paddingAll(10),
+              ).paddingSymmetric(horizontal: 20),
+            ).paddingSymmetric(horizontal: 60),
           ),
           Positioned(
             top: MediaQuery.of(context).size.height * 0.43,
@@ -113,154 +112,148 @@ class StatsView extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  GestureDetector(
+                  AppAchievementContainer(
                     onTap: () => Get.toNamed(questionRoute),
-                    child: AppAchievementContainer(
-                      color: appWhite,
-                      borderColor: appWhite,
-                      shadowColor: appBlack,
-                      isShadowAvailable: true,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          /// Icon Container
-                          AppAchievementContainer(
-                            color: appAmber,
-                            isBorderAvailable: false,
-                            shadowColor: appGray,
-                            isShadowAvailable: true,
-                            child: appImageAsset(
-                              tabTrial,
-                              color: appBlack,
-                              height: 30,
-                            ).paddingAll(10),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              AppTextRegular(
-                                text: 'FIRST VICTORY',
-                                fontSize: 18,
-                                fontFamily: 'VT323',
-                              ),
-                              AppTextRegular(
-                                text: 'You won your first case!',
-                                fontSize: 14,
-                                fontFamily: 'VT323',
-                              ),
-                            ],
-                          ).paddingOnly(left: 10).paddingAll(10),
-                          appImageAsset(icCheck, color: appDimGreen),
-                          AppTextRegular(
-                            text: 'Completed',
-                            fontFamily: 'VT323',
-                            fontSize: 14,
-                          ),
-                        ],
-                      ).paddingAll(10),
+                    color: appWhite,
+                    borderColor: appWhite,
+                    shadowColor: appBlack,
+                    isShadowAvailable: true,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        /// Icon Container
+                        AppAchievementContainer(
+                          color: appAmber,
+                          isBorderAvailable: false,
+                          shadowColor: appGray,
+                          isShadowAvailable: true,
+                          child: appImageAsset(
+                            tabTrial,
+                            color: appBlack,
+                            height: 30,
+                          ).paddingAll(10),
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            AppTextRegular(
+                              text: 'FIRST VICTORY',
+                              fontSize: 18,
+                              fontFamily: 'VT323',
+                            ),
+                            AppTextRegular(
+                              text: 'You won your first case!',
+                              fontSize: 14,
+                              fontFamily: 'VT323',
+                            ),
+                          ],
+                        ).paddingOnly(left: 6).paddingAll(10),
+                        appImageAsset(icCheck, color: appDimGreen),
+                        AppTextRegular(
+                          text: 'Completed',
+                          fontFamily: 'VT323',
+                          fontSize: 14,
+                        ),
+                      ],
                     ).paddingAll(10),
-                  ),
-                  GestureDetector(
+                  ).paddingAll(10),
+                  AppAchievementContainer(
+                    color: appWhite,
+                    borderColor: appWhite,
                     onTap: () {
                       Get.toNamed(mapRoute);
                       SoundManager.instance.play(icLevelUp);
                     },
-                    child: AppAchievementContainer(
-                      color: appWhite,
-                      borderColor: appWhite,
-                      shadowColor: appBlack,
-                      isShadowAvailable: true,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          /// Icon Container
-                          AppAchievementContainer(
-                            color: appAmber,
-                            borderColor: appGray,
-                            isBorderAvailable: false,
-                            isShadowAvailable: true,
-                            shadowColor: appGray,
-                            child: appImageAsset(
-                              icBook,
-                              // color: appGray,
-                              height: 24,
-                            ).paddingAll(10),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              AppTextRegular(
-                                text: 'JUNIOR PARALEGAL',
-                                fontSize: 18,
-                                fontFamily: 'VT323',
-                              ),
-                              AppTextRegular(
-                                text: 'Reached Level 5.',
-                                fontSize: 14,
-                                fontFamily: 'VT323',
-                              ),
-                            ],
-                          ).paddingOnly(left: 10).paddingAll(10),
-                          appImageAsset(icCheck, color: appDimGreen),
-                          AppTextRegular(
-                            text: 'Completed',
-                            fontFamily: 'VT323',
-                            fontSize: 14,
-                          ),
-                        ],
-                      ).paddingAll(10),
+                    shadowColor: appBlack,
+                    isShadowAvailable: true,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        /// Icon Container
+                        AppAchievementContainer(
+                          color: appAmber,
+                          borderColor: appGray,
+                          isBorderAvailable: false,
+                          isShadowAvailable: true,
+                          shadowColor: appGray,
+                          child: appImageAsset(
+                            icBook,
+                            // color: appGray,
+                            height: 24,
+                          ).paddingAll(10),
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            AppTextRegular(
+                              text: 'JUNIOR PARALEGAL',
+                              fontSize: 18,
+                              fontFamily: 'VT323',
+                            ),
+                            AppTextRegular(
+                              text: 'Reached Level 5.',
+                              fontSize: 14,
+                              fontFamily: 'VT323',
+                            ),
+                          ],
+                        ).paddingOnly(left: 6).paddingAll(10),
+                        appImageAsset(icCheck, color: appDimGreen),
+                        AppTextRegular(
+                          text: 'Completed',
+                          fontFamily: 'VT323',
+                          fontSize: 14,
+                        ),
+                      ],
                     ).paddingAll(10),
-                  ),
-                  GestureDetector(
+                  ).paddingAll(10),
+                  AppAchievementContainer(
+                    color: appWhite,
                     onTap: () {
                       Get.toNamed(profileRoute);
-                      // SoundManager.instance.play(icBackgroundSound);
+                      SoundManager.instance.play(icBackgroundSound);
                     },
-                    child: AppAchievementContainer(
-                      color: appWhite,
-                      borderColor: appWhite,
-                      shadowColor: appBlack,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          /// Icon Container
-                          AppAchievementContainer(
-                            color: appAmber,
-                            isBorderAvailable: false,
-                            shadowColor: appGray,
-                            child: appImageAsset(
-                              icHat,
-                              // color: appGray,
-                              height: 24,
-                            ).paddingAll(10),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              AppTextRegular(
-                                text: 'BOOKING',
-                                fontSize: 18,
-                                fontFamily: 'VT323',
-                              ),
-                              AppTextRegular(
-                                text: 'Completed 10 Lessons.',
-                                fontSize: 14,
-                                fontFamily: 'VT323',
-                              ),
-                            ],
-                          ).paddingOnly(left: 10).paddingAll(10),
-                          appImageAsset(icCheck, color: appDimGreen),
-                          AppTextRegular(
-                            text: 'Completed',
-                            fontFamily: 'VT323',
-                            fontSize: 14,
-                          ),
-                        ],
-                      ).paddingAll(10),
+                    borderColor: appWhite,
+                    shadowColor: appBlack,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        /// Icon Container
+                        AppAchievementContainer(
+                          color: appAmber,
+                          isBorderAvailable: false,
+                          shadowColor: appGray,
+                          child: appImageAsset(
+                            icHat,
+                            // color: appGray,
+                            height: 24,
+                          ).paddingAll(10),
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            AppTextRegular(
+                              text: 'BOOKING',
+                              fontSize: 18,
+                              fontFamily: 'VT323',
+                            ),
+                            AppTextRegular(
+                              text: 'Completed 10 Lessons.',
+                              fontSize: 14,
+                              fontFamily: 'VT323',
+                            ),
+                          ],
+                        ).paddingOnly(left: 6).paddingAll(10),
+                        appImageAsset(icCheck, color: appDimGreen),
+                        AppTextRegular(
+                          text: 'Completed',
+                          fontFamily: 'VT323',
+                          fontSize: 14,
+                        ),
+                      ],
                     ).paddingAll(10),
-                  ),
+                  ).paddingAll(10),
                 ],
-              ),
+              ).paddingAll(32),
             ),
           ),
         ],

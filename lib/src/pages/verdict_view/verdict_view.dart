@@ -32,7 +32,7 @@ class VerdictView extends BaseView<TrailController> {
         leftIconSvg: icBack,
         onLeftIconPress: () => Get.back(),
         titleText: 'BACK',
-        customButton: AppTextBold(
+        customButton: AppTextRegular(
           text: 'Final Decision',
           fontSize: 29,
           fontFamily: 'VT323',
@@ -97,7 +97,7 @@ class VerdictView extends BaseView<TrailController> {
                     color: appAmber,
                     borderColor: appAmber,
                     shadowColor: appWhite,
-                    child: AppTextBold(
+                    child: AppTextRegular(
                       text: 'We nailed that verdict!',
                       fontSize: 12,
                       textAlign: TextAlign.center,
@@ -114,7 +114,7 @@ class VerdictView extends BaseView<TrailController> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            AppTextBold(
+                            AppTextRegular(
                               text: 'Correct Answers:',
                               fontSize: 14,
                               fontFamily: 'PressStart2P',
@@ -131,7 +131,7 @@ class VerdictView extends BaseView<TrailController> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            AppTextBold(
+                            AppTextRegular(
                               text: 'Accuracy:',
                               color: appWhite,
                               fontSize: 14,
@@ -146,7 +146,7 @@ class VerdictView extends BaseView<TrailController> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            AppTextBold(
+                            AppTextRegular(
                               text: 'XP Gained:',
                               fontSize: 14,
                               textAlign: TextAlign.center,
@@ -165,7 +165,7 @@ class VerdictView extends BaseView<TrailController> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            AppTextBold(
+                            AppTextRegular(
                               text: 'Tokens\nEarned:',
                               fontSize: 14,
                               textAlign: TextAlign.start,
@@ -187,7 +187,7 @@ class VerdictView extends BaseView<TrailController> {
                     color: appPurple,
                     borderColor: appPurple,
                     shadowColor: appWhite,
-                    child: AppTextBold(
+                    child: AppTextRegular(
                       text: 'New Briefcase Skin\nUnlocked!',
                       fontSize: 12,
                       fontFamily: 'PressStart2P',
@@ -203,27 +203,27 @@ class VerdictView extends BaseView<TrailController> {
                     shadowColor: appWhite,
                     child: Column(
                       children: [
-                        AppTextBold(
+                        AppTextRegular(
                           text: 'Legal Learn Recap:',
                           fontSize: 12,
                           color: appWhite,
                         ),
-                        AppTextBold(
+                        AppTextRegular(
                           text: 'Q1: Overtime pay is ...',
                           fontSize: 12,
                           color: appWhite,
                         ),
-                        AppTextBold(
+                        AppTextRegular(
                           text: 'Correct! Based on Civil Code 2013.',
                           fontSize: 12,
                           color: appGreen,
                         ),
-                        AppTextBold(
+                        AppTextRegular(
                           text: 'Q2: A valid contract requires ...',
                           fontSize: 12,
                           color: appWhite,
                         ),
-                        AppTextBold(
+                        AppTextRegular(
                           text: 'Incorrect. It requires mutual consent.',
                           fontSize: 12,
                           color: appRed,
@@ -241,7 +241,7 @@ class VerdictView extends BaseView<TrailController> {
                   ).paddingSymmetric(vertical: 20),
                   AppElevatedButton(
                     text: 'Review Lessons',
-                    onPressed: () => Get.toNamed(createTicketRoute),
+                    onPressed: () => Get.toNamed(newsRoute),
                     textColor: appLightBlueGray,
                     color: appBlue,
                     borderColor: appDimGray,
@@ -251,7 +251,7 @@ class VerdictView extends BaseView<TrailController> {
                   AppElevatedButton(
                     text: 'Retry Case',
                     textSize: 16,
-                    onPressed: () {},
+                    onPressed: () => Get.toNamed(newCaseRoute),
                     color: appAmber,
                     borderColor: appWhite,
                     shadowColor: appBlack,

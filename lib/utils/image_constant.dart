@@ -22,6 +22,7 @@ const String icStar = '${imageFolder}ic_star.png';
 const String icFrame = '${imageFolder}ic_frame.png';
 const String icTrophy = '${imageFolder}ic_trophy.png';
 const String icCheck = '${imageFolder}ic_check.png';
+const String icDownload = '${imageFolder}ic_download.png';
 const String icMedal = '${imageFolder}ic_medal.png';
 const String icShield = '${imageFolder}ic_shield.png';
 const String icGame = '${imageFolder}ic_game.png';
@@ -46,6 +47,9 @@ const String icHammerColored = '${imageFolder}ic_hammer_color.png';
 const String icScroll = '${imageFolder}ic_scroll.png';
 const String icRobot = '${imageFolder}ic_robot.png';
 const String uploadFile = '${imageFolder}upload_file.png';
+const String icSupport = '${imageFolder}ic_support.png';
+const String icEnabled = '${imageFolder}ic_enabled.png';
+const String icDisabled = '${imageFolder}ic_disabled.png';
 
 // MARK: - Social Icons
 const String icApple = '${socialFOlder}ic_apple.png';

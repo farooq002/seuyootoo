@@ -66,7 +66,7 @@ class NewsView extends BaseView<HomeController> {
                     children: [
                       appImageAsset(icStreak, height: 40).paddingOnly(right: 8),
                       Obx(
-                        () => AppTextBold(
+                        () => AppTextRegular(
                           text:
                               'DAY ${controller.profileData.value.streak ?? 0} STREAK!',
                           fontSize: 14,
@@ -76,7 +76,7 @@ class NewsView extends BaseView<HomeController> {
                       ),
                     ],
                   ),
-                  AppTextBold(
+                  AppTextRegular(
                     text: 'Keep it up for a Case Analysis Reward',
                     fontSize: 12,
                     textAlign: TextAlign.center,
@@ -101,14 +101,14 @@ class NewsView extends BaseView<HomeController> {
                     isShadowAvailable: true,
                     child: Column(
                       children: [
-                        AppTextBold(
+                        AppTextRegular(
                           text: 'CURRENT LEVEL',
                           fontSize: 14,
                           textAlign: TextAlign.center,
                           color: appAmber,
                         ).paddingSymmetric(vertical: 10),
                         Obx(
-                          () => AppTextBold(
+                          () => AppTextRegular(
                             text:
                                 controller
                                     .profileData
@@ -121,7 +121,7 @@ class NewsView extends BaseView<HomeController> {
                             color: appWhite,
                           ),
                         ),
-                        AppTextBold(
+                        AppTextRegular(
                           text:
                               'LEVEL ${controller.profileData.value.level ?? 0}',
                           fontSize: 18,
@@ -132,7 +132,7 @@ class NewsView extends BaseView<HomeController> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Obx(
-                              () => AppTextBold(
+                              () => AppTextRegular(
                                 text:
                                     'XP: ${controller.profileData.value.exp ?? 0}',
                                 fontSize: 12,
@@ -178,7 +178,7 @@ class NewsView extends BaseView<HomeController> {
                           ),
                           child: Column(
                             children: [
-                              AppTextBold(
+                              AppTextRegular(
                                 text: 'WEEKLY LEARNING GOAL',
                                 fontSize: 12,
                                 color: appLightBlueGray,
@@ -225,7 +225,7 @@ class NewsView extends BaseView<HomeController> {
                                         fontSize: 20,
                                         color: appWhite,
                                       ),
-                                      AppTextBold(
+                                      AppTextRegular(
                                         text: 'Wins',
                                         fontSize: 12,
                                         color: appLightBlueGray,
@@ -256,7 +256,7 @@ class NewsView extends BaseView<HomeController> {
                                         fontSize: 20,
                                         color: appWhite,
                                       ),
-                                      AppTextBold(
+                                      AppTextRegular(
                                         text: 'Loses',
                                         fontSize: 12,
                                         color: appLightBlueGray,
@@ -280,7 +280,7 @@ class NewsView extends BaseView<HomeController> {
                     width: MediaQuery.of(context).size.width * 0.9,
                     child: Column(
                       children: [
-                        AppTextBold(
+                        AppTextRegular(
                           text: 'EARNED TOKENS',
                           fontSize: 14,
                           color: appLightBlueGray,
@@ -299,7 +299,7 @@ class NewsView extends BaseView<HomeController> {
                             ),
                           ],
                         ),
-                        AppTextBold(
+                        AppTextRegular(
                           text: 'Use on sueyoutoo.com',
                           fontSize: 12,
                           color: appLightBlueGray,

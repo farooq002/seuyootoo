@@ -74,7 +74,7 @@ class TrialView extends BaseView<TrailController> {
             isShadowAvailable: true,
             child: Column(
               children: [
-                AppTextThin(
+                AppTextRegular(
                   text: '"Here\'s your new case, Counselor! Ready to defend?"',
                   fontSize: 20,
                   fontFamily: 'VT323',
@@ -122,7 +122,7 @@ class TrialView extends BaseView<TrailController> {
                       dashColor: appBlack,
                       direction: Axis.horizontal,
                     ),
-                    AppTextThin(
+                    AppTextRegular(
                       text:
                           controller.caseData.value.cases?.first.description ??
                           '',

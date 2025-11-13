@@ -344,6 +344,7 @@ class CaseDetailView extends BaseView<HomeController> {
                     fontSize: 12,
                   ).paddingSymmetric(vertical: 20),
                   AppAchievementContainer(
+                    onTap: () => Get.toNamed(caseUpdateRoute),
                     borderColor: appDimBrown,
                     color: appDimBrown,
                     child: Column(

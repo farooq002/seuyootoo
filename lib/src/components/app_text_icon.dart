@@ -12,6 +12,7 @@ class AppTextIcon extends StatelessWidget {
   final Color? backgroundColor;
   final Color? borderColor;
   final Color? shadowColor;
+  final TextAlign? textAlign;
   final double? offSetX;
   final double? offSetY;
   final bool isColumn;
@@ -34,6 +35,7 @@ class AppTextIcon extends StatelessWidget {
     this.backgroundColor,
     this.shadowColor,
     this.fontSize = 12,
+    this.textAlign,
     this.borderWidth = 2,
     this.textScaleFactor,
     this.widthSize,
@@ -52,6 +54,7 @@ class AppTextIcon extends StatelessWidget {
                 // textScaleFactor: textScaleFactor,
                 fontSize: fontSize,
                 fontFamily: fontFamily,
+                textAlign: textAlign,
               ).paddingOnly(right: 10),
             ],
           )
@@ -63,6 +66,7 @@ class AppTextIcon extends StatelessWidget {
                 text: text,
                 // textScaleFactor: textScaleFactor,
                 fontSize: fontSize,
+                textAlign: textAlign,
                 fontFamily: fontFamily,
               ).paddingOnly(right: 10),
               if (icon != null) ...[const SizedBox(width: 6), icon!],
@@ -80,6 +84,7 @@ class AppTextIcon extends StatelessWidget {
                 // textScaleFactor: textScaleFactor,
                 fontSize: fontSize,
                 fontFamily: fontFamily,
+                textAlign: textAlign,
               ),
             ],
           );

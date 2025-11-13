@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:souyoutoo/src/pages/case_detail/case_detail_view.dart';
 import 'package:souyoutoo/src/pages/case_updates/case_updates.dart';
-import 'package:souyoutoo/src/pages/edit_profile/edit_profile_view.dart';
+import 'package:souyoutoo/src/pages/help_view/help_view.dart';
+import 'package:souyoutoo/src/pages/privacy_policy/privacy_policy.dart';
+import 'package:souyoutoo/src/pages/settings_view/settings_view.dart';
 import 'package:souyoutoo/src/pages/my_case_view/my_case_view.dart';
 import 'package:souyoutoo/src/pages/new_case_start/new_case_view.dart';
 import 'package:souyoutoo/src/pages/news_view/news_view.dart';
+import 'package:souyoutoo/src/pages/terms_and_conditions/terms_and_conditions_view.dart';
 import 'package:souyoutoo/src/pages/ticket_view/create_ticket_view.dart';
 import 'package:souyoutoo/src/tab_view/main_tab_view.dart';
 import 'package:souyoutoo/src/pages/login_view/login_view.dart';
@@ -39,11 +42,14 @@ final appRoutes = [
   GetPage(name: mapRoute, page: () => const MapView()),
   GetPage(name: trailRoute, page: () => TrialView()),
   GetPage(name: profileRoute, page: () => ProfileView()),
-  GetPage(name: editProfileRoute, page: () => EditProfileView()),
+  GetPage(name: settingRoute, page: () => SettingView()),
   GetPage(name: questionRoute, page: () => QuestionView()),
   GetPage(name: statsRoute, page: () => const StatsView()),
   GetPage(name: newsRoute, page: () => NewsView()),
   GetPage(name: createTicketRoute, page: () => CreateTicketView()),
+  GetPage(name: helpRoute, page: () => HelpView()),
+  GetPage(name: termsAndConditionsRoute, page: () => TermsAndConditionsView()),
+  GetPage(name: privacyPolicyRoute, page: () => PrivacyPolicyView()),
 ];
 
 class AuthMiddleWare extends GetMiddleware {

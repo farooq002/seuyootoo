@@ -96,7 +96,7 @@ class AppElevatedButton extends StatelessWidget {
           elevation: 0,
         ),
         onPressed: onPressed,
-        child: AppTextBold(
+        child: AppTextRegular(
           text: text,
           fontSize: textSize ?? 18,
           color: textColor ?? Colors.white,

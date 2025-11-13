@@ -59,6 +59,13 @@ class HomeController extends BaseViewController {
     ),
   ];
 
+  List<Categories> get categories => [
+    Categories(name: 'Call us'.tr, icons: Icon(Icons.phone)),
+    Categories(name: 'Email'.tr, icons: Icon(Icons.mail)),
+    Categories(name: 'Live Chat'.tr, icons: Icon(Icons.wechat_rounded)),
+    Categories(name: 'Twitter'.tr, icons: Icon(Icons.mail)),
+  ];
+
   @override
   void onInit() {
     super.onInit();

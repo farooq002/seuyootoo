@@ -82,7 +82,7 @@ class QuestionView extends BaseView<TrailController> {
               child: Column(
                 children: [
                   Obx(
-                    () => AppTextBold(
+                    () => AppTextRegular(
                       text: controller.caseDetail.value.title ?? '',
                       fontSize: 18,
                       fontFamily: 'VT323',
@@ -93,7 +93,7 @@ class QuestionView extends BaseView<TrailController> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Obx(
-                        () => AppTextSemiBold(
+                        () => AppTextRegular(
                           text:
                               "QUESTION ${controller.currentQuestIndex.value + 1}/${controller.caseDetail.value.questions?.length ?? 0}",
                           fontSize: 14,

@@ -175,7 +175,7 @@ class ProfileView extends BaseView<ProfileViewController> {
                                               '',
                                         )
                                       : SizedBox.shrink(),
-                                  AppTextBold(
+                                  AppTextRegular(
                                     text:
                                         controller.categories[index].price ??
                                         '0',
@@ -284,7 +284,7 @@ class ProfileView extends BaseView<ProfileViewController> {
                   AppElevatedButton(
                     text: 'EDIT PROFILE',
                     color: appPurple,
-                    onPressed: () => Get.toNamed(editProfileRoute),
+                    onPressed: () => Get.toNamed(settingRoute),
                     textSize: 14,
                   ).paddingAll(10),
                 ],

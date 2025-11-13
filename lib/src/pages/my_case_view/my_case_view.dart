@@ -58,7 +58,7 @@ class MyCaseView extends BaseView<HomeController> {
               AppTextIcon(
                 text: 'Start a Case',
                 onPressed: () {
-                  Get.toNamed(caseDetailRoute);
+                  Get.toNamed(newCaseRoute);
                 },
                 backgroundColor: appAmber,
                 foregroundColor: appBlack,

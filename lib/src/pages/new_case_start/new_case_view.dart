@@ -249,6 +249,7 @@ class NewCaseView extends BaseView<HomeController> {
                   ).paddingAll(10),
 
                   AppAchievementContainer(
+                    onTap: () => Get.toNamed(trailRoute),
                     color: appOftenWhite,
                     borderColor: appOftenWhite,
                     child: Row(

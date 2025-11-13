@@ -71,6 +71,7 @@ class HomeView extends BaseView<TabHomeViewController> {
             left: 0,
             right: 0,
             child: AppAchievementContainer(
+              onTap: () => Get.toNamed(statsRoute),
               borderColor: appWhite,
               shadowColor: appBlack,
               color: appWhite,
@@ -111,98 +112,119 @@ class HomeView extends BaseView<TabHomeViewController> {
           ),
 
           Positioned(
+            top: MediaQuery.of(context).size.height * 0.43,
             bottom: MediaQuery.of(Get.context!).size.height * 0.01,
             left: MediaQuery.of(Get.context!).size.width * 0.10,
             right: MediaQuery.of(Get.context!).size.width * 0.10,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(
-                      decoration: BoxDecoration(
-                        color: appAmber,
-                        border: Border.all(color: appWhite, width: 2),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(
+                        decoration: BoxDecoration(
+                          color: appAmber,
+                          border: Border.all(color: appWhite, width: 2),
+                        ),
+                        child: AppTextRegular(
+                          text: '"Ready for today\'s case?"',
+                          fontSize: 14,
+                          textAlign: TextAlign.center,
+                          color: appBlack,
+                        ).paddingAll(6),
+                      )
+                      .paddingSymmetric(horizontal: 24)
+                      .paddingOnly(
+                        bottom: MediaQuery.of(Get.context!).size.height * 0.01,
                       ),
-                      child: AppTextRegular(
-                        text: '"Ready for today\'s case?"',
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: appGreen,
+                          border: Border.all(color: appWhite, width: 2),
+                        ),
+                        height: 25,
+                        width: 25,
+                      ).paddingOnly(right: 8),
+                      AppTextRegular(
+                        text: 'LEX IS HAPPY',
                         fontSize: 14,
-                        textAlign: TextAlign.center,
-                        color: appBlack,
-                      ).paddingAll(6),
-                    )
-                    .paddingSymmetric(horizontal: 24)
-                    .paddingOnly(
-                      bottom: MediaQuery.of(Get.context!).size.height * 0.01,
-                    ),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: appGreen,
-                        border: Border.all(color: appWhite, width: 2),
+                        color: appWhite,
                       ),
-                      height: 25,
-                      width: 25,
-                    ).paddingOnly(right: 8),
-                    AppTextRegular(
-                      text: 'LEX IS HAPPY',
-                      fontSize: 14,
-                      color: appWhite,
-                    ),
-                  ],
-                ).paddingOnly(bottom: 4),
+                    ],
+                  ).paddingOnly(bottom: 4),
 
-                // Container(
-                //   decoration: BoxDecoration(
-                //     color: appGreen, // The button color goes here
-                //     boxShadow: [
-                //       BoxShadow(
-                //         color: appLightBlack,
-                //         blurRadius: 0,
-                //         spreadRadius: 0,
-                //         offset: Offset(6, 6),
-                //       ),
-                //     ],
-                //   ),
-                //   child:
-                AppTextIcon(
-                  onPressed: () {},
-                  text: 'LESSON',
-                  isColumn: true,
-                  icon: appImageAsset(icCheck),
-                  fontSize: 14,
-                  backgroundColor: appGreen,
-                  foregroundColor: appWhite,
-                ).paddingOnly(bottom: 10),
+                  // Container(
+                  //   decoration: BoxDecoration(
+                  //     color: appGreen, // The button color goes here
+                  //     boxShadow: [
+                  //       BoxShadow(
+                  //         color: appLightBlack,
+                  //         blurRadius: 0,
+                  //         spreadRadius: 0,
+                  //         offset: Offset(6, 6),
+                  //       ),
+                  //     ],
+                  //   ),
+                  //   child:
+                  AppTextIcon(
+                    onPressed: () {},
+                    text: 'LESSON',
+                    isColumn: true,
+                    icon: appImageAsset(icCheck),
+                    fontSize: 14,
+                    backgroundColor: appGreen,
+                    foregroundColor: appWhite,
+                  ).paddingOnly(bottom: 10),
 
-                // ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    AppElevatedButton(
-                      onPressed: () => Get.toNamed(trailRoute),
-                      color: appAqua,
-                      text: 'START NEW CASE',
-                      padding: 0,
-                      textSize: 16,
-                      borderColor: appDimBlack,
-                      shadowColor: appBlack,
-                      textColor: appWhite,
-                    ).paddingOnly(bottom: 10),
-                    AppElevatedButton(
-                      onPressed: () => Get.toNamed(myCaseRoute),
-                      color: appPurple,
-                      text: 'VIEW MY CASES',
-                      borderColor: appDimBlack,
-                      shadowColor: appBlack,
-                      padding: 0,
-                      textSize: 16,
-                      textColor: appWhite,
-                    ),
-                  ],
-                ),
-              ],
+                  // ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      AppElevatedButton(
+                        onPressed: () => Get.toNamed(myCaseRoute),
+                        color: appAqua,
+                        text: 'START NEW CASE',
+                        padding: 0,
+                        textSize: 16,
+                        borderColor: appDimBlack,
+                        shadowColor: appBlack,
+                        textColor: appWhite,
+                      ).paddingOnly(bottom: 10),
+                      AppElevatedButton(
+                        onPressed: () => Get.toNamed(caseDetailRoute),
+                        color: appPurple,
+                        text: 'VIEW MY CASES',
+                        borderColor: appDimBlack,
+                        shadowColor: appBlack,
+                        padding: 0,
+                        textSize: 16,
+                        textColor: appWhite,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      AppAchievementContainer(
+                        onTap: () => Get.toNamed(settingRoute),
+                        color: appAmber,
+                        borderColor: appBlack,
+                        isShadowAvailable: false,
+                        child: Icon(Icons.settings).paddingAll(10),
+                      ).paddingOnly(right: 60),
+                      AppAchievementContainer(
+                        onTap: () => Get.toNamed(profileRoute),
+                        color: appAmber,
+                        borderColor: appBlack,
+                        isShadowAvailable: false,
+                        child: Icon(Icons.person).paddingAll(10),
+                      ),
+                    ],
+                  ).paddingAll(10).paddingOnly(top: 20),
+                ],
+              ),
             ),
           ),
         ],

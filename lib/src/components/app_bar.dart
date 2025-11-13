@@ -28,7 +28,7 @@ AppBar appBar(
             ),
           )
         : null,
-    title: AppTextBold(
+    title: AppTextRegular(
       text: titleText ?? "Settings",
       fontSize: 29,
       color: appWhite,

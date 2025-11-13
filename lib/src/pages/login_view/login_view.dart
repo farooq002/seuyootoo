@@ -120,7 +120,7 @@ class LoginView extends BaseView<AuthController> {
                             color: appOftenWhite,
                           ),
                         ),
-                        const AppTextThin(
+                        const AppTextRegular(
                           text: 'OR',
                           fontFamily: 'VT323',
                           color: appWhite,

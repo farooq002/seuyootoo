@@ -1,10 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:get/get.dart';
+import 'package:souyoutoo/routes/routes_name.dart';
 import 'package:souyoutoo/src/base/base_view.dart';
 import 'package:souyoutoo/src/components/app_bar.dart';
-import 'package:souyoutoo/src/components/app_button.dart';
 import 'package:souyoutoo/src/components/app_image.dart';
 import 'package:souyoutoo/src/components/app_text.dart';
 import 'package:souyoutoo/src/components/app_text_icon.dart';
@@ -14,8 +13,8 @@ import 'package:souyoutoo/src/controller/home/home_controller.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
 
-class EditProfileView extends BaseView<HomeController> {
-  EditProfileView({super.key});
+class SettingView extends BaseView<HomeController> {
+  SettingView({super.key});
 
   @override
   final controller = Get.isRegistered<HomeController>()
@@ -179,18 +178,18 @@ class EditProfileView extends BaseView<HomeController> {
                               ),
                               const Spacer(),
                               Obx(
-                                () => FlutterSwitch(
-                                  value: controller.selectedIndex.value,
-                                  onToggle: (value) {
-                                    controller.selectedIndex.value = value;
+                                () => GestureDetector(
+                                  onTap: () {
+                                    controller.selectedIndex.value =
+                                        !controller.selectedIndex.value;
                                   },
-                                  activeColor: Colors.amber,
-                                  inactiveColor: Colors.grey.shade400,
-                                  activeToggleColor: Colors.white,
-                                  inactiveToggleColor: Colors.white,
-                                  width: 40,
-                                  height: 20,
-                                  borderRadius: 0,
+                                  child: appImageAsset(
+                                    controller.selectedIndex.value
+                                        ? icEnabled
+                                        : icDisabled,
+                                    width: 40,
+                                    height: 20,
+                                  ),
                                 ),
                               ),
                             ],
@@ -206,16 +205,30 @@ class EditProfileView extends BaseView<HomeController> {
                                 children: [
                                   AppTextRegular(
                                     text: 'Email Notifications',
-                                    fontSize: 12,
+                                    fontSize: 10,
                                   ),
                                   AppTextRegular(
                                     text: 'Important updates only',
-                                    fontSize: 10,
+                                    fontSize: 9,
                                   ),
                                 ],
                               ),
                               const Spacer(),
-                              Icon(Icons.arrow_forward_ios),
+                              Obx(
+                                () => GestureDetector(
+                                  onTap: () {
+                                    controller.selectedIndex.value =
+                                        !controller.selectedIndex.value;
+                                  },
+                                  child: appImageAsset(
+                                    controller.selectedIndex.value
+                                        ? icEnabled
+                                        : icDisabled,
+                                    width: 40,
+                                    height: 20,
+                                  ),
+                                ),
+                              ),
                             ],
                           ).paddingAll(10),
                         ).paddingSymmetric(vertical: 10),
@@ -237,7 +250,21 @@ class EditProfileView extends BaseView<HomeController> {
                                 ],
                               ),
                               const Spacer(),
-                              Icon(Icons.arrow_forward_ios),
+                              Obx(
+                                () => GestureDetector(
+                                  onTap: () {
+                                    controller.selectedIndex.value =
+                                        !controller.selectedIndex.value;
+                                  },
+                                  child: appImageAsset(
+                                    controller.selectedIndex.value
+                                        ? icEnabled
+                                        : icDisabled,
+                                    width: 40,
+                                    height: 20,
+                                  ),
+                                ),
+                              ),
                             ],
                           ).paddingAll(10),
                         ),
@@ -274,18 +301,18 @@ class EditProfileView extends BaseView<HomeController> {
                               ),
                               const Spacer(),
                               Obx(
-                                () => FlutterSwitch(
-                                  value: controller.selectedIndex.value,
-                                  onToggle: (value) {
-                                    controller.selectedIndex.value = value;
+                                () => GestureDetector(
+                                  onTap: () {
+                                    controller.selectedIndex.value =
+                                        !controller.selectedIndex.value;
                                   },
-                                  activeColor: Colors.amber,
-                                  inactiveColor: Colors.grey.shade400,
-                                  activeToggleColor: Colors.white,
-                                  inactiveToggleColor: Colors.white,
-                                  width: 40,
-                                  height: 20,
-                                  borderRadius: 0,
+                                  child: appImageAsset(
+                                    controller.selectedIndex.value
+                                        ? icEnabled
+                                        : icDisabled,
+                                    width: 40,
+                                    height: 20,
+                                  ),
                                 ),
                               ),
                             ],
@@ -310,7 +337,21 @@ class EditProfileView extends BaseView<HomeController> {
                                 ],
                               ),
                               const Spacer(),
-                              Icon(Icons.arrow_forward_ios),
+                              Obx(
+                                () => GestureDetector(
+                                  onTap: () {
+                                    controller.selectedIndex.value =
+                                        !controller.selectedIndex.value;
+                                  },
+                                  child: appImageAsset(
+                                    controller.selectedIndex.value
+                                        ? icEnabled
+                                        : icDisabled,
+                                    width: 40,
+                                    height: 20,
+                                  ),
+                                ),
+                              ),
                             ],
                           ).paddingAll(10),
                         ).paddingSymmetric(vertical: 10),
@@ -351,7 +392,7 @@ class EditProfileView extends BaseView<HomeController> {
                           ],
                         ),
                         BackgroundBox(
-                          onTap: () {},
+                          onTap: () => Get.toNamed(createTicketRoute),
                           backGroundColor: appLightYellow,
                           data: Row(
                             children: [
@@ -362,7 +403,7 @@ class EditProfileView extends BaseView<HomeController> {
                           ).paddingAll(10),
                         ),
                         BackgroundBox(
-                          onTap: () {},
+                          onTap: () => Get.toNamed(helpRoute),
                           backGroundColor: appLightYellow,
                           data: Row(
                             children: [
@@ -376,7 +417,7 @@ class EditProfileView extends BaseView<HomeController> {
                           ).paddingAll(10),
                         ).paddingSymmetric(vertical: 10),
                         BackgroundBox(
-                          onTap: () {},
+                          onTap: () => Get.toNamed(privacyPolicyRoute),
                           backGroundColor: appLightYellow,
                           data: Row(
                             children: [
@@ -390,7 +431,7 @@ class EditProfileView extends BaseView<HomeController> {
                           ).paddingAll(10),
                         ),
                         BackgroundBox(
-                          onTap: () {},
+                          onTap: () => Get.toNamed(termsAndConditionsRoute),
                           backGroundColor: appLightYellow,
                           data: Row(
                             children: [

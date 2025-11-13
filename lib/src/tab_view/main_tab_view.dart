@@ -21,9 +21,9 @@ class MainTabView extends StatelessWidget {
     Placeholder(),
   ];
 
-  final labels = ['HOME', 'TRIAL', 'CASES', 'STATS', 'NEWS'];
+  final labels = ['HOME', 'LEARN', 'CASES', 'STATS', 'SHOP'];
 
-  final icons = [tabHome, tabTrial, tabCases, tabStats, tabNews];
+  final icons = [tabHome, tabTrial, tabCases, tabStats, icSuitCase];
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +58,7 @@ class MainTabView extends StatelessWidget {
                         case 3:
                           Get.toNamed(statsRoute);
                         case 4:
-                          Get.toNamed(newsRoute);
+                          Get.toNamed(shopRoute);
                           break;
                         default:
                           currentIndex.value = 0;
@@ -80,7 +80,7 @@ class MainTabView extends StatelessWidget {
                             height: 24,
                             color: isSelected ? appBlack : appGray,
                           ),
-                          AppTextBold(
+                          AppTextRegular(
                             text: labels[i],
                             fontSize: 12,
                             color: isSelected ? appBlack : appGray,

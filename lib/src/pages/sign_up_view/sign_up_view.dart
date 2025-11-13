@@ -119,7 +119,7 @@ class SignUpView extends StatelessWidget {
                             color: appOftenWhite,
                           ),
                         ),
-                        const AppTextThin(
+                        const AppTextRegular(
                           text: 'OR',
                           fontFamily: 'VT323',
                           color: appWhite,
