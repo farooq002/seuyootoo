@@ -26,6 +26,7 @@ class HomeView extends BaseView<TabHomeViewController> {
   @override
   Widget mBuild(BuildContext context) {
     return Scaffold(
+      backgroundColor: appBrown,
       appBar: appBar(
         context,
         titleText: 'SOUYOUTOO',
@@ -42,100 +43,84 @@ class HomeView extends BaseView<TabHomeViewController> {
           shadowColor: appBlack,
         ),
       ),
-      body: Stack(
-        children: [
-          Positioned.fill(
-            top: 0,
-            bottom: 100,
-            child: appImageAsset(icBackground, fit: BoxFit.fill),
-          ),
-
-          Positioned(
-            top: MediaQuery.of(context).size.height / 8,
-            left: 0,
-            right: 0,
-            child: appImageAsset(icJudge, height: 250),
-          ),
-
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: FractionallySizedBox(
-              widthFactor: 1.0,
-              heightFactor: 0.65,
-              child: appImageAsset(icForeground, fit: BoxFit.fill),
-            ),
-          ),
-
-          Positioned(
-            top: 10,
-            left: 0,
-            right: 0,
-            child: AppAchievementContainer(
-              onTap: () => Get.toNamed(statsRoute),
-              borderColor: appWhite,
-              shadowColor: appBlack,
-              color: appWhite,
-
+      // The entire body is now wrapped in a SingleChildScrollView
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: 500,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(icTop),
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Obx(
-                    () => Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  AppAchievementContainer(
+                    onTap: () => Get.toNamed(statsRoute),
+                    borderColor: appWhite,
+                    shadowColor: appBlack,
+                    color: appWhite,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        AppTextRegular(
-                          text:
-                              '${controller.profileData.value.level ?? 1} level PROGRESS',
-                          fontSize: 10,
-                          color: Colors.black,
+                        Obx(
+                          () => Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              AppTextRegular(
+                                text:
+                                    '${controller.profileData.value.level ?? 1} level PROGRESS',
+                                fontSize: 10,
+                                color: Colors.black,
+                              ),
+                              AppTextRegular(
+                                text:
+                                    '${controller.profileData.value.exp ?? 0}/${controller.profileData.value.expToNextLevel ?? 1}',
+                                fontSize: 8,
+                                color: Colors.blue[700]!,
+                              ),
+                            ],
+                          ).paddingOnly(bottom: 6),
                         ),
-                        AppTextRegular(
-                          text:
-                              '${controller.profileData.value.exp ?? 0}/${controller.profileData.value.expToNextLevel ?? 1}',
-                          fontSize: 8,
-                          color: Colors.blue[700]!,
+                        Obx(
+                          () => AchievementProgressBar(
+                            currentValue:
+                                controller.profileData.value.exp ?? 0.0,
+                            totalValue:
+                                controller.profileData.value.expToNextLevel ??
+                                1.0,
+                          ),
                         ),
                       ],
-                    ).paddingOnly(bottom: 6),
-                  ),
-
-                  Obx(
-                    () => AchievementProgressBar(
-                      currentValue: controller.profileData.value.exp ?? 0.0,
-                      totalValue:
-                          controller.profileData.value.expToNextLevel ?? 1.0,
-                    ),
-                  ),
+                    ).paddingAll(10),
+                  ).paddingOnly(top: 20, left: 42, right: 42),
                 ],
-              ).paddingAll(10),
-            ).paddingOnly(top: 10, left: 42, right: 42),
-          ),
-
-          Positioned(
-            top: MediaQuery.of(context).size.height * 0.45,
-            bottom: MediaQuery.of(Get.context!).size.height * 0.01,
-            left: MediaQuery.of(Get.context!).size.width * 0.10,
-            right: MediaQuery.of(Get.context!).size.width * 0.10,
-            child: SingleChildScrollView(
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(icBottom),
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
               child: Column(
                 children: [
                   Container(
-                        decoration: BoxDecoration(
-                          color: appAmber,
-                          border: Border.all(color: appWhite, width: 2),
-                        ),
-                        child: AppTextRegular(
-                          text: '"Ready for today\'s case?"',
-                          fontSize: 14,
-                          textAlign: TextAlign.center,
-                          color: appBlack,
-                        ).paddingAll(6),
-                      )
-                      .paddingSymmetric(horizontal: 24)
-                      .paddingOnly(
-                        bottom: MediaQuery.of(Get.context!).size.height * 0.01,
-                      ),
-
+                    decoration: BoxDecoration(
+                      color: appAmber,
+                      border: Border.all(color: appWhite, width: 2),
+                    ),
+                    child: AppTextRegular(
+                      text: '"Ready for today\'s case?"',
+                      fontSize: 14,
+                      textAlign: TextAlign.center,
+                      color: appBlack,
+                    ).paddingAll(6),
+                  ).paddingSymmetric(horizontal: 24),
+                  SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -153,22 +138,10 @@ class HomeView extends BaseView<TabHomeViewController> {
                         color: appWhite,
                       ),
                     ],
-                  ).paddingOnly(bottom: 4),
-
-                  // Container(
-                  //   decoration: BoxDecoration(
-                  //     color: appGreen, // The button color goes here
-                  //     boxShadow: [
-                  //       BoxShadow(
-                  //         color: appLightBlack,
-                  //         blurRadius: 0,
-                  //         spreadRadius: 0,
-                  //         offset: Offset(6, 6),
-                  //       ),
-                  //     ],
-                  //   ),
-                  //   child:
+                  ),
+                  SizedBox(height: 20),
                   AppTextIcon(
+                    height: 85,
                     onPressed: () {},
                     text: 'LESSON',
                     isColumn: true,
@@ -176,9 +149,8 @@ class HomeView extends BaseView<TabHomeViewController> {
                     fontSize: 14,
                     backgroundColor: appGreen,
                     foregroundColor: appWhite,
-                  ).paddingOnly(bottom: 10),
-
-                  // ),
+                  ),
+                  SizedBox(height: 20),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
@@ -191,7 +163,8 @@ class HomeView extends BaseView<TabHomeViewController> {
                         borderColor: appDimBlack,
                         shadowColor: appBlack,
                         textColor: appWhite,
-                      ).paddingOnly(bottom: 10),
+                      ),
+                      SizedBox(height: 20),
                       AppElevatedButton(
                         onPressed: () => Get.toNamed(caseDetailRoute),
                         color: appPurple,
@@ -204,30 +177,42 @@ class HomeView extends BaseView<TabHomeViewController> {
                       ),
                     ],
                   ),
+                  SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      AppAchievementContainer(
-                        onTap: () => Get.toNamed(settingRoute),
-                        color: appAmber,
+                      AppTextIcon(
+                        height: 50,
+                        width: 65,
+                        onPressed: () => Get.toNamed(settingRoute),
+                        backgroundColor: appAmber,
                         borderColor: appBlack,
-                        isShadowAvailable: false,
-                        child: Icon(Icons.settings).paddingAll(10),
-                      ).paddingOnly(right: 60),
-                      AppAchievementContainer(
-                        onTap: () => Get.toNamed(profileRoute),
-                        color: appAmber,
+                        icon: Icon(Icons.settings, size: 32, color: appBlack),
+                        isJustIcon: true,
+                        offSetX: 3,
+                        offSetY: 3,
+                        shadowColor: appBlack,
+                      ),
+                      SizedBox(width: 60),
+                      AppTextIcon(
+                        height: 50,
+                        width: 65,
+                        onPressed: () => Get.toNamed(profileRoute),
+                        backgroundColor: appAmber,
                         borderColor: appBlack,
-                        isShadowAvailable: false,
-                        child: Icon(Icons.person).paddingAll(10),
+                        icon: Icon(Icons.person, size: 32, color: appBlack),
+                        isJustIcon: true,
+                        offSetX: 3,
+                        offSetY: 3,
+                        shadowColor: appBlack,
                       ),
                     ],
-                  ).paddingAll(10).paddingOnly(top: 20),
+                  ),
                 ],
-              ),
-            ),
-          ),
-        ],
+              ).paddingAll(24),
+            ).paddingOnly(right: 2),
+          ],
+        ),
       ),
     );
   }

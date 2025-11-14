@@ -47,16 +47,16 @@ class TrialView extends BaseView<TrailController> {
       children: [
         Positioned.fill(
           top: 0,
-          bottom: 100,
+          // bottom: 100,
           child: appImageAsset(icBackground, fit: BoxFit.fill),
         ),
 
-        Positioned(
-          top: MediaQuery.of(Get.context!).size.height / 7.5,
-          left: 0,
-          right: 0,
-          child: appImageAsset(icJudge, height: 250),
-        ),
+        // Positioned(
+        //   top: MediaQuery.of(Get.context!).size.height / 7.5,
+        //   left: 0,
+        //   right: 0,
+        //   child: appImageAsset(icJudge, height: 250),
+        // ),
         Align(
           alignment: Alignment.bottomCenter,
           child: FractionallySizedBox(

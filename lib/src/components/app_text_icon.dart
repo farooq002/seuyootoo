@@ -5,7 +5,7 @@ import 'app_text.dart';
 
 class AppTextIcon extends StatelessWidget {
   final Widget? icon;
-  final String text;
+  final String? text;
   final String? fontFamily;
   final void Function() onPressed;
   final Color? foregroundColor;
@@ -21,11 +21,14 @@ class AppTextIcon extends StatelessWidget {
   final double? widthSize;
   final double? textScaleFactor;
   final bool iconAtEnd;
+  final bool isJustIcon;
+  final double? height;
+  final double? width;
 
   const AppTextIcon({
     super.key,
     required this.onPressed,
-    this.text = 'Edit Profile',
+    this.text,
     this.isColumn = false,
     this.icon,
     this.foregroundColor,
@@ -41,16 +44,23 @@ class AppTextIcon extends StatelessWidget {
     this.widthSize,
     this.iconAtEnd = false,
     this.fontFamily,
+    this.isJustIcon = false,
+    this.width,
+    this.height,
   });
 
   @override
   Widget build(BuildContext context) {
-    final content = isColumn
+    final content = isJustIcon
+        ? icon!
+        : isColumn
         ? Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               if (icon != null) ...[const SizedBox(width: 6), icon!],
               AppTextRegular(
-                text: text,
+                text: text ?? '',
                 // textScaleFactor: textScaleFactor,
                 fontSize: fontSize,
                 fontFamily: fontFamily,
@@ -63,7 +73,7 @@ class AppTextIcon extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               AppTextRegular(
-                text: text,
+                text: text ?? '',
                 // textScaleFactor: textScaleFactor,
                 fontSize: fontSize,
                 textAlign: textAlign,
@@ -80,7 +90,7 @@ class AppTextIcon extends StatelessWidget {
                 icon!.paddingOnly(right: 10),
               ],
               AppTextRegular(
-                text: text,
+                text: text ?? '',
                 // textScaleFactor: textScaleFactor,
                 fontSize: fontSize,
                 fontFamily: fontFamily,
@@ -90,6 +100,8 @@ class AppTextIcon extends StatelessWidget {
           );
 
     return Container(
+      height: height,
+      width: width,
       decoration: BoxDecoration(
         color: backgroundColor ?? Theme.of(context).secondaryHeaderColor,
         boxShadow: [

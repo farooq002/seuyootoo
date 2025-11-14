@@ -54,3 +54,6 @@ const String icDisabled = '${imageFolder}ic_disabled.png';
 // MARK: - Social Icons
 const String icApple = '${socialFOlder}ic_apple.png';
 const String icGoogle = '${socialFOlder}ic_google.png';
+
+const String icTop = '${imageFolder}ic_top.png';
+const String icBottom = '${imageFolder}ic_bottom.png';
