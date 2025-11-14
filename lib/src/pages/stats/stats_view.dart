@@ -27,88 +27,79 @@ class StatsView extends StatelessWidget {
         },
         titleText: 'Achievements',
       ),
-      body: Stack(
-        children: [
-          Positioned.fill(
-            top: 0,
-            // bottom: 100,
-            child: appImageAsset(icBackground, fit: BoxFit.fill),
-          ),
-
-          // Positioned(
-          //   top: MediaQuery.of(context).size.height / 8,
-          //   left: 0,
-          //   right: 0,
-          //   child: appImageAsset(icJudge, height: 250),
-          // ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: FractionallySizedBox(
-              widthFactor: 1.0,
-              heightFactor: 0.65,
-              child: appImageAsset(icForeground, fit: BoxFit.fill),
-            ),
-          ),
-          Positioned(
-            top: 10,
-            left: 0,
-            right: 0,
-            child: AppAchievementContainer(
-              color: appWhite,
-              borderColor: appWhite,
-              shadowColor: appBlack,
-              child: Row(
+      backgroundColor: appBrown,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: 500,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(icTop),
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
+              child: Column(
                 children: [
                   AppAchievementContainer(
-                    color: appLightGray,
-                    borderColor: appGray,
-                    isShadowAvailable: false,
-                    child: appImageAsset(
-                      icSuitCase,
-                      color: appGray,
-                    ).paddingAll(8),
-                  ),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    color: appWhite,
+                    borderColor: appWhite,
+                    shadowColor: appBlack,
+                    child: Row(
                       children: [
-                        AppTextRegular(
-                          text: 'CASE GRINDER',
-                          fontSize: 14,
-                          fontFamily: 'VT323',
+                        AppAchievementContainer(
+                          color: appLightGray,
+                          borderColor: appGray,
+                          isShadowAvailable: false,
+                          child: appImageAsset(
+                            icSuitCase,
+                            color: appGray,
+                          ).paddingAll(8),
                         ),
-                        AppTextRegular(
-                          text: 'Complete 10 weekly goals.',
-                          fontSize: 12,
-                          fontFamily: 'VT323',
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            AchievementProgressBar(
-                              currentValue: 2750,
-                              totalValue: 5000,
-                            ),
-                            AppTextRegular(
-                              text: '7 / 10',
-                              fontFamily: 'VT323',
-                              fontSize: 14,
-                            ),
-                          ],
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              AppTextRegular(
+                                text: 'CASE GRINDER',
+                                fontSize: 14,
+                                fontFamily: 'VT323',
+                              ),
+                              AppTextRegular(
+                                text: 'Complete 10 weekly goals.',
+                                fontSize: 12,
+                                fontFamily: 'VT323',
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  AchievementProgressBar(
+                                    currentValue: 2750,
+                                    totalValue: 5000,
+                                  ),
+                                  AppTextRegular(
+                                    text: '7 / 10',
+                                    fontFamily: 'VT323',
+                                    fontSize: 14,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ).paddingOnly(left: 10),
                         ),
                       ],
-                    ).paddingOnly(left: 10),
+                    ).paddingSymmetric(horizontal: 20),
                   ),
                 ],
-              ).paddingSymmetric(horizontal: 20),
-            ).paddingSymmetric(horizontal: 60),
-          ),
-          Positioned(
-            top: MediaQuery.of(context).size.height * 0.43,
-            bottom: 10,
-            left: 0,
-            right: 0,
-            child: SingleChildScrollView(
+              ).marginOnly(top: 10).paddingSymmetric(horizontal: 32),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(icBottom),
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
               child: Column(
                 children: [
                   AppAchievementContainer(
@@ -252,10 +243,10 @@ class StatsView extends StatelessWidget {
                     ).paddingAll(10),
                   ).paddingAll(10),
                 ],
-              ).paddingAll(32),
-            ),
-          ),
-        ],
+              ).paddingSymmetric(horizontal: 32).paddingOnly(bottom: 20),
+            ).paddingOnly(right: 2),
+          ],
+        ),
       ),
     );
   }

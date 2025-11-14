@@ -49,7 +49,7 @@ class TrailController extends BaseViewController {
         question.type.value = QuestionType.notdefined;
       }
       updateTimerForCurrentQuestion();
-      Get.toNamed(questionRoute, arguments: {'caseId': caseId});
+      Get.toNamed(trailRoute, arguments: {'caseId': caseId});
     }
   }
 

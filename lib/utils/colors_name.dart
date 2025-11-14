@@ -237,6 +237,7 @@ const appLightGray = Color(0xFFF5F5F5);
 const appShadowBrown = Color(0xFFD9CEBB);
 const appDarkGray = Color(0xFF2D2D2D);
 const appPurple = Color(0xFF8C69BE);
+
 //
 const applightGray = Color(0xFFEEEEEE);
 const appDarkRed = Color(0xFFD94242);
@@ -254,6 +255,7 @@ const appPeach = Color(0xFFFAD7A0);
 const appYellow = Color(0xFFFFF9C4);
 const appBrown = Color(0xFF5C270D);
 const appDarkYellow = Color(0xFFECDB32);
+const appDimYellow = Color(0xFFED8A12);
 const appDimGreen = Color(0xFF1B9639);
 const appLightPink = Color(0xFFF5E1DF);
 const appDarkBrown = Color(0xFF391A0D);

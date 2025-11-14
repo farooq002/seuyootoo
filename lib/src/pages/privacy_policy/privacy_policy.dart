@@ -26,75 +26,65 @@ class PrivacyPolicyView extends BaseView<HomeController> {
         leftIconSvg: icBack,
         onLeftIconPress: () => Get.back(),
       ),
-      body: Stack(
-        children: [
-          Positioned.fill(
-            top: 0,
-            // bottom: 100,
-            child: appImageAsset(icBackground, fit: BoxFit.fill),
-          ),
 
-          // Positioned(
-          //   top: MediaQuery.of(context).size.height / 8,
-          //   left: 0,
-          //   right: 0,
-          //   child: appImageAsset(icJudge, height: 250),
-          // ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: FractionallySizedBox(
-              widthFactor: 1.0,
-              heightFactor: 0.65,
-              child: appImageAsset(icForeground, fit: BoxFit.fill),
-            ),
-          ),
-
-          Positioned(
-            top: 10,
-            left: 0,
-            right: 0,
-            child: AppAchievementContainer(
-              margin: const EdgeInsets.symmetric(horizontal: 16),
-              color: appLightYellow,
-              shadowColor: appAmber,
-              borderColor: appLightYellow,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+      backgroundColor: appBrown,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: 500,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(icTop),
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
+              child: Column(
                 children: [
-                  // appImageAsset(
-                  //   icBattery,
-                  //   height: 40,
-                  //   color: appBlack,
-                  // ).paddingOnly(right: 8),
-                  Icon(Icons.shield),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      AppTextRegular(
-                        text: 'Last Updated',
-                        fontSize: 12,
-                        textAlign: TextAlign.center,
-                        color: appBlack,
-                      ),
-                      AppTextRegular(
-                        text: 'December 1, 2024',
-                        fontSize: 10,
-                        textAlign: TextAlign.center,
-                        color: Colors.black,
-                      ),
-                    ],
-                  ),
+                  AppAchievementContainer(
+                    margin: const EdgeInsets.symmetric(horizontal: 16),
+                    color: appLightYellow,
+                    shadowColor: appAmber,
+                    borderColor: appLightYellow,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // appImageAsset(
+                        //   icBattery,
+                        //   height: 40,
+                        //   color: appBlack,
+                        // ).paddingOnly(right: 8),
+                        Icon(Icons.shield),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            AppTextRegular(
+                              text: 'Last Updated',
+                              fontSize: 12,
+                              textAlign: TextAlign.center,
+                              color: appBlack,
+                            ),
+                            AppTextRegular(
+                              text: 'December 1, 2024',
+                              fontSize: 10,
+                              textAlign: TextAlign.center,
+                              color: Colors.black,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ).paddingAll(10),
+                  ).marginOnly(top: 10),
                 ],
-              ).paddingAll(10),
+              ),
             ),
-          ),
-
-          Positioned(
-            top: MediaQuery.of(context).size.height * 0.43,
-            bottom: 10,
-            left: 0,
-            right: 0,
-            child: SingleChildScrollView(
+            Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(icBottom),
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -394,8 +384,8 @@ class PrivacyPolicyView extends BaseView<HomeController> {
                 ],
               ).paddingAll(42),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

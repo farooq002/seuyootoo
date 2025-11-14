@@ -19,7 +19,6 @@ class NewsView extends BaseView<HomeController> {
 
   @override
   Widget mBuild(BuildContext context) {
-    // final controller = Get.put(());
     return Scaffold(
       appBar: appBar(
         context,
@@ -27,77 +26,69 @@ class NewsView extends BaseView<HomeController> {
         onLeftIconPress: () => Get.back(),
         titleText: 'Progress & Evolution',
       ),
-      body: Stack(
-        children: [
-          Positioned.fill(
-            top: 0,
-            // bottom: 100,
-            child: appImageAsset(icBackground, fit: BoxFit.fill),
-          ),
-
-          // Positioned(
-          //   top: MediaQuery.of(context).size.height / 8,
-          //   left: 0,
-          //   right: 0,
-          //   child: appImageAsset(icJudge, height: 250),
-          // ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: FractionallySizedBox(
-              widthFactor: 1.0,
-              heightFactor: 0.65,
-              child: appImageAsset(icForeground, fit: BoxFit.fill),
-            ),
-          ),
-          Positioned(
-            top: 10,
-            left: 0,
-            right: 0,
-            child: AppAchievementContainer(
-              borderColor: appAmber,
-              width: MediaQuery.of(context).size.width * 0.9,
-              margin: const EdgeInsets.symmetric(horizontal: 16),
-              color: appAmber,
-              isShadowAvailable: true,
+      backgroundColor: appBrown,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: 500,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(icTop),
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
               child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      appImageAsset(icStreak, height: 40).paddingOnly(right: 8),
-                      Obx(
-                        () => AppTextRegular(
-                          text:
-                              'DAY ${controller.profileData.value.streak ?? 0} STREAK!',
-                          fontSize: 14,
-                          textAlign: TextAlign.center,
-                          color: appBlack,
+                  AppAchievementContainer(
+                    borderColor: appAmber,
+                    margin: const EdgeInsets.only(top: 16),
+                    color: appAmber,
+                    isShadowAvailable: true,
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            appImageAsset(
+                              icStreak,
+                              height: 20,
+                            ).paddingOnly(right: 8),
+                            Obx(
+                              () => AppTextRegular(
+                                text:
+                                    'DAY ${controller.profileData.value.streak ?? 0} STREAK!',
+                                fontSize: 14,
+                                textAlign: TextAlign.center,
+                                color: appBlack,
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                    ],
-                  ),
-                  AppTextRegular(
-                    text: 'Keep it up for a Case Analysis Reward',
-                    fontSize: 12,
-                    textAlign: TextAlign.center,
-                    color: Colors.black,
-                  ),
+                        AppTextRegular(
+                          text: 'Keep it up for a Case Analysis Reward',
+                          fontSize: 12,
+                          textAlign: TextAlign.center,
+                          color: Colors.black,
+                        ),
+                      ],
+                    ).paddingAll(6),
+                  ).paddingSymmetric(horizontal: 32),
                 ],
-              ).paddingAll(10),
+              ),
             ),
-          ),
-          Positioned(
-            top: MediaQuery.of(context).size.height * 0.43,
-            bottom: 10,
-            left: 0,
-            right: 0,
-            child: SingleChildScrollView(
+            Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(icBottom),
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
               child: Column(
                 children: [
                   AppAchievementContainer(
                     shadowColor: appWhite,
                     borderColor: appBlack,
-                    width: MediaQuery.of(context).size.width * 0.9,
                     isShadowAvailable: true,
                     child: Column(
                       children: [
@@ -308,10 +299,10 @@ class NewsView extends BaseView<HomeController> {
                     ).paddingSymmetric(vertical: 10),
                   ).paddingSymmetric(vertical: 10),
                 ],
-              ).paddingAll(42),
-            ),
-          ),
-        ],
+              ).paddingAll(32),
+            ).paddingOnly(right: 2),
+          ],
+        ),
       ),
     );
   }

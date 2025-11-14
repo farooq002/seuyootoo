@@ -183,7 +183,6 @@ class NewCaseView extends BaseView<HomeController> {
                         ).paddingAll(10),
                         Row(
                           children: [
-                            // Icon(Icons.insert_drive_file, color: appGreen),
                             appImageAsset(
                               icFolder,
                               color: appGreen,

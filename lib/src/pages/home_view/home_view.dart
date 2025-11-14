@@ -43,7 +43,6 @@ class HomeView extends BaseView<TabHomeViewController> {
           shadowColor: appBlack,
         ),
       ),
-      // The entire body is now wrapped in a SingleChildScrollView
       body: SingleChildScrollView(
         child: Column(
           children: [

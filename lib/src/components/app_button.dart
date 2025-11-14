@@ -49,6 +49,7 @@ class AppElevatedButton extends StatelessWidget {
   final double? textSize;
   final double? padding;
   final double? offSetX;
+  final String? fontFamily;
   final double? offSetY;
   final Size? minimumSize;
 
@@ -59,6 +60,7 @@ class AppElevatedButton extends StatelessWidget {
     this.color,
     this.textColor,
     this.textSize,
+    this.fontFamily,
     this.padding,
     this.minimumSize,
     this.offSetX,
@@ -100,6 +102,7 @@ class AppElevatedButton extends StatelessWidget {
           text: text,
           fontSize: textSize ?? 18,
           color: textColor ?? Colors.white,
+          fontFamily: fontFamily,
         ),
       ),
     );

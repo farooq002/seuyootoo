@@ -21,6 +21,7 @@ class CaseDetailView extends BaseView<HomeController> {
   @override
   Widget mBuild(BuildContext context) {
     return Scaffold(
+      backgroundColor: appBrown,
       appBar: appBar(
         context,
         titleText: 'My Case',
@@ -36,58 +37,45 @@ class CaseDetailView extends BaseView<HomeController> {
           borderColor: appBlack,
         ),
       ),
-      body: Stack(
-        children: [
-          Positioned.fill(
-            top: 0,
-            // bottom: 100,
-            child: appImageAsset(icBackground, fit: BoxFit.fill),
-          ),
-
-          // Positioned(
-          //   top: MediaQuery.of(context).size.height / 8,
-          //   left: 0,
-          //   right: 0,
-          //   child: appImageAsset(icJudge, height: 250),
-          // ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: FractionallySizedBox(
-              widthFactor: 1.0,
-              heightFactor: 0.65,
-              child: appImageAsset(icForeground, fit: BoxFit.fill),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: 500,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(icTop),
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
+              // child:
+              // AppTextIcon(
+              //   isColumn: true,
+              //   text: 'Start a Case',
+              //   onPressed: () {
+              //     Get.toNamed(newCaseRoute);
+              //   },
+              //   backgroundColor: appGreen,
+              //   foregroundColor: appBlack,
+              //   shadowColor: appLightBlack,
+              //   icon: Icon(Icons.add),
+              //   offSetX: -6,
+              //   offSetY: -6,
+              // ),
             ),
-          ),
-
-          Positioned(
-            top: 10,
-            left: 0,
-            right: 0,
-            child: AppTextIcon(
-              text: 'Start a Case',
-              onPressed: () {
-                Get.toNamed(newCaseRoute);
-              },
-              backgroundColor: appGreen,
-              foregroundColor: appBlack,
-              shadowColor: appLightBlack,
-              icon: Icon(Icons.add),
-              offSetX: -6,
-              offSetY: -6,
-            ).paddingSymmetric(horizontal: 42),
-          ),
-
-          Positioned(
-            top: MediaQuery.of(context).size.height * 0.45,
-            bottom: 10,
-            left: 0,
-            right: 0,
-            child: SingleChildScrollView(
+            Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(icBottom),
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
               child: Column(
                 children: [
                   AppTextRegular(
                     text: 'Active Cases',
                     fontSize: 12,
+                    color: appWhite,
                   ).paddingOnly(bottom: 20),
                   AppAchievementContainer(
                     borderColor: appDimBrown,
@@ -110,24 +98,24 @@ class CaseDetailView extends BaseView<HomeController> {
                             ),
                             const Spacer(),
                             AppAchievementContainer(
-                              color: appAmber,
+                              color: appDimYellow,
                               borderColor: appBlack,
                               isShadowAvailable: false,
                               child: AppTextRegular(
                                 text: 'PENDING',
                                 fontSize: 8,
-                              ).paddingAll(10),
+                              ).paddingAll(4),
                             ),
                           ],
-                        ),
+                        ).paddingOnly(bottom: 6),
                         AppTextRegular(
                           text: 'Personal Injury - Auto Accident',
                           fontSize: 12,
-                        ),
+                        ).paddingOnly(bottom: 8),
                         AppTextRegular(
                           text:
-                              'for damages sustained in rear-end collision on Main St.',
-                          fontSize: 12,
+                              'Filed against Smith Insurance Co. for damages sustained in rear-end collision on Main St.',
+                          fontSize: 9,
                         ),
                         Row(
                           children: [
@@ -141,22 +129,18 @@ class CaseDetailView extends BaseView<HomeController> {
                               fontSize: 8,
                             ),
                             const Spacer(),
-                            Row(
-                              children: [
-                                AppTextRegular(
-                                  text: '\$',
-                                  fontSize: 12,
-                                  color: appGreen,
-                                ),
-                                AppTextRegular(
-                                  text: '\$15,000',
-                                  fontSize: 8,
-                                  color: appGreen,
-                                ),
-                              ],
+                            AppTextRegular(
+                              text: '\$',
+                              fontSize: 12,
+                              color: appGreen,
+                            ),
+                            AppTextRegular(
+                              text: '\$15,000',
+                              fontSize: 8,
+                              color: appGreen,
                             ),
                           ],
-                        ),
+                        ).paddingSymmetric(vertical: 10),
                       ],
                     ).paddingAll(10),
                   ),
@@ -191,7 +175,7 @@ class CaseDetailView extends BaseView<HomeController> {
                               ).paddingAll(10),
                             ),
                           ],
-                        ),
+                        ).paddingOnly(bottom: 8),
                         AppTextRegular(
                           text: 'Personal Injury - Auto Accident',
                           fontSize: 12,
@@ -234,6 +218,7 @@ class CaseDetailView extends BaseView<HomeController> {
                   ).paddingSymmetric(vertical: 30),
                   AppTextRegular(
                     text: 'RECENT UPDATES',
+                    color: appWhite,
                     fontSize: 12,
                   ).paddingOnly(bottom: 20),
                   AppAchievementContainer(
@@ -417,9 +402,9 @@ class CaseDetailView extends BaseView<HomeController> {
                   ),
                 ],
               ).paddingAll(32),
-            ),
-          ),
-        ],
+            ).paddingOnly(right: 2),
+          ],
+        ),
       ),
     );
   }

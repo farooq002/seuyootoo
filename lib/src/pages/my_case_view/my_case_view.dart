@@ -29,174 +29,167 @@ class MyCaseView extends BaseView<HomeController> {
         onLeftIconPress: () => Get.back(),
         titleText: 'BACK',
       ),
-      body: Stack(
-        fit: StackFit.expand,
-        children: [
-          appImageAsset(icCaseBackground, fit: BoxFit.cover),
-          SingleChildScrollView(
-            child: Container(
-              constraints: BoxConstraints(
-                minHeight: MediaQuery.of(context).size.height,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+      backgroundColor: appBrown,
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(icCaseBackground),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            AppAchievementContainer(
+              color: appLightYellow,
+              borderColor: appLightYellow,
+              shadowColor: appAmber,
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  AppAchievementContainer(
-                    color: appLightYellow,
-                    borderColor: appLightYellow,
-                    shadowColor: appAmber,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        appImageAsset(icCaseCat).paddingOnly(right: 10),
-                        AppTextRegular(text: 'Your Cases', fontSize: 16),
-                      ],
-                    ),
-                  ),
-                  Obx(
-                    () =>
-                        controller.myCaseData.value.cases?.isEmpty != true ||
-                            controller.myCaseData.value.cases != null
-                        ? ListView.builder(
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            itemCount:
-                                controller.myCaseData.value.cases?.length ?? 0,
-                            itemBuilder: (context, index) {
-                              final caseData =
-                                  controller.myCaseData.value.cases?[index];
-                              return AppAchievementContainer(
-                                color: appWhite,
-                                borderColor: appWhite,
-                                isShadowAvailable: true,
-                                child: Column(
-                                  children: [
-                                    AppTextRegular(
-                                      text: 'CASE #${caseData?.id ?? 0}',
-                                      fontSize: 24,
-                                      textAlign: TextAlign.center,
-                                      fontFamily: 'VT323',
-                                      color: appBlue,
-                                    ),
-                                    AppTextRegular(
-                                      text: caseData?.title ?? '',
-                                      fontFamily: 'VT323',
-                                      fontSize: 30,
-                                      textAlign: TextAlign.center,
-                                      color: appBlack,
-                                    ),
-                                    DottedLine(
-                                      dashLength: 2,
-                                      dashGapLength: 2,
-                                      lineThickness: 4,
-                                      dashColor: appBlack,
-                                      direction: Axis.horizontal,
-                                    ),
-                                    AppTextThin(
-                                      text: caseData?.description ?? '',
-                                      fontSize: 18,
-                                      fontFamily: 'VT323',
-                                    ).paddingSymmetric(vertical: 20),
-                                    Row(
-                                      children: [
-                                        AppTextRegular(
-                                          text: 'DIFFICULTY:',
-                                          fontSize: 18,
-                                          fontFamily: 'VT323',
-                                        ),
-                                        const Spacer(),
-                                        AppTextRegular(
-                                          text: 'MEDIUM',
-                                          color: appAmber,
-                                          fontFamily: 'VT323',
-                                          fontSize: 24,
-                                        ).paddingOnly(right: 4),
-                                        Row(
-                                          children: List.generate(3, (index) {
-                                            final difficulty =
-                                                caseData?.difficulty ?? 0;
-                                            return appImageAsset(
-                                              index < difficulty
-                                                  ? icStar
-                                                  : icStarBlack,
-                                              width: 18,
-                                              height: 18,
-                                            ).paddingOnly(right: 4);
-                                          }),
-                                        ),
-                                      ],
-                                    ).paddingSymmetric(vertical: 10),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        AppTextRegular(
-                                          text: 'QUESTIONS:',
-                                          fontSize: 18,
-                                          fontFamily: 'VT323',
-                                        ),
-                                        AppTextRegular(
-                                          text:
-                                              '${caseData?.questionsCount ?? 0} Questions (~3 MINS)',
-                                          fontFamily: 'VT323',
-                                          fontSize: 18,
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                          children: [
-                                            AppTextRegular(
-                                              text: 'REWARDS:',
-                                              fontSize: 18,
-                                              fontFamily: 'VT323',
-                                            ),
-                                            const Spacer(),
-                                            AppTextRegular(
-                                              text:
-                                                  '+${caseData?.rewardExp} XP',
-                                              fontFamily: 'VT323',
-                                              fontSize: 18,
-                                              color: appGreen,
-                                            ),
-                                            appImageAsset(
-                                              icFrame,
-                                              width: 18,
-                                              height: 18,
-                                            ).paddingOnly(left: 4),
-                                          ],
-                                        )
-                                        .paddingSymmetric(vertical: 10)
-                                        .paddingOnly(right: 30),
-                                  ],
-                                ).paddingAll(10),
-                              ).paddingAll(10);
-                            },
-                          )
-                        : Center(
-                            child: AppTextRegular(
-                              text: 'You have no cases so far',
-                              fontSize: 18,
-                              textAlign: TextAlign.center,
-                              color: appWhite,
-                            ).paddingSymmetric(vertical: 40),
-                          ),
-                  ),
-                  AppTextIcon(
-                    text: 'Start a Case',
-                    onPressed: () {
-                      Get.toNamed(newCaseRoute);
-                    },
-                    backgroundColor: appAmber,
-                    foregroundColor: appBlack,
-                    offSetX: -6,
-                    offSetY: -6,
-                  ),
+                  appImageAsset(icCaseCat).paddingOnly(right: 10),
+                  AppTextRegular(text: 'Your Cases', fontSize: 16),
                 ],
-              ).paddingAll(42), // Keep your existing padding
+              ),
             ),
-          ),
-        ],
+            Obx(
+              () => controller.myCaseData.value.cases?.isEmpty == false
+                  ? ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: controller.myCaseData.value.cases?.length ?? 0,
+                      itemBuilder: (context, index) {
+                        final caseData =
+                            controller.myCaseData.value.cases?[index];
+                        return AppAchievementContainer(
+                          color: appWhite,
+                          borderColor: appWhite,
+                          isShadowAvailable: true,
+                          child: Column(
+                            children: [
+                              AppTextRegular(
+                                text: 'CASE #${caseData?.id ?? 0}',
+                                fontSize: 24,
+                                textAlign: TextAlign.center,
+                                fontFamily: 'VT323',
+                                color: appBlue,
+                              ),
+                              AppTextRegular(
+                                text: caseData?.title ?? '',
+                                fontFamily: 'VT323',
+                                fontSize: 30,
+                                textAlign: TextAlign.center,
+                                color: appBlack,
+                              ),
+                              DottedLine(
+                                dashLength: 2,
+                                dashGapLength: 2,
+                                lineThickness: 4,
+                                dashColor: appBlack,
+                                direction: Axis.horizontal,
+                              ),
+                              AppTextThin(
+                                text: caseData?.description ?? '',
+                                fontSize: 18,
+                                fontFamily: 'VT323',
+                              ).paddingSymmetric(vertical: 20),
+                              Row(
+                                children: [
+                                  AppTextRegular(
+                                    text: 'DIFFICULTY:',
+                                    fontSize: 18,
+                                    fontFamily: 'VT323',
+                                  ),
+                                  const Spacer(),
+                                  AppTextRegular(
+                                    text: 'MEDIUM',
+                                    color: appAmber,
+                                    fontFamily: 'VT323',
+                                    fontSize: 24,
+                                  ).paddingOnly(right: 4),
+                                  Row(
+                                    children: List.generate(3, (index) {
+                                      final difficulty =
+                                          caseData?.difficulty ?? 0;
+                                      return appImageAsset(
+                                        index < difficulty
+                                            ? icStar
+                                            : icStarBlack,
+                                        width: 18,
+                                        height: 18,
+                                      ).paddingOnly(right: 4);
+                                    }),
+                                  ),
+                                ],
+                              ).paddingSymmetric(vertical: 10),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  AppTextRegular(
+                                    text: 'QUESTIONS:',
+                                    fontSize: 18,
+                                    fontFamily: 'VT323',
+                                  ),
+                                  AppTextRegular(
+                                    text:
+                                        '${caseData?.questionsCount ?? 0} Questions (~3 MINS)',
+                                    fontFamily: 'VT323',
+                                    fontSize: 18,
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                    children: [
+                                      AppTextRegular(
+                                        text: 'REWARDS:',
+                                        fontSize: 18,
+                                        fontFamily: 'VT323',
+                                      ),
+                                      const Spacer(),
+                                      AppTextRegular(
+                                        text: '+${caseData?.rewardExp} XP',
+                                        fontFamily: 'VT323',
+                                        fontSize: 18,
+                                        color: appGreen,
+                                      ),
+                                      appImageAsset(
+                                        icFrame,
+                                        width: 18,
+                                        height: 18,
+                                      ).paddingOnly(left: 4),
+                                    ],
+                                  )
+                                  .paddingSymmetric(vertical: 10)
+                                  .paddingOnly(right: 30),
+                            ],
+                          ).paddingAll(10),
+                        ).paddingAll(10);
+                      },
+                    )
+                  : Center(
+                      child: AppTextRegular(
+                        text: 'You have no cases so far',
+                        fontSize: 18,
+                        textAlign: TextAlign.center,
+                        color: appWhite,
+                      ).paddingSymmetric(vertical: 40),
+                    ),
+            ),
+            AppTextIcon(
+              text: 'Start a Case',
+              onPressed: () {
+                Get.toNamed(newCaseRoute);
+              },
+              borderWidth: 4,
+              shadowColor: appBlack.withAlpha(80),
+              backgroundColor: appAmber,
+              foregroundColor: appBlack,
+              offSetX: -4,
+              offSetY: -4,
+            ),
+          ],
+        ).paddingAll(42),
       ),
     );
   }

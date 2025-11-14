@@ -29,90 +29,83 @@ class ShopView extends StatelessWidget {
         ),
         titleText: 'Shop',
       ),
-      body: Stack(
-        children: [
-          Positioned.fill(
-            top: 0,
-            // bottom: 100,
-            child: appImageAsset(icBackground, fit: BoxFit.fill),
-          ),
-
-          // Positioned(
-          //   top: MediaQuery.of(context).size.height / 8,
-          //   left: 0,
-          //   right: 0,
-          //   child: appImageAsset(icJudge, height: 250),
-          // ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: FractionallySizedBox(
-              widthFactor: 1.0,
-              heightFactor: 0.65,
-              child: appImageAsset(icForeground, fit: BoxFit.fill),
-            ),
-          ),
-          Positioned(
-            top: 10,
-            left: 0,
-            right: 0,
-            child: AppAchievementContainer(
-              color: appWhite,
-              borderColor: appBlack,
-              shadowColor: appBlack,
-              child: Row(
+      backgroundColor: appBrown,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: 500,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(icTop),
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
+              child: Column(
                 children: [
-                  /// Icon Container
                   AppAchievementContainer(
-                    color: appgray,
-                    borderColor: appGray,
-                    isShadowAvailable: false,
-                    child: appImageAsset(icTime).paddingSymmetric(vertical: 10),
-                  ),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    color: appWhite,
+                    borderColor: appBlack,
+                    shadowColor: appBlack,
+                    child: Row(
                       children: [
-                        AppTextRegular(
-                          text: 'Extra Time',
-                          fontSize: 10,
-                          // fontFamily: 'PressStart2P',
+                        /// Icon Container
+                        AppAchievementContainer(
+                          color: appgray,
+                          borderColor: appGray,
+                          isShadowAvailable: false,
+                          child: appImageAsset(
+                            icTime,
+                          ).paddingSymmetric(vertical: 10),
                         ),
-                        AppTextRegular(
-                          text:
-                              'Get 30 extra seconds for a tough case question.',
-                          fontSize: 7,
-                          lineLimit: 4,
-                          overflow: true,
-                          // fontFamily: 'VT323',
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              AppTextRegular(
+                                text: 'Extra Time',
+                                fontSize: 10,
+                                // fontFamily: 'PressStart2P',
+                              ),
+                              AppTextRegular(
+                                text:
+                                    'Get 30 extra seconds for a tough case question.',
+                                fontSize: 7,
+                                lineLimit: 4,
+                                overflow: true,
+                                // fontFamily: 'VT323',
+                              ),
+                            ],
+                          ).paddingAll(10),
+                        ),
+                        AppAchievementContainer(
+                          color: appBlue,
+                          borderColor: appGray,
+                          isShadowAvailable: false,
+                          child: Column(
+                            children: [
+                              AppTextRegular(
+                                text: '10',
+                                fontSize: 8,
+                                color: appAqua,
+                              ).paddingOnly(bottom: 10),
+                              appImageAsset(icFrame, height: 10),
+                            ],
+                          ).paddingAll(10),
                         ),
                       ],
                     ).paddingAll(10),
-                  ),
-                  AppAchievementContainer(
-                    color: appBlue,
-                    borderColor: appGray,
-                    isShadowAvailable: false,
-                    child: Column(
-                      children: [
-                        AppTextRegular(
-                          text: '10',
-                          fontSize: 8,
-                          color: appAqua,
-                        ).paddingOnly(bottom: 10),
-                        appImageAsset(icFrame, height: 10),
-                      ],
-                    ).paddingAll(10),
-                  ),
+                  ).paddingSymmetric(horizontal: 32).marginAll(10),
                 ],
-              ).paddingAll(10),
-            ).paddingAll(10).marginAll(10),
-          ),
-          Positioned(
-            top: MediaQuery.of(context).size.height * 0.43,
-            bottom: 10,
-            left: 0,
-            right: 0,
-            child: SingleChildScrollView(
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(icBottom),
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
               child: Column(
                 children: [
                   AppAchievementContainer(
@@ -281,10 +274,10 @@ class ShopView extends StatelessWidget {
                     ).paddingAll(10),
                   ).paddingAll(10),
                 ],
-              ),
+              ).paddingAll(32),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

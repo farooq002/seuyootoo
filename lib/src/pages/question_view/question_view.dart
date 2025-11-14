@@ -45,125 +45,118 @@ class QuestionView extends BaseView<TrailController> {
           ),
         ),
       ),
-      body: Stack(
-        children: [
-          Positioned.fill(
-            top: 0,
-            // bottom: 100,
-            child: appImageAsset(icBackground, fit: BoxFit.fill),
-          ),
-
-          // Positioned(
-          //   top: MediaQuery.of(context).size.height / 8,
-          //   left: 0,
-          //   right: 0,
-          //   child: appImageAsset(icJudge, height: 250),
-          // ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: FractionallySizedBox(
-              widthFactor: 1.0,
-              heightFactor: 0.65,
-              child: appImageAsset(icForeground, fit: BoxFit.fill),
-            ),
-          ),
-
-          Positioned(
-            top: 10,
-            left: 0,
-            right: 0,
-            child: AppAchievementContainer(
-              margin: const EdgeInsets.symmetric(horizontal: 16),
-              color: appWhite,
-              borderColor: appWhite,
-              isShadowAvailable: true,
-              shadowColor: appBlack,
+      backgroundColor: appBrown,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: 500,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(icTop),
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
               child: Column(
                 children: [
-                  Obx(
-                    () => AppTextRegular(
-                      text: controller.caseDetail.value.title ?? '',
-                      fontSize: 18,
-                      fontFamily: 'VT323',
-                      color: Colors.black,
-                    ).paddingOnly(bottom: 10),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Obx(
-                        () => AppTextRegular(
-                          text:
-                              "QUESTION ${controller.currentQuestIndex.value + 1}/${controller.caseDetail.value.questions?.length ?? 0}",
-                          fontSize: 14,
-                          fontFamily: 'VT323',
+                  AppAchievementContainer(
+                    color: appWhite,
+                    margin: EdgeInsets.only(top: 10),
+                    borderColor: appWhite,
+                    isShadowAvailable: true,
+                    shadowColor: appBlack,
+                    child: Column(
+                      children: [
+                        Obx(
+                          () => AppTextRegular(
+                            text: controller.caseDetail.value.title ?? '',
+                            fontSize: 18,
+                            fontFamily: 'VT323',
+                            color: Colors.black,
+                          ).paddingOnly(bottom: 10),
                         ),
-                      ),
-                      SizedBox(
-                        height: 16,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount:
-                              controller.caseDetail.value.questions?.length ??
-                              0,
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemBuilder: (context, index) {
-                            return Obx(
-                              () => Container(
-                                width: 16,
-                                height: 16,
-                                margin: const EdgeInsets.symmetric(
-                                  horizontal: 2,
-                                ),
-                                decoration: BoxDecoration(
-                                  color:
-                                      controller
-                                              .caseDetail
-                                              .value
-                                              .questions?[index]
-                                              .type
-                                              .value ==
-                                          QuestionType.correct
-                                      ? Colors.green
-                                      : controller
-                                                .caseDetail
-                                                .value
-                                                .questions?[index]
-                                                .type
-                                                .value ==
-                                            QuestionType.wrong
-                                      ? Colors.red
-                                      : Colors.grey,
-                                  border: Border.all(
-                                    color: Colors.black,
-                                    width: 2,
-                                  ),
-                                ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Obx(
+                              () => AppTextRegular(
+                                text:
+                                    "QUESTION ${controller.currentQuestIndex.value + 1}/${controller.caseDetail.value.questions?.length ?? 0}",
+                                fontSize: 14,
+                                fontFamily: 'VT323',
                               ),
-                            );
-                          },
+                            ),
+                            SizedBox(
+                              height: 16,
+                              child: ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                itemCount:
+                                    controller
+                                        .caseDetail
+                                        .value
+                                        .questions
+                                        ?.length ??
+                                    0,
+                                physics: const NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemBuilder: (context, index) {
+                                  return Obx(
+                                    () => Container(
+                                      width: 16,
+                                      height: 16,
+                                      margin: const EdgeInsets.symmetric(
+                                        horizontal: 2,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color:
+                                            controller
+                                                    .caseDetail
+                                                    .value
+                                                    .questions?[index]
+                                                    .type
+                                                    .value ==
+                                                QuestionType.correct
+                                            ? Colors.green
+                                            : controller
+                                                      .caseDetail
+                                                      .value
+                                                      .questions?[index]
+                                                      .type
+                                                      .value ==
+                                                  QuestionType.wrong
+                                            ? Colors.red
+                                            : Colors.grey,
+                                        border: Border.all(
+                                          color: Colors.black,
+                                          width: 2,
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                    ],
-                  ),
+                      ],
+                    ),
+                  ).paddingSymmetric(horizontal: 32),
                 ],
-              ).paddingAll(10),
-            ).paddingAll(10),
-          ),
-
-          Obx(() {
-            final question = controller
-                .caseDetail
-                .value
-                .questions?[controller.currentQuestIndex.value];
-            return Positioned(
-              top: MediaQuery.of(context).size.height * 0.5,
-              bottom: 25,
-              left: 0,
-              right: 0,
-              child: SingleChildScrollView(
-                child: AnimatedSwitcher(
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(icBottom),
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
+              child: Obx(() {
+                final question = controller
+                    .caseDetail
+                    .value
+                    .questions?[controller.currentQuestIndex.value];
+                return AnimatedSwitcher(
                   duration: const Duration(milliseconds: 300),
                   transitionBuilder:
                       (Widget child, Animation<double> animation) {
@@ -294,11 +287,11 @@ class QuestionView extends BaseView<TrailController> {
                       }),
                     ],
                   ),
-                ).paddingAll(10).paddingSymmetric(horizontal: 22),
-              ),
-            );
-          }),
-        ],
+                ).paddingAll(10).paddingSymmetric(horizontal: 22);
+              }),
+            ),
+          ],
+        ),
       ),
     );
   }
