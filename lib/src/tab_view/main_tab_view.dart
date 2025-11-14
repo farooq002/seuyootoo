@@ -13,13 +13,7 @@ class MainTabView extends StatelessWidget {
   // ✅ STATE OUTSIDE BUILD → works even when widget is stateless
   static final ValueNotifier<int> currentIndex = ValueNotifier(0);
 
-  final pages = [
-    HomeView(),
-    Placeholder(),
-    Placeholder(),
-    Placeholder(),
-    Placeholder(),
-  ];
+  final pages = [HomeView(), Placeholder(), Placeholder(), Placeholder()];
 
   final labels = ['HOME', 'LEARN', 'CASES', 'STATS', 'SHOP'];
 

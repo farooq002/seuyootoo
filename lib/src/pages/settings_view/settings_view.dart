@@ -168,11 +168,11 @@ class SettingView extends BaseView<HomeController> {
                                 children: [
                                   AppTextRegular(
                                     text: 'Push Notifications',
-                                    fontSize: 12,
+                                    fontSize: 10,
                                   ),
                                   AppTextRegular(
                                     text: 'Case updates & alerts',
-                                    fontSize: 10,
+                                    fontSize: 8,
                                   ),
                                 ],
                               ),
@@ -180,11 +180,11 @@ class SettingView extends BaseView<HomeController> {
                               Obx(
                                 () => GestureDetector(
                                   onTap: () {
-                                    controller.selectedIndex.value =
-                                        !controller.selectedIndex.value;
+                                    controller.selectedPushIndex.value =
+                                        !controller.selectedPushIndex.value;
                                   },
                                   child: appImageAsset(
-                                    controller.selectedIndex.value
+                                    controller.selectedPushIndex.value
                                         ? icEnabled
                                         : icDisabled,
                                     width: 40,
@@ -209,7 +209,7 @@ class SettingView extends BaseView<HomeController> {
                                   ),
                                   AppTextRegular(
                                     text: 'Important updates only',
-                                    fontSize: 9,
+                                    fontSize: 8,
                                   ),
                                 ],
                               ),
@@ -217,11 +217,11 @@ class SettingView extends BaseView<HomeController> {
                               Obx(
                                 () => GestureDetector(
                                   onTap: () {
-                                    controller.selectedIndex.value =
-                                        !controller.selectedIndex.value;
+                                    controller.selectedEmailIndex.value =
+                                        !controller.selectedEmailIndex.value;
                                   },
                                   child: appImageAsset(
-                                    controller.selectedIndex.value
+                                    controller.selectedEmailIndex.value
                                         ? icEnabled
                                         : icDisabled,
                                     width: 40,
@@ -236,16 +236,18 @@ class SettingView extends BaseView<HomeController> {
                           onTap: () {},
                           backGroundColor: appLightYellow,
                           data: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   AppTextRegular(
                                     text: 'Marketing Emails',
-                                    fontSize: 12,
+                                    fontSize: 10,
                                   ),
                                   AppTextRegular(
                                     text: 'Tips & promotions',
-                                    fontSize: 10,
+                                    fontSize: 8,
                                   ),
                                 ],
                               ),
@@ -253,11 +255,13 @@ class SettingView extends BaseView<HomeController> {
                               Obx(
                                 () => GestureDetector(
                                   onTap: () {
-                                    controller.selectedIndex.value =
-                                        !controller.selectedIndex.value;
+                                    controller.selectedMarketingIndex.value =
+                                        !controller
+                                            .selectedMarketingIndex
+                                            .value;
                                   },
                                   child: appImageAsset(
-                                    controller.selectedIndex.value
+                                    controller.selectedMarketingIndex.value
                                         ? icEnabled
                                         : icDisabled,
                                     width: 40,
@@ -340,11 +344,11 @@ class SettingView extends BaseView<HomeController> {
                               Obx(
                                 () => GestureDetector(
                                   onTap: () {
-                                    controller.selectedIndex.value =
-                                        !controller.selectedIndex.value;
+                                    controller.selectedAutoSyncIndex.value =
+                                        !controller.selectedAutoSyncIndex.value;
                                   },
                                   child: appImageAsset(
-                                    controller.selectedIndex.value
+                                    controller.selectedAutoSyncIndex.value
                                         ? icEnabled
                                         : icDisabled,
                                     width: 40,

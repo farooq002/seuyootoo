@@ -34,6 +34,7 @@ class NewCaseView extends BaseView<HomeController> {
           foregroundColor: appWhite,
           backgroundColor: appBlack,
           borderColor: appBlack,
+          shadowColor: appBlack,
         ),
       ),
       body: Stack(

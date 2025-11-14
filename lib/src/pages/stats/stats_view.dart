@@ -138,12 +138,12 @@ class StatsView extends StatelessWidget {
                           children: [
                             AppTextRegular(
                               text: 'FIRST VICTORY',
-                              fontSize: 18,
+                              fontSize: 16,
                               fontFamily: 'VT323',
                             ),
                             AppTextRegular(
                               text: 'You won your first case!',
-                              fontSize: 14,
+                              fontSize: 12,
                               fontFamily: 'VT323',
                             ),
                           ],
@@ -152,7 +152,7 @@ class StatsView extends StatelessWidget {
                         AppTextRegular(
                           text: 'Completed',
                           fontFamily: 'VT323',
-                          fontSize: 14,
+                          fontSize: 12,
                         ),
                       ],
                     ).paddingAll(10),
@@ -162,7 +162,7 @@ class StatsView extends StatelessWidget {
                     borderColor: appWhite,
                     onTap: () {
                       Get.toNamed(mapRoute);
-                      SoundManager.instance.play(icLevelUp);
+                      // SoundManager.instance.play(icLevelUp);
                     },
                     shadowColor: appBlack,
                     isShadowAvailable: true,
@@ -187,12 +187,12 @@ class StatsView extends StatelessWidget {
                           children: [
                             AppTextRegular(
                               text: 'JUNIOR PARALEGAL',
-                              fontSize: 18,
+                              fontSize: 16,
                               fontFamily: 'VT323',
                             ),
                             AppTextRegular(
                               text: 'Reached Level 5.',
-                              fontSize: 14,
+                              fontSize: 12,
                               fontFamily: 'VT323',
                             ),
                           ],
@@ -201,7 +201,7 @@ class StatsView extends StatelessWidget {
                         AppTextRegular(
                           text: 'Completed',
                           fontFamily: 'VT323',
-                          fontSize: 14,
+                          fontSize: 12,
                         ),
                       ],
                     ).paddingAll(10),
@@ -210,7 +210,7 @@ class StatsView extends StatelessWidget {
                     color: appWhite,
                     onTap: () {
                       Get.toNamed(profileRoute);
-                      SoundManager.instance.play(icBackgroundSound);
+                      // SoundManager.instance.play(icBackgroundSound);
                     },
                     borderColor: appWhite,
                     shadowColor: appBlack,
@@ -233,12 +233,12 @@ class StatsView extends StatelessWidget {
                           children: [
                             AppTextRegular(
                               text: 'BOOKING',
-                              fontSize: 18,
+                              fontSize: 16,
                               fontFamily: 'VT323',
                             ),
                             AppTextRegular(
                               text: 'Completed 10 Lessons.',
-                              fontSize: 14,
+                              fontSize: 12,
                               fontFamily: 'VT323',
                             ),
                           ],
@@ -247,7 +247,7 @@ class StatsView extends StatelessWidget {
                         AppTextRegular(
                           text: 'Completed',
                           fontFamily: 'VT323',
-                          fontSize: 14,
+                          fontSize: 12,
                         ),
                       ],
                     ).paddingAll(10),

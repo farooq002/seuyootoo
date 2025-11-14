@@ -35,7 +35,7 @@ class HomeView extends BaseView<TabHomeViewController> {
           icon: appImageAsset(icStreak),
           onPressed: () {},
           text: '${controller.streak.value} DAY STREAK',
-          fontSize: 14,
+          fontSize: 12,
           foregroundColor: appWhite,
           borderColor: appBlack,
           backgroundColor: appBlack,
@@ -86,13 +86,13 @@ class HomeView extends BaseView<TabHomeViewController> {
                         AppTextRegular(
                           text:
                               '${controller.profileData.value.level ?? 1} level PROGRESS',
-                          fontSize: 12,
+                          fontSize: 10,
                           color: Colors.black,
                         ),
                         AppTextRegular(
                           text:
                               '${controller.profileData.value.exp ?? 0}/${controller.profileData.value.expToNextLevel ?? 1}',
-                          fontSize: 10,
+                          fontSize: 8,
                           color: Colors.blue[700]!,
                         ),
                       ],
@@ -112,7 +112,7 @@ class HomeView extends BaseView<TabHomeViewController> {
           ),
 
           Positioned(
-            top: MediaQuery.of(context).size.height * 0.43,
+            top: MediaQuery.of(context).size.height * 0.45,
             bottom: MediaQuery.of(Get.context!).size.height * 0.01,
             left: MediaQuery.of(Get.context!).size.width * 0.10,
             right: MediaQuery.of(Get.context!).size.width * 0.10,

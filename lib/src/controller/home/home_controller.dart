@@ -10,12 +10,15 @@ import 'package:souyoutoo/src/base/base_view_controller.dart';
 import 'package:souyoutoo/src/components/app_file_picker.dart';
 import 'package:souyoutoo/utils/colors_name.dart';
 import 'package:souyoutoo/utils/image_constant.dart';
-import 'package:souyoutoo/utils/utils.dart';
 
 class HomeController extends BaseViewController {
   final HomeRepo homeRepo = HomeRepoImpl();
   final myCaseData = LoggedUserCasesResponses().obs;
   final selectedIndex = false.obs;
+  final selectedPushIndex = false.obs;
+  final selectedEmailIndex = false.obs;
+  final selectedMarketingIndex = false.obs;
+  final selectedAutoSyncIndex = false.obs;
   final pickedFiles = <PlatformFile>[].obs;
   final profileData = GetProfileResponse().obs;
   final check = false.obs;

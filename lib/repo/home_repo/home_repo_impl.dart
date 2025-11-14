@@ -17,7 +17,7 @@ base class HomeRepoImpl extends HomeRepo {
   Future<NetworkResponse<CaseByIdResponse>?> getCaseByID() async {
     final request = NetworkRequest(
       // path: "${NetworkService.getCaseByID}/$id",
-      path: NetworkService.getCaseByID,
+      path: '${NetworkService.getCaseByID}/1/',
       type: NetworkRequestType.GET,
     );
     final response = await NetworkService.shared.execute<CaseByIdResponse>(
@@ -61,8 +61,8 @@ base class HomeRepoImpl extends HomeRepo {
   }
 
   @override
-  Future<LoggedUserCasesResponses?>? getMyCases() async {
-    dynamic result;
+  Future<LoggedUserCasesResponses?> getMyCases() async {
+    LoggedUserCasesResponses? result;
     final request = NetworkRequest(
       path: NetworkService.getMyCases,
       type: NetworkRequestType.GET,

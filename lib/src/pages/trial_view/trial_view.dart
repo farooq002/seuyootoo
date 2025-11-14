@@ -29,9 +29,12 @@ class TrialView extends BaseView<TrailController> {
           fontSize: 24,
           color: appWhite,
           fontFamily: 'VT323',
-          onPressed: () {
+          onPressed: () async {
             final caseId = controller.caseData.value.cases?.first.id;
-            controller.getCaseById(caseId);
+            final isOk = await controller.takeCase(caseId);
+            if (isOk == true) {
+              controller.getCaseById(caseId);
+            }
           },
         ),
       ),

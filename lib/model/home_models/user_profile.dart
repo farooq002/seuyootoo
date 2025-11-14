@@ -5,6 +5,7 @@ class GetProfileResponse {
   final String? userEmail;
   final String? profileImage;
   final String? platform;
+  final String? deviceToken;
   final dynamic tokens;
   final dynamic level;
   final dynamic exp;
@@ -14,10 +15,12 @@ class GetProfileResponse {
   final dynamic currentCasesGoal;
   final dynamic completedCases;
   final Status? lexStatus;
+  // final Status? achievements;
   GetProfileResponse({
     this.userEmail,
     this.profileImage,
     this.platform,
+    this.deviceToken,
     this.tokens,
     this.level,
     this.exp,
@@ -27,22 +30,25 @@ class GetProfileResponse {
     this.currentCasesGoal,
     this.completedCases,
     this.lexStatus,
+    // this.achievements,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'userEmail': userEmail,
-      'profileImage': profileImage,
+      'user_email': userEmail,
+      'profile_image': profileImage,
       'platform': platform,
+      'device_token': deviceToken,
       'tokens': tokens,
       'level': level,
       'exp': exp,
-      'expToNextLevel': expToNextLevel,
+      'exp_to_next_level': expToNextLevel,
       'rank': rank,
       'streak': streak,
-      'currentCasesGoal': currentCasesGoal,
-      'completedCases': completedCases,
+      'current_cases_goal': currentCasesGoal,
+      'completed_cases': completedCases,
       'lex_status': lexStatus?.toMap(),
+      // 'achievements': achievements?.toMap(),
     };
   }
 
@@ -53,6 +59,9 @@ class GetProfileResponse {
           ? map['profile_image'] as String
           : null,
       platform: map['platform'] != null ? map['platform'] as String : null,
+      deviceToken: map['device_token'] != null
+          ? map['device_token'] as String
+          : null,
       tokens: map['tokens'] as dynamic,
       level: map['level'] as dynamic,
       exp: map['exp'] as dynamic,
@@ -64,6 +73,9 @@ class GetProfileResponse {
       lexStatus: map['lex_status'] != null
           ? Status.fromMap(map['lex_status'] as Map<String, dynamic>)
           : null,
+      // achievements: map['achievements'] != null
+      //     ? Status.fromMap(map['achievements'] as Map<String, dynamic>)
+      //     : null,
     );
   }
 
@@ -74,7 +86,7 @@ class GetProfileResponse {
 
   @override
   String toString() {
-    return 'GetProfileResponse(userEmail: $userEmail, profileImage: $profileImage, platform: $platform, tokens: $tokens, level: $level, exp: $exp, expToNextLevel: $expToNextLevel, rank: $rank, streak: $streak, currentCasesGoal: $currentCasesGoal, completedCases: $completedCases, lex_status: $lexStatus)';
+    return 'GetProfileResponse(userEmail: $userEmail, profileImage: $profileImage, platform: $platform, deviceToken: $deviceToken, tokens: $tokens, level: $level, exp: $exp, expToNextLevel: $expToNextLevel, rank: $rank, streak: $streak, currentCasesGoal: $currentCasesGoal, completedCases: $completedCases, lexStatus: $lexStatus)';
   }
 
   @override
@@ -84,6 +96,7 @@ class GetProfileResponse {
     return other.userEmail == userEmail &&
         other.profileImage == profileImage &&
         other.platform == platform &&
+        other.deviceToken == deviceToken &&
         other.tokens == tokens &&
         other.level == level &&
         other.exp == exp &&
@@ -93,6 +106,8 @@ class GetProfileResponse {
         other.currentCasesGoal == currentCasesGoal &&
         other.completedCases == completedCases &&
         other.lexStatus == lexStatus;
+    //  &&
+    // other.achievements == achievements;
   }
 
   @override
@@ -100,6 +115,7 @@ class GetProfileResponse {
     return userEmail.hashCode ^
         profileImage.hashCode ^
         platform.hashCode ^
+        deviceToken.hashCode ^
         tokens.hashCode ^
         level.hashCode ^
         exp.hashCode ^
@@ -109,6 +125,7 @@ class GetProfileResponse {
         currentCasesGoal.hashCode ^
         completedCases.hashCode ^
         lexStatus.hashCode;
+    // achievements.hashCode;
   }
 }
 

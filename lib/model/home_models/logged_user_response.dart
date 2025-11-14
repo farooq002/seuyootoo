@@ -4,24 +4,22 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 
 class LoggedUserCasesResponses {
-  final List<MainUserCases>? progress;
-  LoggedUserCasesResponses({this.progress});
+  final List<MainUserCases>? cases;
+  LoggedUserCasesResponses({this.cases});
 
-  LoggedUserCasesResponses copyWith({List<MainUserCases>? progress}) {
-    return LoggedUserCasesResponses(progress: progress ?? this.progress);
+  LoggedUserCasesResponses copyWith({List<MainUserCases>? cases}) {
+    return LoggedUserCasesResponses(cases: cases ?? this.cases);
   }
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'progress': progress?.map((x) => x.toMap()).toList(),
-    };
+    return <String, dynamic>{'cases': cases?.map((x) => x.toMap()).toList()};
   }
 
   factory LoggedUserCasesResponses.fromMap(Map<String, dynamic> map) {
     return LoggedUserCasesResponses(
-      progress: map['progress'] != null
+      cases: map['cases'] != null
           ? List<MainUserCases>.from(
-              (map['progress'] as List).map<MainUserCases?>(
+              (map['cases'] as List).map<MainUserCases?>(
                 (x) => MainUserCases.fromMap(x as Map<String, dynamic>),
               ),
             )
@@ -37,17 +35,17 @@ class LoggedUserCasesResponses {
       );
 
   @override
-  String toString() => 'LoggedUserCasesResponses(progress: $progress)';
+  String toString() => 'LoggedUserCasesResponses(progress: $cases)';
 
   @override
   bool operator ==(covariant LoggedUserCasesResponses other) {
     if (identical(this, other)) return true;
 
-    return listEquals(other.progress, progress);
+    return listEquals(other.cases, cases);
   }
 
   @override
-  int get hashCode => progress.hashCode;
+  int get hashCode => cases.hashCode;
 }
 
 class MainUserCases {

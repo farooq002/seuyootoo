@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:souyoutoo/model/home_models/Get_all_case_resp.dart';
 import 'package:souyoutoo/model/home_models/case_by_id_model.dart';
 import 'package:souyoutoo/model/home_models/complete_case_response.dart';
+import 'package:souyoutoo/model/home_models/take_cases_response.dart';
 import 'package:souyoutoo/repo/trail_repo/trail_repo.dart';
 import 'package:souyoutoo/repo/trail_repo/trail_repo_impl.dart';
 import 'package:souyoutoo/routes/routes_name.dart';
@@ -17,6 +18,7 @@ class TrailController extends BaseViewController {
   final caseData = GetAllCaseResp().obs;
   final caseDetail = CaseByIdResponse().obs;
   final caseCompleteRes = CompleteCaseResponse().obs;
+  final takeCaseResponse = TakeCasesResponse().obs;
   final currentQuestIndex = 0.obs;
   final currentTime = 0.obs;
   Timer? timer;
@@ -49,6 +51,18 @@ class TrailController extends BaseViewController {
       updateTimerForCurrentQuestion();
       Get.toNamed(questionRoute, arguments: {'caseId': caseId});
     }
+  }
+
+  takeCase(caseId) async {
+    startLoading();
+    final response = await trailRepo.takeCase(caseId);
+    stopLoading();
+    if (response != null) {
+      currentQuestIndex.value = 0;
+      takeCaseResponse.value = response;
+      return true;
+    }
+    return false;
   }
 
   completeCase(caseId) async {

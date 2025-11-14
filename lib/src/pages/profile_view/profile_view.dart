@@ -145,7 +145,7 @@ class ProfileView extends BaseView<ProfileViewController> {
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
-                            childAspectRatio: 2.3,
+                            childAspectRatio: 2,
                             mainAxisSpacing: 8,
                             crossAxisSpacing: 8,
                           ),

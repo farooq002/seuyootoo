@@ -24,16 +24,16 @@ class NetworkService {
   static const authUrl = '/mobile_api/';
   static const authLogin = '${authUrl}login/';
   static const authSignUp = '${authUrl}register/';
-  static const getProfile = '${authUrl}profile';
-  static const getProgress = '${authUrl}progress';
-  static const getCases = '${authUrl}cases';
+  static const getProfile = '${authUrl}profile/';
+  static const getProgress = '${authUrl}progress/';
+  static const getCases = '${authUrl}cases/';
   static const getCaseByID = '${authUrl}case';
-  static const getMyCases = '${authUrl}my-cases';
+  static const getMyCases = '${authUrl}my-cases/';
   static const takeCase = '${authUrl}take-case';
   static const completeCase = '${authUrl}complete-case/';
-  static const achievements = '${authUrl}achievements';
-  static const giveAchievement = '${authUrl}give-achievement';
-  static const myAchievements = '${authUrl}my-achievements';
+  static const achievements = '${authUrl}achievements/';
+  static const giveAchievement = '${authUrl}give-achievement/';
+  static const myAchievements = '${authUrl}my-achievements/';
   // static const logout = '${authUrl}logout';
 
   ///
@@ -45,13 +45,13 @@ class NetworkService {
     headers['Content-Type'] = 'application/json';
     headers['X-API-KEY'] = 'hzZN7mfyxWvS7ffv6zFdInYnhyMD';
     headers['Authorization'] = 'Token ${StorageService.instance.getToken()}';
-   
+
     final dio = _currentEnvironment.dioClient!
       ..options.baseUrl = _currentEnvironment.baseUrl
       ..options.headers = _currentEnvironment.httpHeaders
       ..options.connectTimeout =
-          const Duration(seconds: 20) // 5 seconds
-      ..options.receiveTimeout = const Duration(seconds: 20); // 3 seconds
+          const Duration(seconds: 200) // 5 seconds
+      ..options.receiveTimeout = const Duration(seconds: 200); // 3 seconds
     return dio;
   }
 
@@ -99,9 +99,10 @@ class NetworkService {
         badRequest: (message) {
           showToast(message);
         },
-        orElse:() {
-        print('Done');
-      });
+        orElse: () {
+          print('Done');
+        },
+      );
       return result;
     } catch (e) {
       debugPrint("Error during request execution: $e");
