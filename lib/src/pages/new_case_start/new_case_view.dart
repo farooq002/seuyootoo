@@ -37,70 +37,63 @@ class NewCaseView extends BaseView<HomeController> {
           shadowColor: appBlack,
         ),
       ),
-      body: Stack(
-        children: [
-          Positioned.fill(
-            top: 0,
-            // bottom: 100,
-            child: appImageAsset(icBackground, fit: BoxFit.fill),
-          ),
-
-          // Positioned(
-          //   top: MediaQuery.of(context).size.height / 8,
-          //   left: 0,
-          //   right: 0,
-          //   child: appImageAsset(icJudge, height: 250),
-          // ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: FractionallySizedBox(
-              widthFactor: 1.0,
-              heightFactor: 0.65,
-              child: appImageAsset(icForeground, fit: BoxFit.fill),
-            ),
-          ),
-
-          Positioned(
-            top: 10,
-            left: 0,
-            right: 0,
-            child: AppAchievementContainer(
-              borderColor: appAmber,
-              color: appAmber,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
+      backgroundColor: appBrown,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: 500,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(icTop),
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
+              child: Column(
                 children: [
-                  Icon(Icons.warning, size: 14).paddingOnly(right: 10, top: 10),
-
-                  Expanded(
-                    child: Column(
+                  AppAchievementContainer(
+                    borderColor: appAmber,
+                    margin: EdgeInsets.only(top: 20),
+                    color: appAmber,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        AppTextRegular(
-                          text: 'IMPORTANT NOTICE',
-                          fontSize: 8,
-                        ).paddingOnly(bottom: 10),
-                        AppTextRegular(
-                          text:
-                              'Starting a new case will redirect you to the SueYouToo.com website where you\'ll need to create an account and provide case details.',
-                          fontSize: 7,
-                          lineLimit: 10,
+                        Icon(
+                          Icons.warning,
+                          size: 14,
+                        ).paddingOnly(right: 10, top: 10),
+
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              AppTextRegular(
+                                text: 'IMPORTANT NOTICE',
+                                fontSize: 8,
+                              ).paddingOnly(bottom: 10),
+                              AppTextRegular(
+                                text:
+                                    'Starting a new case will redirect you to the SueYouToo.com website where you\'ll need to create an account and provide case details.',
+                                fontSize: 7,
+                                lineLimit: 10,
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
-                  ),
+                  ).paddingSymmetric(horizontal: 42),
                 ],
               ),
-            ).paddingSymmetric(horizontal: 42),
-          ),
-
-          Positioned(
-            top: MediaQuery.of(context).size.height * 0.45,
-            bottom: 10,
-            left: 0,
-            right: 0,
-            child: SingleChildScrollView(
+            ),
+            Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(icBottom),
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -111,7 +104,7 @@ class NewCaseView extends BaseView<HomeController> {
                       color: appWhite,
                     ),
                   ),
-
+                  SizedBox(height: 20),
                   ListView.builder(
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
@@ -166,6 +159,7 @@ class NewCaseView extends BaseView<HomeController> {
                       color: appWhite,
                     ),
                   ),
+                  SizedBox(height: 20),
                   AppAchievementContainer(
                     color: appDimBrown,
                     borderColor: appDimBrown,
@@ -242,10 +236,10 @@ class NewCaseView extends BaseView<HomeController> {
                     },
                     backgroundColor: appGreen,
                     foregroundColor: appBlack,
-                    shadowColor: appLightBlack,
+                    shadowColor: appBlack.withAlpha(80),
                     icon: appImageAsset(icWebsite),
-                    offSetX: -6,
-                    offSetY: -6,
+                    offSetX: -4,
+                    offSetY: -4,
                   ).paddingAll(10),
 
                   AppAchievementContainer(
@@ -267,9 +261,9 @@ class NewCaseView extends BaseView<HomeController> {
                   ).paddingAll(10),
                 ],
               ).paddingAll(32),
-            ),
-          ),
-        ],
+            ).paddingOnly(right: 2),
+          ],
+        ),
       ),
     );
   }

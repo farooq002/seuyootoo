@@ -55,7 +55,9 @@ class MyCaseView extends BaseView<HomeController> {
                     ),
                   ),
                   Obx(
-                    () => controller.myCaseData.value.cases?.isEmpty != true
+                    () =>
+                        controller.myCaseData.value.cases?.isEmpty != true ||
+                            controller.myCaseData.value.cases != null
                         ? ListView.builder(
                             shrinkWrap: true,
                             physics: NeverScrollableScrollPhysics(),
